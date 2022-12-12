@@ -2,20 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/Comment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/Mark.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/News.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/Restaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/UserEvent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataBase/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fin_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/comment.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/mark.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/news.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/userEvent.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/dataBase/Comment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/dataBase/Mark.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/dataBase/News.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/dataBase/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/dataBase/UserEvent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/comment.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/mark.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/news.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/userEvent.middleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/comment.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/mark.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/news.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/restaurant.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/userEvent.router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/comment.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/mark.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/news.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/restaurant.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/user.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/userEvent.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/Comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/Mark.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/News.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/UserEvent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataBase/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +80,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/backend/services",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\services" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\middlewares" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\routes" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,11 +103,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670825873494</updated>
-      <workItem from="1670825875634" duration="4091000" />
+      <workItem from="1670825875634" duration="10439000" />
     </task>
+    <task id="LOCAL-00001" summary="mongoose schemas 1">
+      <created>1670833321919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670833321919</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="mongoose schemas 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="mongoose schemas 1" />
   </component>
 </project>
