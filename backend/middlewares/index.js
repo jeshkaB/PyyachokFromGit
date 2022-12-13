@@ -1,4 +1,5 @@
 module.exports = {
+    forAllMiddleware: require('./forAlllMiddleware'),
     commentMiddleware: require('./comment.middleware'),
     markMiddleware: require('./mark.middleware'),
     newsMiddleware: require('./news.middleware'),

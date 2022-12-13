@@ -1,10 +1,11 @@
-const {userService} = require("../services");
+const {userService} = require('../services');
+const {statusCode} = require('../constants')
 
 module.exports = {
     createUser: async (req, res, next) => {
         try {
             const user = await userService.createUser(req.body);
-            res.json(user)
+            res.status(statusCode.CREATE).json(user)
         } catch (e) {
             next(e)
         }
@@ -19,27 +20,27 @@ module.exports = {
     },
     getUserById: async (req, res, next) => {
         try {
-            const userId = req.params;
+            const {userId} = req.params;
             const user = await userService.getUserById(userId);
-            res.join(user)
+            res.json(user)
         } catch (e) {
             next(e)
         }
     },
     updateUser: async (req, res, next) => {
         try {
-            const userId = req.params;
+            const {userId} = req.params;
             const user = await userService.updateUser(userId, req.body);
-            res.join()
+            res.json(user)
         } catch (e) {
             next(e)
         }
     },
     deleteUser: async (req, res, next) => {
         try {
-            const userId = req.params;
+            const {userId} = req.params;
             await userService.deleteUser(userId);
-            res.join()
+            res.status(statusCode.NO_CONTENT).json()
         } catch (e) {
             next(e)
         }
