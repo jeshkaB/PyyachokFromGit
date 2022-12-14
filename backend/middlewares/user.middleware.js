@@ -18,7 +18,6 @@ module.exports = {
         }
     },
 
-
     checkEmailIsUnique: async (req, res, next) => {
         const {email} = req.body;
 
@@ -30,6 +29,20 @@ module.exports = {
 
             next()
         } catch (e) {
+            next(e)
+        }
+    },
+
+    checkUserIsExist: async (req, res, next) => {
+        try {
+            const {userId} = req.params;
+            const userById = await userService.getUserById(userId);
+            if (!userById) {
+                return next (new LocalError('User is not exist', statusCodes.NOT_FOUND))
+            }
+            // req.user = user;
+           next()
+        }catch (e) {
             next(e)
         }
 

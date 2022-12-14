@@ -17,16 +17,19 @@ userRouter.post(
 userRouter.get(
     '/:userId',
     forAllMiddleware.checkIdIsValid('userId'),
+    userMiddleware.checkUserIsExist,
     userController.getUserById);
 
 userRouter.patch(
     '/:userId',
     forAllMiddleware.checkIdIsValid('userId'),
+    userMiddleware.checkUserIsExist,
     userController.updateUser);
 
 userRouter.delete(
     '/:userId',
     forAllMiddleware.checkIdIsValid('userId'),
+    userMiddleware.checkUserIsExist,
     userController.deleteUser);
 
 
