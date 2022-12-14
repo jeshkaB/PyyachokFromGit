@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const {userController} = require("../controllers");
-const {forAllMiddleware} = require("../middlewares");
+const {forAllMiddleware, userMiddleware} = require("../middlewares");
 
 const userRouter = Router();
 
@@ -10,6 +10,8 @@ userRouter.get(
 
 userRouter.post(
     '/',
+    userMiddleware.checkUserBodyIsValid,
+    userMiddleware.checkEmailIsUnique,
     userController.createUser);
 
 userRouter.get(
