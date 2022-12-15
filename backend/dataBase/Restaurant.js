@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 
 const restaurantSchema = new Schema({
         name: {type: String, trim: true, required: true},
-        mainImage: {type: String, required: true},
+        mainImage: {type: String, /*required: true*/},
         images: [String],
         place: {type: String, required: true},
         average_bill: {type: Number, required: true},
@@ -12,7 +12,7 @@ const restaurantSchema = new Schema({
         contacts: {type: String, required: true},
         news: {
             type: [Schema.Types.ObjectId],
-            ref: 'news'
+            // ref: 'news'
         },
         viewStatistics: {},// TODO
         rating: Number
