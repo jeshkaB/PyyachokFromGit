@@ -1,4 +1,5 @@
 module.exports = {
+    authController: require('./auth.controller'),
     commentController: require('./comment.controller'),
     markController: require('./mark.controller'),
     newsController: require('./news.controller'),

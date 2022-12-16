@@ -1,4 +1,5 @@
 module.exports = {
+    authRouter: require ('./auth.router'),
     commentRouter: require('./comment.router'),
     markRouter: require('./mark.router'),
     newsRouter: require('./news.router'),

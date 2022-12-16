@@ -5,11 +5,13 @@ const restaurantSchema = new Schema({
         mainImage: {type: String, /*required: true*/},
         images: [String],
         place: {type: String, required: true},
-        average_bill: {type: Number, required: true},
+        averageBill: {type: Number, required: true},
         hours: {type: String, required: true},
         tags: [String],
         categories: [String], //напр. весілля, корпоратив, день народження. А як його сортувати по цих категоріях в топ??????
-        contacts: {type: String, required: true},
+        phone: {type: String, required: true},
+        email: {type: String, required: true},
+        webSite: {type: String, required: true},
         news: {
             type: [Schema.Types.ObjectId],
             // ref: 'news'

@@ -1,4 +1,5 @@
 module.exports = {
+    authMiddleware: require('./auth.middleware'),
     forAllMiddleware: require('./forAlllMiddleware'),
     commentMiddleware: require('./comment.middleware'),
     markMiddleware: require('./mark.middleware'),

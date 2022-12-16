@@ -10,7 +10,7 @@ userRouter.get(
 
 userRouter.post(
     '/',
-    userMiddleware.checkUserBodyIsValid,
+    userMiddleware.checkNewUserBodyIsValid,
     userMiddleware.checkEmailIsUnique,
     userController.createUser);
 
@@ -24,6 +24,7 @@ userRouter.patch(
     '/:userId',
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkUserIsExist,
+    userMiddleware.checkUpdateUserBodyIsValid,
     userController.updateUser);
 
 userRouter.delete(

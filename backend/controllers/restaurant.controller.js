@@ -1,6 +1,5 @@
 const {restaurantService} = require("../services");
 const {statusCode} = require("../constants");
-const {raw} = require("express");
 
 module.exports = {
     createRestaurant: async (req, res, next) => {
@@ -52,7 +51,3 @@ module.exports = {
     }
 }
 
-//
-//
-//
-//
