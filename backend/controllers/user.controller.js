@@ -1,16 +1,27 @@
 const {userService, hashService} = require('../services');
-const {statusCode} = require('../constants')
+const {statusCode, roles} = require('../constants')
 
 module.exports = {
     createUser: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            const user = await userService.createUser({...req.body, password: hashPassword});
+            const user = await userService.createUser({...req.body, password: hashPassword,});
             res.status(statusCode.CREATE).json(user)
         } catch (e) {
             next(e)
         }
     },
+
+    createUserAsRestaurantAdmin: async (req, res, next) => {
+        try {
+            const hashPassword = await hashService.hashPassword(req.body.password);
+            const user = await userService.createUser({...req.body, password: hashPassword, role: [roles.USER, roles.REST_ADMIN]});
+            res.status(statusCode.CREATE).json(user)
+        } catch (e) {
+            next(e)
+        }
+    },
+
     getUsers: async (req, res, next) => {
         try {
             const users = await userService.getUsers();

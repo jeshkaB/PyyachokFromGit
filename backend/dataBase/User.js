@@ -1,4 +1,7 @@
 const {Schema, model} = require('mongoose');
+const {roles} = require('../constants')
+
+
 
 const userSchema = new Schema({
         name: {type: String, trim: true, required: true},
@@ -20,6 +23,9 @@ const userSchema = new Schema({
             ref: 'mark',
             select: false
         },
+        role: {
+            type: [String], default: [roles.USER]
+        }
     },
     {
         timestamps: true,

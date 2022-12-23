@@ -5,7 +5,7 @@ module.exports = {
     markService: require('./mark.service'),
     newsService: require('./news.service'),
     restaurantService: require('./restaurant.service'),
-    tokenSrvice: require ('./token.service'),
+    tokenService: require ('./token.service'),
     userService: require('./user.service'),
     userEventService: require('./userEvent.service'),
 

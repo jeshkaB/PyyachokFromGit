@@ -4,7 +4,8 @@ const {statusCode} = require("../constants");
 module.exports = {
     createRestaurant: async (req, res, next) => {
         try {
-            const restaurant = await restaurantService.createRestaurant(req.body);
+            const {_id} = req.tokenInfo.user;
+            const restaurant = await restaurantService.createRestaurant({...req.body, user: _id});
             res.status(statusCode.CREATE).json(restaurant)
 
         } catch (e) {

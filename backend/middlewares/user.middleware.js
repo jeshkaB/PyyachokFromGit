@@ -46,14 +46,14 @@ module.exports = {
         }
     },
 
-    checkUserIsExist: async (req, res, next) => {
+    checkUserIsExist: (from = 'params') => async (req, res, next) => {
         try {
-            const {userId} = req.params;
+            const {userId} = req[from];
             const userById = await userService.getUserById(userId);
             if (!userById) {
                 return next(new LocalError('User is not exist', statusCodes.NOT_FOUND))
             }
-            // req.user = user;
+            req.user = userById;
             next()
         } catch (e) {
             next(e)

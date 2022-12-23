@@ -1,6 +1,13 @@
-const tokenService = require("../services/token.service");
-const {authService} = require("../services");
+const {authService, tokenService, userService} = require("../services");
+
 module.exports = {
+    registration: async (req,res,next) => {
+      try {
+          await userService.createUser(req.body)
+      }  catch (e) {
+          next(e)
+      }
+},
     login: async (req, res, next) => {
         try {
             const {_id} = req.user;
@@ -10,11 +17,8 @@ module.exports = {
                 refreshToken: tokenService.createRefreshToken({_id}),
                 user: _id
             }
+            await authService.saveTokens({...authTokens});
 
-
-            await authService.saveTokens({authTokens}); //  а можна без {}?
-            //TODO
-            //await emailService.sendEmail(email, emailActionEnum.FORGOT_PASSWORD);
             res.json({
                 ...authTokens,
                 user: req.user

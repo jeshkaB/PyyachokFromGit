@@ -14,7 +14,7 @@ module.exports = {
         return User.findOne(filter)
     },
     updateUser(userId, userObj) {
-        return User.updateOne({_id: userId}, userObj, /*{new: true}*/)
+        return User.findOneAndUpdate({_id: userId}, userObj, {new: true})
     },
     deleteUser(userId) {
         return User.deleteOne({_id: userId})
