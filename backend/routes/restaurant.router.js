@@ -2,6 +2,7 @@ const {Router, query} = require("express");
 
 const {restaurantController} = require("../controllers");
 const {restaurantMiddleware, forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
+const {roles} = require("../constants");
 
 const restaurantRouter = Router();
 
@@ -13,9 +14,7 @@ restaurantRouter.post(
     '/',
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
     authMiddleware.checkAccessToken,
-    // forAllMiddleware.checkIdIsValid('userId', 'query'), // передаємо Id юзера, який створює ресторан в квері пераметрі (/restaurants?userId=......)
-    // userMiddleware.checkUserIsExist('query'),
-    //TODO перевірка наявності ролі 'REST_ADMIN'?
+    forAllMiddleware.checkRole(roles.REST_ADMIN),
     restaurantMiddleware.checkEmailIsUnique,    // ??? у різних ресторанів теоретично може бути один емейл
     restaurantController.createRestaurant);
 

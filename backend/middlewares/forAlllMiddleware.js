@@ -30,7 +30,18 @@ module.exports = {
       }
     },
 
-
+    checkRole: (role) => (req, res, next) => {
+        try {
+            const userRole = (req.tokenInfo.user.role);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
+            console.log(userRole)
+            if (!userRole.includes(role)) {
+                return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
+            }
+            next()
+        } catch (e) {
+            next(e)
+        }
+    },
 
 
 }
