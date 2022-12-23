@@ -20,7 +20,7 @@ const restaurantSchema = new Schema({
         },
         news: {
             type: [Schema.Types.ObjectId],
-            // ref: 'news'
+            ref: 'news'
         },
         viewStatistics: {},// TODO
         rating: Number

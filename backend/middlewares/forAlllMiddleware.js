@@ -3,6 +3,7 @@ const {isObjectIdOrHexString} = require("mongoose");
 const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
 const {statusCode} = require("../constants");
+const {stringify} = require("nodemon/lib/utils");
 
 module.exports = {
     checkIdIsValid: (idName, from = 'params' ) => (req, res, next) => {
@@ -17,9 +18,10 @@ module.exports = {
     },
     checkIdAreSame: (entity) => (req, res, next) => {
       try {
-          const userId = req.tokenInfo.user._id;    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
-          const entityId = req[entity].user
-          if (!userId===entityId) {
+          const userId = stringify(req.tokenInfo.user._id);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
+          const entityId = stringify(req[entity].user);
+
+          if (userId!==entityId) {
               return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
           }
           next()
@@ -27,6 +29,8 @@ module.exports = {
           next(e)
       }
     },
+
+
 
 
 }
