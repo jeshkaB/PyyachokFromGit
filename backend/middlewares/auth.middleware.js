@@ -17,7 +17,7 @@ module.exports = {
             next(e)
         }
     },
-    checkIsPasswordSame: async (req, res, next) => {
+    checkPasswordsAreSame: async (req, res, next) => {
         try {
             const {password} = req.body;
             const {_id} = req.user;

@@ -8,7 +8,7 @@ authRouter.post (
     '/login',
     authMiddleware.checkLoginBodyIsValid,
     userMiddleware.checkUserIsExistByEmail,
-    authMiddleware.checkIsPasswordSame,
+    authMiddleware.checkPasswordsAreSame,
     authController.login);
 
 authRouter.post (

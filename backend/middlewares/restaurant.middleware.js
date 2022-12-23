@@ -66,7 +66,7 @@ module.exports = {
             if (!restaurantById) {
                 return next(new LocalError('Restaurant is not exist', statusCodes.NOT_FOUND))
             }
-            // req.restaurant = restaurant;
+            req.restaurant = restaurantById;
             next()
         } catch (e) {
             next(e)

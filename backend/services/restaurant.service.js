@@ -14,7 +14,7 @@ module.exports = {
         return Restaurant.findOne(filter)
     },
     updateRestaurant (restId,restaurantObj) {
-        return Restaurant.updateOne({_id: restId},restaurantObj)
+        return Restaurant.findOneAndUpdate({_id: restId},restaurantObj, {new: true})
     },
     deleteRestaurant (restId) {
     return Restaurant.deleteOne ({_id: restId})
