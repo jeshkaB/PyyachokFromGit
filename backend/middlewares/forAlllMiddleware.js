@@ -2,7 +2,7 @@ const {isObjectIdOrHexString} = require("mongoose");
 
 const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
-const {statusCode} = require("../constants");
+const {statusCode, roles} = require("../constants");
 const {stringify} = require("nodemon/lib/utils");
 
 module.exports = {
@@ -16,25 +16,41 @@ module.exports = {
             next(e)
         }
     },
-    checkIdAreSame: (entity) => (req, res, next) => {
+    checkUserIdInEntity: (entity) => (req, res, next) => {
       try {
           const userId = stringify(req.tokenInfo.user._id);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
           const entityId = stringify(req[entity].user);
 
-          if (userId!==entityId) {
+          if (userId!==entityId && userId!==roles.SUPER_ADMIN_ID) {
               return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
           }
+
           next()
       } catch (e) {
           next(e)
       }
     },
 
+    checkIdAreSame: (idName, from = 'params') => (req, res, next) => {
+    try {
+        const userId = stringify(req.tokenInfo.user._id);
+        const updateUserId = req[from][idName]
+
+        if (userId!==updateUserId && userId!==roles.SUPER_ADMIN_ID) {
+            return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
+        }
+
+        next()
+    } catch (e) {
+        next(e)
+    }
+},
+
     checkRole: (role) => (req, res, next) => {
         try {
             const userRole = (req.tokenInfo.user.role);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
-            console.log(userRole)
-            if (!userRole.includes(role)) {
+
+            if (!userRole.includes(role) && !userRole.includes(roles.SUPER_ADMIN)) {
                 return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
             }
             next()

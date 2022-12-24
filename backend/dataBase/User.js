@@ -9,15 +9,16 @@ const userSchema = new Schema({
         avatar: {type: String},
         favoriteRestaurants: {
             type: [Schema.Types.ObjectId],
-            ref: 'restaurant',
+            ref: 'restaurant'
+
         },
         comments: {
             type: [Schema.Types.ObjectId],
-            ref: 'comment',
+            ref: 'comment'
         },
         marks: {
             type: [Schema.Types.ObjectId],
-            ref: 'mark',
+            ref: 'mark'
         },
         role: {
             type: [String], default: [roles.USER]

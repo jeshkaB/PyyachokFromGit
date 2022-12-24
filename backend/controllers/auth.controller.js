@@ -17,6 +17,7 @@ module.exports = {
                 refreshToken: tokenService.createRefreshToken({_id}),
                 user: _id
             }
+
             await authService.saveTokens({...authTokens});
 
             res.json({

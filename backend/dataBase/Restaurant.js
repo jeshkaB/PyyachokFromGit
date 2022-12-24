@@ -1,5 +1,6 @@
 const {Schema, model} = require('mongoose');
 const {boolean} = require("joi");
+const {commentService} = require("../services");
 
 const restaurantSchema = new Schema({
         name: {type: String, trim: true, required: true},
@@ -13,7 +14,7 @@ const restaurantSchema = new Schema({
         phone: {type: String, required: true},
         email: {type: String, required: true},
         webSite: {type: String, required: true},
-        moderated: {type:Boolean, default:false},                 //неперевірений - false, перевірений - true
+        moderated: {type:Boolean, default:false}, //неперевірений - false, перевірений - true
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
@@ -21,6 +22,10 @@ const restaurantSchema = new Schema({
         news: {
             type: [Schema.Types.ObjectId],
             ref: 'news'
+        },
+        comments: {
+            type: [Schema.Types.ObjectId],
+            ref: 'comment'
         },
         viewStatistics: {},// TODO
         rating: Number

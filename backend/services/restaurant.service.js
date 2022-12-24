@@ -11,7 +11,7 @@ module.exports = {
         return Restaurant.findById (restId)
     },
     getRestaurantByParams (filter) {
-        return Restaurant.findOne(filter)
+        return Restaurant.find(filter)
     },
     updateRestaurant (restId,restaurantObj) {
         return Restaurant.findOneAndUpdate({_id: restId},restaurantObj, {new: true})

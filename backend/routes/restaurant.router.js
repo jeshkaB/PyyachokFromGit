@@ -1,4 +1,4 @@
-const {Router, query} = require("express");
+const {Router} = require("express");
 
 const {restaurantController} = require("../controllers");
 const {restaurantMiddleware, forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
@@ -21,24 +21,23 @@ restaurantRouter.post(
 restaurantRouter.get(
     '/:restId',
     forAllMiddleware.checkIdIsValid('restId'),
-    restaurantMiddleware.checkRestaurantIsExist,
+    restaurantMiddleware.checkRestaurantIsExist(),
     restaurantController.getRestaurantById);
 
 restaurantRouter.patch(
     '/:restId',
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkUpdateRestaurantBodyIsValid,
+    restaurantMiddleware.checkRestaurantIsExist(),
     authMiddleware.checkAccessToken,
-    restaurantMiddleware.checkRestaurantIsExist,
-    forAllMiddleware.checkIdAreSame('restaurant'),    //перевірка доступу - 1) якщо айди юзера в токенинфо співпадає з айди юзера в ресторані
-    // TODO перевірка доступу - 2) якщо суперадмін - додати перевірку в  checkIdAreSame як умову або??????
+    forAllMiddleware.checkUserIdInEntity('restaurant'),    //перевірка доступу - 1) якщо айди юзера в токенинфо співпадає з айди юзера в ресторані або юзер - суперадмін
     restaurantController.updateRestaurant);
 
 restaurantRouter.delete(
     '/:restId',
     forAllMiddleware.checkIdIsValid('restId'),
-    restaurantMiddleware.checkRestaurantIsExist,
-    forAllMiddleware.checkIdAreSame('restaurant'),
+    restaurantMiddleware.checkRestaurantIsExist(),
+    forAllMiddleware.checkUserIdInEntity('restaurant'),
     restaurantController.deleteRestaurant);
 
 module.exports = restaurantRouter

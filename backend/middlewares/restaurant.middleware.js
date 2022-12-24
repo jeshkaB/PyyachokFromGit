@@ -31,21 +31,7 @@ module.exports = {
         }
     },
 
-    checkUserIsExist: async (req, res, next) => {
-        try {
-            const {userId} = req.params;
-            const userById = await userService.getUserById(userId);
-            if (!userById) {
-                return next(new LocalError('User is not exist', statusCodes.NOT_FOUND))
-            }
-            // req.user = user;
-            next()
-        } catch (e) {
-            next(e)
-        }
-    },
-
-        checkEmailIsUnique: async (req, res, next) => {
+           checkEmailIsUnique: async (req, res, next) => {
         const {email} = req.body;
         try {
             const restaurantByEmail = await restaurantService.getRestaurantByParams({email})
@@ -59,9 +45,10 @@ module.exports = {
         }
     },
 
-    checkRestaurantIsExist: async (req, res, next) => {
+    checkRestaurantIsExist: (from='params') => async (req, res, next) => {
         try {
-            const {restId} = req.params;
+            const {restId} = req[from];
+
             const restaurantById = await restaurantService.getRestaurantById(restId)
             if (!restaurantById) {
                 return next(new LocalError('Restaurant is not exist', statusCodes.NOT_FOUND))

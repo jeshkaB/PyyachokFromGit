@@ -3,6 +3,7 @@ const {LocalError} = require("../errors");
 const {BAD_REQUEST} = require("../constants/statusCodes");
 const {regex} = require("../constants");
 
+//TODO понаписувати помилки
 
 const restaurantNameValidator = Joi.string().max(20).trim().error(new LocalError('name is not valid', BAD_REQUEST));
 const placeValidator = Joi.string().trim();

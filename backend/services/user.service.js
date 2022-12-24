@@ -13,6 +13,10 @@ module.exports = {
     getUserByParams(filter) {
         return User.findOne(filter)
     },
+
+    getUsersByParams(filter) {
+        return User.find(filter)
+    },
     updateUser(userId, userObj) {
         return User.findOneAndUpdate({_id: userId}, userObj, {new: true})
     },

@@ -9,10 +9,10 @@ const {ErrorMainHandler} = require("./errors");
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use('/users', userRouter);
-app.use('/restaurants', restaurantRouter);
 app.use('/auth', authRouter);
-
+app.use('/comments', commentRouter);
+app.use('/restaurants', restaurantRouter);
+app.use('/users', userRouter);
 
 app.use ('*', (req, res, next)=> {
     next (new Error('Rout not found'))
