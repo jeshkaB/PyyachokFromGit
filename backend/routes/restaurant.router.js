@@ -1,4 +1,5 @@
 const {Router} = require("express");
+const upload = require('multer')();
 
 const {restaurantController} = require("../controllers");
 const {restaurantMiddleware, forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
@@ -12,6 +13,7 @@ restaurantRouter.get(
 
 restaurantRouter.post(
     '/',
+    upload.any(),
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkRole(roles.REST_ADMIN),
@@ -26,6 +28,7 @@ restaurantRouter.get(
 
 restaurantRouter.patch(
     '/:restId',
+    upload.any(),
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkUpdateRestaurantBodyIsValid,
     restaurantMiddleware.checkRestaurantIsExist(),

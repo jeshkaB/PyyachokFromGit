@@ -1,11 +1,18 @@
 const {userService, hashService} = require('../services');
-const {statusCode, roles} = require('../constants')
+const {statusCode, roles, pathImg} = require('../constants')
+const uuid = require('uuid')
+const {writeFile} = require("../services/file.service");
 
 module.exports = {
     createUser: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            const user = await userService.createUser({...req.body, password: hashPassword,});
+            const {buffer} = req.files[0];
+            const fileName = uuid.v4()+'.jpg';
+            await writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+            const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
+
+
             res.status(statusCode.CREATE).json(user)
         } catch (e) {
             next(e)
@@ -15,7 +22,10 @@ module.exports = {
     createUserAsRestaurantAdmin: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            const user = await userService.createUser({...req.body, password: hashPassword, role: [roles.USER, roles.REST_ADMIN]});
+            const {buffer} = req.files[0];
+            const fileName = uuid.v4()+'.jpg';
+            await writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+            const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName, role: [roles.USER, roles.REST_ADMIN]});
             res.status(statusCode.CREATE).json(user)
         } catch (e) {
             next(e)

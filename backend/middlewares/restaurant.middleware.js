@@ -8,6 +8,7 @@ module.exports = {
     checkNewRestaurantBodyIsValid: (req, res, next) => {
         try {
             const validate = restaurantValidator.newRestaurantBodyValidator.validate(req.body);
+            //TODO тут треба перевірити на валідність фотки - поки в мене передбачений тільки тип "jpg"
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
@@ -21,6 +22,7 @@ module.exports = {
     checkUpdateRestaurantBodyIsValid: (req, res, next) => {
         try {
             const validate = restaurantValidator.updateRestaurantBodyValidator.validate(req.body);
+            //TODO тут треба перевірити на валідність фотки - поки в мене передбачений тільки тип "jpg"
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }

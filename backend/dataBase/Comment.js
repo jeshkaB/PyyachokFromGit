@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 
 const commentSchema = new Schema({
         body: {type: String, required: true},
-        images: [String],
+        // images: [String],
         bill: Number,
         restaurant: {
             type: Schema.Types.ObjectId,

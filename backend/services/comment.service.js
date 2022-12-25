@@ -7,8 +7,8 @@ module.exports = {
     getComments() {
         return Comment.find()
     },
-    getCommentById(comtId) {
-        return Comment.findById(comtId)
+    getCommentById(comId) {
+        return Comment.findById(comId)
     },
     getCommentsByParams(filter) {
         return Comment.find(filter)

@@ -8,6 +8,7 @@ module.exports = {
     checkNewUserBodyIsValid: (req, res, next) => {
         try {
             const validate = userValidator.newUserBodyValidator.validate(req.body);
+            //TODO тут треба перевірити на валідність файл аватара - поки в мене передбачений тільки тип "jpg"
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
@@ -21,6 +22,7 @@ module.exports = {
     checkUpdateUserBodyIsValid: (req, res, next) => {
         try {
             const validate = userValidator.updateUserBodyValidator.validate(req.body);
+            //TODO тут треба перевірити на валідність файл аватара - поки в мене передбачений тільки тип "jpg"
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
