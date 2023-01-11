@@ -17,7 +17,7 @@ restaurantRouter.post(
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkRole(roles.REST_ADMIN),
-    restaurantMiddleware.checkEmailIsUnique,    // ??? у різних ресторанів теоретично може бути один емейл
+    restaurantMiddleware.checkEmailIsUnique,
     restaurantController.createRestaurant);
 
 restaurantRouter.get(

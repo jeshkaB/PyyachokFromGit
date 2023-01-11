@@ -1,5 +1,5 @@
 const Router = require ('express');
-const upload = require('multer')();     // щоб можна було зчитувати data-form
+const upload = require('multer')();     // щоб можна було зчитувати data-form в постмані
 
 const {authController, userController} = require("../controllers");
 const {userMiddleware, authMiddleware} = require("../middlewares");
