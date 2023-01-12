@@ -4,8 +4,7 @@ const {commentMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware
 
 const commentRouter = Router();
 
-commentRouter.get('/',
-    commentController.getComments);
+commentRouter.get('/',commentController.getComments);
 
 commentRouter.post('/',
     commentMiddleware.checkNewCommentBodyIsValid,
@@ -14,10 +13,22 @@ commentRouter.post('/',
     authMiddleware.checkAccessToken,
     commentController.createComment);
 
-commentRouter.get('/:comId', commentController.getCommentById);
+commentRouter.get('/:comId',
+    forAllMiddleware.checkIdIsValid('comId'),
+    commentMiddleware.checkCommentIsExist(),
+    commentController.getCommentById,);
 
-commentRouter.patch('/:comId', commentController.updateComment);
+commentRouter.patch('/:comId',
+    commentMiddleware.checkUpdateCommentBodyIsValid,
+    forAllMiddleware.checkIdIsValid('comId'),
+    commentMiddleware.checkCommentIsExist(),
+    authMiddleware.checkAccessToken,
+    commentController.updateComment);
 
-commentRouter.delete('/:comId', commentController.deleteComment);
+commentRouter.delete('/:comId',
+    forAllMiddleware.checkIdIsValid('comId'),
+    commentMiddleware.checkCommentIsExist(),
+    authMiddleware.checkAccessToken,
+    commentController.deleteComment);
 
 module.exports = commentRouter

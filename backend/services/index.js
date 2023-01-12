@@ -2,6 +2,7 @@ module.exports = {
     authService: require ('./auth.service'),
     hashService: require ('./hash.service'),
     commentService: require('./comment.service'),
+    fileService: require('./file.service'),
     markService: require('./mark.service'),
     newsService: require('./news.service'),
     restaurantService: require('./restaurant.service'),

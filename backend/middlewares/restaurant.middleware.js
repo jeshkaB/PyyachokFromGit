@@ -36,8 +36,9 @@ module.exports = {
            checkEmailIsUnique: async (req, res, next) => {
         const {email} = req.body;
         try {
-            const restaurantByEmail = await restaurantService.getRestaurantByParams({email})
-            if (restaurantByEmail) {
+            const restaurantByEmail = await restaurantService.getRestaurantByParams({email});
+            //getByParams повертає масив, а пустий масив - це true
+            if (restaurantByEmail.length>0) {
                 return next(new LocalError('Email is already exist', statusCodes.CONFLICT))
             }
 

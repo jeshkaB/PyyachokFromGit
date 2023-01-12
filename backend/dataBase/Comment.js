@@ -1,9 +1,9 @@
 const {Schema, model} = require('mongoose');
 
 const commentSchema = new Schema({
-        body: {type: String, required: true},
+        comment: {type: String, required: true},
         // images: [String],
-        bill: Number,
+        // bill: Number,
         restaurant: {
             type: Schema.Types.ObjectId,
             ref: 'restaurant',

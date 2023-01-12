@@ -13,7 +13,8 @@ const tagsValidator = Joi.array().items(Joi.string());
 const categoriesValidator = Joi.array().items(Joi.string());
 const phoneValidator = Joi.string().regex(regex.PHONE);
 const restaurantEmailValidator = Joi.string().email();
-const webSiteValidator = Joi.string().regex(regex.WEBSITE);
+const webSiteValidator = Joi.string().regex(regex.WEBSITE)
+//TODO написати валідатор для mainImage - required, тип - ?
 
 const newRestaurantBodyValidator = Joi.object({
         name: restaurantNameValidator.required(),
@@ -24,7 +25,7 @@ const newRestaurantBodyValidator = Joi.object({
         categories: categoriesValidator.required(),
         phone: phoneValidator.required(),
         email: restaurantEmailValidator.required(),
-        webSite: webSiteValidator.required()
+        webSite: webSiteValidator
 
     }
 );

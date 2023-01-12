@@ -1,14 +1,15 @@
 const {commentService, userService, restaurantService} = require("../services");
 const {statusCode} = require("../constants");
 
+
 module.exports = {
     createComment: async (req, res, next) => {
         try {
             const {_id} = req.tokenInfo.user;
             const {restId} = req.query;
 
-            const userComments = await commentService.getCommentsByParams({user: _id});
             const restaurantComments = await commentService.getCommentsByParams({restaurant: restId});
+            const userComments = await commentService.getCommentsByParams({user: _id});
 
             const comment = await commentService.createComment({...req.body, user: _id, restaurant: restId});
 
@@ -54,18 +55,36 @@ module.exports = {
         try {
             const {comId} = req.params;
             const comment = await commentService.updateComment(comId, req.body);
+
             res.json(comment)
-// TODO обновити в юзерів і ресторанів
+//обновити в юзерів і ресторанів - не треба, бо в юзерах і ресторанах зберігаються тільки айдішкі коментів
         } catch (e) {
             next(e)
         }
     },
-    deleteComment: async (req, res, next) => {
+    deleteComment: async (req, res, next) => {//TODO працює але зависaє
         try {
             const {comId} = req.params;
+            const {restaurant} = await commentService.getCommentById(comId);
+
             await commentService.deleteComment(comId);
+
+            const {_id} = req.tokenInfo.user; //TODO якщо буде суперадмін видаляти? треба з параметрів добувати
+            const userComments = await commentService.getCommentsByParams({user: _id});
+            const upUserComments = userComments.filter(item=>item._id!==comId)
+            await userService.updateUser(_id, {
+                comments: upUserComments
+            });
+
+
+            const restaurantComments = await commentService.getCommentsByParams({restaurant});
+
+            const upRestaurantComments = restaurantComments.filter(item=>item._id !==comId)
+            await restaurantService.updateRestaurant(restaurant, {
+                comments: upRestaurantComments
+            });
             res.status(statusCode.NO_CONTENT)
-// TODO обновити в юзерів і ресторанів
+
         } catch (e) {
             next(e)
         }
