@@ -31,9 +31,9 @@ module.exports = {
         try {
             const {restId} = req.params;
             const restaurant = await restaurantService.getRestaurantById(restId);
-            const mainImageBuffer = await fileService.readFile(pathImg.PATH_RESTAURANT_PHOTO, restaurant.mainImage);
-
-            res.json({...restaurant, mainImageBuffer})
+            // const mainImageBuffer = await fileService.readFile(pathImg.PATH_RESTAURANT_PHOTO, restaurant.mainImage);
+            // res.json({...restaurant, mainImageBuffer})
+            res.json(restaurant)
         } catch (e) {
             next(e)
         }
@@ -43,13 +43,13 @@ module.exports = {
             const {restId} = req.params;
             const restaurant = await restaurantService.updateRestaurant(restId, req.body);
 
-            if (req.files.length >0) {
+            res.json(restaurant);
+
+            if (req.files) {
                 const fileName = restaurant.mainImage;
                 const {buffer} = req.files[0];
                 await fileService.writeFile(pathImg.PATH_RESTAURANT_PHOTO, fileName, buffer)
             }
-
-            res.json(restaurant)
 
         } catch (e) {
             next(e)

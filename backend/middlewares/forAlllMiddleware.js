@@ -19,7 +19,7 @@ module.exports = {
     checkUserIdInEntity: (entity) => (req, res, next) => {
       try {
           const userId = stringify(req.tokenInfo.user._id);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
-          const entityId = stringify(req[entity].user);
+          const entityId = stringify(req[entity].user); //в мідлварі для перевірки існування кожної сутності (checkIsExist) ми створюємо в req поле сутності (req[entity])
 
           if (userId!==entityId && userId!==roles.SUPER_ADMIN_ID) {
               return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))

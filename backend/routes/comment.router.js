@@ -23,12 +23,14 @@ commentRouter.patch('/:comId',
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
     authMiddleware.checkAccessToken,
+    forAllMiddleware.checkUserIdInEntity('comment'),
     commentController.updateComment);
 
 commentRouter.delete('/:comId',
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
     authMiddleware.checkAccessToken,
+    forAllMiddleware.checkUserIdInEntity('comment'),
     commentController.deleteComment);
 
 module.exports = commentRouter

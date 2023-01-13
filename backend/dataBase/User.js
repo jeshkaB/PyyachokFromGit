@@ -16,6 +16,10 @@ const userSchema = new Schema({
             type: [Schema.Types.ObjectId],
             ref: 'comment'
         },
+        news: {
+            type: [Schema.Types.ObjectId],
+            ref: 'news'
+        },
         marks: {
             type: [Schema.Types.ObjectId],
             ref: 'mark'

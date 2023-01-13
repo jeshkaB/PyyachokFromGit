@@ -75,13 +75,15 @@ module.exports = {
             const {userId} = req.params;
             const user = await userService.updateUser(userId, req.body);
 
-            if (req.files) {//TODO length >0?
+            res.json(user)
+
+            if (req.files) {
                 const fileName = user.avatar;
                 const {buffer} = req.files[0];
                 await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
             }
 
-            res.json(user)
+
         } catch (e) {
             next(e)
         }

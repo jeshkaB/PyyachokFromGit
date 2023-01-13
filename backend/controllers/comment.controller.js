@@ -65,24 +65,22 @@ module.exports = {
     deleteComment: async (req, res, next) => {//TODO працює але зависaє
         try {
             const {comId} = req.params;
-            const {restaurant} = await commentService.getCommentById(comId);
+            const {user,restaurant} = await commentService.getCommentById(comId);//беремо айдішкі юзера і ресторана із комента
 
             await commentService.deleteComment(comId);
 
-            const {_id} = req.tokenInfo.user; //TODO якщо буде суперадмін видаляти? треба з параметрів добувати
-            const userComments = await commentService.getCommentsByParams({user: _id});
+            const userComments = await commentService.getCommentsByParams({user});
             const upUserComments = userComments.filter(item=>item._id!==comId)
-            await userService.updateUser(_id, {
+            await userService.updateUser(user, {
                 comments: upUserComments
             });
 
-
             const restaurantComments = await commentService.getCommentsByParams({restaurant});
-
             const upRestaurantComments = restaurantComments.filter(item=>item._id !==comId)
             await restaurantService.updateRestaurant(restaurant, {
                 comments: upRestaurantComments
             });
+
             res.status(statusCode.NO_CONTENT)
 
         } catch (e) {

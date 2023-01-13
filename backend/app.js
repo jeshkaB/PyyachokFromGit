@@ -11,6 +11,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use('/auth', authRouter);
 app.use('/comments', commentRouter);
+app.use('/news', newsRouter);
 app.use('/restaurants', restaurantRouter);
 app.use('/users', userRouter);
 
