@@ -12,8 +12,7 @@ module.exports = {
                 await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
                 const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
                 res.status(statusCode.CREATE).json(user)
-            }
-            else {
+            } else {
                 const user = await userService.createUser({...req.body, password: hashPassword});
                 res.status(statusCode.CREATE).json(user)
             }
@@ -73,16 +72,21 @@ module.exports = {
     updateUser: async (req, res, next) => {
         try {
             const {userId} = req.params;
-            const user = await userService.updateUser(userId, req.body);
-
-            res.json(user)
-
-            if (req.files) {
-                const fileName = user.avatar;
+            if (req.files.length <= 0) {
+                const user = await userService.updateUser(userId, req.body);
+                res.json(user)
+            } else {
                 const {buffer} = req.files[0];
-                await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+                if (req.user.avatar) {
+                    const fileName = req.user.avatar;
+                    await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+                } else {
+                    const fileName = uuid.v4() + '.jpg';
+                    await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer);
+                    const user = await userService.updateUser(userId, {...req.body, avatar: fileName});
+                    res.json(user)
+                }
             }
-
 
         } catch (e) {
             next(e)

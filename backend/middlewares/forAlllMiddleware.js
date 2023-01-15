@@ -11,6 +11,7 @@ module.exports = {
             if (!isObjectIdOrHexString(req[from][idName])) {                            //метод монгуса - проверка валідності id
                 return next(new LocalError('Not valid ID', statusCodes.BAD_REQUEST));
             }
+
             next();
         } catch (e) {
             next(e)

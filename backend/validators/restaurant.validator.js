@@ -14,7 +14,7 @@ const categoriesValidator = Joi.array().items(Joi.string());
 const phoneValidator = Joi.string().regex(regex.PHONE);
 const restaurantEmailValidator = Joi.string().email();
 const webSiteValidator = Joi.string().regex(regex.WEBSITE)
-//TODO написати валідатор для mainImage - required, тип - ?
+//TODO написати валідатор для mainImage - required? Це повинно бути окремо, бо в мідлварі ми валідуємо окремо бади и файлс
 
 const newRestaurantBodyValidator = Joi.object({
         name: restaurantNameValidator.required(),

@@ -1,27 +1,39 @@
-const {newsService, fileService, userService, restaurantService, commentService} = require("../services");
+const {newsService, fileService, userService, restaurantService} = require("../services");
 const uuid = require("uuid");
 const {pathImg, statusCode} = require("../constants");
+const {login} = require("./auth.controller");
 
 module.exports = {
     createNews: async (req, res, next) => {
         try {
             const {_id} = req.tokenInfo.user;
-            const {restId} = req.params;
-            if (req.files) {
+            const {restId} = req.query;
+            const userNews = await newsService.getNewsByParams({user: _id});
+            const restaurantNews = await newsService.getNewsByParams({restaurant: restId});
+            if (req.files.length > 0) {
                 const {buffer} = req.files[0];
                 const fileName = uuid.v4() + '.jpg';
                 await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer);
-                const newNews = await newsService.createNews({...req.body, user:_id, restaurant: restId, newsImage: fileName });
-                await newsService.updateNewsInEntities(_id,restId,newNews)
+                const newNews = await newsService.createNews({
+                    ...req.body,
+                    user: _id,
+                    restaurant: restId,
+                    newsImage: fileName
+                });
+                await userService.updateUser(_id, {news: [...userNews, newNews]});
+                await restaurantService.updateRestaurant(restId, {news: [...restaurantNews, newNews]});
+
                 res.json(newNews)
-            }
-            else {const newNews = await newsService.createNews({...req.body, user:_id, restaurant: restId });
-                await newsService.updateNewsInEntities(_id,restId,newNews)
+            } else {
+                const newNews = await newsService.createNews({...req.body, user: _id, restaurant: restId});
+                await userService.updateUser(_id, {news: [...userNews, newNews]});
+                await restaurantService.updateRestaurant(restId, {news: [...restaurantNews, newNews]});
+
                 res.json(newNews)
             }
 
-        }catch (e) {
-          next(e)
+        } catch (e) {
+            next(e)
         }
     },
 
@@ -46,17 +58,25 @@ module.exports = {
     updateNews: async (req, res, next) => {
         try {
             const {newsId} = req.params;
-            const news = await newsService.updateNews(newsId, req.body);
 
-            res.json(news)
-
-            if (req.files) {
-                const fileName = news.newsImage;
+            if (req.files.length<=0) {
+                const news = await newsService.updateNews(newsId, req.body);
+                res.json(news)
+            } else {
                 const {buffer} = req.files[0];
-                await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer)
-            }
 
-        } catch (e) {
+                if (req.news.newsImage) {
+                    const fileName = req.news.newsImage;
+                    await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer)
+                } else {
+                    const fileName = uuid.v4() + '.jpg';
+                    await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer);
+                    const news =await newsService.updateNews(newsId, {...req.body, newsImage:fileName});
+                    res.json(news)
+                }
+            }
+        } catch
+            (e) {
             next(e)
         }
     },
@@ -64,21 +84,17 @@ module.exports = {
     deleteNews: async (req, res, next) => {
         try {
             const {newsId} = req.params;
-            const {user,restaurant,newsImage} = await newsService.getNewsById(newsId);
+            const {user, restaurant, newsImage} = await newsService.getNewsById(newsId);
 
             await newsService.deleteNews(newsId);
 
             const userNews = await newsService.getNewsByParams({user});
-            const upUserNews = userNews.filter(item=>item._id!==newsId)
-            await userService.updateUser(user, {
-                news: upUserNews
-            });
+            const upUserNews = userNews.filter(item => item._id !== newsId)
+            await userService.updateUser(user, {news: upUserNews});
 
             const restaurantNews = await newsService.getNewsByParams({restaurant});
-            const upRestaurantNews = restaurantNews.filter(item=>item._id !==newsId)
-            await restaurantService.updateRestaurant(restaurant, {
-                news: upRestaurantNews
-            });
+            const upRestaurantNews = restaurantNews.filter(item => item._id !== newsId)
+            await restaurantService.updateRestaurant(restaurant, {news: upRestaurantNews});
 
             res.status(statusCode.NO_CONTENT)
 
@@ -89,4 +105,5 @@ module.exports = {
             next(e)
         }
     }
+
 }
