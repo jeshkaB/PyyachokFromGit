@@ -9,17 +9,13 @@ const userEventSchema = new Schema({            // Пиячок
             type: Schema.Types.ObjectId,
             ref: 'user',
         },
-        date: {type: Date, required: true},
-        time: {type: String, required: true},
+        date: {type: Date, required: true}, //формат дати 2022-12-31
+        time: {type: String, required: true}, // формат часу HH:MM
         purpose: {type: String, required: true},
         otherInformation: String,
-        answers: [{                                 //на відповіді ж не треба окрему схему?
-            body: String,
-            date: Date,
-            user: {
-                type: Schema.Types.ObjectId,
-                ref: 'user',
-            }
+        eventAnswers: [{
+            type: Schema.Types.ObjectId,
+            ref: 'eventAnswer',
         }]
     },
     {

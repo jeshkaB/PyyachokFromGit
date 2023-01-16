@@ -7,9 +7,9 @@ const {commentService} = require("../services");
 
 module.exports = {
 
-    checkNewCommentBodyIsValid: (req, res, next) => {
+    checkCommentBodyIsValid: (req, res, next) => {
         try {
-            const validate = commentValidator.newCommentBodyValidator.validate(req.body);
+            const validate = commentValidator.commentBodyValidator.validate(req.body);
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
@@ -20,20 +20,7 @@ module.exports = {
         }
     },
 
-    checkUpdateCommentBodyIsValid: (req, res, next) => {
-        try {
-            const validate = commentValidator.updateCommentBodyValidator.validate(req.body);
-            if (validate.error) {
-                return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
-            }
-            req.body = validate.value;
-            next()
-        } catch (e) {
-            next(e)
-        }
-    },
-
-    checkCommentIsExist: (from= 'params') => async (req, res, next) => {
+     checkCommentIsExist: (from= 'params') => async (req, res, next) => {
         try {
             const {comId} = req[from];
             const commentById = await commentService.getCommentById(comId)

@@ -7,7 +7,7 @@ const commentRouter = Router();
 commentRouter.get('/',commentController.getComments);
 
 commentRouter.post('/',
-    commentMiddleware.checkNewCommentBodyIsValid,
+    commentMiddleware.checkCommentBodyIsValid,
     forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
     restaurantMiddleware.checkRestaurantIsExist('query'),
     authMiddleware.checkAccessToken,
@@ -19,7 +19,7 @@ commentRouter.get('/:comId',
     commentController.getCommentById,);
 
 commentRouter.patch('/:comId',
-    commentMiddleware.checkUpdateCommentBodyIsValid,
+    commentMiddleware.checkCommentBodyIsValid,
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
     authMiddleware.checkAccessToken,

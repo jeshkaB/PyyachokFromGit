@@ -2,8 +2,10 @@ const {Router} = require ('express');
 const upload = require('multer')();
 const {newsController} = require("../controllers");
 const {authMiddleware, restaurantMiddleware, forAllMiddleware, newsMiddleware} = require("../middlewares");
-const {roles} = require("../constants");
-const newsRouter = Router()
+
+const newsRouter = Router();
+
+newsRouter.get('/', newsController.getNews);
 
 newsRouter.post('/',
     upload.any(),

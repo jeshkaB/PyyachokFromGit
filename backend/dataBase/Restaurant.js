@@ -25,6 +25,14 @@ const restaurantSchema = new Schema({
             type: [Schema.Types.ObjectId],
             ref: 'comment'
         },
+        marks: {
+            type: [Schema.Types.ObjectId],
+            ref: 'mark'
+        },
+        userEvents: {
+            type: [Schema.Types.ObjectId],
+            ref: 'userEvent'
+        },
         viewStatistics: {},// TODO
         rating: Number
     },

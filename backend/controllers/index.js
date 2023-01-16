@@ -1,6 +1,7 @@
 module.exports = {
     authController: require('./auth.controller'),
     commentController: require('./comment.controller'),
+    eventAnswerController: require('./eventAnswer.controller'),
     markController: require('./mark.controller'),
     newsController: require('./news.controller'),
     restaurantController: require('./restaurant.controller'),

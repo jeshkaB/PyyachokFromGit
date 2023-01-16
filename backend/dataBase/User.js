@@ -24,6 +24,15 @@ const userSchema = new Schema({
             type: [Schema.Types.ObjectId],
             ref: 'mark'
         },
+        userEvents: {
+            type: [Schema.Types.ObjectId],
+            ref: 'userEvent'
+        },
+        eventAnswer: {
+            type: [Schema.Types.ObjectId],
+            ref: 'eventAnswer'
+        },
+
         role: {
             type: [String], default: [roles.USER]
         }

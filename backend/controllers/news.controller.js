@@ -1,7 +1,7 @@
 const {newsService, fileService, userService, restaurantService} = require("../services");
 const uuid = require("uuid");
 const {pathImg, statusCode} = require("../constants");
-const {login} = require("./auth.controller");
+
 
 module.exports = {
     createNews: async (req, res, next) => {

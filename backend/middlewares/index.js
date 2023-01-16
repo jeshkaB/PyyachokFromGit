@@ -1,5 +1,6 @@
 module.exports = {
     authMiddleware: require('./auth.middleware'),
+    eventAnswerMiddleware: require('./eventAnswer.middleware.js'),
     forAllMiddleware: require('./forAlllMiddleware'),
     commentMiddleware: require('./comment.middleware'),
     markMiddleware: require('./mark.middleware'),
