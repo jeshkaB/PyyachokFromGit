@@ -63,7 +63,7 @@ module.exports = {
             await fileService.deleteFile(pathImg.PATH_RESTAURANT_PHOTO, mainImage);
 
             await restaurantService.deleteRestaurant(restId);
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {
             next(e)

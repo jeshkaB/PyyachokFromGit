@@ -75,7 +75,7 @@ module.exports = {
             await restaurantService.updateRestaurant(restaurant, {marks: upRestaurantMarks
             });
 
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {
             next(e)

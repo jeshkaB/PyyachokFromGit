@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use('/auth', authRouter);
 app.use('/comments', commentRouter);
-app.use('/eventAnswer', eventAnswerRouter);
+app.use('/eventAnswers', eventAnswerRouter);
 app.use('/marks', markRouter);
 app.use('/news', newsRouter);
 app.use('/restaurants', restaurantRouter);

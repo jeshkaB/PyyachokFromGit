@@ -1,5 +1,6 @@
 const {commentService, userService, restaurantService, eventAnswerService, userEventService} = require("../services");
 const {statusCode} = require("../constants");
+const {login} = require("./auth.controller");
 
 
 module.exports = {
@@ -63,11 +64,11 @@ module.exports = {
         }
     },
 
-    deleteEventAnswer: async (req, res, next) => {//TODO працює але зависaє
+    deleteEventAnswer: async (req, res, next) => {
         try {
             const {answId} = req.params;
-            const {user, userEvent} = await eventAnswerService.getEventAnswerById(answId);//беремо айдішкі юзера і ресторана із комента
-
+            const {user, userEvent} = await eventAnswerService.getEventAnswerById(answId);//беремо айдішкі юзера і ресторана
+            console.log(user)
             await eventAnswerService.deleteEventAnswer(answId);
 
             const answersInUser = await eventAnswerService.getEventAnswersByParams({user});
@@ -82,7 +83,7 @@ module.exports = {
                 eventAnswer: upAnswersInUserEvents
             });
 
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {
             next(e)

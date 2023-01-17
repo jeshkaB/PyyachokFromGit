@@ -96,7 +96,7 @@ module.exports = {
             const upRestaurantNews = restaurantNews.filter(item => item._id !== newsId)
             await restaurantService.updateRestaurant(restaurant, {news: upRestaurantNews});
 
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
             if (newsImage) await fileService.deleteFile(pathImg.PATH_NEWS_PHOTO, newsImage)
 

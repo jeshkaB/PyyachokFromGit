@@ -10,6 +10,7 @@ module.exports = {
         try {
             if (!isObjectIdOrHexString(req[from][idName])) {                            //метод монгуса - проверка валідності id
                 return next(new LocalError('Not valid ID', statusCodes.BAD_REQUEST));
+
             }
 
             next();
@@ -18,10 +19,9 @@ module.exports = {
         }
     },
     checkUserIdInEntity: (entity) => (req, res, next) => {
-      try {
+      try {//stringify потрібен, щоб порівнювались строкові значення, а не new ObjectId, з new ObjectId не працює іфка
           const userId = stringify(req.tokenInfo.user._id);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
           const entityId = stringify(req[entity].user); //в мідлварі для перевірки існування кожної сутності (checkIsExist) ми створюємо в req поле сутності (req[entity])
-
           if (userId!==entityId && userId!==roles.SUPER_ADMIN_ID) {
               return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN))
           }
@@ -34,7 +34,10 @@ module.exports = {
 
     checkIdAreSame: (idName, from = 'params') => (req, res, next) => {
     try {
-        const userId = stringify(req.tokenInfo.user._id);
+
+
+        const userId = stringify(req.tokenInfo.user._id);//
+
         const updateUserId = req[from][idName]
 
         if (userId!==updateUserId && userId!==roles.SUPER_ADMIN_ID) {

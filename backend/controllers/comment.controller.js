@@ -62,7 +62,7 @@ module.exports = {
             next(e)
         }
     },
-    deleteComment: async (req, res, next) => {//TODO працює але зависaє
+    deleteComment: async (req, res, next) => {
         try {
             const {comId} = req.params;
             const {user,restaurant} = await commentService.getCommentById(comId);//беремо айдішкі юзера і ресторана із комента
@@ -81,7 +81,7 @@ module.exports = {
                 comments: upRestaurantComments
             });
 
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {
             next(e)

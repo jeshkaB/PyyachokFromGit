@@ -77,7 +77,7 @@ module.exports = {
                 userEvents: upRestaurantUserEvents
             });
 
-            res.status(statusCode.NO_CONTENT)
+            res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {
             next(e)

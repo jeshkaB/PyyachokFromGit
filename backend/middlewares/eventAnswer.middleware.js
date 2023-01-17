@@ -27,7 +27,8 @@ module.exports = {
             if (!answerById) {
                 return next(new LocalError('Answer is not exist', statusCodes.NOT_FOUND))
             }
-            req.answer = answerById;
+            req.eventAnswer = answerById;
+
 
             next()
         } catch (e) {
