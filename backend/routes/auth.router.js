@@ -28,6 +28,6 @@ authRouter.post (
     // userMiddleware.checkUserIsExistByEmail,      якщо в нас в моделі юзера поле емейл стоїть - унікальне, чи треба ще перевіряти мідлварою???
     userController.createUserAsRestaurantAdmin);
 
-//TODO refresh token, password forgot, logout
+//TODO refresh token, nodemailer, password forgot, logout,
 
 module.exports = authRouter
