@@ -1,6 +1,7 @@
 const express = require('express');
 const {PORT, MONGO_URL} = require("./configs/config");
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 
 const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter, userRouter, authRouter,
@@ -8,6 +9,7 @@ const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter,
 } = require('./routes')
 const {ErrorMainHandler} = require("./errors");
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 

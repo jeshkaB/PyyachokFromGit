@@ -21,6 +21,7 @@ module.exports = {
     getRestaurants: async (req, res, next) => {
         try {
             const restaurants = await restaurantService.getRestaurants();
+
             res.json(restaurants)
 
         } catch (e) {

@@ -1,7 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {restaurantReducer} from "./slices/restaurant.slice";
+
 
 const rootReducer = combineReducers({
-    // restaurants: moviesReducer,
+    restaurant: restaurantReducer
     // news: genresReducer,
     // theme: themeReducer,
     // movie: movieReducer,

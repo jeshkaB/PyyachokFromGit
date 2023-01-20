@@ -9,5 +9,4 @@ export * from './NewsListPage';
 export * from './RegisterPage';
 export * from './RestaurantAdminPage';
 export * from './RestaurantPage';
-export * from './RestaurantsListPage';
 export * from './SuperAdminPage';

@@ -8,7 +8,6 @@ import {
     MyAccountPage, NewsListPage, NewsPage,
     RegisterPage,
     RestaurantAdminPage, RestaurantPage,
-    RestaurantsListPage,
     SuperAdminPage, UserEventPage, UserEventsListPage
 } from "./pages";
 
@@ -24,7 +23,7 @@ function App() {
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>
                     <Route path={'restaurantAdmin'} element={<RestaurantAdminPage/>}/>
                     <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
-                    <Route path={'restaurants'} element={<RestaurantsListPage/>}/>
+                    {/*<Route path={'restaurants'} element={<RestaurantsListPage/>}/>*/}
                     <Route path={'restaurants/:id'} element={<RestaurantPage/>}/>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>
@@ -37,4 +36,4 @@ function App() {
     );
 }
 
-export default App;
+export {App};

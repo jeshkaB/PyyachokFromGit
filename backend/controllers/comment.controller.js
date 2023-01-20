@@ -12,7 +12,7 @@ module.exports = {
             const userComments = await commentService.getCommentsByParams({user: _id});
 
             const comment = await commentService.createComment({...req.body, user: _id, restaurant: restId});
-
+            console.log(comment)
             await userService.updateUser(_id, {
                 comments: [
                     ...userComments,
@@ -65,18 +65,18 @@ module.exports = {
     deleteComment: async (req, res, next) => {
         try {
             const {comId} = req.params;
-            const {user,restaurant} = await commentService.getCommentById(comId);//беремо айдішкі юзера і ресторана із комента
+            const {user, restaurant} = await commentService.getCommentById(comId);//беремо айдішкі юзера і ресторана із комента
 
             await commentService.deleteComment(comId);
 
             const userComments = await commentService.getCommentsByParams({user});
-            const upUserComments = userComments.filter(item=>item._id!==comId)
+            const upUserComments = userComments.filter(item => item._id !== comId)
             await userService.updateUser(user, {
                 comments: upUserComments
             });
 
             const restaurantComments = await commentService.getCommentsByParams({restaurant});
-            const upRestaurantComments = restaurantComments.filter(item=>item._id !==comId)
+            const upRestaurantComments = restaurantComments.filter(item => item._id !== comId)
             await restaurantService.updateRestaurant(restaurant, {
                 comments: upRestaurantComments
             });

@@ -1,3 +1,5 @@
+import {RestaurantsList} from "../components";
+
 function HomePage(props) {
     return (
         <div>
@@ -7,11 +9,11 @@ function HomePage(props) {
 
                     <div> form search</div>
                     <div> filter</div>
-                    <div> RestauranstList</div>
+                    <div><RestaurantsList/></div>
+                    <div> Топ закладів </div>
 
                 </div>
             </div>
-            <div> TOP Restaurants</div>
 
         </div>
     );

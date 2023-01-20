@@ -1,0 +1,23 @@
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {restaurantActions} from "../../redux";
+
+import {RestaurantCard} from "../RestaurantCard/restaurantCard";
+
+const RestaurantsList = () => {
+
+    const {restaurants} = useSelector(state => state.restaurant);// в нашому редюсері state.restaurant є об’єкти restaurants і restaurant
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(restaurantActions.getAll())
+    }, [])
+
+    return (
+        <div className={'R'}>
+            {restaurants.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)}
+        </div>
+    );
+}
+
+export {RestaurantsList};
