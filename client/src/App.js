@@ -15,7 +15,7 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path={'/'} element={<MainLayout/>}>
+                <Route path={''} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'home'}/>}/>
                     <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'register'} element={<RegisterPage/>}/>

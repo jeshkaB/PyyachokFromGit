@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {restaurantActions} from "../../redux";
 
 import {RestaurantCard} from "../RestaurantCard/restaurantCard";
+import './restListStyle.css'
 
 const RestaurantsList = () => {
 
@@ -14,7 +15,7 @@ const RestaurantsList = () => {
     }, [])
 
     return (
-        <div className={'R'}>
+        <div className ={'RestList'}>
             {restaurants.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)}
         </div>
     );

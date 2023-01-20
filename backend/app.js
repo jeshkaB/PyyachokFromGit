@@ -3,15 +3,20 @@ const {PORT, MONGO_URL} = require("./configs/config");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
+const path = require("path");
 
 const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter, userRouter, authRouter,
     eventAnswerRouter
 } = require('./routes')
 const {ErrorMainHandler} = require("./errors");
 
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.resolve(__dirname, 'Images/Avatars')));
+app.use(express.static(path.resolve(__dirname, 'Images/NewsPhoto')));
+app.use(express.static(path.resolve(__dirname, 'Images/RestaurantPhoto')));
 
 app.use('/auth', authRouter);
 app.use('/comments', commentRouter);
