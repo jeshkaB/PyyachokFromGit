@@ -1,6 +1,5 @@
 import {Routes, Route, Navigate} from "react-router-dom";
 
-import './App.css';
 import {MainLayout} from './mainLayout';
 import {
     CreateUserEventPage, HomePage,

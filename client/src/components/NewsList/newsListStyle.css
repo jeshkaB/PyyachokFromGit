@@ -1,10 +1,15 @@
-.RestList {
+.NewsList {
+    border: 10px solid gray
+}
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+
+.NewsCards {
+    /*border: 10px solid gray;*/
     display: flex;
     flex-wrap: wrap;
-
-
-
 }
+
 /*.PageButton_light {*/
 /*    margin-top: 20px;*/
 /*    width: 75px;*/

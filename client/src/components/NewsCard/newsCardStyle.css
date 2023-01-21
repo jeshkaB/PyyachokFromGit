@@ -1,10 +1,14 @@
-.RestList {
-    display: flex;
-    flex-wrap: wrap;
-
+.NewsCard {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    margin: 20px;
+    align-content: center;
 
 
 }
+/*.RestName {*/
+/*   text-align: center;*/
+/*}*/
 /*.PageButton_light {*/
 /*    margin-top: 20px;*/
 /*    width: 75px;*/

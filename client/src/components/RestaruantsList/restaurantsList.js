@@ -8,6 +8,8 @@ import './restListStyle.css'
 const RestaurantsList = () => {
 
     const {restaurants} = useSelector(state => state.restaurant);// в нашому редюсері state.restaurant є об’єкти restaurants і restaurant
+
+    //в новинах ми вже отримали список ресторанів в стейт
     const dispatch = useDispatch();
 
     useEffect(() => {

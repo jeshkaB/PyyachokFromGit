@@ -15,7 +15,8 @@
     "react-router-dom": "^6.6.2",
     "@types/react": "^18.0.26",
     "@reduxjs/toolkit": "^1.9.1",
-    "react-hook-form": "^7.42.1"
+    "react-hook-form": "^7.42.1",
+    "react-star-ratings": "^2.3.0"
   },
     "scripts": {
     "start": "react-scripts start",

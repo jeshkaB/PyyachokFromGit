@@ -1,8 +1,13 @@
 .RestCard {
-    display: flex;
-    flex-wrap: wrap
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    margin: 20px;
+    align-content: center;
 
 
+}
+.RestName {
+   text-align: center;
 }
 /*.PageButton_light {*/
 /*    margin-top: 20px;*/
