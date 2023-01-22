@@ -1,8 +1,11 @@
+import {NewsList} from "../components";
 
-function NewsListPage(props) {
+
+const NewsListPage = (props) => {
+
     return (
         <div>
-            NewsList
+            <NewsList/>
         </div>
     );
 }

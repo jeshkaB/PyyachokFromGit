@@ -27,7 +27,8 @@ const create = createAsyncThunk(
     'markSlice/create',
     async (markObj,{rejectWithValue}) => {
         try {
-            return await markService.create(markObj)
+            const {data} = await markService.create(markObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -38,7 +39,8 @@ const getById = createAsyncThunk(
     'markSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            return await markService.getById(id)
+            const {data} = await markService.getById(id)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -49,7 +51,8 @@ const updateById = createAsyncThunk(
     'markSlice/updateById',
     async ({id,markObj},{rejectWithValue}) => {
         try {
-            return await markService.updateById(id,markObj)
+            const {data} = await markService.updateById(id,markObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }

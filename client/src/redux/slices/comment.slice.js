@@ -1,20 +1,21 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {restaurantService} from "../../services";
+import {commentService} from "../../services";
 
 
 const initialState = {
-    restaurants: [],
-    restaurant: {},
+    comments: [],
+    comment: {},
     errors: null
 };
 
 
 const getAll = createAsyncThunk(
-    'restaurantSlice/getAll',
+    'commentSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await restaurantService.getAll();
+            const {data} = await commentService.getAll();
             return data
+
 
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -23,10 +24,11 @@ const getAll = createAsyncThunk(
 );
 
 const create = createAsyncThunk(
-    'restaurantSlice/create',
-    async (restObj,{rejectWithValue}) => {
+    'commentSlice/create',
+    async (commentObj,{rejectWithValue}) => {
         try {
-            return await restaurantService.create(restObj)
+            const {data} = await commentService.create(commentObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -34,10 +36,10 @@ const create = createAsyncThunk(
 );
 
 const getById = createAsyncThunk(
-    'restaurantSlice/getById',
+    'commentSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            const {data} = await restaurantService.getById(id);
+            const {data} = await commentService.getById(id)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -46,10 +48,10 @@ const getById = createAsyncThunk(
 );
 
 const updateById = createAsyncThunk(
-    'restaurantSlice/updateById',
-    async ({id,restObj},{rejectWithValue}) => {
+    'commentSlice/updateById',
+    async ({id,commentObj},{rejectWithValue}) => {
         try {
-            const {data} = await restaurantService.updateById(id,restObj);
+            const {data} = await commentService.updateById(id,commentObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -58,10 +60,10 @@ const updateById = createAsyncThunk(
 );
 
 const deleteById = createAsyncThunk(
-    'restaurantSlice/deleteById',
+    'commentSlice/deleteById',
     async (id,{rejectWithValue}) => {
         try {
-            return await restaurantService.deleteById(id)
+            return await commentService.deleteById(id)
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -69,22 +71,22 @@ const deleteById = createAsyncThunk(
 );
 //__________________________________________________________________
 
-const restaurantSlice = createSlice({
-        name: 'restaurantSlice',
+const commentSlice = createSlice({
+        name: 'commentSlice',
         initialState,
         reducers: {},
         extraReducers: (builder) =>
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurants = action.payload
+                    state.comments = action.payload
                 })
                 .addCase(getAll.rejected, (state, action) => {
                     state.errors = action.payload
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurant = action.payload
+                    state.comment = action.payload
                 })
                 .addCase(getById.rejected, (state, action) => {
                     state.errors = action.payload
@@ -92,7 +94,7 @@ const restaurantSlice = createSlice({
 
     },
 )
-const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById,deleteById};
+const {reducer: commentReducer} = commentSlice;
+const commentActions = {getAll, getById, create, updateById,deleteById};
 
-export {restaurantReducer, restaurantActions}
+export {commentReducer, commentActions}

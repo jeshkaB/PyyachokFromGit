@@ -1,8 +1,13 @@
+import {News} from "../components";
+import {Link} from "react-router-dom";
 
 
-function NewsPage(props) {
+const NewsPage = (props) => {
     return (
-        <div>NewsById</div>
+        <div>
+            <Link to={'/news'}> Перейти до списку новин </Link>
+            <div><News/></div>
+        </div>
     );
 }
 

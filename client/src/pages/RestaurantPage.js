@@ -1,9 +1,24 @@
+import {Restaurant} from "../components";
+import {Link, Outlet, useParams} from "react-router-dom";
 
 
-function RestaurantPage(props) {
+const RestaurantPage = (props) => {
+    const {id} = useParams()
+
     return (
         <div>
-            RestaurantById
+            <Link to={'/restaurants'}> Перейти до списку закладів </Link>
+            <div>
+                <div><Restaurant/></div>
+            </div>
+            <div>
+                <div> Новини ресторану</div>
+                <div>
+                    <Link to={'comments'}>Відгуки</Link>
+                    <Outlet/> {/*тут будуть коменти*/}
+                </div>
+
+            </div>
         </div>
     );
 }

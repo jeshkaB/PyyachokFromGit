@@ -6,13 +6,15 @@ import {
     LoginPage,
     MyAccountPage, NewsListPage, NewsPage,
     RegisterPage,
-    RestaurantAdminPage, RestaurantPage,
+    RestaurantAdminPage, RestaurantPage, RestaurantsListPage,
     SuperAdminPage, UserEventPage, UserEventsListPage
 } from "./pages";
+import {CommentsInRest} from "./components/CommentsInRest/CommentsInRest";
 
-function App() {
-    return (
+const App = () => {
+      return (
         <div>
+
             <Routes>
                 <Route path={''} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'home'}/>}/>
@@ -22,8 +24,10 @@ function App() {
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>
                     <Route path={'restaurantAdmin'} element={<RestaurantAdminPage/>}/>
                     <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
-                    {/*<Route path={'restaurants'} element={<RestaurantsListPage/>}/>*/}
-                    <Route path={'restaurants/:id'} element={<RestaurantPage/>}/>
+                    <Route path={'restaurants'} element={<RestaurantsListPage/>}/>
+                    <Route path={'restaurants/:id'} element={<RestaurantPage/>}>
+                        <Route path={'comments'} element={<CommentsInRest/>}/>
+                    </Route>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>
                     <Route path={'createUserEvent'} element={<CreateUserEventPage/>}/>

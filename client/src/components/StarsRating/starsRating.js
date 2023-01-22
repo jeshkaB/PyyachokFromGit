@@ -25,9 +25,9 @@ const StarsRating = ({marksOfRest}) => {
             }
         });
     });
-    console.log(marksOfRestValue)
-    const rating = marksOfRestValue.reduce((accumulator, currentValue) => accumulator + currentValue, -1) / marksOfRestValue.length
-    console.log(rating)
+
+    const rating = marksOfRestValue.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / marksOfRestValue.length
+
 // const rating = 3.33333
     return (
         <div>

@@ -27,7 +27,8 @@ const create = createAsyncThunk(
     'newsSlice/create',
     async (newsObj,{rejectWithValue}) => {
         try {
-            return await newsService.create(newsObj)
+            const {data} = await newsService.create(newsObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -38,7 +39,8 @@ const getById = createAsyncThunk(
     'newsSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            return await newsService.getById(id)
+            const {data} = await newsService.getById(id)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -49,7 +51,8 @@ const updateById = createAsyncThunk(
     'newsSlice/updateById',
     async ({id,newsObj},{rejectWithValue}) => {
         try {
-            return await newsService.updateById(id,newsObj)
+            const {data} = await newsService.updateById(id,newsObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }

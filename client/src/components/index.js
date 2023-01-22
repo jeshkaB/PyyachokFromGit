@@ -5,4 +5,7 @@ export * from './RestaurantCard/restaurantCard';
 export * from './StarsRating/starsRating';
 export * from './NewsCard/newsCard';
 export * from './NewsList/newsList';
+export * from './News/news';
+export * from './CommentsInRest/CommentsInRest';
+
 

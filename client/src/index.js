@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const store = setupStore();
 
+
 root.render(
   <React.StrictMode>
       <Provider store={store}>

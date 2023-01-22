@@ -16,11 +16,12 @@ const NewsList = () => {
     }, [])
 
     return (
-        <div className ={'NewsList'}>
-            <h1> Що нового </h1>
+
         <div className ={'NewsCards'}>{newsAll.map(news => <NewsCard key={news._id} news ={news}/>)}</div>
-        </div>
+
     );
 }
+
+
 
 export {NewsList};
