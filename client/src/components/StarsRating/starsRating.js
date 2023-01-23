@@ -4,31 +4,8 @@ import {useEffect} from "react";
 
 import {markActions} from "../../redux";
 
-const StarsRating = ({marksOfRest}) => {
+const StarsRating = ({rating}) => {
 
-    const {marks} = useSelector(state => state.mark);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(markActions.getAll())
-    }, [])
-
-
-//вибираємо зі всіх оцінок оцінки нашого закладу і виводимо їх середнє арифметичне
-    //TODO наскільки цикл в циклі є кошерним рішенням? Можливо краще в БД записувати не айдішки а повні значення?
-
-    const marksOfRestValue = [];
-    marksOfRest.forEach(marksOfRestItem => {
-        marks.forEach(marksItem => {
-            if (marksItem._id === marksOfRestItem) {
-                marksOfRestValue.push(marksItem.mark);
-            }
-        });
-    });
-
-    const rating = marksOfRestValue.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / marksOfRestValue.length
-
-// const rating = 3.33333
     return (
         <div>
             <StarRatings

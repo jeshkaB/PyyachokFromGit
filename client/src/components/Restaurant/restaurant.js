@@ -20,7 +20,7 @@ const Restaurant = () => {
     <div>
             <h1>{restaurant.name}</h1>
             <img width={300} height={300} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
-            {/*<div><StarsRating marksOfRest={restaurant.marks}/></div>*/}
+            <div><StarsRating key={restaurant._id} rating={restaurant.rating}/></div>
             <div> Адреса: {restaurant.place}</div>
             <div> Телефон: {restaurant.phone}</div>
             <div> Режим роботи: {restaurant.hours}</div>

@@ -11,13 +11,15 @@ module.exports = {
             const userMarks = await markService.getMarksByParams({user: _id});
 
             const mark = await markService.createMark({...req.body, user: _id, restaurant: restId});
+            const rating = restaurantMarks.reduce((accumulator, currentValue) => accumulator + currentValue.mark, mark.mark) /(restaurantMarks.length+1)
 
             await userService.updateUser(_id, {
                 marks: [...userMarks,mark]
             });
 
             await restaurantService.updateRestaurant(restId, {
-                marks: [...restaurantMarks,mark]
+                marks: [...restaurantMarks,mark],
+                rating
             });
 
             res.status(statusCode.CREATE).json(mark)

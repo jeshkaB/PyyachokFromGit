@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 const RestaurantCard = ({restaurant}) => {
 
 
-    const {_id, name, place, averageBill, mainImage, marks, hours, categories, phone, email, webSite, tags} = restaurant;
+    const {_id, name, place, averageBill, mainImage, hours, categories, phone, email, webSite, rating, tags} = restaurant;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const RestaurantCard = ({restaurant}) => {
                 <h1 className={'RestName'}>{name}</h1>
                 <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
 
-                {/*<div><StarsRating marksOfRest={marks}/></div>*/}
+                <div><StarsRating key={_id} rating={rating}/></div>
                 <div> Адреса: {place}</div>
                 <div> Середній чек:{averageBill} грн.</div>
             </div>
@@ -29,7 +29,7 @@ const RestaurantCard = ({restaurant}) => {
             <div className={'RestCard'} onClick={() => navigate(`${_id}`)}>
                 <h1 className={'RestName'}>{name}</h1>
                 <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
-                {/*<div><StarsRating marksOfRest={marks}/></div>*/}
+                <div><StarsRating key={_id} rating={rating}/></div>
                 <div> Адреса: {place}</div>
                 <div> Телефон: {phone}</div>
                 <div> Режим роботи: {hours}</div>

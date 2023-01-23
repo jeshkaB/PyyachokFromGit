@@ -19,14 +19,15 @@ const NewsCard = ({news}) => {
 
     useEffect(() => {
         dispatch(restaurantActions.getAll())
-    }, [])
+    }, [restaurants])
 
-    // const rest = restaurants.find(item => item._id === restId)
+    const rest = restaurants.find(item => item._id === restId)
+
     if (location.pathname === '/home')
         return (
             <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
                 <h2>{title}</h2>
-                {/*<h3> від {rest.name}</h3>*/}
+                <h3> від {rest.name}</h3>
                 <div>{category}</div>
                 <img width={150} height={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
             </div>)

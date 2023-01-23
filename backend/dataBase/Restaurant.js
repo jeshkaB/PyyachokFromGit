@@ -12,7 +12,8 @@ const restaurantSchema = new Schema({
         phone: {type: String, required: true},
         email: {type: String, required: true},
         webSite: {type: String},
-        moderated: {type:Boolean, default:false}, //неперевірений - false, перевірений - true
+        rating: Number,
+        moderated: {type: Boolean, default: false}, //неперевірений - false, перевірений - true
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
@@ -34,8 +35,7 @@ const restaurantSchema = new Schema({
             ref: 'userEvent'
         },
         viewStatistics: {},// TODO
-        rating: Number
-    },
+        },
     {
         timestamps: true,
         versionKey: false
