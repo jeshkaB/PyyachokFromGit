@@ -25,7 +25,7 @@ const News = () => {
                 {/*<h3> від {rest.name}</h3>*/}
                 <div>{category}</div>
                 <div>{content}</div>
-                <img width={300} height={300} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>
             </div>
         );
 };

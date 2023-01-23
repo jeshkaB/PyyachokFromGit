@@ -1,24 +1,30 @@
-import {Restaurant} from "../components";
-import {Link, Outlet, useParams} from "react-router-dom";
+import {CommentsInRest, NewsList, Restaurant} from "../components";
+import {Link, useParams} from "react-router-dom";
+import './RestaurantPageStyle.css'
 
 
 const RestaurantPage = (props) => {
     const {id} = useParams()
 
     return (
-        <div>
-            <Link to={'/restaurants'}> Перейти до списку закладів </Link>
-            <div>
-                <div><Restaurant/></div>
+        <div className={'HolePage'}>
+
+            <div className={'RestBlock'}>
+                <Link to={'/restaurants'}> Перейти до списку закладів </Link>
+                <div className={'Rest'}><Restaurant/></div>
+
+                <div className={'Comments'}>
+                    <Link to={'comments'}><h2>Всі відгуки</h2></Link>
+                    <CommentsInRest/>
+                </div>
             </div>
             <div>
-                <div> Новини ресторану</div>
-                <div>
-                    <Link to={'comments'}>Відгуки</Link>
-                    <Outlet/> {/*тут будуть коменти*/}
-                </div>
+
+                <div className={'News'}><NewsList restId={id}/></div>
 
             </div>
+
+
         </div>
     );
 }

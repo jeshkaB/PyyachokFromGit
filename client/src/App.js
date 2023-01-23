@@ -9,7 +9,8 @@ import {
     RestaurantAdminPage, RestaurantPage, RestaurantsListPage,
     SuperAdminPage, UserEventPage, UserEventsListPage
 } from "./pages";
-import {CommentsInRest} from "./components/CommentsInRest/CommentsInRest";
+import {CommentsInRest} from "./components";
+
 
 const App = () => {
       return (
@@ -25,9 +26,8 @@ const App = () => {
                     <Route path={'restaurantAdmin'} element={<RestaurantAdminPage/>}/>
                     <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
                     <Route path={'restaurants'} element={<RestaurantsListPage/>}/>
-                    <Route path={'restaurants/:id'} element={<RestaurantPage/>}>
-                        <Route path={'comments'} element={<CommentsInRest/>}/>
-                    </Route>
+                    <Route path={'restaurants/:id'} element={<RestaurantPage/>}/>
+                    <Route path={'restaurants/:id/comments'} element={<CommentsInRest/>}/>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>
                     <Route path={'createUserEvent'} element={<CreateUserEventPage/>}/>

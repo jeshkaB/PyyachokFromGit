@@ -1,9 +1,8 @@
 import {NewsList, RestaurantsList} from "../components";
-
-function HomePage(props) {
+ const HomePage = (props) => {
     return (
         <div>
-            <div>
+            <div style={{display:'flex', flexDirection: "column"}}>
 
                 <div> <NewsList/></div>
                 <div>

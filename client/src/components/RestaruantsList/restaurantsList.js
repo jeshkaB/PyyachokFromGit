@@ -16,7 +16,6 @@ const RestaurantsList = () => {
         dispatch(restaurantActions.getAll())
     }, [])
 
-
     return (
         <div className={'RestList'}>
 

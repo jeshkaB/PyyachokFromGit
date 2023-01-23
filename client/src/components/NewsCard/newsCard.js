@@ -6,8 +6,7 @@ import {useEffect} from "react";
 import {restaurantActions} from "../../redux";
 
 
-
-const NewsCard = ({news}) => {
+const NewsCard = ({news, restName}) => {
     const {_id, title, content, newsImage, category} = news;
 
 
@@ -15,33 +14,50 @@ const NewsCard = ({news}) => {
     const restId = news.restaurant;
     const navigate = useNavigate();
     const location = useLocation();
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(restaurantActions.getAll())
-    }, [restaurants])
+    }, [])
 
     const rest = restaurants.find(item => item._id === restId)
+    // console.log(restaurants)
+    // console.log(news)
+    // console.log(rest)
+    // console.log(rest.name)
 
-    if (location.pathname === '/home')
-        return (
-            <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
-                <h2>{title}</h2>
-                <h3> від {rest.name}</h3>
-                <div>{category}</div>
-                <img width={150} height={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
-            </div>)
+    switch (location.pathname) {
+        case '/home':
+            return (
+                <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
+                    <h2>{title}</h2>
+                    {/*<h3> від {rest.name}</h3>*/}
+                    <div>{category}</div>
+                    <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                </div>);
+            break
 
-    else if (location.pathname === '/news')
-        return (
-            <div className={'NewsCard1'} onClick={() => navigate(`${_id}`)}>
-                <h2>{title}</h2>
-                {/*<h3> від {rest.name}</h3>*/}
-                <div>{category}</div>
-                <div>{content}</div>
-                <img width={250} height={250} src={API_URL + newsImage} alt={'зображення у новині'}/>
-            </div>
-        );
-};
+        case '/news':
+            return (
+                <div className={'NewsCard'} onClick={() => navigate(`${_id}`)}>
+                    <h2>{title}</h2>
+                    {/*<h3> від {rest.name}</h3>*/}
+                    <div>{category}</div>
+                    <div>{content}</div>
+                    <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                </div>);
+            break;
+        case `/restaurants/${news.restaurant}`:
+            return (
+                <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
+                    <h2>{title}</h2>
+                    <div>{category}</div>
+                    <div>{content}</div>
+                    <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                </div>);
+            break
+    }
+}
+
 
 export {NewsCard};

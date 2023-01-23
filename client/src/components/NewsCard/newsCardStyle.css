@@ -1,10 +1,18 @@
 .NewsCard {
-    /*display: flex;*/
+    display: flex;
+    flex-direction: column;
+    float: left;
+    
     /*flex-wrap: wrap;*/
     margin: 20px;
     align-content: center;
+}
+.NewsCard2 {
+    width: 400px;
 
-
+    /*flex-wrap: wrap;*/
+    margin: 20px;
+    align-content: center;
 }
 /*.RestName {*/
 /*   text-align: center;*/
