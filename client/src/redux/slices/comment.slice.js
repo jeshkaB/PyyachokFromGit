@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {commentService} from "../../services";
+import {ApiService} from "../../services";
 
 
 const initialState = {
@@ -8,12 +8,13 @@ const initialState = {
     errors: null
 };
 
+const entity = 'comment';
 
 const getAll = createAsyncThunk(
     'commentSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await commentService.getAll();
+            const {data} = await ApiService.getAll(entity);
             return data
 
 
@@ -27,7 +28,7 @@ const create = createAsyncThunk(
     'commentSlice/create',
     async (commentObj,{rejectWithValue}) => {
         try {
-            const {data} = await commentService.create(commentObj)
+            const {data} = await ApiService.create(entity,commentObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -39,7 +40,7 @@ const getById = createAsyncThunk(
     'commentSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            const {data} = await commentService.getById(id)
+            const {data} = await ApiService.getById(entity,id)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -51,7 +52,7 @@ const updateById = createAsyncThunk(
     'commentSlice/updateById',
     async ({id,commentObj},{rejectWithValue}) => {
         try {
-            const {data} = await commentService.updateById(id,commentObj)
+            const {data} = await ApiService.updateById(entity,id,commentObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -63,7 +64,7 @@ const deleteById = createAsyncThunk(
     'commentSlice/deleteById',
     async (id,{rejectWithValue}) => {
         try {
-            return await commentService.deleteById(id)
+            return await ApiService.deleteById(entity,id)
         }catch (e) {
             return rejectWithValue(e.response.data)
         }

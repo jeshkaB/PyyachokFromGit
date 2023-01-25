@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {newsService} from "../../services";
+import {ApiService} from "../../services";
 
 
 const initialState = {
@@ -8,12 +8,12 @@ const initialState = {
     errors: null
 };
 
-
+const entity = 'new'// не news, тому що до цієї назви в урлі додається "s"
 const getAll = createAsyncThunk(
     'newsSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await newsService.getAll();
+            const {data} = await ApiService.getAll(entity);
             return data
 
 
@@ -27,7 +27,7 @@ const create = createAsyncThunk(
     'newsSlice/create',
     async (newsObj,{rejectWithValue}) => {
         try {
-            const {data} = await newsService.create(newsObj)
+            const {data} = await ApiService.create(entity,newsObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -39,7 +39,7 @@ const getById = createAsyncThunk(
     'newsSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            const {data} = await newsService.getById(id)
+            const {data} = await ApiService.getById(entity,id)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -51,7 +51,7 @@ const updateById = createAsyncThunk(
     'newsSlice/updateById',
     async ({id,newsObj},{rejectWithValue}) => {
         try {
-            const {data} = await newsService.updateById(id,newsObj)
+            const {data} = await ApiService.updateById(entity,id,newsObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -63,7 +63,7 @@ const deleteById = createAsyncThunk(
     'newsSlice/deleteById',
     async (id,{rejectWithValue}) => {
         try {
-            return await newsService.deleteById(id)
+            return await ApiService.deleteById(entity,id)
         }catch (e) {
             return rejectWithValue(e.response.data)
         }

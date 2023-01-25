@@ -8,5 +8,6 @@ export * from './NewsList/newsList';
 export * from './News/news';
 export * from './CommentsInRest/CommentsInRest';
 export * from './Comment/comment'
+export * from './UsersList/usersList'
 
 

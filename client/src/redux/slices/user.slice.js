@@ -2,20 +2,23 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
 
 
+
+
 const initialState = {
-    restaurants: [],
-    restaurant: {},
+    users: [],
+    user: {},
     errors: null
 };
 
-const entity = 'restaurant';
+const entity = 'user'
 
 const getAll = createAsyncThunk(
-    'restaurantSlice/getAll',
+    'userSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getAll(entity);
             return data
+
 
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -24,10 +27,11 @@ const getAll = createAsyncThunk(
 );
 
 const create = createAsyncThunk(
-    'restaurantSlice/create',
-    async (restObj,{rejectWithValue}) => {
+    'userSlice/create',
+    async (userObj,{rejectWithValue}) => {
         try {
-            return await ApiService.create(entity,restObj)
+            const {data} = await ApiService.create(entity,userObj)
+            return data
         }catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -35,10 +39,10 @@ const create = createAsyncThunk(
 );
 
 const getById = createAsyncThunk(
-    'restaurantSlice/getById',
+    'userSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id);
+            const {data} = await ApiService.getById(entity,id)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -47,10 +51,10 @@ const getById = createAsyncThunk(
 );
 
 const updateById = createAsyncThunk(
-    'restaurantSlice/updateById',
-    async ({id,restObj},{rejectWithValue}) => {
+    'userSlice/updateById',
+    async ({id,userObj},{rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,restObj);
+            const {data} = await ApiService.updateById(entity,id,userObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -59,7 +63,7 @@ const updateById = createAsyncThunk(
 );
 
 const deleteById = createAsyncThunk(
-    'restaurantSlice/deleteById',
+    'userSlice/deleteById',
     async (id,{rejectWithValue}) => {
         try {
             return await ApiService.deleteById(entity,id)
@@ -70,30 +74,30 @@ const deleteById = createAsyncThunk(
 );
 //__________________________________________________________________
 
-const restaurantSlice = createSlice({
-        name: 'restaurantSlice',
+const userSlice = createSlice({
+        name: 'userSlice',
         initialState,
         reducers: {},
         extraReducers: (builder) =>
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurants = action.payload
+                    state.users = action.payload
                 })
                 .addCase(getAll.rejected, (state, action) => {
                     state.errors = action.payload
                 })
-                .addCase(getById.fulfilled, (state, action) => {
-                    state.errors = null;
-                    state.restaurant = action.payload
-                })
-                .addCase(getById.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
+                // .addCase(getById.fulfilled, (state, action) => {
+                //     state.errors = null;
+                //     state.user = action.payload
+                // })
+                // .addCase(getById.rejected, (state, action) => {
+                //     state.errors = action.payload
+                // })
 
     },
 )
-const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById,deleteById};
+const {reducer: userReducer} = userSlice;
+const userActions = {getAll, /*getById, create, updateById,deleteById*/};
 
-export {restaurantReducer, restaurantActions}
+export {userReducer, userActions}

@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {markService} from "../../services";
+import {ApiService} from "../../services";
 
 
 const initialState = {
@@ -8,12 +8,12 @@ const initialState = {
     errors: null
 };
 
-
+const entity = 'mark'
 const getAll = createAsyncThunk(
     'markSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await markService.getAll();
+            const {data} = await ApiService.getAll(entity);
             return data
 
 
@@ -27,7 +27,7 @@ const create = createAsyncThunk(
     'markSlice/create',
     async (markObj,{rejectWithValue}) => {
         try {
-            const {data} = await markService.create(markObj)
+            const {data} = await ApiService.create(entity,markObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -39,7 +39,7 @@ const getById = createAsyncThunk(
     'markSlice/getById',
     async (id,{rejectWithValue}) => {
         try {
-            const {data} = await markService.getById(id)
+            const {data} = await ApiService.getById(entity,id)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -51,7 +51,7 @@ const updateById = createAsyncThunk(
     'markSlice/updateById',
     async ({id,markObj},{rejectWithValue}) => {
         try {
-            const {data} = await markService.updateById(id,markObj)
+            const {data} = await ApiService.updateById(entity,id,markObj)
             return data
         }catch (e) {
             return rejectWithValue(e.response.data)
@@ -63,7 +63,7 @@ const deleteById = createAsyncThunk(
     'markSlice/deleteById',
     async (id,{rejectWithValue}) => {
         try {
-            return await markService.deleteById(id)
+            return await ApiService.deleteById(entity,id)
         }catch (e) {
             return rejectWithValue(e.response.data)
         }

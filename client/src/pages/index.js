@@ -11,3 +11,4 @@ export * from './RestaurantAdminPage';
 export * from './RestaurantPage';
 export * from './SuperAdminPage';
 export * from './RestaurantsListPage';
+export * from './UsersListPage';
