@@ -5,10 +5,10 @@ module.exports = {
         return News.create(newsObj)
     },
     getNews() {
-        return News.find()
+        return News.find().populate('restaurant')
     },
     getNewsById(newsId) {
-        return News.findById(newsId)
+        return News.findById(newsId).populate('restaurant')
     },
     getNewsByParams(filter) {
         return News.find(filter)

@@ -3,7 +3,7 @@ import {restaurantService} from "../../services";
 
 
 const initialState = {
-    restaurants: [],
+    restaurants: [/*{"_id": "1", "name": "Заглушка"}*/],
     restaurant: {},
     errors: null
 };

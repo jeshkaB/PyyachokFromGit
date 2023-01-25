@@ -1,5 +1,5 @@
 import API_URL from "../../config";
-import {useParams} from 'react-router-dom'
+import {useLocation, useParams} from 'react-router-dom'
 import './newsStyle.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
@@ -18,11 +18,14 @@ const News = () => {
 
     const {title, content, newsImage, category} = newsOne;
 
+    const {state:restName} = useLocation();
+
+
 
         return (
             <div className={'News'} >
                 <h2>{title}</h2>
-                {/*<h3> від {rest.name}</h3>*/}
+                <h3> від {restName}</h3>
                 <div>{category}</div>
                 <div>{content}</div>
                 <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>

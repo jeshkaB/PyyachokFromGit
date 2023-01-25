@@ -15,7 +15,6 @@ const NewsList = ({restId}) => {
         dispatch(newsActions.getAll())
     }, [])
 
-
 if (restId){
     const newsOfRest = newsAll.filter(item => item.restaurant === restId)
     return (

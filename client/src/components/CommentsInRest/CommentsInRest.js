@@ -36,7 +36,7 @@ const CommentsInRest = () => {
             return (
                 <div>
                     <div style={{border: 'solid', width: '50%'}}>
-                        {commentsFirst5.map(comment => <Comment key={id} comment={comment}/>)}
+                        {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
                 </div>
             );
@@ -46,7 +46,7 @@ const CommentsInRest = () => {
             return (
                 <div>
                     <div style={{border: 'solid', width: '50%'}}>
-                        {commentsInRest.map(comment => <Comment key={id} comment={comment}/>)}
+                        {commentsInRest.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
                 </div>
             );

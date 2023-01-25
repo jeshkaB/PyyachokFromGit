@@ -15,7 +15,7 @@ const RestaurantsList = () => {
     useEffect(() => {
         dispatch(restaurantActions.getAll())
     }, [])
-
+    // console.log(restaurants)
     return (
         <div className={'RestList'}>
 
