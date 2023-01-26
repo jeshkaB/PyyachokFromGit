@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {markActions, restaurantActions} from "../../redux";
+import {restaurantActions} from "../../redux";
 
 import {RestaurantCard} from "../RestaurantCard/restaurantCard";
 import './restListStyle.css'
@@ -14,7 +14,7 @@ const RestaurantsList = () => {
 
     useEffect(() => {
         dispatch(restaurantActions.getAll())
-    }, [])
+    }, [dispatch])
     // console.log(restaurants)
     return (
         <div className={'RestList'}>

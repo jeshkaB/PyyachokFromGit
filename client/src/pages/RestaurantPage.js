@@ -12,11 +12,11 @@ const RestaurantPage = (props) => {
             <div className={'RestBlock'}>
                 <Link to={'/restaurants'}> Перейти до списку закладів </Link>
                 <div className={'Rest'}><Restaurant/></div>
-
                 <div className={'Comments'}>
                     <Link to={'comments'}><h2>Всі відгуки</h2></Link>
                     <CommentsInRest/>
                 </div>
+
             </div>
             <div>
 

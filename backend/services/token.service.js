@@ -20,9 +20,13 @@ module.exports = {
         return Jwt.sign(base, REFRESH_SECRET_WORD, {expiresIn: REFRESH_TOKEN_LIFETIME});
     },
 
-    checkAccessToken: (token) => {
+    checkToken: (token) => {
         try {
-            return Jwt.verify(token, ACCESS_SECRET_WORD)        // повертає об’єкт типу:{ _id: '63a5ee4eda883389f8bcb143', iat: 1671819356, exp: 1671819386 }
+            if (token==='accessToken')
+            return Jwt.verify(token, ACCESS_SECRET_WORD) // повертає об’єкт типу:{ _id: '63a5ee4eda883389f8bcb143', iat: 1671819356, exp: 1671819386 }
+            else if (token==='refreshToken')
+            return Jwt.verify(token, REFRESH_SECRET_WORD)
+            // else throw new Error('Wrong token');
 
         }catch (e) {
             throw new LocalError('Token not valid', statusCode.UNAUTHORIZED)

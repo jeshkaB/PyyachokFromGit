@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
+import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 
 const initialState = {
@@ -8,7 +10,7 @@ const initialState = {
     errors: null
 };
 
-const entity = 'restaurant';
+const entity = urls.restaurants;
 
 const getAll = createAsyncThunk(
     'restaurantSlice/getAll',
@@ -25,10 +27,10 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'restaurantSlice/create',
-    async (restObj,{rejectWithValue}) => {
+    async (restObj, {rejectWithValue}) => {
         try {
-            return await ApiService.create(entity,restObj)
-        }catch (e) {
+            return await ApiService.create(entity, restObj)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -36,11 +38,11 @@ const create = createAsyncThunk(
 
 const getById = createAsyncThunk(
     'restaurantSlice/getById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id);
+            const {data} = await ApiService.getById(entity, id);
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -48,11 +50,11 @@ const getById = createAsyncThunk(
 
 const updateById = createAsyncThunk(
     'restaurantSlice/updateById',
-    async ({id,restObj},{rejectWithValue}) => {
+    async ({id, restObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,restObj);
+            const {data} = await ApiService.updateById(entity, id, restObj);
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -60,10 +62,10 @@ const updateById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'restaurantSlice/deleteById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity,id)
-        }catch (e) {
+            return await ApiService.deleteById(entity, id)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -80,20 +82,16 @@ const restaurantSlice = createSlice({
                     state.errors = null;
                     state.restaurants = action.payload
                 })
-                .addCase(getAll.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
                     state.restaurant = action.payload
                 })
-                .addCase(getById.rejected, (state, action) => {
-                    state.errors = action.payload
+                .addDefaultCase((state, action) => {
+                    defaultCaseReject(state, action)
                 })
-
-    },
+    }
 )
 const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById,deleteById};
+const restaurantActions = {getAll, getById, create, updateById, deleteById};
 
 export {restaurantReducer, restaurantActions}

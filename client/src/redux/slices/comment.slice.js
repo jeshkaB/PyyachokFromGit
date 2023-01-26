@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
+import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 
 const initialState = {
@@ -8,7 +10,7 @@ const initialState = {
     errors: null
 };
 
-const entity = 'comment';
+const entity = urls.comments;
 
 const getAll = createAsyncThunk(
     'commentSlice/getAll',
@@ -26,11 +28,11 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'commentSlice/create',
-    async (commentObj,{rejectWithValue}) => {
+    async ({commentObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity,commentObj)
+            const {data} = await ApiService.create(entity, commentObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -38,11 +40,11 @@ const create = createAsyncThunk(
 
 const getById = createAsyncThunk(
     'commentSlice/getById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id)
+            const {data} = await ApiService.getById(entity, id)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -50,11 +52,11 @@ const getById = createAsyncThunk(
 
 const updateById = createAsyncThunk(
     'commentSlice/updateById',
-    async ({id,commentObj},{rejectWithValue}) => {
+    async ({id, commentObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,commentObj)
+            const {data} = await ApiService.updateById(entity, id, commentObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -62,10 +64,10 @@ const updateById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'commentSlice/deleteById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity,id)
-        }catch (e) {
+            return await ApiService.deleteById(entity, id)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -82,20 +84,17 @@ const commentSlice = createSlice({
                     state.errors = null;
                     state.comments = action.payload
                 })
-                .addCase(getAll.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
                     state.comment = action.payload
                 })
-                .addCase(getById.rejected, (state, action) => {
-                    state.errors = action.payload
+                .addDefaultCase((state, action) => {
+                    defaultCaseReject(state, action)
                 })
 
     },
 )
 const {reducer: commentReducer} = commentSlice;
-const commentActions = {getAll, getById, create, updateById,deleteById};
+const commentActions = {getAll, getById, create, updateById, deleteById};
 
 export {commentReducer, commentActions}

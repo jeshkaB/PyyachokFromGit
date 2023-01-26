@@ -35,7 +35,7 @@ module.exports = {
             if (!accessToken) {
                 return next(new LocalError('No token', statusCode.UNAUTHORIZED))}
 
-            tokenService.checkAccessToken(accessToken);
+            tokenService.checkToken(accessToken);
 
             const tokenInfo = await authService.getTokensInstanceWithUser({ accessToken });
 
@@ -50,5 +50,30 @@ module.exports = {
         }catch (e) {
             next(e)
         }
-    }
+    },
+    checkRefreshToken: async (req, res, next) => {
+        try {
+            const refreshToken = req.get('Authorization');
+
+            if (!refreshToken) {
+                return next(new LocalError('No token', statusCode.UNAUTHORIZED))}
+
+            tokenService.checkToken(refreshToken);
+
+            const tokenInfo = await authService.getTokensInstanceWithUser({ refreshToken });
+
+
+
+            if (!tokenInfo) {
+                return next (new LocalError('Not valid token', statusCode.UNAUTHORIZED));
+            }
+
+            req.tokenInfo = tokenInfo;
+
+            next()
+
+        }catch (e) {
+            next(e)
+        }
+    },
 }

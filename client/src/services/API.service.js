@@ -3,11 +3,11 @@ import {axiosService} from "./axios.service";
 
 const ApiService = {
 
-    getAll: (entity) => axiosService.get(`/${entity}s`),
-    create: (entity, data) => axiosService.post(`/${entity}s`,data),
-    getById: (entity, id) => axiosService.get(`/${entity}s/${id}`),
-    deleteById: (entity, id) => axiosService.delete(`/${entity}s/${id}`),
-    updateById: (entity, id, data) => axiosService.patch(`/${entity}s/${id}`, data)
+    getAll: (entity) => axiosService.get(`${entity}`),
+    create: (entity, data) => axiosService.post(`${entity}`,data),
+    getById: (entity, id) => axiosService.get(`${entity}/${id}`),
+    deleteById: (entity, id) => axiosService.delete(`${entity}/${id}`),
+    updateById: (entity, id, data) => axiosService.patch(`${entity}/${id}`, data)
 }
 
 export {ApiService}

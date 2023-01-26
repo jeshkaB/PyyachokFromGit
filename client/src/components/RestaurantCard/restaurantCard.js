@@ -12,12 +12,12 @@ const RestaurantCard = ({restaurant}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-//TODO значення в стар рейтінг
+
     if (location.pathname === '/home')
         return (
             <div className={'RestCardOnHome'} onClick={() => navigate(`../restaurants/${_id}`)}>
                 <h1 className={'RestName'}>{name}</h1>
-                <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                <img width={200} height={200} src={API_URL + mainImage} alt={'зображення закладу'}/>
 
                 <div><StarsRating key={_id} rating={rating}/></div>
                 <div> Адреса: {place}</div>

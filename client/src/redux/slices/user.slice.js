@@ -1,8 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
-
-
-
+import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 const initialState = {
     users: [],
@@ -10,7 +9,7 @@ const initialState = {
     errors: null
 };
 
-const entity = 'user'
+const entity = urls.users
 
 const getAll = createAsyncThunk(
     'userSlice/getAll',
@@ -28,11 +27,11 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'userSlice/create',
-    async (userObj,{rejectWithValue}) => {
+    async (userObj, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity,userObj)
+            const {data} = await ApiService.create(entity, userObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -40,11 +39,11 @@ const create = createAsyncThunk(
 
 const getById = createAsyncThunk(
     'userSlice/getById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id)
+            const {data} = await ApiService.getById(entity, id)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -52,11 +51,11 @@ const getById = createAsyncThunk(
 
 const updateById = createAsyncThunk(
     'userSlice/updateById',
-    async ({id,userObj},{rejectWithValue}) => {
+    async ({id, userObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,userObj)
+            const {data} = await ApiService.updateById(entity, id, userObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -64,10 +63,10 @@ const updateById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'userSlice/deleteById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity,id)
-        }catch (e) {
+            return await ApiService.deleteById(entity, id)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -78,26 +77,19 @@ const userSlice = createSlice({
         name: 'userSlice',
         initialState,
         reducers: {},
+
         extraReducers: (builder) =>
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
                     state.users = action.payload
                 })
-                .addCase(getAll.rejected, (state, action) => {
-                    state.errors = action.payload
+                .addDefaultCase((state, action) => {
+                    defaultCaseReject(state,action)
                 })
-                // .addCase(getById.fulfilled, (state, action) => {
-                //     state.errors = null;
-                //     state.user = action.payload
-                // })
-                // .addCase(getById.rejected, (state, action) => {
-                //     state.errors = action.payload
-                // })
-
     },
 )
 const {reducer: userReducer} = userSlice;
-const userActions = {getAll, /*getById, create, updateById,deleteById*/};
+const userActions = {getAll, getById, create, updateById,deleteById};
 
 export {userReducer, userActions}

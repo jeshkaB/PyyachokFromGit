@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
+import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 
 const initialState = {
@@ -8,7 +10,7 @@ const initialState = {
     errors: null
 };
 
-const entity = 'mark'
+const entity = urls.marks;
 const getAll = createAsyncThunk(
     'markSlice/getAll',
     async (_, {rejectWithValue}) => {
@@ -25,11 +27,11 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'markSlice/create',
-    async (markObj,{rejectWithValue}) => {
+    async (markObj, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity,markObj)
+            const {data} = await ApiService.create(entity, markObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -37,11 +39,11 @@ const create = createAsyncThunk(
 
 const getById = createAsyncThunk(
     'markSlice/getById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id)
+            const {data} = await ApiService.getById(entity, id)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -49,11 +51,11 @@ const getById = createAsyncThunk(
 
 const updateById = createAsyncThunk(
     'markSlice/updateById',
-    async ({id,markObj},{rejectWithValue}) => {
+    async ({id, markObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,markObj)
+            const {data} = await ApiService.updateById(entity, id, markObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -61,10 +63,10 @@ const updateById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'markSlice/deleteById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity,id)
-        }catch (e) {
+            return await ApiService.deleteById(entity, id)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -72,29 +74,25 @@ const deleteById = createAsyncThunk(
 //__________________________________________________________________
 
 const markSlice = createSlice({
-        name: 'markSlice',
-        initialState,
-        reducers: {},
-        extraReducers: (builder) =>
-            builder
-                .addCase(getAll.fulfilled, (state, action) => {
-                    state.errors = null;
-                    state.marks = action.payload
-                })
-                .addCase(getAll.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
-                .addCase(getById.fulfilled, (state, action) => {
-                    state.errors = null;
-                    state.mark = action.payload
-                })
-                .addCase(getById.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
-
-    },
-)
+    name: 'markSlice',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) =>
+        builder
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.errors = null;
+                state.marks = action.payload
+            })
+            .addCase(getById.fulfilled, (state, action) => {
+                state.errors = null;
+                state.mark = action.payload
+            })
+            .addDefaultCase((state, action) => {
+                    defaultCaseReject(state, action)
+        },
+    )
+})
 const {reducer: markReducer} = markSlice;
-const markActions = {getAll, getById, create, updateById,deleteById};
+const markActions = {getAll, getById, create, updateById, deleteById};
 
 export {markReducer, markActions}

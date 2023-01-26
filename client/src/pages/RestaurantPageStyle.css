@@ -1,16 +1,18 @@
-/*.HolePage {*/
-/*    display: flex;*/
+.HolePage {
+    display: flex;
 
-/*    !*flex-direction: row;*!*/
+}
+
+    /*flex-direction: row;*/
 /*    flex-wrap: wrap;*/
 /*    !*flex-direction: column;*!*/
 /*    !*margin: 20px;*!*/
 /*    !*align-content: center;*!*/
 /*}*/
-/*.RestBlock {*/
-/*    width: 70vw;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
+.RestBlock {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;}
 
 /*    !*flex-wrap: wrap;*!*/
 /*    margin: 20px;*/
@@ -18,15 +20,15 @@
 /*    text-align: center;*/
 /*}*/
 
-/*.News {*/
-/*    height: 30vw;*/
-/*    !*display: flex;*!*/
-/*    flex-direction: row;*/
-/*    !*flex-wrap: wrap;*!*/
-/*    margin: 20px;*/
-/*    align-content: center;*/
-/*    text-align: center;*/
-/*}*/
+.News {
+    width: 30vw;
+    /*display: flex;*/
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    margin: 20px;
+    align-content: center;
+    text-align: center;
+}
 
 /*!*.Comments {*!*/
 /*!*    !*width: 400px;*!*!*/

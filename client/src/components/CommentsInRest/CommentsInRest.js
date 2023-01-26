@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {commentActions} from "../../redux";
 import {Comment} from "../Comment/comment";
-
-
+import {CommentForm} from "../CommentForm/commentForm";
 
 const CommentsInRest = () => {
 
@@ -15,12 +14,12 @@ const CommentsInRest = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(commentActions.getAll())
-    }, [])
+    }, [dispatch])
 
     const commentsInRest = comments.filter(item => item.restaurant === id)
     const commentsFirst5 = comments.filter(item => item.restaurant === id).slice(0,5);//в API посортовані по даті створення
 
-//TODO додати юзера
+
     // const marksOfRestValue = [];
     // marksOfRest.forEach(marksOfRestItem => {
     //     marks.forEach(marksItem => {
@@ -38,6 +37,7 @@ const CommentsInRest = () => {
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
+                    <CommentForm/>
                 </div>
             );
             break

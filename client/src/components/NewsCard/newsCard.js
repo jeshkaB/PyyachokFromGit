@@ -1,9 +1,6 @@
 import API_URL from "../../config";
 import {useLocation, useNavigate} from 'react-router-dom'
 import './newsCardStyle.css'
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {restaurantActions} from "../../redux";
 
 
 const NewsCard = ({news}) => {
@@ -12,10 +9,6 @@ const NewsCard = ({news}) => {
     const location = useLocation();
 
 
-    const restId = news.restaurant;
-
-
-//TODO передавати через навігейт погана ідея, ссилки виходять криві
     switch (location.pathname) {
         case '/home':
             return (
@@ -36,8 +29,8 @@ const NewsCard = ({news}) => {
                     <div>{content}</div>
                     <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>
                 </div>);
-            break;
-        case `/restaurants/${news.restaurant}`:
+            break
+        case `/restaurants/${restaurant._id}`:
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
                     <h2>{title}</h2>

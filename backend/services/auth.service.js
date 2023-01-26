@@ -4,11 +4,10 @@ module.exports = {
         return Auth.create(authTokens)
     },
 
-    getTokensInstanceByParams(filter) {
+    getTokensInstanceWithUser(filter) {
         return Auth.findOne(filter)
     },
-
-    getTokensInstanceWithUser(filter) {
-        return Auth.findOne(filter).populate('user')
+    deleteTokensPairByParams(filter) {
+        return Auth.deleteOne(filter)
     }
 }

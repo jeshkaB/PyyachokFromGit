@@ -1,10 +1,10 @@
-/*.NewsList {*/
-/*    border: 10px solid gray;*/
+.NewsList {
+    border: 10px solid gray;
 
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    !*flex-wrap: wrap;*!*/
-/*}*/
+    display: flex;
+    flex-direction: column;
+    /*flex-wrap: wrap;*/
+}
 /*.NewsCards {*/
 /*    !*border: 10px solid gray;*!*/
 /*    width: 300px;*/

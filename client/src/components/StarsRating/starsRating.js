@@ -1,8 +1,4 @@
 import StarRatings from "react-star-ratings/build/star-ratings";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-
-import {markActions} from "../../redux";
 
 const StarsRating = ({rating}) => {
 

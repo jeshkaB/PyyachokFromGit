@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {ApiService} from "../../services";
+import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 
 const initialState = {
@@ -8,7 +10,7 @@ const initialState = {
     errors: null
 };
 
-const entity = 'new'// не news, тому що до цієї назви в урлі додається "s"
+const entity = urls.news
 const getAll = createAsyncThunk(
     'newsSlice/getAll',
     async (_, {rejectWithValue}) => {
@@ -25,11 +27,11 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'newsSlice/create',
-    async (newsObj,{rejectWithValue}) => {
+    async (newsObj, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity,newsObj)
+            const {data} = await ApiService.create(entity, newsObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -37,11 +39,11 @@ const create = createAsyncThunk(
 
 const getById = createAsyncThunk(
     'newsSlice/getById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity,id)
+            const {data} = await ApiService.getById(entity, id)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -49,11 +51,11 @@ const getById = createAsyncThunk(
 
 const updateById = createAsyncThunk(
     'newsSlice/updateById',
-    async ({id,newsObj},{rejectWithValue}) => {
+    async ({id, newsObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity,id,newsObj)
+            const {data} = await ApiService.updateById(entity, id, newsObj)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -61,10 +63,10 @@ const updateById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'newsSlice/deleteById',
-    async (id,{rejectWithValue}) => {
+    async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity,id)
-        }catch (e) {
+            return await ApiService.deleteById(entity, id)
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -81,20 +83,17 @@ const newsSlice = createSlice({
                     state.errors = null;
                     state.newsAll = action.payload
                 })
-                .addCase(getAll.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
                     state.newsOne = action.payload
                 })
-                .addCase(getById.rejected, (state, action) => {
-                    state.errors = action.payload
-                })
-
+                .addDefaultCase((state, action) => {
+                        defaultCaseReject(state, action)
+            }
+        )
     },
 )
 const {reducer: newsReducer} = newsSlice;
-const newsActions = {getAll, getById, create, updateById,deleteById};
+const newsActions = {getAll, getById, create, updateById, deleteById};
 
 export {newsReducer, newsActions}
