@@ -6,7 +6,7 @@ module.exports = {
     createUser: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            if (req.files.length > 0) {
+            if (req.files && req.files.length > 0) {
                 const {buffer} = req.files[0];
                 const fileName = uuid.v4() + '.jpg';
                 await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)

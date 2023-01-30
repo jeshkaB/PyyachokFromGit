@@ -1,4 +1,5 @@
 export * from './store';
+export * from './slices/auth.slice';
 export * from './slices/utilityFunctions'
 export * from './slices/restaurant.slice';
 export * from './slices/mark.slice';

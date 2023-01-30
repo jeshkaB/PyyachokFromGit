@@ -1,11 +1,11 @@
+import {RegisterForm} from "../components";
+
 function RegisterPage(props) {
     return (
         <div>
             <div>
-                Register Form
+                <RegisterForm/>
             </div>
-
-
         </div>
     );
 }

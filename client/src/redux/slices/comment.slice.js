@@ -28,9 +28,9 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'commentSlice/create',
-    async ({commentObj}, {rejectWithValue}) => {
+    async ({id, commentObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity, commentObj)
+            const {data} = await ApiService.createByRestId(entity, id, commentObj)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)

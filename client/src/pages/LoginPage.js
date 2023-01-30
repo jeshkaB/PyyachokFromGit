@@ -1,8 +1,10 @@
-function LoginPage(props) {
+import {LoginForm} from "../components";
+
+function LoginPage() {
     return (
         <div>
             <div>
-                LoginForm
+               <LoginForm/>
             </div>
 
 

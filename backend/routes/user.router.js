@@ -16,8 +16,8 @@ userRouter.post(
     '/',
     upload.any(),
     userMiddleware.checkNewUserBodyIsValid,
-    authMiddleware.checkAccessToken,
-    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    // authMiddleware.checkAccessToken,
+    // forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     userMiddleware.checkEmailIsUnique,
     userController.createUser);
 

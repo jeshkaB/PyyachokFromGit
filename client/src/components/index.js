@@ -10,6 +10,9 @@ export * from './CommentsInRest/CommentsInRest';
 export * from './Comment/comment';
 export * from './UsersList/usersList';
 export * from './CommentForm/commentForm';
+export * from './RegisterForm/registerForm';
+export * from './LoginForm/loginForm';
+export * from './UserInfo/userInfo';
 
 
 

@@ -84,6 +84,10 @@ const userSlice = createSlice({
                     state.errors = null;
                     state.users = action.payload
                 })
+                .addCase(getById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.user = action.payload
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state,action)
                 })
