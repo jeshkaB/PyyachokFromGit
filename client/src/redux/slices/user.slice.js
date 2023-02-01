@@ -7,6 +7,7 @@ const initialState = {
     users: [],
     user: {},
     isFavorite: false,
+    stateOfUpdating: false,
     errors: null
 };
 
@@ -100,7 +101,11 @@ const removeFavoriteRest = createAsyncThunk(
 const userSlice = createSlice({
         name: 'userSlice',
         initialState,
-        reducers: {},
+        reducers: {
+            setStateOfUpdating: (state,action)=> {
+                state.stateOfUpdating = action.payload
+            }
+        },
 
         extraReducers: (builder) =>
             builder
@@ -115,8 +120,11 @@ const userSlice = createSlice({
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
                     const currentUser = state.users.find(item=>item._id = action.payload._id);
-                    Object.assign(currentUser, action.payload)
-                    state.users = action.payload
+                    console.log(action.payload)
+                    console.log(state.users)
+                    // state.users = Object.assign(currentUser,action.payload)
+                    // state.user = action.payload
+
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {
                     state.isFavorite = true
@@ -132,7 +140,7 @@ const userSlice = createSlice({
                 })
     },
 )
-const {reducer: userReducer} = userSlice;
-const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest};
+const {reducer: userReducer, actions: {setStateOfUpdating}} = userSlice;
+const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, setStateOfUpdating};
 
 export {userReducer, userActions}

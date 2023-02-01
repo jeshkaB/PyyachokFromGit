@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {restaurantActions, userActions} from "../../redux";
 import {useParams} from "react-router-dom";
-import './restaurantStyle.css'
+
 
 const Restaurant = () => {
 
@@ -31,7 +31,7 @@ const Restaurant = () => {
 //TODO щось дуже перемудрила з "додати до улюблених" стосовно стану улюблений/не улюблений - тре подумати
     const addFavorite = async ()=> {
         await dispatch(userActions.addFavoriteRest({userId, restId: id}))
-     };
+    };
     const removeFavorite = async ()=> {
         await dispatch(userActions.removeFavoriteRest({userId, restId: id}))
     };

@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/restaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/restaurantCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/API.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/axios.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/axios.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +66,11 @@
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\LoginForm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\AccountComponents" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices\restaurant" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux" />
       <recent name="C:\Users\User\IdeaProjects\fin_project" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\backend" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -85,7 +86,7 @@
       <workItem from="1671699188032" duration="62425000" />
       <workItem from="1673355381420" duration="79228000" />
       <workItem from="1674045768470" duration="88258000" />
-      <workItem from="1674467347941" duration="106685000" />
+      <workItem from="1674467347941" duration="124814000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>
@@ -311,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675108292950</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="client interim">
+      <created>1675254289159</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1675254289159</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

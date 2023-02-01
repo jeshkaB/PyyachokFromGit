@@ -13,6 +13,8 @@ export * from './CommentForm/commentForm';
 export * from './RegisterForm/registerForm';
 export * from './LoginForm/loginForm';
 export * from './UserInfo/userInfo';
+export * from './AccountComponents/FavoriteRestaurants/favoriteRestaurants';
+export * from './AccountComponents/UpdateAccount/updateAccount';
 
 
 

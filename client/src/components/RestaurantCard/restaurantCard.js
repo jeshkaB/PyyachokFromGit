@@ -13,7 +13,7 @@ const RestaurantCard = ({restaurant}) => {
     const navigate = useNavigate();
 
 
-    if (location.pathname === '/home')
+    if (location.pathname === '/home' || '/myAccount')
         return (
             <div className={'RestCardOnHome'} onClick={() => navigate(`../restaurants/${_id}`)}>
                 <h1 className={'RestName'}>{name}</h1>
