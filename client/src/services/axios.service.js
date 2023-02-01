@@ -13,8 +13,9 @@ axiosService.interceptors.request.use((config) => {
         config.headers.Authorization = accessToken
     }
     return config
-})
-let isRefreshing = false;
+});
+
+let isRefreshing = false; //TODO перевірити як працює рефреш
 axiosService.interceptors.request.use((config) => {
         return config;
     },

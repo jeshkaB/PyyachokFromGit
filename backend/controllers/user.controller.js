@@ -108,4 +108,41 @@ module.exports = {
             next(e)
         }
     },
+    //// id ресторану передаємо в query (/users/id/favoriteRest?restId=......)
+    addFavoriteRest: async (req, res, next) => {
+        try {
+            const {_id} = req.tokenInfo.user;
+            const {restId} = req.query;
+
+            const user = await userService.getUserById(_id)
+            const prevFavoriteRestaurants = user.favoriteRestaurants;
+
+            await userService.updateUser(_id, {
+                favoriteRestaurants: [
+                    ...prevFavoriteRestaurants,
+                    restId
+                ]
+            });
+            res.status(statusCode.CREATE).json()
+        } catch (e) {
+            next(e)
+        }
+    },
+    removeFavoriteRest: async (req, res, next) => {
+        try {
+            const {_id} = req.tokenInfo.user;
+            const {favoriteRest} = req.query;
+            const user = await userService.getUserById(_id)
+            const prevFavoriteRestaurants = user.favoriteRestaurants;
+            const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => item === favoriteRest)
+
+            await userService.updateUser(_id, {
+                favoriteRestaurants: upFavoriteRestaurants
+            });
+            res.status(statusCode.NO_CONTENT).json()
+
+        } catch (e) {
+            next(e)
+        }
+    },
 }

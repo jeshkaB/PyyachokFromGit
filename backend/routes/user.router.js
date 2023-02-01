@@ -45,5 +45,18 @@ userRouter.delete(
     userMiddleware.checkUserIsExist(),
     userController.deleteUser);
 
+// /для додавання в улюблені: шлях "users/id/favoriteRest?restId=...."
+userRouter.post(
+    '/:userId/favoriteRest',
+    authMiddleware.checkAccessToken,
+    userMiddleware.checkUserIsExist(),
+    userController.addFavoriteRest);
+
+userRouter.delete(
+    '/:userId/favoriteRest',
+    authMiddleware.checkAccessToken,
+    userMiddleware.checkUserIsExist(),
+    userController.removeFavoriteRest);
+
 
 module.exports = userRouter

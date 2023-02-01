@@ -6,6 +6,7 @@ import {urls} from "../../constants";
 const initialState = {
     users: [],
     user: {},
+    isFavorite: false,
     errors: null
 };
 
@@ -43,6 +44,7 @@ const getById = createAsyncThunk(
         try {
             const {data} = await ApiService.getById(entity, id)
             return data
+
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -71,6 +73,28 @@ const deleteById = createAsyncThunk(
         }
     }
 );
+const addFavoriteRest = createAsyncThunk(
+    'userSlice/addFavoriteRest',
+    async ({userId,restId}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.addFavoriteRest(entity, userId, restId)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+const removeFavoriteRest = createAsyncThunk(
+    'userSlice/removeFavoriteRest',
+    async ({userId,restId}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.removeFavoriteRest(entity, userId, restId)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
 //__________________________________________________________________
 
 const userSlice = createSlice({
@@ -88,12 +112,27 @@ const userSlice = createSlice({
                     state.errors = null;
                     state.user = action.payload
                 })
+                .addCase(updateById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    const currentUser = state.users.find(item=>item._id = action.payload._id);
+                    Object.assign(currentUser, action.payload)
+                    state.users = action.payload
+                })
+                .addCase(addFavoriteRest.fulfilled, (state, action) => {
+                    state.isFavorite = true
+                    state.errors = null;
+
+                })
+                .addCase(removeFavoriteRest.fulfilled, (state, action) => {
+                    state.isFavorite = false
+                    state.errors = null;
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state,action)
                 })
     },
 )
 const {reducer: userReducer} = userSlice;
-const userActions = {getAll, getById, create, updateById,deleteById};
+const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest};
 
 export {userReducer, userActions}

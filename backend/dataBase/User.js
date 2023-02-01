@@ -10,8 +10,8 @@ const userSchema = new Schema({
         favoriteRestaurants: {
             type: [Schema.Types.ObjectId],
             ref: 'restaurant'
-
         },
+
         comments: {
             type: [Schema.Types.ObjectId],
             ref: 'comment'
