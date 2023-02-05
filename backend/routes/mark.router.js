@@ -18,7 +18,7 @@ markRouter.get('/:markId',
     markMiddleware.checkMarkIsExist(), //виходить, що ми два рази робимо запит до Бд, в мідлварі і контролері - ??????
     markController.getMarkById);
 
-markRouter.patch('/:markId',
+markRouter.put('/:markId',
     markMiddleware.checkMarkBodyIsValid,
     forAllMiddleware.checkIdIsValid('markId'),
     markMiddleware.checkMarkIsExist(),

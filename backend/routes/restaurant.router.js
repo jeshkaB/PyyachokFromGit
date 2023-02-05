@@ -26,7 +26,7 @@ restaurantRouter.get(
     restaurantMiddleware.checkRestaurantIsExist(),
     restaurantController.getRestaurantById);
 
-restaurantRouter.patch(
+restaurantRouter.put(
     '/:restId',
     upload.any(),
     forAllMiddleware.checkIdIsValid('restId'),

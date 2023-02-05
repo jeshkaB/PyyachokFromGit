@@ -1,9 +1,8 @@
 const {Router} = require('express');
-const upload = require('multer')();     // щоб можна було зчитувати data-form
+// const upload = require('multer')();     // щоб можна було зчитувати data-form
 
 const {userController} = require("../controllers");
 const {forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
-const {roles} = require("../constants");
 
 const userRouter = Router();
 
@@ -14,7 +13,7 @@ userRouter.get(
 
 userRouter.post(
     '/',
-    upload.any(),
+    // upload.any(),
     userMiddleware.checkNewUserBodyIsValid,
     // authMiddleware.checkAccessToken,
     // forAllMiddleware.checkRole(roles.SUPER_ADMIN),
@@ -27,15 +26,24 @@ userRouter.get(
     userMiddleware.checkUserIsExist(),
     userController.getUserById);
 
-userRouter.patch(
+userRouter.put(
     '/:userId',
-    upload.any(),
+    // upload.any(),
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkUpdateUserBodyIsValid,
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
     userController.updateUser);
+
+userRouter.put(
+    '/:userId/changePassword',
+    forAllMiddleware.checkIdIsValid('userId'),
+    authMiddleware.checkAccessToken,
+    // forAllMiddleware.checkIdAreSame ('userId'),
+    userMiddleware.checkUserIsExist(),
+    userMiddleware.checkChangePassword,
+    userController.updateUserPassword);
 
 userRouter.delete(
     '/:userId',

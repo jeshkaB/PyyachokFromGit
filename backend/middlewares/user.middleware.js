@@ -1,7 +1,7 @@
 const {userValidator} = require("../validators");
 const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
-const {userService} = require("../services");
+const {userService, hashService} = require("../services");
 
 module.exports = {
 
@@ -75,5 +75,28 @@ module.exports = {
         } catch (e) {
             next(e)
         }
-    }
+    },
+
+    checkChangePassword: async (req, res, next) =>  {
+
+        try {
+            const {password} = req.user
+            const {oldPassword} = req.body
+
+            const passwordsAreSame = await hashService.comparePasswords(oldPassword, password)
+            console.log(passwordsAreSame)
+            if (passwordsAreSame) {
+                const validate = userValidator.changePasswordValidator.validate(req.body);
+                if (validate.error) {
+                    return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
+                }
+                req.body = validate.value;
+
+
+                next()
+            }
+        } catch (e) {
+            next(e)
+        }
+    },
 }

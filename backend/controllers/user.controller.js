@@ -1,15 +1,19 @@
 const {userService, hashService, fileService} = require('../services');
 const {statusCode, roles, pathImg} = require('../constants')
 const uuid = require('uuid')
+const path = require("path");
+const {PATH_AVATAR} = require("../constants/pathImg");
+const {comparePasswords} = require("../services/hash.service");
+
 
 module.exports = {
     createUser: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            if (req.files && req.files.length > 0) {
-                const {buffer} = req.files[0];
+            if (req.files) {
                 const fileName = uuid.v4() + '.jpg';
-                await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+                const {avatar: image} = req.files;
+                await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
                 const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
                 res.status(statusCode.CREATE).json(user)
             } else {
@@ -24,10 +28,10 @@ module.exports = {
     createUserAsRestaurantAdmin: async (req, res, next) => {
         try {
             const hashPassword = await hashService.hashPassword(req.body.password);
-            if (req.files.length > 0) {
-                const {buffer} = req.files[0];
+            if (req.files) {
                 const fileName = uuid.v4() + '.jpg';
-                await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+                const {avatar: image} = req.files;
+                image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
                 const user = await userService.createUser({
                     ...req.body,
                     password: hashPassword,
@@ -61,8 +65,7 @@ module.exports = {
         try {
             const {userId} = req.params;
             const user = await userService.getUserById(userId);
-            // const avatarBuffer = await fileService.readFile(pathImg.PATH_AVATAR, user.avatar)
-            // res.json({...user, avatarBuffer})
+
 
             res.json(user)
         } catch (e) {
@@ -70,19 +73,25 @@ module.exports = {
         }
     },
     updateUser: async (req, res, next) => {
+
+        //TODO перевірити що там зі шляхами (заданий прямо і через path)
         try {
             const {userId} = req.params;
-            if (req.files.length <= 0) {
+            if (!req.files) {
                 const user = await userService.updateUser(userId, req.body);
                 res.json(user)
             } else {
-                const {buffer} = req.files[0];
+                const {avatar: image} = req.files;
                 if (req.user.avatar) {
-                    const fileName = req.user.avatar;
-                    await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer)
+                    const file = req.user.avatar;
+                    await fileService.deleteFile(pathImg.PATH_AVATAR, file);
+                    const fileName = uuid.v4() + '.jpg';
+                    await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
+                    const user = await userService.updateUser(userId, {...req.body, avatar: fileName});
+                    res.json(user)
                 } else {
                     const fileName = uuid.v4() + '.jpg';
-                    await fileService.writeFile(pathImg.PATH_AVATAR, fileName, buffer);
+                    await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
                     const user = await userService.updateUser(userId, {...req.body, avatar: fileName});
                     res.json(user)
                 }
@@ -92,6 +101,7 @@ module.exports = {
             next(e)
         }
     },
+
     deleteUser: async (req, res, next) => {
         try {
             const {userId} = req.params;
@@ -108,41 +118,58 @@ module.exports = {
             next(e)
         }
     },
+
+    updateUserPassword: async (req, res, next) => {
+        try {
+            const {userId} = req.params;
+            const hashPassword = await hashService.hashPassword(req.body.newPassword);
+            const user = await userService.updateUser(userId, { password: hashPassword});
+            res.json(user)
+
+
+
+        } catch (e) {
+            next(e)
+        }
+    },
+
     //// id ресторану передаємо в query (/users/id/favoriteRest?restId=......)
-    addFavoriteRest: async (req, res, next) => {
-        try {
-            const {_id} = req.tokenInfo.user;
-            const {restId} = req.query;
+    addFavoriteRest:
+        async (req, res, next) => {
+            try {
+                const {_id} = req.tokenInfo.user;
+                const {restId} = req.query;
 
-            const user = await userService.getUserById(_id)
-            const prevFavoriteRestaurants = user.favoriteRestaurants;
+                const user = await userService.getUserById(_id)
+                const prevFavoriteRestaurants = user.favoriteRestaurants;
 
-            await userService.updateUser(_id, {
-                favoriteRestaurants: [
-                    ...prevFavoriteRestaurants,
-                    restId
-                ]
-            });
-            res.status(statusCode.CREATE).json()
-        } catch (e) {
-            next(e)
-        }
-    },
-    removeFavoriteRest: async (req, res, next) => {
-        try {
-            const {_id} = req.tokenInfo.user;
-            const {favoriteRest} = req.query;
-            const user = await userService.getUserById(_id)
-            const prevFavoriteRestaurants = user.favoriteRestaurants;
-            const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => item === favoriteRest)
+                await userService.updateUser(_id, {
+                    favoriteRestaurants: [
+                        ...prevFavoriteRestaurants,
+                        restId
+                    ]
+                });
+                res.status(statusCode.CREATE).json()
+            } catch (e) {
+                next(e)
+            }
+        },
+    removeFavoriteRest:
+        async (req, res, next) => {
+            try {
+                const {_id} = req.tokenInfo.user;
+                const {favoriteRest} = req.query;
+                const user = await userService.getUserById(_id)
+                const prevFavoriteRestaurants = user.favoriteRestaurants;
+                const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => item === favoriteRest)
 
-            await userService.updateUser(_id, {
-                favoriteRestaurants: upFavoriteRestaurants
-            });
-            res.status(statusCode.NO_CONTENT).json()
+                await userService.updateUser(_id, {
+                    favoriteRestaurants: upFavoriteRestaurants
+                });
+                res.status(statusCode.NO_CONTENT).json()
 
-        } catch (e) {
-            next(e)
-        }
-    },
+            } catch (e) {
+                next(e)
+            }
+        },
 }

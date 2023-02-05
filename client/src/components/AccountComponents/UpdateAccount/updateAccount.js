@@ -1,39 +1,59 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {userActions, userReducer} from "../../../redux";
-import {useEffect} from "react";
+import {userActions} from "../../../redux";
+import {useState} from "react";
+
 
 const UpdateAccount = ({user}) => {
 
     const {reset, register, handleSubmit, setValue} = useForm()
     const {stateOfUpdating} = useSelector(state => state.user)
-    const {_id, name, password, avatar} = user;
+    const {_id, name} = user;
     const dispatch = useDispatch();
 
     const updateUser = () => {
         dispatch(userActions.setStateOfUpdating(true))
     }
 
-
-    // setValue('name', user.name)
-
-    const submit = async (data) => {
+    // const submit = async (data) => {
+    //     const formData = new FormData();
+    //     formData.append('avatar', data.avatar[0])
+    //     formData.append('name', data.name)
+    //     await dispatch(userActions.updateById({id: _id, userObj: formData}))
+    // }
+    const [stateUpdPassword, setstateUpdPassword] = useState(false)
+    const updatePassword = ()=> {
+        setstateUpdPassword(true)
+    }
+    const submitPass = async (data) =>{
         console.log(data)
-        await dispatch(userActions.updateById({id: _id, userObj: data}))
+        await dispatch(userActions.changePassword({id:_id, passObj: data}))
+
     }
 
     return (
         <div>
             <p style={{cursor: "pointer"}} onClick={()=>updateUser()}>Оновити особисті дані</p>
-            {/*<p style={{cursor: "pointer"}} onClick={()=>updatePassword()}>Оновити пароль</p>*/}
-            {stateOfUpdating &&
+            <p style={{cursor: "pointer"}} onClick={()=>updatePassword()}>Змінити пароль</p>
+            {/*{stateOfUpdating &&*/}
+            {/*    <div style={{border: 'solid'}}>*/}
+            {/*        <form onSubmit={handleSubmit(submit)}>*/}
+            {/*            <label>Ім'я   <input type="text" defaultValue={name} {...register('name')}/></label>*/}
+            {/*            <br/>*/}
+            {/*            <label>Аватарка   <input type="file" {...register('avatar')}/></label>*/}
+            {/*            <br/>*/}
+            {/*            <button>Оновити</button>*/}
+            {/*        </form>*/}
+            {/*    </div>*/}
+            {/*}*/}
+            {stateUpdPassword &&
                 <div style={{border: 'solid'}}>
-                    <form style={{display: 'inline-block'}}onSubmit={handleSubmit(submit)}>
-                        <label>Ім'я   <input type="text" placeholder={name} {...register('name')}/></label>
+                    <form onSubmit={handleSubmit(submitPass)}>
+                        <label> Старий пароль    <input type="password" required={true}{...register('oldPassword')}/></label>
                         <br/>
-                        <label>Аватарка   <input type="file" placeholder={'додайте файл'} {...register('avatar')}/></label>
+                        <label> Новий пароль     <input type="password" required={true}{...register('newPassword')}/></label>
                         <br/>
-                        <button>Оновити</button>
+                        <button>Змінити</button>
                     </form>
                 </div>
             }

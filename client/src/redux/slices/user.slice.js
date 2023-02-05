@@ -96,6 +96,18 @@ const removeFavoriteRest = createAsyncThunk(
         }
     }
 );
+const changePassword = createAsyncThunk(
+    'userSlice/changePassword',
+    async ({id, passObj}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.changePassword(entity, id, passObj)
+            console.log(data)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
 //__________________________________________________________________
 
 const userSlice = createSlice({
@@ -119,11 +131,11 @@ const userSlice = createSlice({
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const currentUser = state.users.find(item=>item._id = action.payload._id);
-                    console.log(action.payload)
-                    console.log(state.users)
+                    // const currentUser = state.users.find(item=>item._id = action.payload._id);
                     // state.users = Object.assign(currentUser,action.payload)
-                    // state.user = action.payload
+                    state.user = action.payload
+                    console.log(state.user)
+
 
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {
@@ -135,12 +147,16 @@ const userSlice = createSlice({
                     state.isFavorite = false
                     state.errors = null;
                 })
+                .addCase(changePassword.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.user = action.payload
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state,action)
                 })
     },
 )
 const {reducer: userReducer, actions: {setStateOfUpdating}} = userSlice;
-const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, setStateOfUpdating};
+const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, setStateOfUpdating, changePassword};
 
 export {userReducer, userActions}

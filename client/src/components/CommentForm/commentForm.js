@@ -6,7 +6,7 @@ import './commentForm.css'
 import {authService} from "../../services";
 //TODO недороблено
 const CommentForm = () => {
-        const {register, handleSubmit} = useForm()
+        const {register, handleSubmit, reset} = useForm()
         const dispatch = useDispatch();
         const navigate = useNavigate();
         const {errors} = useSelector(state => state.comment)
@@ -15,6 +15,7 @@ const CommentForm = () => {
         const submit = async (data) => {
             const {error} = await dispatch(commentActions.create({id, commentObj: data}))
             if (!error) navigate(-1)
+            reset()
         }
         return (
             <div>

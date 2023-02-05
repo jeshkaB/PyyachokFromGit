@@ -21,7 +21,7 @@ newsRouter.get('/:newsId',
     newsMiddleware.checkNewsIsExist(),
     newsController.getNewsById,);
 
-newsRouter.patch('/:newsId',
+newsRouter.put('/:newsId',
     upload.any(),
     newsMiddleware.checkUpdateNewsBodyIsValid,
     forAllMiddleware.checkIdIsValid('newsId'),

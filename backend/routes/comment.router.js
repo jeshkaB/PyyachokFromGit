@@ -18,7 +18,7 @@ commentRouter.get('/:comId',
     commentMiddleware.checkCommentIsExist(),
     commentController.getCommentById,);
 
-commentRouter.patch('/:comId',
+commentRouter.put('/:comId',
     commentMiddleware.checkCommentBodyIsValid,
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
