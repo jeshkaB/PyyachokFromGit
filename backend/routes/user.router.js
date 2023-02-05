@@ -26,7 +26,7 @@ userRouter.get(
     userMiddleware.checkUserIsExist(),
     userController.getUserById);
 
-userRouter.put(
+userRouter.patch(
     '/:userId',
     // upload.any(),
     forAllMiddleware.checkIdIsValid('userId'),

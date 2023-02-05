@@ -7,7 +7,6 @@ const initialState = {
     users: [],
     user: {},
     isFavorite: false,
-    stateOfUpdating: false,
     errors: null
 };
 
@@ -48,6 +47,7 @@ const getById = createAsyncThunk(
 
         } catch (e) {
             return rejectWithValue(e.response.data)
+
         }
     }
 );
@@ -58,6 +58,7 @@ const updateById = createAsyncThunk(
         try {
             const {data} = await ApiService.updateById(entity, id, userObj)
             return data
+
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -101,7 +102,6 @@ const changePassword = createAsyncThunk(
     async ({id, passObj}, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.changePassword(entity, id, passObj)
-            console.log(data)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -114,9 +114,9 @@ const userSlice = createSlice({
         name: 'userSlice',
         initialState,
         reducers: {
-            setStateOfUpdating: (state,action)=> {
-                state.stateOfUpdating = action.payload
-            }
+            // setStateOfUpdating: (state,action)=> {
+            //     state.stateOfUpdating = action.payload
+            // }
         },
 
         extraReducers: (builder) =>
@@ -156,7 +156,7 @@ const userSlice = createSlice({
                 })
     },
 )
-const {reducer: userReducer, actions: {setStateOfUpdating}} = userSlice;
-const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, setStateOfUpdating, changePassword};
+const {reducer: userReducer/*, actions: {setStateOfUpdating}*/} = userSlice;
+const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, /*setStateOfUpdating,*/ changePassword};
 
 export {userReducer, userActions}

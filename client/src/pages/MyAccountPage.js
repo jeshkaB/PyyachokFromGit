@@ -6,7 +6,7 @@ import {FavoriteRestaurants, RestaurantCard, UpdateAccount} from "../components"
 const MyAccountPage = (props) => {
 
     const {userId} = useSelector(state => state.auth);
-    const {user} = useSelector(state => state.user);
+    const {user, errors} = useSelector(state => state.user);
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -16,6 +16,8 @@ const MyAccountPage = (props) => {
 
     return (
         <div>
+            {errors !== null &&
+            <h2> {errors.message} </h2>}
             <div style={{border: 'solid'}}>
                 <p>Улюблені заклади</p>
                 <div> <FavoriteRestaurants user={user}/> </div>

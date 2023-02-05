@@ -77,6 +77,8 @@ module.exports = {
         //TODO перевірити що там зі шляхами (заданий прямо і через path)
         try {
             const {userId} = req.params;
+            console.log(req.body);
+            console.log(req.files)
             if (!req.files) {
                 const user = await userService.updateUser(userId, req.body);
                 res.json(user)

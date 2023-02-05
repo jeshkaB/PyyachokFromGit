@@ -84,7 +84,7 @@ module.exports = {
             const {oldPassword} = req.body
 
             const passwordsAreSame = await hashService.comparePasswords(oldPassword, password)
-            console.log(passwordsAreSame)
+
             if (passwordsAreSame) {
                 const validate = userValidator.changePasswordValidator.validate(req.body);
                 if (validate.error) {

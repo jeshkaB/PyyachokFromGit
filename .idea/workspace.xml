@@ -3,23 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/pathImg.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/pathImg.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/comment.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/comment.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/eventAnswer.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/eventAnswer.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/mark.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/mark.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/news.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/news.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/restaurant.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/restaurant.router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/userEvent.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/userEvent.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/hash.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/hash.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/API.service.js" afterDir="false" />
     </list>
@@ -96,7 +84,7 @@
       <workItem from="1671699188032" duration="62425000" />
       <workItem from="1673355381420" duration="79228000" />
       <workItem from="1674045768470" duration="88258000" />
-      <workItem from="1674467347941" duration="152915000" />
+      <workItem from="1674467347941" duration="158159000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>
@@ -336,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675281157165</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="client interim">
+      <created>1675625958168</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1675625958168</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
