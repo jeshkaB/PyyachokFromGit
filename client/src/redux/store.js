@@ -5,6 +5,7 @@ import {newsReducer} from "./slices/news.slice";
 import {commentReducer} from "./slices/comment.slice";
 import {userReducer} from "./slices/user.slice";
 import {authReducer} from "./slices/auth.slice";
+import {userEventReducer} from "./slices/userEvent.slice";
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     mark: markReducer,
     news: newsReducer,
     comment: commentReducer,
-    user: userReducer
+    user: userReducer,
+    userEvent: userEventReducer
 })
 
 const setupStore = () => configureStore({

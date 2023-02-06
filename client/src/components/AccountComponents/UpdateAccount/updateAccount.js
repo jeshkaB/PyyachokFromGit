@@ -13,7 +13,7 @@ const UpdateAccount = ({user}) => {
     const [stateUpd, setStateUpd] = useState(false)
     const updateUser = () => {setStateUpd(true)}
     const submit = async (data) => {
-        console.log(data)
+
         const formData = new FormData();
         formData.append('name', data.name)
         if (data.avatar[0]) {
@@ -34,8 +34,8 @@ const UpdateAccount = ({user}) => {
 
     return (
         <div>
-            <p style={{cursor: "pointer"}} onClick={() => updateUser()}>Оновити особисті дані</p>
-            <p style={{cursor: "pointer"}} onClick={() => updatePassword()}>Змінити пароль</p>
+            <h3 style={{cursor: "pointer"}} onClick={() => updateUser()}>Оновити особисті дані</h3>
+            <h3 style={{cursor: "pointer"}} onClick={() => updatePassword()}>Змінити пароль</h3>
             {stateUpd &&
                 <div style={{border: 'solid'}}>
                     <form onSubmit={handleSubmit(submit)}>

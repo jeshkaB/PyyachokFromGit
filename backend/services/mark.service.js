@@ -5,7 +5,7 @@ module.exports = {
         return Mark.create(markObj)
     },
     getMarks() {
-        return Mark.find()
+        return Mark.find().populate('restaurant')
     },
     getMarkById(markId) {
         return Mark.findById(markId)

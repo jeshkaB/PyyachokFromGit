@@ -134,9 +134,6 @@ const userSlice = createSlice({
                     // const currentUser = state.users.find(item=>item._id = action.payload._id);
                     // state.users = Object.assign(currentUser,action.payload)
                     state.user = action.payload
-                    console.log(state.user)
-
-
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {
                     state.isFavorite = true

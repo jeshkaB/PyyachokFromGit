@@ -1,32 +1,36 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {userActions} from "../redux";
-import {FavoriteRestaurants, RestaurantCard, UpdateAccount} from "../components";
+import {restaurantActions, userActions} from "../redux";
+import {FavoriteRestaurants, MyComments, MyMarks, UpdateAccount} from "../components";
 
 const MyAccountPage = (props) => {
 
     const {userId} = useSelector(state => state.auth);
     const {user, errors} = useSelector(state => state.user);
+    const {restaurants} = useSelector(state => state.restaurant)
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userActions.getById(userId))
     }, [userId]);
 
+    useEffect(() => {
+        dispatch(restaurantActions.getAll())
+    }, [dispatch]);
 
     return (
         <div>
             {errors !== null &&
-            <h2> {errors.message} </h2>}
+            <h3> {errors.message} </h3>}
             <div style={{border: 'solid'}}>
-                <p>Улюблені заклади</p>
+                <h2>Улюблені заклади</h2>
                 <div> <FavoriteRestaurants user={user}/> </div>
             </div>
             <div>
                 <div> <UpdateAccount user={user}/></div>
-                <div>my marks</div>
-                <div>my comments</div>
-                <div>my user events</div>
+                <div> <MyMarks user={user}/></div>
+                <div> <MyComments user={user} restaurants={restaurants}/></div>
+                <div>my user events</div>//TODO
             </div>
 
         </div>
