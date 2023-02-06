@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import {userEventActions} from "../../redux";
 
 const UserEventForm = ({restId}) => {
-    // const {userId} = useSelector(state => state.auth);
+    const {errors} = useSelector(state => state.userEvent);
     const dispatch = useDispatch();
 
     const {register, handleSubmit} = useForm()
@@ -11,13 +11,12 @@ const UserEventForm = ({restId}) => {
     const submit = async (data) => {
         await dispatch(userEventActions.create({id: restId, eventObj: data}))
     }
-
+//TODO при виборі закладу треба зробити випадаюче меню - якщо не зі сторінки ресторану
     return (
         <div>
-
+            {errors && <h2>{errors.message}</h2>}
             <form onSubmit={handleSubmit(submit)}>
-                {/*<label>Заклад <input type="text" defaultValue={name} {...register('name')}/></label>*/}//TODO
-                випадаюче меню
+                {/*<label>Заклад <input type="text" defaultValue={name} {...register('name')}/></label>*/}
                 {/*<br/>*/}
                 <label> Оберіть дату <input type="text" required={true}
                                             placeholder={'формат дати 2022-12-31'} {...register('date')}/></label>

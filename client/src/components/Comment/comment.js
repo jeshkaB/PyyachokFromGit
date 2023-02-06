@@ -8,7 +8,8 @@ const Comment = ({comment, restaurants}) => {
 
     const date = comment.createdAt.slice(0, 10)
 
-    const restaurant = restaurants.find(rest => rest._id === comment.restaurant)
+    let restaurant = {}
+    if (restaurants) restaurant = restaurants.find(rest => rest._id === comment.restaurant)
 
     if (!stateIsForAccount) {
         return (

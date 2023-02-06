@@ -17,7 +17,7 @@ export * from './Restaurant/restaurant';
 export * from './RestaurantCard/restaurantCard';
 export * from './StarsRating/starsRating';
 export * from './UserEventForm/UserEventForm';
-export * from './UserEventsList/UserEventsList';
+export * from './UserEventsInRest/UserEventsInRest';
 export * from './UserInfo/userInfo';
 export * from './UsersList/usersList';
 

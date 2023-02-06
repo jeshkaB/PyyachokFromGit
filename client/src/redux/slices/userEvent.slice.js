@@ -30,6 +30,7 @@ const create = createAsyncThunk(
         try {
             const {data} = await ApiService.createByRestId(entity, id, eventObj)
             return data
+
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -88,7 +89,9 @@ const userEventSlice = createSlice({
                 })
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload
+                    state.userEvent = action.payload;
+                    state.userEvents.push(action.payload)
+
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;

@@ -7,10 +7,6 @@ module.exports = {
             const {_id} = req.tokenInfo.user;
             const {restId} = req.query;
 
-            console.log(req.tokenInfo)
-            console.log(req.query)
-            console.log(req.body)
-
             const restaurantUserEvents = await userEventService.getUserEventByParams({restaurant: restId});
             const userUserEvents = await userEventService.getUserEventByParams({user: _id});
 

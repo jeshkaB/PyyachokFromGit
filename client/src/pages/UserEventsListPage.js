@@ -1,9 +1,9 @@
-import {UserEventsList} from "../components";
+import {UserEventsInRest} from "../components";
 
 function UserEventsListPage(props) {
     return (
-        <div><UserEventsList/></div>
+       <div><UserEventsInRest/></div>
     );
 }
 
-export {UserEventsListPage};
+export {UserEventsListPage}

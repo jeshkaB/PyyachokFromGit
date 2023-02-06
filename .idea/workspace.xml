@@ -2,23 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyComments/MyComments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarksCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserEventForm/UserEventForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserEventsList/UserEventsList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UserEventsInRest/UserEventsInRest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/userEvent.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/userEvent.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/mark.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/mark.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Comment/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Comment/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserEventForm/UserEventForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEventForm/UserEventForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserEventsList/UserEventsList.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/UserEventPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserEventsPageInRestaurant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/UserEventsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserEventsListPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <workItem from="1671699188032" duration="62425000" />
       <workItem from="1673355381420" duration="79228000" />
       <workItem from="1674045768470" duration="88258000" />
-      <workItem from="1674467347941" duration="170291000" />
+      <workItem from="1674467347941" duration="184449000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>
@@ -347,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675631263233</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="client interim">
+      <created>1675698408623</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1675698408623</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

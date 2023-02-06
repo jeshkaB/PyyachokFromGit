@@ -18,7 +18,6 @@ const getAll = createAsyncThunk(
         try {
             const {data} = await ApiService.getAll(entity);
             return data
-
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
