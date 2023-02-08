@@ -1,8 +1,7 @@
 export * from './NewsPage';
 export * from './CreateUserEventPage';
 export * from './HomePage';
-export * from './UserEventsPageInRestaurant';
-export * from './UserEventsListPage';
+
 export * from './LoginPage';
 export * from './MyAccountPage';
 export * from './NewsListPage';
@@ -12,3 +11,6 @@ export * from './RestaurantPage';
 export * from './SuperAdminPage';
 export * from './RestaurantsListPage';
 export * from './UsersListPage';
+export * from './UserEventPage';
+export * from './UserEventsPageInRestaurant';
+export * from './UserEventsListPage';

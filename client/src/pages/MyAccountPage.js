@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {restaurantActions, userActions} from "../redux";
-import {FavoriteRestaurants, MyComments, MyMarks, UpdateAccount} from "../components";
+import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
 
 const MyAccountPage = (props) => {
 
@@ -30,7 +30,7 @@ const MyAccountPage = (props) => {
                 <div> <UpdateAccount user={user}/></div>
                 <div> <MyMarks user={user}/></div>
                 <div> <MyComments user={user} restaurants={restaurants}/></div>
-                <div>my user events</div>//TODO
+                <div> <MyUserEvents user={user}/></div>
             </div>
 
         </div>

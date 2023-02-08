@@ -10,6 +10,7 @@ const ApiService = {
     updateById: (entity, id, data) => axiosService.patch(`${entity}/${id}`, data),
 
     createByRestId: (entity, id, data) => axiosService.post(`${entity}/?restId=${id}`,data),//для коментів
+    createByUserEventId: (entity, id, data) => axiosService.post(`${entity}/?eventId=${id}`,data),//для відповідей в пиячку
     addFavoriteRest: (entity, userId, restId) => axiosService.post(`${entity}/${userId}/favoriteRest?restId=${restId}`),//для улблених ресторанів
     removeFavoriteRest: (entity, userId, restId) => axiosService.delete(`${entity}/${userId}/favoriteRest?restId=${restId}`),//для улюблених ресторанів
     changePassword: (entity,userId,data) => axiosService.put(`${entity}/${userId}/changePassword`, data)

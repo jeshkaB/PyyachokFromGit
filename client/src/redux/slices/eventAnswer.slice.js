@@ -5,16 +5,15 @@ import {urls} from "../../constants";
 
 
 const initialState = {
-    userEvents: [],
-    userEvent: {},
-    stateForm: false,
+    eventAnswers: [],
+    eventAnswer: {},
     errors: null
 };
 
-const entity = urls.userEvents;
+const entity = urls.eventAnswers;
 
 const getAll = createAsyncThunk(
-    'userEventSlice/getAll',
+    'eventAnswerSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getAll(entity);
@@ -26,10 +25,10 @@ const getAll = createAsyncThunk(
 );
 
 const create = createAsyncThunk(
-    'userEventSlice/create',
-    async ({id, eventObj}, {rejectWithValue}) => {
+    'eventAnswerSlice/create',
+    async ({id, answObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.createByRestId(entity, id, eventObj)
+            const {data} = await ApiService.createByUserEventId(entity, id, answObj)
             return data
 
 
@@ -40,7 +39,7 @@ const create = createAsyncThunk(
 );
 
 const getById = createAsyncThunk(
-    'userEventSlice/getById',
+    'eventAnswerSlice/getById',
     async (id, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getById(entity, id)
@@ -52,10 +51,10 @@ const getById = createAsyncThunk(
 );
 
 const updateById = createAsyncThunk(
-    'userEventSlice/updateById',
-    async ({id, eventObj}, {rejectWithValue}) => {
+    'eventAnswerSlice/updateById',
+    async ({id, answObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity, id, eventObj)
+            const {data} = await ApiService.updateById(entity, id, answObj)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -64,11 +63,11 @@ const updateById = createAsyncThunk(
 );
 
 const deleteById = createAsyncThunk(
-    'userEventSlice/deleteById',
+    'eventAnswerSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
             await ApiService.deleteById(entity, id);
-            return id //для того щоб убрати зі стейту подій
+            return id
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -76,8 +75,8 @@ const deleteById = createAsyncThunk(
 );
 //__________________________________________________________________
 
-const userEventSlice = createSlice({
-        name: 'userEventSlice',
+const eventAnswerSlice = createSlice({
+        name: 'eventAnswerSlice',
         initialState,
         reducers: {
             setStateForm: (state,action)=>{
@@ -88,25 +87,25 @@ const userEventSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvents = action.payload
+                    state.eventAnswers = action.payload
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload
+                    state.eventAnswer = action.payload
                 })
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload;
-                    state.userEvents.push(action.payload)
+                    state.eventAnswer = action.payload;
+                    state.eventAnswers.push(action.payload)
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload
+                    state.eventAnswer = action.payload
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.userEvents.findIndex(event=>event._id === action.payload)
-                    state.userEvents.splice(index,1)
+                    const index = state.eventAnswers.findIndex(event=>event._id === action.payload)
+                    state.eventAnswers.splice(index,1)
 
                 })
                 .addDefaultCase((state, action) => {
@@ -115,7 +114,7 @@ const userEventSlice = createSlice({
 
     },
 )
-const {reducer: userEventReducer, actions:{setStateForm}} = userEventSlice;
-const userEventActions = {getAll, getById, create, updateById, deleteById, setStateForm};
+const {reducer: eventAnswerReducer} = eventAnswerSlice;
+const eventAnswerActions = {getAll, getById, create, updateById, deleteById};
 
-export {userEventReducer, userEventActions}
+export {eventAnswerReducer, eventAnswerActions}

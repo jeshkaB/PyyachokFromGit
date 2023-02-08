@@ -6,6 +6,7 @@ module.exports = {
     },
     getEventAnswers() {
         return EventAnswer.find()
+
     },
     getEventAnswerById(answId) {
         return EventAnswer.findById(answId)

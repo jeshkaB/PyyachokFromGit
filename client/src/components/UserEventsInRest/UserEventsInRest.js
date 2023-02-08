@@ -2,7 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {restaurantActions, userEventActions} from "../../redux";
 import {UserEventForm} from "../UserEventForm/UserEventForm";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+
 
 const UserEventsInRest = () => {
     const {id} = useParams();
@@ -10,11 +11,16 @@ const UserEventsInRest = () => {
     const {restaurant} = useSelector(state => state.restaurant);
     const {userEvents: userEventsIds, name, _id} = restaurant;
     const {userEvents} = useSelector(state => state.userEvent);
+    // console.log(userEvents)
+    const {stateForm} = useSelector(state => state.userEvent);
+
     const dispatch = useDispatch();
-    console.log(id)
+    const navigate = useNavigate();
+
+
     useEffect(() => {
         dispatch(userEventActions.getAll())
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         dispatch(restaurantActions.getById(id))
@@ -28,25 +34,23 @@ const UserEventsInRest = () => {
             });
         })
     }
-
-    const [stateForm, setStateForm] = useState(false)
-
+//TODO подія створюється, але у списку подій відображається тільки після перезавантаження сторінки. State перезаписується і відображається напряму, без усіх моїх маніпуляцій
     return (
         <div>
             <h1>Пиячок в {name}</h1>
             <div>
                 {userEventsInRest.length >= 1 &&
-                    <div>{userEventsInRest.map(event =>
-                        <div key={event._id}>
+                    <div style={{cursor:"pointer"}}>{userEventsInRest.map(event =>
+                        <div style={{border: 'solid grey 1px', margin: 2}} key={event._id} onClick={() => navigate(`../UserEvents/${event._id}`)}>
                             <p>{event.date.slice(0, 10)}</p>
-                            <p>{event.purpose}</p>
+                            <h3>{event.purpose}</h3>
                         </div>)}
                     </div>}
                 {userEventsInRest.length < 1 &&
                     <h3>Подій поки що немає</h3>}
             </div>
             <div>
-                <h3 onClick={() => setStateForm(true)}> Створити свою подію</h3>
+                <h3 onClick={() => dispatch(userEventActions.setStateForm(true))}> Створити свою подію</h3>
                 {stateForm &&
                     <UserEventForm restId={_id}/>}
             </div>
