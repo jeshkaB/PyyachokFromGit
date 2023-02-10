@@ -1,6 +1,6 @@
 const {commentService, userService, restaurantService, userEventService} = require("../services");
 const {statusCode} = require("../constants");
-
+//TODO зробити видалення старих подій
 module.exports = {
     createUserEvent: async (req, res, next) => {
         try {

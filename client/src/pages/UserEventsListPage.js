@@ -1,8 +1,17 @@
-import {UserEventsInRest} from "../components";
+import {UserEventList} from "../components";
+import {useSelector} from "react-redux";
 
-function UserEventsListPage(props) {
+
+const UserEventsListPage = (props) => {
+    const {errors} = useSelector(state => state.userEvent)
     return (
-       <div><UserEventsInRest/></div>
+
+       <div>
+           <h1 style={{fontFamily: 'cursive', color: 'blue'}}>ПИЯЧКИ</h1>
+           <UserEventList/>
+           {errors &&
+           <h3 className={'errors'}> {errors.message} </h3>}
+       </div>
     );
 }
 

@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <div className={'Header'}>
             <div><Link to={'/home'}> На головну </Link></div>
-            <div>ПИЯЧОК</div>
+            <div><Link to={'/UserEvents'}> Пиячок </Link></div>
             <div>
                 {!isAuth ?
                     <div>

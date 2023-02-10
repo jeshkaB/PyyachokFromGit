@@ -1,4 +1,5 @@
 import {Routes, Route, Navigate} from "react-router-dom";
+import './App.css';
 
 import {MainLayout} from './mainLayout';
 import {
@@ -31,7 +32,6 @@ const App = () => {
                     <Route path={'restaurants/:id/userEvents'} element={<UserEventsPageInRestaurant/>}/>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>
-                    <Route path={'createUserEvent'} element={<CreateUserEventPage/>}/>
                     <Route path={'UserEvents'} element={<UserEventsListPage/>}/>
                     <Route path={'UserEvents/:id'} element={<UserEventPage/>}/>
                     <Route path={'Users'} element={<UsersListPage/>}/>

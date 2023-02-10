@@ -1,17 +1,20 @@
 import {useLocation, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {commentActions} from "../../redux";
 import {Comment} from "../Comment/comment";
 import {CommentForm} from "../CommentForm/commentForm";
 
+
 const CommentsInRest = () => {
+    const location = useLocation();
+    const dispatch = useDispatch();
 
     const {id} = useParams();// айдішка ресторану
     const {comments} = useSelector(state => state.comment);
-    const location = useLocation();
+    const {isAuth} = useSelector(state => state.auth);
+    const [stateForm, setStateForm] = useState(false);
 
-    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(commentActions.getAll())
     }, [dispatch])
@@ -19,16 +22,10 @@ const CommentsInRest = () => {
     const commentsInRest = comments.filter(item => item.restaurant === id)
     const commentsFirst5 = comments.filter(item => item.restaurant === id).slice(0,5);//в API посортовані по даті створення
 
-
-    // const marksOfRestValue = [];
-    // marksOfRest.forEach(marksOfRestItem => {
-    //     marks.forEach(marksItem => {
-    //         if (marksItem._id === marksOfRestItem) {
-    //             marksOfRestValue.push(marksItem.mark);
-    //         }
-    //     });
-    // });
-
+    const commentClick = () => {
+        if (isAuth) setStateForm(true)
+        else alert('Увійдіть або зареєструйтеся')
+    }
 
     switch (location.pathname) {
         case `/restaurants/${id}`:
@@ -37,7 +34,8 @@ const CommentsInRest = () => {
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
-                    <CommentForm/>
+                    <h4 style={{cursor: "pointer"}} onClick={() => commentClick()}>Написати відгук</h4>
+                    {stateForm && <CommentForm/>}
                 </div>
             );
             break
@@ -45,6 +43,8 @@ const CommentsInRest = () => {
         case `/restaurants/${id}/comments`:
             return (
                 <div>
+                    <h4 style={{cursor: "pointer"}} onClick={() => commentClick()}>Написати відгук</h4>
+                    {stateForm && <CommentForm/>}
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsInRest.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>

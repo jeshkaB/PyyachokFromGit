@@ -20,8 +20,8 @@ const MyAccountPage = (props) => {
 
     return (
         <div>
-            {errors !== null &&
-            <h3> {errors.message} </h3>}
+            {errors &&
+            <h3 className={'errors'}> {errors.message} </h3>}
             <div style={{border: 'solid'}}>
                 <h2>Улюблені заклади</h2>
                 <div> <FavoriteRestaurants user={user}/> </div>

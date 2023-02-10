@@ -24,9 +24,6 @@ const LoginForm = () => {
 
         return (
             <div>
-                {errors !== null &&
-                <h2> {errors.message} </h2>}
-
                 <form onSubmit={handleSubmit(submit)}>
                     <input type='text' placeholder={'email'} {...register('email')}/>
                     <input type='text' placeholder={'пароль'} {...register('password')}/>

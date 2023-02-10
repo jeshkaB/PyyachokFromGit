@@ -7,11 +7,11 @@ import {useNavigate, useParams} from "react-router-dom";
 
 const UserEventsInRest = () => {
     const {id} = useParams();
-
+    const {isAuth} = useSelector(state => state.auth);
     const {restaurant} = useSelector(state => state.restaurant);
     const {userEvents: userEventsIds, name, _id} = restaurant;
     const {userEvents} = useSelector(state => state.userEvent);
-    // console.log(userEvents)
+
     const {stateForm} = useSelector(state => state.userEvent);
 
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const UserEventsInRest = () => {
 
     useEffect(() => {
         dispatch(userEventActions.getAll())
-    }, []);
+    }, [stateForm]);
 
     useEffect(() => {
         dispatch(restaurantActions.getById(id))
@@ -34,6 +34,11 @@ const UserEventsInRest = () => {
             });
         })
     }
+    const clickCreateEvent = ()=> {
+        if (isAuth) dispatch(userEventActions.setStateForm(true))
+        else alert ('Увійдіть або зареєструйтеся')
+    }
+
 //TODO подія створюється, але у списку подій відображається тільки після перезавантаження сторінки. State перезаписується і відображається напряму, без усіх моїх маніпуляцій
     return (
         <div>
@@ -49,10 +54,13 @@ const UserEventsInRest = () => {
                 {userEventsInRest.length < 1 &&
                     <h3>Подій поки що немає</h3>}
             </div>
-            <div>
-                <h3 onClick={() => dispatch(userEventActions.setStateForm(true))}> Створити свою подію</h3>
+            <div style={{cursor:"pointer"}}>
+                <h3 onClick={() => clickCreateEvent()}> Створити свою подію</h3>
                 {stateForm &&
-                    <UserEventForm restId={_id}/>}
+                    <div>
+                        <UserEventForm/>
+                        <button onClick={()=>dispatch(userEventActions.setStateForm(false))}>Згорнути</button>
+                    </div>}
             </div>
         </div>
     );

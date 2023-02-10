@@ -1,5 +1,4 @@
 export * from './NewsPage';
-export * from './CreateUserEventPage';
 export * from './HomePage';
 
 export * from './LoginPage';
