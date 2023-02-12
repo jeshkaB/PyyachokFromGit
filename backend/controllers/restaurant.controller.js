@@ -1,17 +1,40 @@
-const {restaurantService, fileService} = require("../services");
-const {statusCode, pathImg} = require("../constants");
+const {restaurantService, fileService, userService, commentService} = require("../services");
+const {statusCode, pathImg, roles} = require("../constants");
 const uuid = require("uuid");
+const {PATH_RESTAURANT_PHOTO} = require("../constants/pathImg");
+const path = require("path");
 
 
 module.exports = {
     createRestaurant: async (req, res, next) => {
+    //     try {
+    //         const {_id} = req.tokenInfo.user;
+    //         const {buffer} = req.files[0];
+    //         const fileName = uuid.v4() + '.jpg';
+    //         await fileService.writeFile(pathImg.PATH_RESTAURANT_PHOTO, fileName, buffer)
+    //
+    //         const restaurant = await restaurantService.createRestaurant({...req.body, user: _id, mainImage: fileName});
+    //         res.status(statusCode.CREATE).json(restaurant)
+    //
+    //     } catch (e) {
+    //         next(e)
+    //     }
+    // },
+    // }
         try {
-            const {_id} = req.tokenInfo.user;
-            const {buffer} = req.files[0];
-            const fileName = uuid.v4() + '.jpg';
-            await fileService.writeFile(pathImg.PATH_RESTAURANT_PHOTO, fileName, buffer)
+            const {_id, role} = req.tokenInfo.user;
+            const restaurants = await restaurantService.getRestaurantByParams({user: _id});
 
+            const fileName = uuid.v4() + '.jpg';
+            const {mainImage} = req.files;
+            await mainImage.mv(path.resolve(__dirname,'..', PATH_RESTAURANT_PHOTO, fileName));
             const restaurant = await restaurantService.createRestaurant({...req.body, user: _id, mainImage: fileName});
+            if (role.includes(roles.REST_ADMIN)) await userService.updateUser(_id, {
+                restaurants: [
+                    ...restaurants,
+                    restaurant
+                ]
+            })
             res.status(statusCode.CREATE).json(restaurant)
 
         } catch (e) {
@@ -48,8 +71,8 @@ module.exports = {
 
             if (req.files) {
                 const fileName = restaurant.mainImage;
-                const {buffer} = req.files[0];
-                await fileService.writeFile(pathImg.PATH_RESTAURANT_PHOTO, fileName, buffer)
+                const {mainImage} = req.files;
+                await mainImage.mv(path.resolve(__dirname,'..', PATH_RESTAURANT_PHOTO, fileName));
             }
 
         } catch (e) {

@@ -7,6 +7,9 @@ const userSchema = new Schema({
         email: {type: String, trim: true, lowercase: true, required: true, unique: true},
         password: {type: String, required: true, /*select: false*/},
         avatar: {type: String},
+        role: {
+            type: [String], default: [roles.USER]
+        },
         favoriteRestaurants: {
             type: [Schema.Types.ObjectId],
             ref: 'restaurant'
@@ -32,10 +35,11 @@ const userSchema = new Schema({
             type: [Schema.Types.ObjectId],
             ref: 'eventAnswer'
         },
+        restaurants: {
+            type: [Schema.Types.ObjectId],
+            ref: 'restaurant'
+        },
 
-        role: {
-            type: [String], default: [roles.USER]
-        }
     },
     {
         timestamps: true,

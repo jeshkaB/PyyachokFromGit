@@ -13,7 +13,7 @@ restaurantRouter.get(
 
 restaurantRouter.post(
     '/',
-    upload.any(),
+    // upload.any(),
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkRole(roles.REST_ADMIN),
@@ -26,9 +26,9 @@ restaurantRouter.get(
     restaurantMiddleware.checkRestaurantIsExist(),
     restaurantController.getRestaurantById);
 
-restaurantRouter.put(
+restaurantRouter.patch(
     '/:restId',
-    upload.any(),
+    // upload.any(),
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkUpdateRestaurantBodyIsValid,
     restaurantMiddleware.checkRestaurantIsExist(),

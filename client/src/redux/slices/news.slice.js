@@ -27,9 +27,9 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'newsSlice/create',
-    async (newsObj, {rejectWithValue}) => {
+    async ({id, newsObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity, newsObj)
+            const {data} = await ApiService.createByRestId(entity, id, newsObj)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -86,6 +86,20 @@ const newsSlice = createSlice({
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
                     state.newsOne = action.payload
+                })
+                .addCase(create.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.newsOne = action.payload
+                    state.newsAll.push(action.payload)
+                })
+                .addCase(updateById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.newsOne = action.payload
+                })
+                .addCase(deleteById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    const index = state.newsAll.findIndex(news=>news._id === action.payload)
+                    state.newsAll.splice(index,1)
                 })
                 .addDefaultCase((state, action) => {
                         defaultCaseReject(state, action)

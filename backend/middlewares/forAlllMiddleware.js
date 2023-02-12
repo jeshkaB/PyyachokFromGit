@@ -53,6 +53,7 @@ module.exports = {
 
     checkRole: (role) => (req, res, next) => {
         try {
+
             const userRole = (req.tokenInfo.user.role);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
 
             if (!userRole.includes(role) && !userRole.includes(roles.SUPER_ADMIN)) {

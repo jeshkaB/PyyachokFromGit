@@ -10,12 +10,14 @@ module.exports = {
 },
     login: async (req, res, next) => {
         try {
-            const {_id} = req.user; // з попередньої мідлвари
+            const {_id, role} = req.user; // з попередньої мідлвари
+
 
             const authTokens = {
                 accessToken: tokenService.createAccessToken({_id}),
                 refreshToken: tokenService.createRefreshToken({_id}),
-                user: _id
+                user: _id,
+                role: role
             }
             await authService.saveTokens({...authTokens});
 

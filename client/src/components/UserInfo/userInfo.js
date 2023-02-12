@@ -4,9 +4,10 @@ import {userActions} from "../../redux";
 import API_URL from "../../config";
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
+import {roles} from "../../constants";
 
 
-const UserInfo = ({userId}) => {
+const UserInfo = ({userId, role}) => {
 
     const {user} = useSelector(state => state.user)
     const {name, avatar} = user
@@ -22,6 +23,8 @@ const UserInfo = ({userId}) => {
                 <div>
                     <div><b>{name}</b></div>
                     <Link to = {'/myAccount'}>Особистий кабінет</Link>
+                    <br/>
+                    {role && role.includes(roles.REST_ADMIN) && <Link to = {'/restaurantManager'}>Адміністрування закладів</Link>}
                 </div>}
 
             {avatar &&

@@ -10,7 +10,7 @@ module.exports = {
             const {restId} = req.query;
             const userNews = await newsService.getNewsByParams({user: _id});
             const restaurantNews = await newsService.getNewsByParams({restaurant: restId});
-            if (req.files.length > 0) {
+            if (req.files) {
                 const {buffer} = req.files[0];
                 const fileName = uuid.v4() + '.jpg';
                 await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer);

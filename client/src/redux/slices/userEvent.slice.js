@@ -107,7 +107,6 @@ const userEventSlice = createSlice({
                     state.errors = null;
                     const index = state.userEvents.findIndex(event=>event._id === action.payload)
                     state.userEvents.splice(index,1)
-
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

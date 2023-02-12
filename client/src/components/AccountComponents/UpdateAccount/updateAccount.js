@@ -6,19 +6,19 @@ import {useState} from "react";
 
 const UpdateAccount = ({user}) => {
 
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm({mode:'all'})
     const {_id, name} = user;
     const dispatch = useDispatch();
 
     const [stateUpd, setStateUpd] = useState(false)
     const updateUser = () => {setStateUpd(true)}
-    const submit = async (data) => {
 
+    const submit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name)
-        if (data.avatar[0]) {
+        if (data.avatar[0])
             formData.append('avatar', data.avatar[0])
-        }
+
         await dispatch(userActions.updateById({id: _id, userObj: formData}))
         setStateUpd(false)
         alert('Дані успішно змінено')

@@ -3,7 +3,7 @@ import {axiosService} from "./axios.service";
 
 
 const authService = {
-    register: (user) => axiosService.post(urls.users, user),// TODO в мене на сервери для реєстрації роут "registration"
+    register: (user) => axiosService.post(urls.users, user),// в мене на сервери для реєстрації роут "registration"
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
     refresh: (refreshToken) => axiosService.post(`${urls.auth}/refresh`, {refreshToken}),// чому токен передається в дужках?
     saveTokensInLS: ({accessToken, refreshToken}) => {

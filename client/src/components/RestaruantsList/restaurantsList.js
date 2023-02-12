@@ -6,23 +6,24 @@ import {RestaurantCard} from "../RestaurantCard/restaurantCard";
 import './restListStyle.css'
 
 
-const RestaurantsList = () => {
-
-    const {restaurants} = useSelector(state => state.restaurant);// в нашому редюсері state.restaurant є об’єкти restaurants і restaurant
-
+const RestaurantsList = ({userId}) => {
     const dispatch = useDispatch();
+    const {restaurants} = useSelector(state => state.restaurant);// в нашому редюсері state.restaurant є об’єкти restaurants і restaurant
 
     useEffect(() => {
         dispatch(restaurantActions.getAll())
     }, [dispatch])
-    // console.log(restaurants)
+
+    let restaurantsForCards
+    if (!userId) restaurantsForCards=restaurants
+    else restaurantsForCards = restaurants.filter(rest => rest.user === userId);
+
+
     return (
-        <div className={'RestList'}>
-
-            <div>{restaurants.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
-
-        </div>
-    );
+            <div className={'RestList'}>
+                <div>{restaurantsForCards.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
+            </div>
+        );
 }
 
 export {RestaurantsList};

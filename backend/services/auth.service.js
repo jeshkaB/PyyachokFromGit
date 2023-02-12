@@ -5,7 +5,7 @@ module.exports = {
     },
 
     getTokensInstanceWithUser(filter) {
-        return Auth.findOne(filter)
+        return Auth.findOne(filter).populate('user')
     },
     deleteTokensPairByParams(filter) {
         return Auth.deleteOne(filter)

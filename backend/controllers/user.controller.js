@@ -31,7 +31,7 @@ module.exports = {
             if (req.files) {
                 const fileName = uuid.v4() + '.jpg';
                 const {avatar: image} = req.files;
-                image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
+                await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
                 const user = await userService.createUser({
                     ...req.body,
                     password: hashPassword,
@@ -77,8 +77,7 @@ module.exports = {
         //TODO перевірити що там зі шляхами (заданий прямо і через path)
         try {
             const {userId} = req.params;
-            console.log(req.body);
-            console.log(req.files)
+
             if (!req.files) {
                 const user = await userService.updateUser(userId, req.body);
                 res.json(user)

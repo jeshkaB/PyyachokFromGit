@@ -7,7 +7,7 @@ const restaurantNameValidator = Joi.string().max(20).trim().error(new LocalError
 const placeValidator = Joi.string().trim().error(new LocalError('place is not valid', BAD_REQUEST));
 const averageBillValidator = Joi.number().error(new LocalError('average bill is not valid', BAD_REQUEST));
 const hoursValidator = Joi.string().error(new LocalError('hours is not valid', BAD_REQUEST));
-const tagsValidator = Joi.array().items(Joi.string()).error(new LocalError('tag is not valid', BAD_REQUEST));
+const tagsValidator = Joi.string().error(new LocalError('tag is not valid', BAD_REQUEST));
 const categoriesValidator = Joi.array().items(Joi.string()).error(new LocalError('category is not valid', BAD_REQUEST));
 const phoneValidator = Joi.string().regex(regex.PHONE).error(new LocalError('phone is not valid', BAD_REQUEST));
 const restaurantEmailValidator = Joi.string().email().error(new LocalError('email is not valid', BAD_REQUEST));
@@ -20,7 +20,7 @@ const newRestaurantBodyValidator = Joi.object({
         averageBill: averageBillValidator.required(),
         hours: hoursValidator.required(),
         tags: tagsValidator,
-        categories: categoriesValidator.required(),
+        categories: categoriesValidator,
         phone: phoneValidator.required(),
         email: restaurantEmailValidator.required(),
         webSite: webSiteValidator

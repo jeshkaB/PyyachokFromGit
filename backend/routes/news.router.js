@@ -8,7 +8,7 @@ const newsRouter = Router();
 newsRouter.get('/', newsController.getNews);
 
 newsRouter.post('/',
-    upload.any(),
+    // upload.any(),
     newsMiddleware.checkNewNewsBodyIsValid,
     forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
     restaurantMiddleware.checkRestaurantIsExist('query'),
@@ -21,8 +21,8 @@ newsRouter.get('/:newsId',
     newsMiddleware.checkNewsIsExist(),
     newsController.getNewsById,);
 
-newsRouter.put('/:newsId',
-    upload.any(),
+newsRouter.patch('/:newsId',
+    // upload.any(),
     newsMiddleware.checkUpdateNewsBodyIsValid,
     forAllMiddleware.checkIdIsValid('newsId'),
     newsMiddleware.checkNewsIsExist(),

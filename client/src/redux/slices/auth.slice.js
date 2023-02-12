@@ -5,7 +5,8 @@ import {defaultCaseReject} from "./utilityFunctions";
 const initialState = {
     isAuth: null,
     userId: null,
-    errors: null
+    errors: null,
+    role: null
 };
 
 const register = createAsyncThunk(
@@ -42,6 +43,7 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.isAuth = true;
                 state.userId = action.payload.user;
+                state.role = action.payload.role;
                 authService.saveTokensInLS(action.payload)
 
             })

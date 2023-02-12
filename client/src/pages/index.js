@@ -1,11 +1,11 @@
 export * from './NewsPage';
 export * from './HomePage';
-
 export * from './LoginPage';
 export * from './MyAccountPage';
 export * from './NewsListPage';
 export * from './RegisterPage';
-export * from './RestaurantAdminPage';
+export * from './RestaurantForAdminPage';
+export * from './RestaurantManagerPage';
 export * from './RestaurantPage';
 export * from './SuperAdminPage';
 export * from './RestaurantsListPage';

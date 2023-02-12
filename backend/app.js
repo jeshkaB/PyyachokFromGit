@@ -10,7 +10,7 @@ const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter,
     eventAnswerRouter
 } = require('./routes')
 const {ErrorMainHandler} = require("./errors");
-const {PATH_AVATAR} = require("./constants/pathImg");
+const {PATH_AVATAR, PATH_NEWS_PHOTO, PATH_RESTAURANT_PHOTO} = require("./constants/pathImg");
 
 
 app.use(cors());
@@ -19,8 +19,8 @@ app.use(express.urlencoded({extended:true}));
 
 app.use (fileUpload({}));
 app.use(express.static(path.resolve(__dirname, PATH_AVATAR))); //для передачі файлів з БД (статичних)
-app.use(express.static(path.resolve(__dirname, 'Images/NewsPhoto')));
-app.use(express.static(path.resolve(__dirname, 'Images/RestaurantPhoto')));
+app.use(express.static(path.resolve(__dirname, PATH_NEWS_PHOTO)));
+app.use(express.static(path.resolve(__dirname, PATH_RESTAURANT_PHOTO)));
 
 app.use('/auth', authRouter);
 app.use('/comments', commentRouter);

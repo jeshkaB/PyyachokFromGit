@@ -12,7 +12,7 @@ module.exports = {
             const userComments = await commentService.getCommentsByParams({user: _id});
 
             const comment = await commentService.createComment({...req.body, user: _id, restaurant: restId});
-            console.log(comment)
+
             await userService.updateUser(_id, {
                 comments: [
                     ...userComments,
