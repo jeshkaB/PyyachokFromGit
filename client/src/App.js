@@ -3,7 +3,6 @@ import './App.css';
 
 import {MainLayout} from './mainLayout';
 import {
-    CreateUserEventPage,
     HomePage,
     LoginPage,
     MyAccountPage,
@@ -19,9 +18,10 @@ import {
     UsersListPage,
     UserEventPage,
     RestaurantForAdminPage,
-    NewsForAdminPage
+    NewsForAdminPage, MarksInRestPage
 } from "./pages";
 import {CommentsInRest} from "./components";
+
 
 
 const App = () => {
@@ -42,6 +42,7 @@ const App = () => {
                     <Route path={'restaurantsForAdmin/:id'} element={<RestaurantForAdminPage/>}/>
                     <Route path={'restaurantsForAdmin/:restId/newsForAdmin/:newsId'} element={<NewsForAdminPage/>}/>
                     <Route path={'restaurants/:id/comments'} element={<CommentsInRest/>}/>
+                    <Route path={'restaurants/:id/marks'} element={<MarksInRestPage/>}/>
                     <Route path={'restaurants/:id/userEvents'} element={<UserEventsPageInRestaurant/>}/>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>

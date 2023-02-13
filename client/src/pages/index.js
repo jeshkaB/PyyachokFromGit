@@ -1,6 +1,7 @@
 export * from './NewsPage';
 export * from './HomePage';
 export * from './LoginPage';
+export * from './MarksInRestPage';
 export * from './MyAccountPage';
 export * from './NewsListPage';
 export * from './NewsForAdminPage';

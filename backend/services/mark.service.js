@@ -5,10 +5,10 @@ module.exports = {
         return Mark.create(markObj)
     },
     getMarks() {
-        return Mark.find().populate('restaurant')
+        return Mark.find().populate('restaurant').populate('user')
     },
     getMarkById(markId) {
-        return Mark.findById(markId).populate('user')
+        return Mark.findById(markId)
     },
     getMarksByParams(filter) {
         return Mark.find(filter)

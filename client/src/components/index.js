@@ -12,7 +12,7 @@ export * from './EventAnswerCard/EventAnswerCard';
 export * from './Header/Header';
 export * from './LoginForm/loginForm';
 export * from './MarksCard/MarksCard';
-export * from './MarksList/MarksList';
+export * from './MarksInRest/MarksInRest';
 export * from './News/news';
 export * from './NewsForAdmin/NewsForAdmin';
 export * from './NewsCard/newsCard';

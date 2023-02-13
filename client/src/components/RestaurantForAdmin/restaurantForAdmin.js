@@ -9,7 +9,7 @@ import {roles} from "../../constants";
 import {NewsCreate} from "../NewsCreate/NewsCreate";
 import {NewsList} from "../NewsList/newsList";
 import {CommentsInRest} from "../CommentsInRest/CommentsInRest";
-import {MarksList} from "../MarksList/MarksList";
+import {MarksInRest} from "../MarksInRest/MarksInRest";
 
 
 const RestaurantForAdmin = () => {
@@ -53,8 +53,9 @@ const RestaurantForAdmin = () => {
                     </div>}
             </div>}
             <hr/>
-            <h3 style={{color: "green"}}> Оцінки</h3>
-            <MarksList markIds={restaurant.marks}/>
+            <h3 style={{cursor: 'pointer', color: "green"}}
+                onClick={() => navigate(`/restaurants/${id}/marks`)}> Оцінки</h3>
+
             <hr/>
             <h3 style={{cursor: 'pointer', color: "green"}}
                 onClick={() => navigate(`/restaurants/${id}/comments`)}>Відгуки</h3>
