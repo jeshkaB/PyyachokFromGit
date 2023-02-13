@@ -8,7 +8,6 @@ const NewsCard = ({news}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
     switch (location.pathname) {
         case '/home':
             return (
@@ -16,7 +15,7 @@ const NewsCard = ({news}) => {
                     <h2>{title}</h2>
                     <h3> від {restaurant.name}</h3>
                     <div>{category}</div>
-                    <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
 
@@ -27,16 +26,25 @@ const NewsCard = ({news}) => {
                     <h3> від {restaurant.name}</h3>
                     <div>{category}</div>
                     <div>{content}</div>
-                    <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                    {newsImage && <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
         case `/restaurants/${restaurant._id}`:
             return (
-                <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
+                <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}` )}>
                     <h2>{title}</h2>
                     <div>{category}</div>
                     <div>{content}</div>
-                    <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>
+                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                </div>);
+            break
+        case `/restaurantsForAdmin/${restaurant._id}`:
+            return (
+                <div className={'NewsCard'} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
+                    <h2>{title}</h2>
+                    <div>{category}</div>
+                    <div>{content}</div>
+                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
     }

@@ -8,7 +8,7 @@ module.exports = {
         return Mark.find().populate('restaurant')
     },
     getMarkById(markId) {
-        return Mark.findById(markId)
+        return Mark.findById(markId).populate('user')
     },
     getMarksByParams(filter) {
         return Mark.find(filter)

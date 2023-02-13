@@ -1,16 +1,20 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {restaurantActions} from "../../redux";
 import API_URL from "../../config";
 import {StarsRating} from "../StarsRating/starsRating";
 import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 import {roles} from "../../constants";
+import {NewsCreate} from "../NewsCreate/NewsCreate";
+import {NewsList} from "../NewsList/newsList";
+import {CommentsInRest} from "../CommentsInRest/CommentsInRest";
+import {MarksList} from "../MarksList/MarksList";
 
 
 const RestaurantForAdmin = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const {id} = useParams();
     const {role} = useSelector(state => state.auth);
     const {restaurant} = useSelector(state => state.restaurant);
@@ -35,7 +39,7 @@ const RestaurantForAdmin = () => {
                 <div> Сайт: {restaurant.webSite} </div>
                 <div> Середній чек:{restaurant.averageBill} грн.</div>
             </div>
-            <div>
+            <div>//Оновити заклад
                 <RestaurantUpdate restaurant={restaurant}/>
             </div>
             {isSuperAdmin && <div>
@@ -45,12 +49,22 @@ const RestaurantForAdmin = () => {
                     <div>
                         <p style={{color: 'red'}}> Ви упевнені що хочете видалити заклад?</p>
                         <button onClick={() => dispatch(restaurantActions.deleteById(id))}>Так</button>
+                        <button onClick={() => setConfirmDelete(false)}>Ні</button>
                     </div>}
             </div>}
-
+            <hr/>
+            <h3 style={{color: "green"}}> Оцінки</h3>
+            <MarksList markIds={restaurant.marks}/>
+            <hr/>
+            <h3 style={{cursor: 'pointer', color: "green"}}
+                onClick={() => navigate(`/restaurants/${id}/comments`)}>Відгуки</h3>
+            <hr/>
+            <h3 style={{color: "green"}}> Новини</h3>
+            <NewsCreate restId={id}/>
+            <NewsList restId={id}/>
 
         </div>
-    );
+    )
 };
 
 export {RestaurantForAdmin};

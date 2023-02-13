@@ -31,6 +31,7 @@ const CommentsInRest = () => {
         case `/restaurants/${id}`:
             return (
                 <div>
+                    {!commentsFirst5 && <h2>Відгуків поки що немає</h2>}
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
@@ -43,6 +44,7 @@ const CommentsInRest = () => {
         case `/restaurants/${id}/comments`:
             return (
                 <div>
+                    {JSON.stringify(commentsInRest) !== '{}' && <h2>Відгуків поки що немає</h2>}
                     <h4 style={{cursor: "pointer"}} onClick={() => commentClick()}>Написати відгук</h4>
                     {stateForm && <CommentForm/>}
                     <div style={{border: 'solid', width: '50%'}}>

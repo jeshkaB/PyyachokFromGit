@@ -8,13 +8,15 @@ import {categoriesOfNews} from "../../constants";
 
 
 
-const NewsCreate = ({restId}) => {
+const NewsUpdate = ({news}) => {
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {errors} = useSelector(state => state.news)
     const {register, handleSubmit} = useForm()
+    const {_id, title, content, category} = news
 
-    const [stateCreate, setStateCreate] = useState(false)
+    const [stateUpdate, setStateUpdate] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState('')
 
     const categories = categoriesOfNews.categories
@@ -23,20 +25,20 @@ const NewsCreate = ({restId}) => {
         formData.append('title', data.title);
         formData.append('content', data.content);
         if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
-        formData.append('category', selectedCategory);
+        formData.append('category', selectedCategory || category);
 
-        const {_id} = await dispatch(newsActions.create({id: restId, newsObj: formData}))
-        setStateCreate(false)
-        if (!errors ?? _id) navigate(`../restaurantsForAdmin/${restId}/newsForAdmin/${_id}`)
+        await dispatch(newsActions.updateById({id: _id, newsObj: formData}))
+        setStateUpdate(false)
+        // if (!errors) navigate(`/news/${_id}`)
     }
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateCreate(true)}> Створити новину </h3>
-            {stateCreate &&
+            <h3 style={{cursor: "pointer"}} onClick={() => setStateUpdate(true)}> Редагувати новину </h3>
+            {stateUpdate &&
                 <div style={{border: 'solid'}}>
                     <Dropdown>
-                        <Dropdown.Toggle>{selectedCategory || "Оберіть категорію новини"}</Dropdown.Toggle>
+                        <Dropdown.Toggle>{selectedCategory || category}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {categories.map(categ =>
                                 <Dropdown.Item key={categ} onClick={() => setSelectedCategory(categ)}>{categ}</Dropdown.Item>
@@ -45,15 +47,15 @@ const NewsCreate = ({restId}) => {
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
                         <p style={{color: "orange"}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Заголовок* <input  required={true} {...register('title')}/></label>
+                        <label>Заголовок* <input  required={true} defaultValue={title} {...register('title')}/></label>
                         <br/>
-                        <label>Зміст* <input required={true} {...register('content')}/></label>
+                        <label>Зміст* <input required={true} defaultValue={content} {...register('content')}/></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
                         <br/>
-                        <button>Створити</button>
+                        <button>Оновити</button>
                     </form>
-                    <button onClick={() => setStateCreate(false)}> Відмінити</button>
+                    <button onClick={() => setStateUpdate(false)}> Відмінити</button>
                 </div>
             }
 
@@ -61,4 +63,4 @@ const NewsCreate = ({restId}) => {
     );
 }
 
-export {NewsCreate}
+export {NewsUpdate}

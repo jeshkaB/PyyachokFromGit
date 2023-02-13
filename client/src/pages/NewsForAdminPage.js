@@ -1,8 +1,8 @@
-import {NewsForAdmin, RestaurantForAdmin} from "../components";
+import {NewsForAdmin} from "../components";
 import {useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
 
-const RestaurantForAdminPage = () => {
+
+const NewsForAdminPage = () => {
     const {errors} = useSelector(state => state.restaurant);
 
 
@@ -10,10 +10,9 @@ const RestaurantForAdminPage = () => {
         <div>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
-            <RestaurantForAdmin/>
-
+                 <NewsForAdmin/>
         </div>
     );
 };
 
-export {RestaurantForAdminPage};
+export {NewsForAdminPage};

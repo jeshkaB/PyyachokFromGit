@@ -3,6 +3,7 @@ export * from './HomePage';
 export * from './LoginPage';
 export * from './MyAccountPage';
 export * from './NewsListPage';
+export * from './NewsForAdminPage';
 export * from './RegisterPage';
 export * from './RestaurantForAdminPage';
 export * from './RestaurantManagerPage';

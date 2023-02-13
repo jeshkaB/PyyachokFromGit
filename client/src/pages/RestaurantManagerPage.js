@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {userActions} from "../redux";
-import {RestaurantCreate, RestaurantsList} from "../components";
+import {NewsCreate, NewsList, RestaurantCreate, RestaurantsList} from "../components";
 
 const RestaurantManagerPage = () => {
     const {errors} = useSelector(state => state.restaurant)
@@ -23,6 +23,7 @@ useEffect(()=> {
                 <h3>Мої заклади </h3>
                 <RestaurantsList userId={userId}/>
              </div>
+
         </div>
     );
 }

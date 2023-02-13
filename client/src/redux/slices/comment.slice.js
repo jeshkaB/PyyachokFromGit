@@ -88,6 +88,20 @@ const commentSlice = createSlice({
                     state.errors = null;
                     state.comment = action.payload
                 })
+                .addCase(create.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.comment = action.payload;
+                    state.comments.push(action.payload)
+                })
+                .addCase(updateById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.comment = action.payload
+                })
+                .addCase(deleteById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    const index = state.comments.findIndex(event=>event._id === action.payload)
+                    state.comments.splice(index,1)
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)
                 })

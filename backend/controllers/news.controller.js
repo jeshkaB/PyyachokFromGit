@@ -1,6 +1,9 @@
 const {newsService, fileService, userService, restaurantService} = require("../services");
 const uuid = require("uuid");
 const {pathImg, statusCode} = require("../constants");
+const path = require("path");
+const {PATH_RESTAURANT_PHOTO, PATH_NEWS_PHOTO} = require("../constants/pathImg");
+const {login} = require("./auth.controller");
 
 
 module.exports = {
@@ -11,9 +14,9 @@ module.exports = {
             const userNews = await newsService.getNewsByParams({user: _id});
             const restaurantNews = await newsService.getNewsByParams({restaurant: restId});
             if (req.files) {
-                const {buffer} = req.files[0];
+                const {newsImage} = req.files;
                 const fileName = uuid.v4() + '.jpg';
-                await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer);
+                await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));
                 const newNews = await newsService.createNews({
                     ...req.body,
                     user: _id,
@@ -57,21 +60,20 @@ module.exports = {
     },
     updateNews: async (req, res, next) => {
         try {
-            const {newsId} = req.params;
 
-            if (req.files.length<=0) {
+            const {newsId} = req.params;
+            if (!req.files) {
                 const news = await newsService.updateNews(newsId, req.body);
                 res.json(news)
             } else {
-                const {buffer} = req.files[0];
-
+                const {newsImage} = req.files;
                 if (req.news.newsImage) {
                     const fileName = req.news.newsImage;
-                    await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer)
+                    await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));
                 } else {
                     const fileName = uuid.v4() + '.jpg';
-                    await fileService.writeFile(pathImg.PATH_NEWS_PHOTO, fileName, buffer);
-                    const news =await newsService.updateNews(newsId, {...req.body, newsImage:fileName});
+                    await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));
+                    const news = await newsService.updateNews(newsId, {...req.body, newsImage:fileName});
                     res.json(news)
                 }
             }

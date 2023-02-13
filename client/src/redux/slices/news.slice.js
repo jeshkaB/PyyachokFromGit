@@ -98,8 +98,9 @@ const newsSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.newsAll.findIndex(news=>news._id === action.payload)
-                    state.newsAll.splice(index,1)
+                    // const index = state.newsAll.findIndex(news=>news._id === action.payload)
+                    // state.newsAll.splice(index,1)
+
                 })
                 .addDefaultCase((state, action) => {
                         defaultCaseReject(state, action)

@@ -17,8 +17,6 @@ const getAll = createAsyncThunk(
         try {
             const {data} = await ApiService.getAll(entity);
             return data
-
-
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -27,9 +25,9 @@ const getAll = createAsyncThunk(
 
 const create = createAsyncThunk(
     'markSlice/create',
-    async (markObj, {rejectWithValue}) => {
+    async ({id, markObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.create(entity, markObj)
+            const {data} = await ApiService.createByRestId(entity, id, markObj)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -86,6 +84,20 @@ const markSlice = createSlice({
             .addCase(getById.fulfilled, (state, action) => {
                 state.errors = null;
                 state.mark = action.payload
+            })
+            .addCase(create.fulfilled, (state, action) => {
+                state.errors = null;
+                state.mark = action.payload;
+                state.marks.push(action.payload)
+            })
+            .addCase(updateById.fulfilled, (state, action) => {
+                state.errors = null;
+                state.mark = action.payload
+            })
+            .addCase(deleteById.fulfilled, (state, action) => {
+                state.errors = null;
+                const index = state.marks.findIndex(event=>event._id === action.payload)
+                state.marks.splice(index,1)
             })
             .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

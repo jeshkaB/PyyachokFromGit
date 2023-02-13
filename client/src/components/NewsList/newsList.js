@@ -7,7 +7,6 @@ import './newsListStyle.css'
 import {NewsCard} from "../NewsCard/newsCard";
 
 const NewsList = ({restId}) => {
-
     const {newsAll} = useSelector(state => state.news);
     const dispatch = useDispatch();
 
@@ -15,17 +14,16 @@ const NewsList = ({restId}) => {
         dispatch(newsActions.getAll())
     }, [dispatch])
 
-if (restId){
+    if (restId) {
 
-    const newsOfRest = newsAll.filter(item => item.restaurant._id === restId)
-
-    return (
-        <div className={'NewsCards'}>{newsOfRest.map(news => <NewsCard key={news._id} news={news}/>)}</div>
-    )}
-    else
-    return (
-        <div className ={'NewsCards'}>{newsAll.map(news => <NewsCard key={news._id} news ={news}/>)}</div>
-    );
+        const newsOfRest = newsAll.filter(item => item.restaurant._id === restId)
+        return (
+            <div className={'NewsCards'}>{newsOfRest.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+        )
+    } else
+        return (
+            <div className={'NewsCards'}>{newsAll.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+        );
 
 }
 export {NewsList};
