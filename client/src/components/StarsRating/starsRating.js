@@ -12,6 +12,7 @@ const StarsRating = ({rating}) => {
                 name='rating'
                 starDimension='20px'
                 starSpacing='2px'
+
             />
         </div>
     );

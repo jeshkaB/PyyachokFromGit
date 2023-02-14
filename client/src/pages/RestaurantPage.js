@@ -1,4 +1,4 @@
-import {CommentsInRest, NewsList, Restaurant} from "../components";
+import {CommentsInRest, MarksInRest, NewsList, Restaurant} from "../components";
 import {Link, useParams} from "react-router-dom";
 import './RestaurantPageStyle.css'
 import {useSelector} from "react-redux";
@@ -16,8 +16,12 @@ const RestaurantPage = (props) => {
                 <Link to={'/restaurants'}> Перейти до списку закладів </Link>
                 <div className={'Rest'}><Restaurant/></div>
                 <div className={'Comments'}>
-                    <Link to={'comments'}><h2>Всі відгуки</h2></Link>
+                    <Link to={'comments'}><h3>Всі відгуки</h3></Link>
                     <CommentsInRest/>
+                </div>
+                <div className={'Marks'}>
+                    <Link to={'marks'}><h3>Оцінки</h3></Link>
+                    <MarksInRest/>
                 </div>
 
             </div>

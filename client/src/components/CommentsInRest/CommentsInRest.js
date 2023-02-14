@@ -20,7 +20,7 @@ const CommentsInRest = () => {
     }, [dispatch])
 
     const commentsInRest = comments.filter(item => item.restaurant === id)
-    const commentsFirst5 = comments.filter(item => item.restaurant === id).slice(0,5);//в API посортовані по даті створення
+    const commentsFirst5 = commentsInRest.slice(0,5);//в API посортовані по даті створення
 
     const commentClick = () => {
         if (isAuth) setStateForm(true)
@@ -35,7 +35,7 @@ const CommentsInRest = () => {
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
-                    <h4 style={{cursor: "pointer"}} onClick={() => commentClick()}>Написати відгук</h4>
+                    <h4 style={{cursor: "pointer"}} onClick={commentClick}>Написати відгук</h4>
                     {stateForm && <CommentForm/>}
                 </div>
             );
@@ -45,7 +45,7 @@ const CommentsInRest = () => {
             return (
                 <div>
                     {JSON.stringify(commentsInRest) !== '{}' && <h2>Відгуків поки що немає</h2>}
-                    <h4 style={{cursor: "pointer"}} onClick={() => commentClick()}>Написати відгук</h4>
+                    <h4 style={{cursor: "pointer"}} onClick={commentClick}>Написати відгук</h4>
                     {stateForm && <CommentForm/>}
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsInRest.map(comment => <Comment key={comment._id} comment={comment}/>)}
