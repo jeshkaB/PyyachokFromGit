@@ -5,16 +5,14 @@ import {urls} from "../../constants";
 
 
 const initialState = {
-    restaurants: [],//модеровані ресторани
-    notModeratedRestaurants: [],
-    restaurant: {},
+    newsAll: [],
+    newsOne: {},
     errors: null
 };
 
-const entity = urls.restaurants;
-
+const entity = urls.generalNews
 const getAll = createAsyncThunk(
-    'restaurantSlice/getAll',
+    'generalNewsSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getAll(entity);
@@ -26,10 +24,11 @@ const getAll = createAsyncThunk(
 );
 
 const create = createAsyncThunk(
-    'restaurantSlice/create',
-    async ({restObj}, {rejectWithValue}) => {
+    'generalNews/create',
+    async ({newsObj}, {rejectWithValue}) => {
         try {
-            return await ApiService.create(entity, restObj)
+            const {data} = await ApiService.create(entity, newsObj)
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -37,10 +36,10 @@ const create = createAsyncThunk(
 );
 
 const getById = createAsyncThunk(
-    'restaurantSlice/getById',
+    'generalNews/getById',
     async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity, id);
+            const {data} = await ApiService.getById(entity, id)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -49,10 +48,10 @@ const getById = createAsyncThunk(
 );
 
 const updateById = createAsyncThunk(
-    'restaurantSlice/updateById',
-    async ({id, restObj}, {rejectWithValue}) => {
+    'generalNewsSlice/updateById',
+    async ({id, newsObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity, id, restObj);
+            const {data} = await ApiService.updateById(entity, id, newsObj)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -61,7 +60,7 @@ const updateById = createAsyncThunk(
 );
 
 const deleteById = createAsyncThunk(
-    'restaurantSlice/deleteById',
+    'generalNews/deleteById',
     async (id, {rejectWithValue}) => {
         try {
             return await ApiService.deleteById(entity, id)
@@ -72,43 +71,41 @@ const deleteById = createAsyncThunk(
 );
 //__________________________________________________________________
 
-const restaurantSlice = createSlice({
-        name: 'restaurantSlice',
+const generalNewsSlice = createSlice({
+        name: 'generalNewsSlice',
         initialState,
         reducers: {},
         extraReducers: (builder) =>
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurants = action.payload.filter(rest=>rest.moderated === true) //модеровані ресторани
-                    state.notModeratedRestaurants = action.payload.filter(rest=>rest.moderated === false)
-
+                    state.newsAll = action.payload
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurant = action.payload
+                    state.newsOne = action.payload
                 })
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurant = action.payload
-                    state.restaurants.push(action.payload)
+                    state.newsOne = action.payload
+                    state.newsAll.push(action.payload)
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurant = action.payload
+                    state.newsOne = action.payload
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    // const index = state.restaurants.findIndex(rest=>rest._id === action.payload);
-                    // state.restaurants.slice(index,1)
-                  // TODO це закінчення не працює в жодному слайсі - видає помилку - розібратися
-                })
+                    // const index = state.newsAll.findIndex(news=>news._id === action.payload)
+                    // state.newsAll.splice(index,1)
+               })
                 .addDefaultCase((state, action) => {
-                    defaultCaseReject(state, action)
-                })
-    }
+                        defaultCaseReject(state, action)
+            }
+        )
+    },
 )
-const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById, deleteById};
+const {reducer: generalNewsReducer} = generalNewsSlice;
+const generalNewsActions = {getAll, getById, create, updateById, deleteById};
 
-export {restaurantReducer, restaurantActions}
+export {generalNewsReducer, generalNewsActions}

@@ -68,7 +68,7 @@ module.exports = {
         try {
             const {answId} = req.params;
             const {user, userEvent} = await eventAnswerService.getEventAnswerById(answId);//беремо айдішкі юзера і ресторана
-            console.log(user)
+
             await eventAnswerService.deleteEventAnswer(answId);
 
             const answersInUser = await eventAnswerService.getEventAnswersByParams({user});

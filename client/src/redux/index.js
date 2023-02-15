@@ -8,3 +8,4 @@ export * from './slices/comment.slice';
 export * from './slices/user.slice';
 export * from './slices/userEvent.slice';
 export * from './slices/eventAnswer.slice';
+export * from './slices/generalNews.slice';

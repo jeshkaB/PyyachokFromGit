@@ -19,7 +19,7 @@ userEventRouter.get('/:eventId',
     userEventMiddleware.checkUserEventIsExist(),
     userEventController.getUserEventById);
 
-userEventRouter.put('/:eventId',
+userEventRouter.patch('/:eventId',
     userEventMiddleware.checkUpdateUserEventBodyIsValid,
     forAllMiddleware.checkIdIsValid('eventId'),
     userEventMiddleware.checkUserEventIsExist(),

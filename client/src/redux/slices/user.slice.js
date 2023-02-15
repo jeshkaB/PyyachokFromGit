@@ -129,11 +129,22 @@ const userSlice = createSlice({
                     state.errors = null;
                     state.user = action.payload
                 })
+                .addCase(create.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.restaurant = action.payload
+                    state.users.push(action.payload)
+                })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
                     // const currentUser = state.users.find(item=>item._id = action.payload._id);
                     // state.users = Object.assign(currentUser,action.payload)
                     state.user = action.payload
+                })
+                .addCase(deleteById.fulfilled, (state, action) => {
+                    state.errors = null;
+                    // const index = state.users.findIndex(user=>user._id === action.payload);
+                    // state.users.slice(index,1)
+                    // TODO це закінчення не працює в жодному слайсі - видає помилку - розібратися
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {
                     state.isFavorite = true
@@ -154,6 +165,6 @@ const userSlice = createSlice({
     },
 )
 const {reducer: userReducer/*, actions: {setStateOfUpdating}*/} = userSlice;
-const userActions = {getAll, getById, create, updateById,deleteById, addFavoriteRest,removeFavoriteRest, /*setStateOfUpdating,*/ changePassword};
+const userActions = {getAll, getById, create, updateById, deleteById, addFavoriteRest,removeFavoriteRest, changePassword};
 
 export {userReducer, userActions}

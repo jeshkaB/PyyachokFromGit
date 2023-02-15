@@ -13,7 +13,8 @@ const restaurantSchema = new Schema({
         email: {type: String, required: true},
         webSite: {type: String},
         rating: Number,
-        moderated: {type: Boolean, default: false}, //неперевірений - false, перевірений - true
+        moderated: {type: Boolean, default: false},//неперевірений - false, перевірений - true
+        moderationMessage: String,
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',

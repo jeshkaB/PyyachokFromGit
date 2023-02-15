@@ -40,6 +40,7 @@ restaurantRouter.delete(
     '/:restId',
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkRestaurantIsExist(),
+    authMiddleware.checkAccessToken,
     forAllMiddleware.checkUserIdInEntity('restaurant'),
     restaurantController.deleteRestaurant);
 

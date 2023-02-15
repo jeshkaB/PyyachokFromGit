@@ -2,6 +2,7 @@ const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
 const {markValidator} = require("../validators");
 const {commentService, markService} = require("../services");
+const {login} = require("../controllers/auth.controller");
 
 
 module.exports = {

@@ -25,6 +25,7 @@ export * from './Restaurant/restaurant';
 export * from './RestaurantCard/restaurantCard';
 export * from './RestaurantCreate/restaurantCreate';
 export * from './RestaurantForAdmin/restaurantForAdmin';
+export * from './RestaurantsForModeration/RestaurantsForModeration';
 export * from './RestaurantUpdate/RestaurantUpdate';
 export * from './StarsRating/starsRating';
 export * from './UserEvent/UserEvent';

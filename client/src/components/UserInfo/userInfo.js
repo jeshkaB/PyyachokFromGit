@@ -25,6 +25,7 @@ const UserInfo = ({userId, role}) => {
                     <Link to = {'/myAccount'}>Особистий кабінет</Link>
                     <br/>
                     {role && role.includes(roles.REST_ADMIN) && <Link to = {'/restaurantManager'}>Адміністрування закладів</Link>}
+                    {role && role.includes(roles.SUPER_ADMIN) && <Link to = {'/superAdmin'}>Адміністрування сайту</Link>}
                 </div>}
 
             {avatar &&

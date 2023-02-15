@@ -1,4 +1,4 @@
-const {restaurantService, fileService, userService, commentService} = require("../services");
+const {restaurantService, fileService, userService, commentService, newsService, userEventService, markService} = require("../services");
 const {statusCode, pathImg, roles} = require("../constants");
 const uuid = require("uuid");
 const {PATH_RESTAURANT_PHOTO} = require("../constants/pathImg");
@@ -68,11 +68,27 @@ module.exports = {
     deleteRestaurant: async (req, res, next) => {
         try {
             const {restId} = req.params;
+            // const {_id} = req.tokenInfo.user;
+            const {user, moderated, mainImage, news, comments, userEvents, marks} = await restaurantService.getRestaurantById(restId);//тут всі айдішки
 
-            const {mainImage} = restaurantService.getRestaurantById(restId);
+            //видаляємо всі сутності, похідні від ресторану, якщо це не видалення закладу, який не пройшов модерацію
+            if (moderated) {
+                news.map(async id => await newsService.deleteNews(id))
+                comments.map(async id => await commentService.deleteComment(id))
+                userEvents.map(async id => await userEventService.deleteUserEvent(id))
+                marks.map(async id => await markService.deleteMark(id))
+            }
+
             await fileService.deleteFile(pathImg.PATH_RESTAURANT_PHOTO, mainImage);
 
+            //видаляємо ресторан з юзера
+            const restaurantsOfUser = await restaurantService.getRestaurantByParams({user});
+            const index = restaurantsOfUser.findIndex(rest=>rest._id===restId)
+            const newRestaurantsList = restaurantsOfUser.splice(index,1)
+            await userService.updateUser(user, {restaurants: newRestaurantsList})
+
             await restaurantService.deleteRestaurant(restId);
+
             res.status(statusCode.NO_CONTENT).json()
 
         } catch (e) {

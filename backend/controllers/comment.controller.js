@@ -65,13 +65,13 @@ module.exports = {
     deleteComment: async (req, res, next) => {
         try {
             const {comId} = req.params;
-            const {user, restaurant} = await commentService.getCommentById(comId);//беремо айдішкі юзера і ресторана із комента
+            const {user, restaurant} = await commentService.getCommentById(comId);//ресторан - айдішка, юзер - об'єкт
 
             await commentService.deleteComment(comId);
 
-            const userComments = await commentService.getCommentsByParams({user});
+            const userComments = await commentService.getCommentsByParams({user:user._id});
             const upUserComments = userComments.filter(item => item._id !== comId)
-            await userService.updateUser(user, {
+            await userService.updateUser(user._id, {
                 comments: upUserComments
             });
 

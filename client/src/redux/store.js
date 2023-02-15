@@ -1,17 +1,17 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {authReducer} from "./slices/auth.slice";
 import {restaurantReducer} from "./slices/restaurant.slice";
 import {markReducer} from "./slices/mark.slice";
 import {newsReducer} from "./slices/news.slice";
 import {commentReducer} from "./slices/comment.slice";
 import {userReducer} from "./slices/user.slice";
-import {authReducer} from "./slices/auth.slice";
 import {userEventReducer} from "./slices/userEvent.slice";
 import {eventAnswerReducer} from "./slices/eventAnswer.slice";
+import {generalNewsReducer} from "./slices/generalNews.slice";
 
 
-
-
-const rootReducer = combineReducers({
+let rootReducer;
+rootReducer = combineReducers({
     auth: authReducer,
     restaurant: restaurantReducer,
     mark: markReducer,
@@ -19,8 +19,9 @@ const rootReducer = combineReducers({
     comment: commentReducer,
     user: userReducer,
     userEvent: userEventReducer,
-    eventAnswer: eventAnswerReducer
-})
+    eventAnswer: eventAnswerReducer,
+    generalNews: generalNewsReducer
+});
 
 const setupStore = () => configureStore({
     reducer: rootReducer

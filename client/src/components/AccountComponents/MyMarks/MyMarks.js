@@ -14,7 +14,7 @@ const MyMarks = ({user}) => {
     }, [dispatch]);
 
     let myMarks=[]
-    if (marks) myMarks = marks.filter(mark=>mark.user===_id)
+    if (marks) myMarks = marks.filter(mark=>mark.user._id===_id)
 
     const [stateMarks, setStateMarks] = useState(false)
 

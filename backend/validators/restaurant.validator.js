@@ -12,6 +12,9 @@ const categoriesValidator = Joi.array().items(Joi.string()).error(new LocalError
 const phoneValidator = Joi.string().regex(regex.PHONE).error(new LocalError('phone is not valid', BAD_REQUEST));
 const restaurantEmailValidator = Joi.string().email().error(new LocalError('email is not valid', BAD_REQUEST));
 const webSiteValidator = Joi.string().regex(regex.WEBSITE).error(new LocalError('web site is not valid', BAD_REQUEST));
+const moderatedValidator = Joi.boolean().error(new LocalError('moderated is not valid', BAD_REQUEST));
+const moderationMessageValidator = Joi.string().min(3).max(50).error(new LocalError('moderation message is not valid', BAD_REQUEST));
+
 //TODO написати валідатор для mainImage - required? Це повинно бути окремо, бо в мідлварі ми валідуємо окремо бади и файлс
 
 const newRestaurantBodyValidator = Joi.object({
@@ -23,11 +26,12 @@ const newRestaurantBodyValidator = Joi.object({
         categories: categoriesValidator,
         phone: phoneValidator.required(),
         email: restaurantEmailValidator.required(),
-        webSite: webSiteValidator
+        webSite: webSiteValidator,
+
 
     }
 );
-const updateRestaurantBodyValidator = Joi.object({
+const   updateRestaurantBodyValidator = Joi.object({
         name: restaurantNameValidator,
         place: placeValidator,
         averageBill: averageBillValidator,
@@ -36,7 +40,9 @@ const updateRestaurantBodyValidator = Joi.object({
         categories: categoriesValidator,
         phone: phoneValidator,
         email: restaurantEmailValidator,
-        webSite: webSiteValidator
+        webSite: webSiteValidator,
+        moderated:moderatedValidator,
+        moderationMessage: moderationMessageValidator
     }
 )
 

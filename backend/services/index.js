@@ -4,6 +4,7 @@ module.exports = {
     commentService: require('./comment.service'),
     eventAnswerService: require('./eventAnswer.service'),
     fileService: require('./file.service'),
+    generalNewsService: require('./generalNews.service'),
     markService: require('./mark.service'),
     newsService: require('./news.service'),
     restaurantService: require('./restaurant.service'),

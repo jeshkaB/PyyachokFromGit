@@ -20,7 +20,7 @@ eventAnswerRouter.get('/:answId',
     eventAnswerMiddleware.checkEventAnswerIsExist(),
     eventAnswerController.getEventAnswerById);
 
-eventAnswerRouter.put('/:answId',
+eventAnswerRouter.patch('/:answId',
     eventAnswerMiddleware.checkAnswerBodyIsValid,
     forAllMiddleware.checkIdIsValid('answId'),
     eventAnswerMiddleware.checkEventAnswerIsExist(),

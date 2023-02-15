@@ -6,6 +6,7 @@ const urls = {
     auth: '/auth',
     comments: '/comments',
     eventAnswers: '/eventAnswers',
+    generalNews: '/generalNews',
     marks: '/marks',
     news: '/news',
     restaurants: '/restaurants',

@@ -4,7 +4,7 @@ import './newsCardStyle.css'
 
 
 const NewsCard = ({news}) => {
-    const {_id, title, content, newsImage, category, restaurant} = news;
+    const {_id, title, content, newsImage, category, restaurant, createdAt} = news;
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -14,7 +14,7 @@ const NewsCard = ({news}) => {
                 <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
                     <h2>{title}</h2>
                     <h3> від {restaurant.name}</h3>
-                    <div>{category}</div>
+                    <div>{category}, {createdAt.slice(0,10)}</div>
                     {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
@@ -24,7 +24,7 @@ const NewsCard = ({news}) => {
                 <div className={'NewsCard'} onClick={() => navigate(`${_id}`)}>
                     <h2>{title}</h2>
                     <h3> від {restaurant.name}</h3>
-                    <div>{category}</div>
+                    <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
                     {newsImage && <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
@@ -33,7 +33,7 @@ const NewsCard = ({news}) => {
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}` )}>
                     <h2>{title}</h2>
-                    <div>{category}</div>
+                    <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
                     {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
@@ -42,7 +42,17 @@ const NewsCard = ({news}) => {
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
                     <h2>{title}</h2>
-                    <div>{category}</div>
+                    <div>{category}, {createdAt.slice(0,10)}</div>
+                    <div>{content}</div>
+                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                </div>);
+            break
+        case '/superAdmin':
+            return (
+                <div className={'NewsCard'} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
+                    <h2>{title}</h2>
+                    <h3> від {restaurant.name}</h3>
+                    <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
                     {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);

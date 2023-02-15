@@ -63,7 +63,7 @@ module.exports = {
     deleteMark: async (req, res, next) => {//TODO юзер може видаляти свою оцінку?
         try {
             const {markId} = req.params;
-            const {user,restaurant} = await markService.getMarkById(markId);
+            const {user,restaurant} = await markService.getMarkById(markId);//тут айдішки
 
             await markService.deleteMark(markId);
 
