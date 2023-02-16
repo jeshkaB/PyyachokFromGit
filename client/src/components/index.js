@@ -9,6 +9,10 @@ export * from './Comment/comment';
 export * from './CommentForm/commentForm';
 export * from './CommentsInRest/CommentsInRest';
 export * from './EventAnswerCard/EventAnswerCard';
+export * from './GeneralNews/GeneralNews';
+export * from './GeneralNewsCard/GeneralNewsCard';
+export * from './GeneralNewsCreate/GeneralNewsCreate';
+export * from './GeneralNewsList/GeneralNewsList';
 export * from './Header/Header';
 export * from './LoginForm/loginForm';
 export * from './MarksCard/MarksCard';
@@ -35,6 +39,8 @@ export * from './UserEventList/UserEventList';
 export * from './UserEventsInRest/UserEventsInRest';
 export * from './UserInfo/userInfo';
 export * from './UsersList/usersList';
+export * from './User/User';
+export * from './UserCard/UserCard';
 
 
 

@@ -28,7 +28,8 @@ const RestaurantCreate = ({userId}) => {
         formData.append('webSite', data.webSite);
         formData.append('tags', data.tags);
         // formData.append('categories', data.categories);
-        const {_id} = await dispatch(restaurantActions.create({restObj: formData}))
+        const {payload} = await dispatch(restaurantActions.create({restObj: formData}))
+       // в payload новий об'єкт
         setStateCreate(false)
         if (!errors) alert('Заклад успішно створено, очікує модерацію')
     }

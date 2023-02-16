@@ -2,8 +2,8 @@ const {newsService, fileService, userService, restaurantService} = require("../s
 const uuid = require("uuid");
 const {pathImg, statusCode} = require("../constants");
 const path = require("path");
-const {PATH_RESTAURANT_PHOTO, PATH_NEWS_PHOTO} = require("../constants/pathImg");
-const {login} = require("./auth.controller");
+const {PATH_NEWS_PHOTO} = require("../constants/pathImg");
+
 
 
 module.exports = {
@@ -60,7 +60,6 @@ module.exports = {
     },
     updateNews: async (req, res, next) => {
         try {
-
             const {newsId} = req.params;
             if (!req.files) {
                 const news = await newsService.updateNews(newsId, req.body);
@@ -70,6 +69,8 @@ module.exports = {
                 if (req.news.newsImage) {
                     const fileName = req.news.newsImage;
                     await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));
+                    const news = await newsService.getNewsById(newsId)
+                    res.json(news)
                 } else {
                     const fileName = uuid.v4() + '.jpg';
                     await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));

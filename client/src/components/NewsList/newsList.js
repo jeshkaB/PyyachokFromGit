@@ -18,11 +18,17 @@ const NewsList = ({restId}) => {
 
         const newsOfRest = newsAll.filter(item => item.restaurant._id === restId)
         return (
-            <div className={'NewsCards'}>{newsOfRest.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+            <div>
+                {JSON.stringify(newsAll)==='[]' && <h4> Новин поки що немає </h4> }
+                <div className={'NewsCards'}>{newsOfRest.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+            </div>
         )
     } else
         return (
-            <div className={'NewsCards'}>{newsAll.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+            <div>
+                {JSON.stringify(newsAll)==='{}' && <h4> Новин поки що немає </h4> }
+                <div className={'NewsCards'}>{newsAll.map(news => <NewsCard key={news._id} news={news}/>)}</div>
+            </div>
         );
 
 }

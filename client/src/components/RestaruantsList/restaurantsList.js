@@ -21,6 +21,7 @@ const RestaurantsList = ({userId}) => {
 
     return (
             <div className={'RestList'}>
+                {JSON.stringify(restaurants)==='[]' && <h4> Закладів поки що немає </h4> }
                 <div>{restaurantsForCards.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
             </div>
         );

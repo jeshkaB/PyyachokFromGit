@@ -52,13 +52,14 @@ module.exports = {
         try {
             const {restId} = req.params;
             const restaurant = await restaurantService.updateRestaurant(restId, req.body);
-
             res.json(restaurant);
 
             if (req.files) {
                 const fileName = restaurant.mainImage;
                 const {mainImage} = req.files;
                 await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
+                const restaurant = await restaurantService.getRestaurantById(restId)
+                res.json(restaurant)
             }
 
         } catch (e) {

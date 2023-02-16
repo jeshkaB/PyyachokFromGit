@@ -5,11 +5,10 @@ const {roles} = require("../constants");
 
 const generalNewsRouter = Router();
 
-generalNewsRouter.get('/', newsController.getNews);
+generalNewsRouter.get('/', generalNewsController.getNews);
 
 generalNewsRouter.post('/',
     generalNewsMiddleware.checkNewNewsBodyIsValid,
-    forAllMiddleware.checkIdIsValid('newsId'),//from params - по замовчуванню
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     generalNewsController.createNews);

@@ -1,18 +1,18 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {newsActions, restaurantActions} from "../../redux";
-import {useNavigate} from "react-router-dom";
+import {generalNewsActions, newsActions, restaurantActions} from "../../redux";
+import {useLocation, useNavigate} from "react-router-dom";
 import {Dropdown} from "react-bootstrap";
 import {categoriesOfNews} from "../../constants";
 
 
 
 const NewsUpdate = ({news}) => {
-
+    const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {errors} = useSelector(state => state.news)
+    // const {errors} = useSelector(state => state.news)
     const {register, handleSubmit} = useForm()
     const {_id, title, content, category} = news
 
@@ -27,11 +27,17 @@ const NewsUpdate = ({news}) => {
         if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
         formData.append('category', selectedCategory || category);
 
-        await dispatch(newsActions.updateById({id: _id, newsObj: formData}))
-        setStateUpdate(false)
-        // if (!errors) navigate(`/news/${_id}`)
+        if (location.pathname===`/generalNews/${_id}`) {
+            const {error} = await dispatch(generalNewsActions.updateById({id: _id, newsObj: formData}))
+            // setStateUpdate(false)
+            if (!error) navigate(-1)
+        }
+        else {
+            const {error} = await dispatch(newsActions.updateById({id: _id, newsObj: formData}))
+            // if (!error) setStateUpdate(false)
+            if (!error) navigate(-1)
+        }
     }
-
     return (
         <div>
             <h3 style={{cursor: "pointer"}} onClick={() => setStateUpdate(true)}> Редагувати новину </h3>

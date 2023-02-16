@@ -84,11 +84,9 @@ module.exports = {
             } else {
                 const {avatar: image} = req.files;
                 if (req.user.avatar) {
-                    const file = req.user.avatar;
-                    await fileService.deleteFile(pathImg.PATH_AVATAR, file);
-                    const fileName = uuid.v4() + '.jpg';
+                    const fileName = req.user.avatar;
                     await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
-                    const user = await userService.updateUser(userId, {...req.body, avatar: fileName});
+                    const user = await userService.getUserById(userId)
                     res.json(user)
                 } else {
                     const fileName = uuid.v4() + '.jpg';

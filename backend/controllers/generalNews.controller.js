@@ -1,4 +1,4 @@
-const {fileService, userService, generalNewsService} = require("../services");
+const {fileService, userService, generalNewsService, newsService} = require("../services");
 const uuid = require("uuid");
 const {pathImg, statusCode} = require("../constants");
 const path = require("path");
@@ -60,9 +60,11 @@ module.exports = {
                 res.json(news)
             } else {
                 const {newsImage} = req.files;
-                if (req.news.newsImage) {
-                    const fileName = req.news.newsImage;
+                if (req.generalNews.newsImage) {
+                    const fileName = req.generalNews.newsImage;
                     await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));
+                    const news = await generalNewsService.getNewsById(newsId)
+                    res.json(news)
                 } else {
                     const fileName = uuid.v4() + '.jpg';
                     await newsImage.mv(path.resolve(__dirname, '..', PATH_NEWS_PHOTO, fileName));

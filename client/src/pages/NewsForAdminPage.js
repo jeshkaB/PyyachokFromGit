@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 
 const NewsForAdminPage = () => {
-    const {errors} = useSelector(state => state.restaurant);
+    const {errors} = useSelector(state => state.news);
 
 
     return (
