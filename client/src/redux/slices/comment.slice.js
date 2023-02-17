@@ -66,7 +66,8 @@ const deleteById = createAsyncThunk(
     'commentSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity, id)
+            const {data} =  await ApiService.deleteById(entity, id)
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -99,7 +100,7 @@ const commentSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.comments.findIndex(event=>event._id === action.payload)
+                    const index = state.comments.findIndex(event=>event._id === action.payload._id)
                     state.comments.splice(index,1)
                 })
                 .addDefaultCase((state, action) => {

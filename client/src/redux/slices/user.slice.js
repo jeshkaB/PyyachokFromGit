@@ -69,7 +69,8 @@ const deleteById = createAsyncThunk(
     'userSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity, id)
+            const {data} = await ApiService.deleteById(entity, id)
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -142,8 +143,8 @@ const userSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    // const index = state.users.findIndex(user=>user._id === action.payload);
-                    // state.users.slice(index,1)
+                    const index = state.users.findIndex(user=>user._id === action.payload._id);
+                    state.users.slice(index,1)
                     // TODO це закінчення не працює в жодному слайсі - видає помилку - розібратися
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {

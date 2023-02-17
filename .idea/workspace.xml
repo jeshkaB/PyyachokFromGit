@@ -2,32 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsCard/GeneralNewsCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsCreate/GeneralNewsCreate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsListPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/UserPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/generalNews.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/generalNews.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/news.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/news.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/generalNews.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/generalNews.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsList/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsList/newsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/comment.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/comment.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/eventAnswer.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/eventAnswer.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/mark.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/mark.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,19 +47,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/UserCard",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/fin_project/client/src/components/UserCard&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\UserCard" />
@@ -104,6 +91,7 @@
       <workItem from="1674045768470" duration="88258000" />
       <workItem from="1674467347941" duration="302720000" />
       <workItem from="1676312261021" duration="75722000" />
+      <workItem from="1676621642295" duration="7031000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>

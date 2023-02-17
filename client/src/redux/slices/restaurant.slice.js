@@ -29,7 +29,8 @@ const create = createAsyncThunk(
     'restaurantSlice/create',
     async ({restObj}, {rejectWithValue}) => {
         try {
-            return await ApiService.create(entity, restObj)
+            const {data} = await ApiService.create(entity, restObj)
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -64,7 +65,8 @@ const deleteById = createAsyncThunk(
     'restaurantSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
-            return await ApiService.deleteById(entity, id)
+            const {data} =  await ApiService.deleteById(entity, id)
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -99,9 +101,9 @@ const restaurantSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    // const index = state.restaurants.findIndex(rest=>rest._id === action.payload);
-                    // state.restaurants.slice(index,1)
-                  // TODO це закінчення не працює в жодному слайсі - видає помилку - розібратися
+                    const index = state.restaurants.findIndex(rest=>rest._id === action.payload._id);
+                    state.restaurants.slice(index,1)
+
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

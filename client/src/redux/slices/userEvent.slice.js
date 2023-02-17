@@ -67,8 +67,8 @@ const deleteById = createAsyncThunk(
     'userEventSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
-            await ApiService.deleteById(entity, id);
-            return id //для того щоб убрати зі стейту подій
+            const {data} = await ApiService.deleteById(entity, id);
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -105,7 +105,7 @@ const userEventSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.userEvents.findIndex(event=>event._id === action.payload)
+                    const index = state.userEvents.findIndex(event=>event._id === action.payload._id)
                     state.userEvents.splice(index,1)
                 })
                 .addDefaultCase((state, action) => {

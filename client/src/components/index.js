@@ -41,6 +41,7 @@ export * from './UserInfo/userInfo';
 export * from './UsersList/usersList';
 export * from './User/User';
 export * from './UserCard/UserCard';
+export * from './UserUpdate&Delete/UserUpdate&Delete';
 
 
 

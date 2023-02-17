@@ -66,8 +66,8 @@ const deleteById = createAsyncThunk(
     'eventAnswerSlice/deleteById',
     async (id, {rejectWithValue}) => {
         try {
-            await ApiService.deleteById(entity, id);
-            return id
+            const {data} = await ApiService.deleteById(entity, id);
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -104,7 +104,7 @@ const eventAnswerSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.eventAnswers.findIndex(event=>event._id === action.payload)
+                    const index = state.eventAnswers.findIndex(event=>event._id === action.payload._id)
                     state.eventAnswers.splice(index,1)
                 })
                 .addDefaultCase((state, action) => {
