@@ -1,18 +1,18 @@
 import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { useNavigate} from "react-router-dom";
 import {authActions} from "../../redux";
 
 
 
 
 const LoginForm = () => {
-
     const {register, handleSubmit} = useForm()
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-       const {errors} = useSelector(state => state.auth)
+
+       // const {errors} = useSelector(state => state.auth)
 
        const submit = async (data) => {//дата приходить с форми у вигляді: {name: 'qwer', email: 'qwer@i.ua', password: 'qwer123'}
         const {error} = await dispatch(authActions.login({user: data}))

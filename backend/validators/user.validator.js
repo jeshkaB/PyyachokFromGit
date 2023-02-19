@@ -8,7 +8,6 @@ const {roles} = require("../constants");
 const userNameValidator = Joi.string().alphanum().min(3).max(20).trim().error(new LocalError('name is not valid', BAD_REQUEST));
 const emailValidator = Joi.string().trim().email();
 const passwordValidator = Joi.string().trim().regex(PASSWORD);
-const oldPasswordValidator = Joi.string()
 const roleValidator = Joi.array().items(Joi.string().valid(roles.USER, roles.REST_ADMIN, roles.SUPER_ADMIN)).error(new LocalError('role is not valid', BAD_REQUEST));
 
 const newUserBodyValidator = Joi.object({
@@ -32,7 +31,7 @@ const loginUserValidator = Joi.object({
 
 const changePasswordValidator = Joi.object({
     newPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
-    oldPassword: oldPasswordValidator,
+    oldPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
 });
 
 module.exports = {

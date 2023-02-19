@@ -3,13 +3,13 @@ import {useEffect} from "react";
 import {restaurantActions, userActions} from "../redux";
 import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
 
-const MyAccountPage = (props) => {
+const MyAccountPage = () => {
+    const dispatch = useDispatch();
+    const {userId, errors: authErrors} = useSelector(state => state.auth);
+    const {user, errors: userErrors} = useSelector(state => state.user);
 
-    const {userId} = useSelector(state => state.auth);
-    const {user, errors} = useSelector(state => state.user);
     const {restaurants} = useSelector(state => state.restaurant)
 
-    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userActions.getById(userId))
     }, [userId]);
@@ -20,18 +20,22 @@ const MyAccountPage = (props) => {
 
     return (
         <div>
-            {errors &&
-            <h3 className={'errors'}> {errors.message} </h3>}
-            <div style={{border: 'solid'}}>
-                <h2>Улюблені заклади</h2>
-                <div> <FavoriteRestaurants user={user}/> </div>
-            </div>
-            <div>
+            {authErrors &&
+            <h3 className={'errors'}> {authErrors.message} </h3>
+            }
+            {userErrors &&
+                <h3 className={'errors'}> {userErrors.message} </h3>
+            }
+                <div style={{border: 'solid'}}>
+                    <h2>Улюблені заклади</h2>
+                    <div><FavoriteRestaurants user={user}/></div>
+                </div>
+                <div>
                 <div> <UpdateAccount user={user}/></div>
                 <div> <MyMarks user={user}/></div>
                 <div> <MyComments user={user} restaurants={restaurants}/></div>
                 <div> <MyUserEvents user={user}/></div>
-            </div>
+                </div>
 
         </div>
     );

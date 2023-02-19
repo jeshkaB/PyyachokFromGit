@@ -34,6 +34,29 @@ const login = createAsyncThunk(
     }
 );
 
+const logout = createAsyncThunk(
+    'authSlice/logout',
+    async (_, {rejectWithValue}) => {
+        try {
+            await authService.logout();
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const logoutFromEverywhere = createAsyncThunk(
+    'authSlice/logoutFromEverywhere',
+    async (_, {rejectWithValue}) => {
+        try {
+            await authService.logoutFromEverywhere()
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+//___________________________________________________________________________________________________________________
 const authSlice = createSlice({
     name: 'authSlice',
     initialState,
@@ -45,7 +68,20 @@ const authSlice = createSlice({
                 state.userId = action.payload.user;
                 state.role = action.payload.role;
                 authService.saveTokensInLS(action.payload)
-
+            })
+            .addCase(logout.fulfilled, (state, action) => {
+                state.isAuth = false;
+                state.errors = null;
+                state.userId = null;
+                state.role = null;
+                authService.deleteTokensInLS()
+            })
+            .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
+                state.isAuth = false;
+                state.errors = null;
+                // state.userId = null;
+                state.role = null;
+                authService.deleteTokensInLS()
             })
             .addDefaultCase((state, action) => {
                 defaultCaseReject(state, action) //тут нам action.payload повертає rejectWithValue(e.response.data) - з функцій-запитів
@@ -54,6 +90,6 @@ const authSlice = createSlice({
 })
 
 const {reducer: authReducer} = authSlice;
-const authActions = {register, login};
+const authActions = {register, login, logout, logoutFromEverywhere};
 
 export {authReducer, authActions}

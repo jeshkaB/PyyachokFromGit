@@ -42,7 +42,8 @@ userRouter.put(
     authMiddleware.checkAccessToken,
     // forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
-    userMiddleware.checkChangePassword,
+    userMiddleware.checkPasswordPairIsValid,
+    userMiddleware.checkOldPassword,
     userController.updateUserPassword);
 
 userRouter.delete(

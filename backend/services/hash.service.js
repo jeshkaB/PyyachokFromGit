@@ -4,6 +4,7 @@ const {LocalError} = require("../errors");
 
 module.exports = {
     hashPassword: (password) => bcrypt.hash(password, 10),
+
     comparePasswords: async (password, hashPassword) =>  {
 
         const PasswordsAreSame = await bcrypt.compare(password, hashPassword);

@@ -77,26 +77,36 @@ module.exports = {
         }
     },
 
-    checkChangePassword: async (req, res, next) =>  {
-
+    checkPasswordPairIsValid: async (req, res, next) => {
         try {
-            const {password} = req.user
-            const {oldPassword} = req.body
-
-            const passwordsAreSame = await hashService.comparePasswords(oldPassword, password)
-
-            if (passwordsAreSame) {
+            const {oldPassword, newPassword} = req.body
+            if (oldPassword !== newPassword) {
                 const validate = userValidator.changePasswordValidator.validate(req.body);
                 if (validate.error) {
                     return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
-                }
-                req.body = validate.value;
-
-
-                next()
+                } else
+                    req.body = validate.value;
+            } else {
+                return next(new LocalError('New password must be different', statusCodes.BAD_REQUEST))
             }
+            next()
+        } catch (e) {
+            next(e)
+        }
+    },
+
+    checkOldPassword: async (req, res, next) => {
+        try {
+            const {password} = req.user
+            const {oldPassword} = req.body
+            const passwordsAreSame = await hashService.comparePasswords(oldPassword, password)
+            if (!passwordsAreSame)
+                return next(new LocalError('Old password is wrong', statusCodes.BAD_REQUEST))
+            next()
         } catch (e) {
             next(e)
         }
     },
 }
+
+

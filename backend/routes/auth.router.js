@@ -15,6 +15,16 @@ authRouter.post (
     authController.login);
 
 authRouter.post (
+    '/logout',
+    authMiddleware.checkAccessToken,
+    authController.logout);
+
+authRouter.post (
+    '/logout/fromEverywhere',
+    authMiddleware.checkAccessToken,
+    authController.logoutFromEverywhere);
+
+authRouter.post (
     '/registration',
     upload.any(),
     userMiddleware.checkNewUserBodyIsValid,

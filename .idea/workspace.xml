@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/comment.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/comment.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/eventAnswer.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/eventAnswer.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/mark.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/mark.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/hash.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/hash.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm/loginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/auth.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +98,7 @@
       <workItem from="1674467347941" duration="302720000" />
       <workItem from="1676312261021" duration="75722000" />
       <workItem from="1676621642295" duration="7031000" />
+      <workItem from="1676734921682" duration="18313000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>

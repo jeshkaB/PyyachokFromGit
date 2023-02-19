@@ -20,9 +20,15 @@ const RestaurantsList = ({userId}) => {
 
 
     return (
-            <div className={'RestList'}>
+            <div >
                 {JSON.stringify(restaurants)==='[]' && <h4> Закладів поки що немає </h4> }
-                <div>{restaurantsForCards.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
+                <form style={{display:'flex', width:'300px'}}>
+                    <input className="form-control me-2"
+                           type="search"
+                           placeholder="найменування закладу" />
+                    <button className="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <div className={'RestList'}>{restaurantsForCards.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
             </div>
         );
 }

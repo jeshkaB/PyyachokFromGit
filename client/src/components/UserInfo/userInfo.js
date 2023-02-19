@@ -15,7 +15,7 @@ const UserInfo = ({userId, role}) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userActions.getById(userId))
-    }, [userId])
+    }, [dispatch])
 
     return (
         <div className={css.UserInfo}>
