@@ -6,12 +6,12 @@ const {regex} = require("../constants");
 const restaurantNameValidator = Joi.string().max(20).trim().error(new LocalError('name is not valid', BAD_REQUEST));
 const placeValidator = Joi.string().trim().error(new LocalError('place is not valid', BAD_REQUEST));
 const averageBillValidator = Joi.number().error(new LocalError('average bill is not valid', BAD_REQUEST));
+const webSiteValidator = Joi.string().regex(regex.WEBSITE).error(new LocalError('web site is not valid', BAD_REQUEST));
 const hoursValidator = Joi.string().error(new LocalError('hours is not valid', BAD_REQUEST));
 const tagsValidator = Joi.string().error(new LocalError('tag is not valid', BAD_REQUEST));
 const categoriesValidator = Joi.array().items(Joi.string()).error(new LocalError('category is not valid', BAD_REQUEST));
 const phoneValidator = Joi.string().regex(regex.PHONE).error(new LocalError('phone is not valid', BAD_REQUEST));
 const restaurantEmailValidator = Joi.string().email().error(new LocalError('email is not valid', BAD_REQUEST));
-const webSiteValidator = Joi.string().regex(regex.WEBSITE).error(new LocalError('web site is not valid', BAD_REQUEST));
 const moderatedValidator = Joi.boolean().error(new LocalError('moderated is not valid', BAD_REQUEST));
 const moderationMessageValidator = Joi.string().min(3).max(50).error(new LocalError('moderation message is not valid', BAD_REQUEST));
 

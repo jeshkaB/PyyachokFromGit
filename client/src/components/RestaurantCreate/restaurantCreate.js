@@ -25,8 +25,8 @@ const RestaurantCreate = ({userId}) => {
         formData.append('phone', data.phone);
         formData.append('averageBill', data.averageBill);
         formData.append('email', data.email);
-        formData.append('webSite', data.webSite);
-        formData.append('tags', data.tags);
+        data.webSite && formData.append('webSite', data.webSite);
+        data.tags && formData.append('tags', data.tags);
         // formData.append('categories', data.categories);
         const {payload} = await dispatch(restaurantActions.create({restObj: formData}))
        // в payload новий об'єкт

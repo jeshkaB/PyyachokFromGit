@@ -32,6 +32,7 @@ export * from './RestaurantForAdmin/restaurantForAdmin';
 export * from './RestaurantsForModeration/RestaurantsForModeration';
 export * from './RestaurantUpdate/RestaurantUpdate';
 export * from './StarsRating/starsRating';
+export * from './Tag/Tag';
 export * from './UserEvent/UserEvent';
 export * from './UserEventCard/UserEventCard';
 export * from './UserEventForm/UserEventForm';

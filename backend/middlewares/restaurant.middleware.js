@@ -7,6 +7,7 @@ module.exports = {
 
     checkNewRestaurantBodyIsValid: (req, res, next) => {
         try {
+            console.log(req.body)
             const validate = restaurantValidator.newRestaurantBodyValidator.validate(req.body);
             //TODO тут треба перевірити на валідність фотки - поки в мене передбачений тільки тип "jpg"
             if (validate.error) {

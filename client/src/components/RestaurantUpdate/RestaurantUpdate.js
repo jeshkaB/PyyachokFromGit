@@ -19,14 +19,14 @@ const RestaurantUpdate= ({restaurant}) => {
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name);
-        if (data.mainImage[0]) formData.append('mainImage', data.mainImage[0]);
+        data.mainImage[0] && formData.append('mainImage', data.mainImage[0]);
         formData.append('place', data.place);
         formData.append('hours', data.hours);
         formData.append('phone', data.phone);
         formData.append('averageBill', data.averageBill);
         formData.append('email', data.email);
-        formData.append('webSite', data.webSite);
-        formData.append('tags', data.tags);
+        data.webSite && formData.append('webSite', data.webSite);
+        data.tags && formData.append('tags', data.tags);
         // formData.append('categories', data.categories);
         await dispatch(restaurantActions.updateById({id:_id, restObj: formData}))
         setStateUpdate(false)

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {restaurantActions, userActions} from "../../redux";
 import {Link, useParams} from "react-router-dom";
+import {Tag} from "../Tag/Tag";
 
 
 const Restaurant = () => {
@@ -14,8 +15,12 @@ const Restaurant = () => {
     const {id} = useParams();
     const {favoriteRestaurants} = user;
 
+    const tags = restaurant?.tags?.split(',').map(tag=>tag.trim());
+
+
     let alreadyFavorite
     if (favoriteRestaurants) alreadyFavorite = favoriteRestaurants.includes(id);
+    // const alreadyFavorite = favoriteRestaurants?.includes(id);
 
     const dispatch = useDispatch();
 
@@ -36,6 +41,7 @@ const Restaurant = () => {
         await dispatch(userActions.removeFavoriteRest({userId, restId: id}))
     };
 
+
     return (
         <div>
             <div>
@@ -43,7 +49,6 @@ const Restaurant = () => {
                 {(isFavorite || alreadyFavorite) === false &&
                     <div>
                         <h3 style={{cursor: "pointer"}} onClick={() => addFavorite()}>Додати до улюблених</h3>
-                        {/*<label><input type="checkbox" onChange={()=>addFavorite()}/>Додати до улюблених</label>*/}
                     </div>}
                 {(isFavorite || alreadyFavorite) === true &&
                     <div>
@@ -54,16 +59,17 @@ const Restaurant = () => {
 
                 </div>
             </div>
-
-            <img width={'50%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
-            <div><StarsRating rating={restaurant.rating}/></div>
-            <div> Адреса: {restaurant.place}</div>
-            <div> Телефон: {restaurant.phone}</div>
-            <div> Режим роботи: {restaurant.hours}</div>
-            <div> email: {restaurant.email} </div>
-            <div> Сайт: {restaurant.webSite} </div>
-            <div> Середній чек:{restaurant.averageBill} грн.</div>
-
+            <div>
+                <img width={'50%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
+                <div><StarsRating rating={restaurant.rating}/></div>
+                <div> Адреса: {restaurant.place}</div>
+                <div> Телефон: {restaurant.phone}</div>
+                <div> Режим роботи: {restaurant.hours}</div>
+                <div> email: {restaurant.email} </div>
+                <div> Сайт: {restaurant.webSite} </div>
+                <div> Середній чек:{restaurant.averageBill} грн.</div>
+                {tags && <div> {tags.map(tag => <Tag key={tag} tag={tag}/>)}</div>}
+            </div>
         </div>
     )
 };
