@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Tag/Tag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/RestaurantSearchForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantsListPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +83,7 @@
       <workItem from="1674467347941" duration="302720000" />
       <workItem from="1676312261021" duration="75722000" />
       <workItem from="1676621642295" duration="7031000" />
-      <workItem from="1676734921682" duration="36924000" />
+      <workItem from="1676734921682" duration="38068000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>
@@ -413,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676840711087</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="client interim1">
+      <created>1676920590974</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1676920590974</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
