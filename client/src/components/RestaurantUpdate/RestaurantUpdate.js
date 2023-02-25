@@ -14,7 +14,7 @@ const RestaurantUpdate= ({restaurant}) => {
 
     const {userId} = useSelector(state => state.auth)
     const [stateUpdate, setStateUpdate] = useState(false)
-    const {_id,name,place,hours,phone,averageBill,email,webSite,tags} = restaurant
+    const {_id,name,place,hours,phone,averageBill,email,webSite,tags, coordinates:[longitude, latitude]=[]} = restaurant
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -25,6 +25,8 @@ const RestaurantUpdate= ({restaurant}) => {
         formData.append('phone', data.phone);
         formData.append('averageBill', data.averageBill);
         formData.append('email', data.email);
+        formData.append('coordinates', data.longitude);
+        formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
         // formData.append('categories', data.categories);
@@ -45,6 +47,11 @@ const RestaurantUpdate= ({restaurant}) => {
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('mainImage')}/></label>
                         <br/>
                         <label>Адреса* <input required={true} defaultValue={place}  {...register('place')}/></label>
+                        <br/>
+                        <label>Координати в форматі lng lat*
+                            <input required={true} defaultValue={longitude}  {...register('longitude')}/>
+                            <input required={true} defaultValue={latitude}  {...register('latitude')}/>
+                        </label>
                         <br/>
                         <label>Режим роботи* <input  required={true} defaultValue={hours} {...register('hours')}/></label>
                         <br/>

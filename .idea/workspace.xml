@@ -2,10 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/RestaurantSearchForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/constants/coordinatesLimit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsFilter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/constants/categoriesForRestFilter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/constants/categoriesForRestSort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/redux/slices/geo.slice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/services/geolocation.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/MarksInRest/MarksInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/MarksInRest/MarksInRest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/RestaurantSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restListStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/restListStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaruantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/restaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/keysLS.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/keysLS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MarksInRestPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MarksInRestPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +74,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/RestaruantsList",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/backend/constants",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
@@ -53,11 +82,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaruantsList" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\UserCard" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\pages" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GeneralNews" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GeneralNewsCard" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\constants" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\services" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantsList" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\constants" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux" />
@@ -83,7 +112,7 @@
       <workItem from="1674467347941" duration="302720000" />
       <workItem from="1676312261021" duration="75722000" />
       <workItem from="1676621642295" duration="7031000" />
-      <workItem from="1676734921682" duration="38068000" />
+      <workItem from="1676734921682" duration="87991000" />
     </task>
     <task id="LOCAL-00001" summary="mongoose schemas 1">
       <created>1670833321919</created>
@@ -414,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676920590974</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="client interim1">
+      <created>1676921919425</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1676921919425</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

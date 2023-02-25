@@ -1,6 +1,9 @@
 const keysLS = {
     access: 'accessToken',
-    refresh: 'refreshToken'
+    refresh: 'refreshToken',
+
+    userLatitude: 'userLatitude',
+    userLongitude: 'userLongitude'
 }
 
 export {keysLS}

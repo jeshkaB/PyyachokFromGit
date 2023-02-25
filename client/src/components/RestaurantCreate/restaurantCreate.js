@@ -25,6 +25,8 @@ const RestaurantCreate = ({userId}) => {
         formData.append('phone', data.phone);
         formData.append('averageBill', data.averageBill);
         formData.append('email', data.email);
+        formData.append('coordinates', data.longitude);
+        formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
         // formData.append('categories', data.categories);
@@ -46,6 +48,11 @@ const RestaurantCreate = ({userId}) => {
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" required={true} {...register('mainImage')}/></label>
                         <br/>
                         <label>Адреса* <input required={true} {...register('place')}/></label>
+                        <br/>
+                        <label>Координати в форматі lng lat*
+                            <input required={true}  {...register('longitude')}/>
+                            <input required={true}  {...register('latitude')}/>
+                        </label>
                         <br/>
                         <label>Режим роботи* <input  required={true} {...register('hours')}/></label>
                         <br/>

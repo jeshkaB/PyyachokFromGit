@@ -8,8 +8,6 @@ import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 import {roles} from "../../constants";
 import {NewsCreate} from "../NewsCreate/NewsCreate";
 import {NewsList} from "../NewsList/newsList";
-import {CommentsInRest} from "../CommentsInRest/CommentsInRest";
-import {MarksInRest} from "../MarksInRest/MarksInRest";
 
 
 const RestaurantForAdmin = () => {
@@ -39,7 +37,7 @@ const RestaurantForAdmin = () => {
                 <div> Сайт: {restaurant.webSite} </div>
                 <div> Середній чек:{restaurant.averageBill} грн.</div>
             </div>
-            <div>//Оновити заклад
+            <div>
                 <RestaurantUpdate restaurant={restaurant}/>
             </div>
             {isSuperAdmin && <div>

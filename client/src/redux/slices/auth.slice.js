@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {authService} from "../../services";
+import {authService, geolocationService} from "../../services";
 import {defaultCaseReject} from "./utilityFunctions";
 
 const initialState = {
@@ -74,14 +74,16 @@ const authSlice = createSlice({
                 state.errors = null;
                 state.userId = null;
                 state.role = null;
-                authService.deleteTokensInLS()
+                authService.deleteTokensInLS();
+                geolocationService.deleteGeoCoordsInLS();
             })
             .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
                 state.isAuth = false;
                 state.errors = null;
                 // state.userId = null;
                 state.role = null;
-                authService.deleteTokensInLS()
+                authService.deleteTokensInLS();
+                geolocationService.deleteGeoCoordsInLS();
             })
             .addDefaultCase((state, action) => {
                 defaultCaseReject(state, action) //тут нам action.payload повертає rejectWithValue(e.response.data) - з функцій-запитів

@@ -11,8 +11,9 @@ const restaurantSchema = new Schema({
         categories: [String], //напр. весілля, корпоратив, день народження. А як його сортувати по цих категоріях в топ??????
         phone: {type: String, required: true},
         email: {type: String, required: true},
-        webSite: {type: String},
+        webSite: String,
         rating: Number,
+        coordinates: {type: [String], required:true},
         moderated: {type: Boolean, default: false},//неперевірений - false, перевірений - true
         moderationMessage: String,
         user: {

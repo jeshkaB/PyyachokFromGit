@@ -8,6 +8,7 @@ import {userReducer} from "./slices/user.slice";
 import {userEventReducer} from "./slices/userEvent.slice";
 import {eventAnswerReducer} from "./slices/eventAnswer.slice";
 import {generalNewsReducer} from "./slices/generalNews.slice";
+import {geoReducer} from "./slices/geo.slice";
 
 
 let rootReducer;
@@ -20,7 +21,9 @@ rootReducer = combineReducers({
     user: userReducer,
     userEvent: userEventReducer,
     eventAnswer: eventAnswerReducer,
-    generalNews: generalNewsReducer
+    generalNews: generalNewsReducer,
+    geo:geoReducer
+
 });
 
 const setupStore = () => configureStore({

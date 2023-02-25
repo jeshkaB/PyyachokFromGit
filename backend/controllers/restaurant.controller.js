@@ -14,7 +14,7 @@ module.exports = {
             const fileName = uuid.v4() + '.jpg';
             const {mainImage} = req.files;
             await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
-            const restaurant = await restaurantService.createRestaurant({...req.body, user: _id, mainImage: fileName});
+            const restaurant = await restaurantService.createRestaurant({...req.body, user: _id, mainImage: fileName, rating:0});
             if (role.includes(roles.REST_ADMIN)) await userService.updateUser(_id, {
                 restaurants: [
                     ...restaurants,
@@ -50,6 +50,7 @@ module.exports = {
     },
     updateRestaurant: async (req, res, next) => {
         try {
+            console.log(req.body)
             const {restId} = req.params;
             const restaurant = await restaurantService.updateRestaurant(restId, req.body);
             res.json(restaurant);

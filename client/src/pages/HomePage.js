@@ -8,12 +8,8 @@ import {GeneralNewsList, NewsList, RestaurantsList} from "../components";
                 <hr/>
                 <div> <NewsList/></div>
                 <div>
-
-                    <div> form search</div>
-                    <div> filter</div>
                     <div><RestaurantsList/></div>
                     <div> Топ закладів </div>
-
                 </div>
             </div>
 

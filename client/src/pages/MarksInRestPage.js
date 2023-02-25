@@ -6,14 +6,14 @@ import {Comment, CommentForm, MarksInRest} from "../components";
 
 
 const MarksInRestPage = () => {
-    const dispatch = useDispatch();
-
-    const {id} = useParams();
-    const {restaurant} = useSelector(state => state.restaurant);
-
-    useEffect(()=>{
-        dispatch(restaurantActions.getById(id))
-    }, [dispatch])
+    // const dispatch = useDispatch();
+    //
+    // const {id} = useParams();
+    // const {restaurant} = useSelector(state => state.restaurant);
+    //
+    // useEffect(()=>{
+    //     dispatch(restaurantActions.getById(id))
+    // }, [dispatch])
 
 
     return (

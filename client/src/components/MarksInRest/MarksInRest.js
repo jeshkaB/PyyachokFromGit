@@ -22,8 +22,9 @@ const MarksInRest = () => {
     const [rating, setRating] = useState(0)
     const [stateStars, setStateStars] = useState(false);
 
-    const marksOfRest = marks.filter(mark=>mark.restaurant._id===id)
-    const marksFirst5 = marksOfRest.reverse().slice(0, 5);//в API посортовані від перших до останніх
+    const marksOfRest = marks?.filter(mark=>mark.restaurant._id===id)
+    const marksFirst5 = [...marksOfRest]?.reverse().slice(0, 5);//в API посортовані від перших до останніх
+
     const markClick = () => {
         if (isAuth) setStateStars(true)
         else alert('Увійдіть або зареєструйтеся')
@@ -46,7 +47,7 @@ const MarksInRest = () => {
         case `/restaurants/${id}`:
             return (
                 <div>
-                    {!marksFirst5 && <h3>Оцінок поки що немає</h3>}
+                    {(!marks || JSON.stringify(marksFirst5) === '[]') && <h3>Оцінок поки що немає</h3>}
                     <div style={{border: 'solid', width: '50%'}}>
                         {marksFirst5.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                     </div>
@@ -57,9 +58,10 @@ const MarksInRest = () => {
             );
             break
         case `/restaurants/${id}/marks`:
+
             return (
                 <div>
-                    {!marksOfRest && <h3>Оцінок поки що немає</h3>}
+                    {!marks || JSON.stringify(marksOfRest) === '[]' && <h3>Оцінок поки що немає</h3>}
                     {marksOfRest &&
                         marksOfRest.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                 </div>
