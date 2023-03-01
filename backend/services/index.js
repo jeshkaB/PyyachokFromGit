@@ -11,5 +11,6 @@ module.exports = {
     tokenService: require ('./token.service'),
     userService: require('./user.service'),
     userEventService: require('./userEvent.service'),
+    topCategoryService: require('./topCategory.service'),
 
 }

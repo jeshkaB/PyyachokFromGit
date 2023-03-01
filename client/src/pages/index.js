@@ -13,6 +13,7 @@ export * from './RestaurantManagerPage';
 export * from './RestaurantPage';
 export * from './SuperAdminPage';
 export * from './RestaurantsListPage';
+export * from './TopPage';
 export * from './UsersListPage';
 export * from './UserPage';
 export * from './UserEventPage';

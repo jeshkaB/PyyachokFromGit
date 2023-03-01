@@ -8,8 +8,10 @@ import {
     RestaurantsList, UsersList
 } from "../components";
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const SuperAdminPage = ()=> {
+    const navigate = useNavigate();
     // const {errors} = useSelector(state => state.generalNews);
     const {userId} = useSelector(state => state.auth)
     const [stateRestList,setStateRestList] = useState(false);
@@ -62,6 +64,9 @@ const SuperAdminPage = ()=> {
                         <h4>Оберіть користувача для редагування</h4>
                         <UsersList/>
                     </div>}
+            </div>
+            <div> <h3 style={{cursor: "pointer"}} onClick={() => {navigate('top')}}>Топ </h3>
+
             </div>
             <div> Analytics</div>
 

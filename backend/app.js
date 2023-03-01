@@ -7,7 +7,7 @@ const path = require("path");
 const fileUpload = require('express-fileupload')
 
 const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter, userRouter, authRouter,
-    eventAnswerRouter, generalNewsRouter
+    eventAnswerRouter, generalNewsRouter, topCategoryRouter
 } = require('./routes')
 const {ErrorMainHandler} = require("./errors");
 const {PATH_AVATAR, PATH_NEWS_PHOTO, PATH_RESTAURANT_PHOTO} = require("./constants/pathImg");
@@ -29,6 +29,7 @@ app.use('/generalNews', generalNewsRouter);
 app.use('/marks', markRouter);
 app.use('/news', newsRouter);
 app.use('/restaurants', restaurantRouter);
+app.use('/topCategory',topCategoryRouter);
 app.use('/users', userRouter);
 app.use('/userEvents', userEventRouter);
 

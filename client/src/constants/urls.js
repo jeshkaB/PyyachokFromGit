@@ -10,6 +10,7 @@ const urls = {
     marks: '/marks',
     news: '/news',
     restaurants: '/restaurants',
+    topCategory: '/topCategory',
     users: '/users',
     userEvents: '/userEvents'
 }

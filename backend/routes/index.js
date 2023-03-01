@@ -7,6 +7,7 @@ module.exports = {
     markRouter: require('./mark.router'),
     newsRouter: require('./news.router'),
     restaurantRouter: require('./restaurant.router'),
+    topCategoryRouter: require('./topCategory.router'),
     userRouter: require('./user.router'),
     userEventRouter: require('./userEvent.router'),
 

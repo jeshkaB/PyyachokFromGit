@@ -7,6 +7,7 @@ module.exports = {
     markMiddleware: require('./mark.middleware'),
     newsMiddleware: require('./news.middleware'),
     restaurantMiddleware: require('./restaurant.middleware'),
+    topCategoryMiddleware: require('./topCategory.middleware'),
     userMiddleware: require('./user.middleware'),
     userEventMiddleware: require('./userEvent.middleware'),
 
