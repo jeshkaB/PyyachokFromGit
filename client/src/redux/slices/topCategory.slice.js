@@ -7,7 +7,9 @@ import {urls} from "../../constants";
 const initialState = {
     topCategories: [],
     topCategory: {},
+    stateChangeTop: false,
     errors: null
+
 };
 
 const entity = urls.topCategory;
@@ -54,7 +56,6 @@ const updateById = createAsyncThunk(
     'topCategorySlice/updateById',
     async ({id, categObj}, {rejectWithValue}) => {
         try {
-            console.log({id,categObj})
             const {data} = await ApiService.updateById(entity, id, categObj)
             return data
         } catch (e) {
@@ -68,6 +69,30 @@ const deleteById = createAsyncThunk(
     async (id, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.deleteById(entity, id);
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const addRestaurantInCategory = createAsyncThunk(
+    'topCategorySlice/addRestaurantInCategory',
+    async ({categId, restId}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.addRestaurantInCategory(entity, categId, restId);
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const removeRestaurantInCategory = createAsyncThunk(
+    'topCategorySlice/removeRestaurantInCategory',
+    async ({categId, restId}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.removeRestaurantInCategory(entity, categId, restId);
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -97,12 +122,22 @@ const topCategorySlice = createSlice({
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.topCategory = action.payload
+                    state.topCategory = action.payload;
+                    const index = state.topCategories.findIndex(item => item._id === action.payload._id)
+                    state.topCategories[index].title = action.payload.title
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.topCategories.findIndex(event=>event._id === action.payload._id)
-                    state.topCategories.splice(index,1)
+                    const index = state.topCategories.findIndex(item => item._id === action.payload._id)
+                    state.topCategories.splice(index, 1)
+                })
+                .addCase(addRestaurantInCategory.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.stateChangeTop = !state.stateChangeTop
+                })
+                .addCase(removeRestaurantInCategory.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.stateChangeTop = !state.stateChangeTop
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)
@@ -111,6 +146,6 @@ const topCategorySlice = createSlice({
     },
 )
 const {reducer: topCategoryReducer} = topCategorySlice;
-const topCategoryActions = {getAll, getById, create, updateById, deleteById};
+const topCategoryActions = {getAll, getById, create, updateById, deleteById, addRestaurantInCategory, removeRestaurantInCategory};
 
 export {topCategoryReducer, topCategoryActions}

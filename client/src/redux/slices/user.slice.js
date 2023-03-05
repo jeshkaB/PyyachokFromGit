@@ -145,15 +145,15 @@ const userSlice = createSlice({
                     state.errors = null;
                     const index = state.users.findIndex(user=>user._id === action.payload._id);
                     state.users.slice(index,1)
-                    // TODO це закінчення не працює в жодному слайсі - видає помилку - розібратися
                 })
                 .addCase(addFavoriteRest.fulfilled, (state, action) => {
-                    state.isFavorite = true
+                    // state.isFavorite = true
                     state.errors = null;
 
                 })
+                //TODO щось не працює isFavorite
                 .addCase(removeFavoriteRest.fulfilled, (state, action) => {
-                    state.isFavorite = false
+                    // state.isFavorite = false
                     state.errors = null;
                 })
                 .addCase(changePassword.fulfilled, (state, action) => {

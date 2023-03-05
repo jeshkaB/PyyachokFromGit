@@ -65,8 +65,7 @@ const SuperAdminPage = ()=> {
                         <UsersList/>
                     </div>}
             </div>
-            <div> <h3 style={{cursor: "pointer"}} onClick={() => {navigate('top')}}>Топ </h3>
-
+            <div> <h3 style={{cursor: "pointer"}} onClick={() => {navigate('top')}}> Топ закладів </h3>
             </div>
             <div> Analytics</div>
 

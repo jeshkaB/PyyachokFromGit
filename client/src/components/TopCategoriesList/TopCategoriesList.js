@@ -1,37 +1,37 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {topCategoryActions} from "../../redux";
-import {Col} from "react-bootstrap";
 import {useForm} from "react-hook-form";
 
 const TopCategoriesList = () => {
     const dispatch = useDispatch();
     const {register, handleSubmit} = useForm()
     const [stateUpdate, setStateUpdate] = useState(false);
-    const [stateDelete, setStateDelete] = useState(false);
     const [currentCategory, setCurrentCategory] = useState({});
     const {topCategories} = useSelector(state => state.topCategory);
+
     useEffect(()=> {
         dispatch(topCategoryActions.getAll())
-    }, [stateDelete]);
+    }, []);
 
     const clickUpdate = (categ)=>{
         setStateUpdate(true);
         setCurrentCategory(categ)
-
     }
     const submitUpdate = async (data)=> {
-        const {error,payload:{title}={}} = await dispatch(topCategoryActions.updateById({id:currentCategory._id, categObj: data}))
+        const {error} = await dispatch(topCategoryActions.updateById({id:currentCategory._id, categObj: data}))
+        if (!error) {
+            setStateUpdate(false)
+        }
     }
 
     const clickDelete = async (categId)=>{
-        const {error} = await dispatch(topCategoryActions.deleteById(categId))
-        if (!error) setStateDelete(true)
+        await dispatch(topCategoryActions.deleteById(categId))
     }
 
     return (
         <div>
-            <h3>Всі категорії</h3>
+            <h3>Всі топ-категорії</h3>
             {JSON.stringify(topCategories) === '[]' && <p>Категорій поки що немає</p>}
             {topCategories &&
                 <div > {topCategories.map(categ=>

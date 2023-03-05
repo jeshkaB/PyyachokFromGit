@@ -12,9 +12,14 @@ const ApiService = {
 
     createByRestId: (entity, id, data) => axiosService.post(`${entity}/?restId=${id}`,data),//для коментів
     createByUserEventId: (entity, id, data) => axiosService.post(`${entity}/?eventId=${id}`,data),//для відповідей в пиячку
-    addFavoriteRest: (entity, userId, restId) => axiosService.post(`${entity}/${userId}/favoriteRest?restId=${restId}`),//для улблених ресторанів
+
+    addFavoriteRest: (entity, userId, restId) => axiosService.post(`${entity}/${userId}/favoriteRest?restId=${restId}`),//для улюблених ресторанів
     removeFavoriteRest: (entity, userId, restId) => axiosService.delete(`${entity}/${userId}/favoriteRest?restId=${restId}`),//для улюблених ресторанів
-    changePassword: (entity,userId,data) => axiosService.put(`${entity}/${userId}/changePassword`, data)
+
+    changePassword: (entity,userId,data) => axiosService.put(`${entity}/${userId}/changePassword`, data),
+
+    addRestaurantInCategory: (entity,categId,restId) => axiosService.post(`${entity}/${categId}/restaurant?restId=${restId}`), //для додавання ресторану до топ категорії
+    removeRestaurantInCategory: (entity,categId,restId) => axiosService.delete(`${entity}/${categId}/restaurant?restId=${restId}`),
 }
 
 export {ApiService}

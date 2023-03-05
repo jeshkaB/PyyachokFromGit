@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const {topCategoryController} = require("../controllers");
-const {topCategoryMiddleware, forAllMiddleware, authMiddleware} = require("../middlewares");
+const {topCategoryMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware} = require("../middlewares");
 const {roles} = require("../constants");
 
 const topCategoryRouter = Router();
@@ -15,22 +15,43 @@ topCategoryRouter.post('/',
 
 topCategoryRouter.get('/:categId',
     forAllMiddleware.checkIdIsValid('categId'),
+    authMiddleware.checkAccessToken,
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.getTopCategoryById);
 
 topCategoryRouter.patch('/:categId',
     topCategoryMiddleware.checkTopCategoryBodyIsValid,
     forAllMiddleware.checkIdIsValid('categId'),
-    topCategoryMiddleware.checkTopCategoryIsExist(),
     authMiddleware.checkAccessToken,
-    forAllMiddleware.checkUserIdInEntity('topCategory'),
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.updateTopCategory);
 
 topCategoryRouter.delete('/:categId',
     forAllMiddleware.checkIdIsValid('categId'),
-    topCategoryMiddleware.checkTopCategoryIsExist(),
     authMiddleware.checkAccessToken,
-    forAllMiddleware.checkUserIdInEntity('topCategory'),
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.deleteTopCategory);
+
+// id ресторану передаємо в query (/topCategories/id/restaurant?restId=......)
+topCategoryRouter.post('/:categId/Restaurant',
+    forAllMiddleware.checkIdIsValid('categId'),
+    forAllMiddleware.checkIdIsValid('restId','query'),
+    authMiddleware.checkAccessToken,
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    topCategoryMiddleware.checkTopCategoryIsExist(),
+    restaurantMiddleware.checkRestaurantIsExist('query'),
+    topCategoryController.addRestaurantInCategory);
+
+topCategoryRouter.delete('/:categId/Restaurant',
+    forAllMiddleware.checkIdIsValid('categId'),
+    forAllMiddleware.checkIdIsValid('restId','query'),
+    authMiddleware.checkAccessToken,
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    topCategoryMiddleware.checkTopCategoryIsExist(),
+    restaurantMiddleware.checkRestaurantIsExist('query'),
+    topCategoryController.removeRestaurantInCategory);
 
 module.exports = topCategoryRouter

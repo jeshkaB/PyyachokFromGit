@@ -2,32 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/controllers/topCategory.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dataBase/TopCategory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/middlewares/topCategory.middleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/topCategory.router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/topCategory.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/validators/topCategory.validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/TopPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/redux/slices/topCategory.slice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/-CategoryCheckbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/CategoryDropdown.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/validators/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/topCategory.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/topCategory.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/topCategory.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/topCategory.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/urls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TopPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TopPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/topCategory.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/topCategory.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/API.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,26 +48,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/redux/slices",
-    "list.type.of.created.stylesheet": "CSS",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/fin_project/client/src/components/RestaurantsListForTop&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantsListForTop" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend\middlewares" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend\routes" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend\controllers" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\validators" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux" />
@@ -105,14 +93,8 @@
       <workItem from="1674467347941" duration="302720000" />
       <workItem from="1676312261021" duration="75722000" />
       <workItem from="1676621642295" duration="7031000" />
-      <workItem from="1676734921682" duration="105903000" />
-    </task>
-    <task id="LOCAL-00001" summary="mongoose schemas 1">
-      <created>1670833321919</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1670833321919</updated>
+      <workItem from="1676734921682" duration="139817000" />
+      <workItem from="1678029535640" duration="5198000" />
     </task>
     <task id="LOCAL-00002" summary="interim">
       <created>1670841775991</created>
@@ -450,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677356211086</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="client interim1">
+      <created>1677679515409</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1677679515410</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

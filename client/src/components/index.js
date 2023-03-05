@@ -30,6 +30,7 @@ export * from './RestaurantsList/RestaurantSearchForm';
 export * from './RestaurantsList/RestaurantsSort';
 export * from './RestaurantsListForTop/RestaurantsListForTop';
 export * from './RestaurantsListForTop/RestaurantCardForTop';
+export * from './RestaurantsListForTop/CategoryDropdown';
 export * from './Restaurant/restaurant';
 export * from './RestaurantCard/restaurantCard';
 export * from './RestaurantCreate/restaurantCreate';
