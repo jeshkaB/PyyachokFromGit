@@ -12,18 +12,18 @@ const NewsCard = ({news}) => {
         case '/home':
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}`)}>
-                    <h2>{title}</h2>
-                    <h3> від {restaurant.name}</h3>
+                    <h4>{title}</h4>
+                    <h4> від {restaurant.name}</h4>
                     <div>{category}, {createdAt.slice(0,10)}</div>
-                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                    {newsImage && <img width={120} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
 
         case '/news':
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`${_id}`)}>
-                    <h2>{title}</h2>
-                    <h3> від {restaurant.name}</h3>
+                    <h4>{title}</h4>
+                    <h4> від {restaurant.name}</h4>
                     <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
                     {newsImage && <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>}
@@ -32,29 +32,29 @@ const NewsCard = ({news}) => {
         case `/restaurants/${restaurant._id}`:
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../news/${_id}` )}>
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                     <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
-                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                    {newsImage && <img width={120} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
         case `/restaurantsForAdmin/${restaurant._id}`:
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
-                    <h2>{title}</h2>
+                    <h4>{title}</h4>
                     <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
-                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                    {newsImage && <img width={120} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
         case '/superAdmin':
             return (
                 <div className={'NewsCard'} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
-                    <h2>{title}</h2>
-                    <h3> від {restaurant.name}</h3>
+                    <h4>{title}</h4>
+                    <h4> від {restaurant.name}</h4>
                     <div>{category}, {createdAt.slice(0,10)}</div>
                     <div>{content}</div>
-                    {newsImage && <img width={150} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                    {newsImage && <img width={120} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
             break
     }

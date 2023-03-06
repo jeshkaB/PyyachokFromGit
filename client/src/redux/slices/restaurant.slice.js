@@ -72,6 +72,18 @@ const deleteById = createAsyncThunk(
         }
     }
 );
+
+const sendMessage = createAsyncThunk(
+    'restaurantSlice/sendMessage',
+    async ({restId,userId,text}, {rejectWithValue}) => {
+        try {
+            const {data} =  await ApiService.sendMessageToRestaurant(entity, restId, userId, text )
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
 //__________________________________________________________________
 
 const restaurantSlice = createSlice({
@@ -103,7 +115,9 @@ const restaurantSlice = createSlice({
                     state.errors = null;
                     const index = state.restaurants.findIndex(rest=>rest._id === action.payload._id);
                     state.restaurants.slice(index,1)
-
+                })
+                .addCase(sendMessage.fulfilled, (state, action) => {
+                    state.errors = null;
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)
@@ -111,6 +125,6 @@ const restaurantSlice = createSlice({
     }
 )
 const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById, deleteById};
+const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage};
 
 export {restaurantReducer, restaurantActions}

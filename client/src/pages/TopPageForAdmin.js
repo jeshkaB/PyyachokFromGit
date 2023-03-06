@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import {topCategoryActions} from "../redux";
 import {useDispatch} from "react-redux";
 
-const TopPage = () => {
+const TopPageForAdmin = () => {
     const dispatch = useDispatch()
     const {register,handleSubmit} = useForm()
     const [stateForm, setStateForm] = useState(false)
@@ -39,4 +39,4 @@ const TopPage = () => {
     );
 }
 
-export {TopPage};
+export {TopPageForAdmin};

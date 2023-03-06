@@ -1,13 +1,20 @@
-import {CommentsInRest, MarksInRest, NewsList, Restaurant} from "../components";
+import {CommentsInRest, MarksInRest, MessageForm, NewsList, Restaurant,} from "../components";
 import {Link, useParams} from "react-router-dom";
 import './RestaurantPageStyle.css'
 import {useSelector} from "react-redux";
+import {useState} from "react";
 
 
 const RestaurantPage = (props) => {
     const {id} = useParams()
     const {errors} = useSelector(state => state.restaurant)
+    const [stateMessageForm, setStateMessageForm] = useState(false)
+    const {isAuth, userId} = useSelector(state => state.auth)
 
+    const messageClick = ()=> {
+        if (isAuth) setStateMessageForm(true)
+        else alert('Увійдіть або зареєструйтеся')
+    }
     return (
         <div className={'HolePage'}>
             {errors &&
@@ -23,7 +30,14 @@ const RestaurantPage = (props) => {
                     <Link to={'marks'}><h3>Оцінки</h3></Link>
                     <MarksInRest/>
                 </div>
-
+                    <div className={'Message'}>
+                    <h3 style={{cursor: 'pointer'}} onClick={messageClick}>Написати менеджеру закладу</h3>
+                    {stateMessageForm &&
+                        <div>
+                            <MessageForm restId={id} userId={userId} setStateMessageForm={setStateMessageForm}/>
+                            <button onClick={() => setStateMessageForm(false)}>Згорнути</button>
+                        </div>}
+                </div>
             </div>
             <div>
 

@@ -20,6 +20,8 @@ const ApiService = {
 
     addRestaurantInCategory: (entity,categId,restId) => axiosService.post(`${entity}/${categId}/restaurant?restId=${restId}`), //для додавання ресторану до топ категорії
     removeRestaurantInCategory: (entity,categId,restId) => axiosService.delete(`${entity}/${categId}/restaurant?restId=${restId}`),
+
+    sendMessageToRestaurant: (entity, restId, userId, data) => axiosService.post(`${entity}/${restId}/message?userId=${userId}`, data)
 }
 
 export {ApiService}

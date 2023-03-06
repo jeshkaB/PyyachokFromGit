@@ -1,4 +1,4 @@
-import {GeneralNewsList, NewsList, RestaurantsList} from "../components";
+import {GeneralNewsList, NewsList, RestaurantsList, TopList} from "../components";
  const HomePage = (props) => {
     return (
         <div>
@@ -8,8 +8,8 @@ import {GeneralNewsList, NewsList, RestaurantsList} from "../components";
                 <hr/>
                 <div> <NewsList/></div>
                 <div>
+                    <div> <TopList/> </div>
                     <div><RestaurantsList/></div>
-                    <div> Топ закладів </div>
                 </div>
             </div>
 

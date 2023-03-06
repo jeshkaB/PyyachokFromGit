@@ -1,19 +1,20 @@
-const {authService, tokenService, userService} = require("../services");
+const {authService, tokenService, userService, nodemailerService} = require("../services");
 const {statusCode} = require("../constants");
 
 module.exports = {
     registration: async (req,res,next) => {
       try {
          const user= await userService.createUser(req.body);
-
+          await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
           res.status(statusCode.CREATE).json(user)
+
       }  catch (e) {
           next(e)
       }
 },
     login: async (req, res, next) => {
         try {
-            const {_id, role} = req.user; // з попередньої мідлвари
+            const {_id, role, email} = req.user; // з попередньої мідлвари
 
 
             const authTokens = {
@@ -23,6 +24,7 @@ module.exports = {
                 role: role
             }
             await authService.saveTokens({...authTokens});
+
 
             res.json({
                 ...authTokens,

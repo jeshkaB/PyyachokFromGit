@@ -1,4 +1,6 @@
-const {restaurantService, fileService, userService, commentService, newsService, userEventService, markService} = require("../services");
+const {restaurantService, fileService, userService, commentService, newsService, userEventService, markService,
+    nodemailerService
+} = require("../services");
 const {statusCode, pathImg, roles} = require("../constants");
 const uuid = require("uuid");
 const {PATH_RESTAURANT_PHOTO} = require("../constants/pathImg");
@@ -92,6 +94,21 @@ module.exports = {
             await restaurantService.deleteRestaurant(restId);
 
             res.status(statusCode.NO_CONTENT).json()
+
+        } catch (e) {
+            next(e)
+        }
+    },
+    sendMessage: async (req, res, next) => {
+        try {
+            const restId = req.params;
+            const userId = req.query;
+            const {text} = req.body;
+
+            const {email:restEmail} = await restaurantService.getRestaurantById(restId);
+            const {email:userEmail, name} = await userService.getUserById(userId);
+            await nodemailerService.sendEmail(restEmail, 'Повідомлення з Пиячка', `${text}. Від користувача ${name}. Email ${userEmail}`)
+            res.json()
 
         } catch (e) {
             next(e)

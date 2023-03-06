@@ -2,7 +2,7 @@ const {Router} = require("express");
 const upload = require('multer')();
 
 const {restaurantController} = require("../controllers");
-const {restaurantMiddleware, forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
+const {restaurantMiddleware, forAllMiddleware, authMiddleware} = require("../middlewares");
 const {roles} = require("../constants");
 
 const restaurantRouter = Router();
@@ -43,6 +43,13 @@ restaurantRouter.delete(
     authMiddleware.checkAccessToken,
     forAllMiddleware.checkUserIdInEntity('restaurant'),
     restaurantController.deleteRestaurant);
+
+restaurantRouter.post(
+    '/:restId/message', //+?userId=....
+    forAllMiddleware.checkIdIsValid('restId'),
+    restaurantMiddleware.checkRestaurantIsExist(),
+    authMiddleware.checkAccessToken,
+    restaurantController.sendMessage);
 
 module.exports = restaurantRouter
 
