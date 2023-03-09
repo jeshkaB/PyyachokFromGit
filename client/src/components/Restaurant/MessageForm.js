@@ -12,8 +12,7 @@ const MessageForm = ({restId, userId, setStateMessageForm}) => {
             alert('Ваше повідомлення відправлено')
             setStateMessageForm(false)
         }
-
-
+    }
         return (
             <div>
                 <form onSubmit={handleSubmit(submit)}>
@@ -23,6 +22,6 @@ const MessageForm = ({restId, userId, setStateMessageForm}) => {
 
             </div>
         );
-    };
+
 }
 export {MessageForm}

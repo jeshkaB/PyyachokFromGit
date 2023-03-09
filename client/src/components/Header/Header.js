@@ -8,7 +8,7 @@ import {authActions} from "../../redux";
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {isAuth, userId, role} = useSelector(state => state.auth);// TODO зробити вихід (логаут в аусСервісі: почистити LS, стейт ізАус = фелс, юзер = нулл)
+    const {isAuth, authUser} = useSelector(state => state.auth);
     const isManager = true
 
     const clickExit = async ()=> {
@@ -32,7 +32,7 @@ const Header = () => {
                     :
                     <div>
                         <p style={{cursor:'pointer'}} onClick={clickExit}> Вийти </p>
-                        <UserInfo userId={userId} role={role}/>
+                        <UserInfo user={authUser}/>
                     </div>}
             </div>
         </div>

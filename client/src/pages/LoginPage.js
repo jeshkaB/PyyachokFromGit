@@ -1,13 +1,14 @@
-import {LoginForm} from "../components";
-import {useSelector} from "react-redux";
+import {AuthProvider, LoginForm} from "../components";
 
-function LoginPage() {
+
+const LoginPage = ()=> {
 
     return (
         <div>
 
             <div>
                <LoginForm/>
+               {/*<AuthProvider/>*/}
             </div>
 
         </div>

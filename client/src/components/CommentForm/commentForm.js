@@ -6,17 +6,17 @@ import './commentForm.css'
 import {useState} from "react";
 
 
-const CommentForm = () => {
-        const {register, handleSubmit, reset} = useForm()
+const CommentForm = ({setStateForm}) => {
+        const {register, handleSubmit} = useForm()
         const dispatch = useDispatch();
 
         const {errors} = useSelector(state => state.comment)
         const {id} = useParams();
-        const [stateSuccess, setStateSuccess]=useState(false)
+
 
         const submit = async (data) => {
             const {error} = await dispatch(commentActions.create({id, commentObj: data}))
-            if (!error) setStateSuccess(true)
+            if (!error) setStateForm(false)
             // reset()
         }
         return (
@@ -27,10 +27,11 @@ const CommentForm = () => {
 
                     <form onSubmit={handleSubmit(submit)}>
                         <input type='text' placeholder={'ваш відгук'} {...register('comment')}/>
+                        <br/>
+                        <input type='number' placeholder={'сума чеку'} {...register('bill')}/>
                         <button>Відправити</button>
                     </form>
-                    {stateSuccess &&
-                        <h2> Дякуємо за ваш відгук!</h2>}
+
 
                 </div>
             </div>

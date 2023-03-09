@@ -7,19 +7,12 @@ import {Link} from "react-router-dom";
 import {roles} from "../../constants";
 
 
-const UserInfo = ({userId, role}) => {
-
-    const {user} = useSelector(state => state.user)
-    const {name, avatar} = user
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(userActions.getById(userId))
-    }, [dispatch])
+const UserInfo = ({user}) => {
+const {role, name, avatar} = user
 
     return (
         <div className={css.UserInfo}>
-            {JSON.stringify(user) !== '{}' &&
+            {user &&
                 <div>
                     <div><b>{name}</b></div>
                     <Link to = {'/myAccount'}>Особистий кабінет</Link>

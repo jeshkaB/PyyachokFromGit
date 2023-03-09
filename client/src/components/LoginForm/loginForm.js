@@ -11,9 +11,6 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
-       // const {errors} = useSelector(state => state.auth)
-
        const submit = async (data) => {//дата приходить с форми у вигляді: {name: 'qwer', email: 'qwer@i.ua', password: 'qwer123'}
         const {error} = await dispatch(authActions.login({user: data}))
         //  при неуспішному виконанні: error = {message: 'Rejected'}, payload:{message: 'Email is already exist'}

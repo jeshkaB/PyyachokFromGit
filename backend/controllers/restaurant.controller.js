@@ -101,13 +101,14 @@ module.exports = {
     },
     sendMessage: async (req, res, next) => {
         try {
-            const restId = req.params;
-            const userId = req.query;
+            const {restId} = req.params;
+            const {userId}= req.query;
             const {text} = req.body;
 
             const {email:restEmail} = await restaurantService.getRestaurantById(restId);
             const {email:userEmail, name} = await userService.getUserById(userId);
             await nodemailerService.sendEmail(restEmail, 'Повідомлення з Пиячка', `${text}. Від користувача ${name}. Email ${userEmail}`)
+
             res.json()
 
         } catch (e) {

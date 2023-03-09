@@ -1,12 +1,14 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {authService, geolocationService} from "../../services";
+import {ApiService, authService, geolocationService} from "../../services";
 import {defaultCaseReject} from "./utilityFunctions";
+import {urls} from "../../constants";
 
 const initialState = {
     isAuth: null,
     userId: null,
     errors: null,
-    role: null
+    role: null,
+    authUser:null
 };
 
 const register = createAsyncThunk(
@@ -26,8 +28,9 @@ const login = createAsyncThunk(
     'authSlice/login',
     async ({user}, {rejectWithValue}) => {
         try {
-            const {data} = await authService.login(user);
-           return data
+            const {data:authData} = await authService.login(user);
+            const {data:userData} = await ApiService.getById(urls.users, authData.user)
+           return {authData, userData}
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -56,6 +59,7 @@ const logoutFromEverywhere = createAsyncThunk(
     }
 );
 
+
 //___________________________________________________________________________________________________________________
 const authSlice = createSlice({
     name: 'authSlice',
@@ -65,9 +69,10 @@ const authSlice = createSlice({
         builder
             .addCase(login.fulfilled, (state, action) => {
                 state.isAuth = true;
-                state.userId = action.payload.user;
-                state.role = action.payload.role;
-                authService.saveTokensInLS(action.payload)
+                state.userId = action.payload.authData.user;
+                state.role = action.payload.authData.role;
+                state.authUser = action.payload.userData;
+                authService.saveTokensInLS(action.payload.authData)
             })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isAuth = false;

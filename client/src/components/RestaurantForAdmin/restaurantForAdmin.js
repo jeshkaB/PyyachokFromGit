@@ -45,7 +45,7 @@ const RestaurantForAdmin = () => {
                     onClick={() => setConfirmDelete(true)}> Видалити заклад</h3>
                 {confirmDelete &&
                     <div>
-                        <p style={{color: 'red'}}> Ви упевнені що хочете видалити заклад?</p>
+                        <p style={{color: 'red'}}> Ви упевнені, що хочете видалити заклад?</p>
                         <button onClick={() => dispatch(restaurantActions.deleteById(id))}>Так</button>
                         <button onClick={() => setConfirmDelete(false)}>Ні</button>
                     </div>}

@@ -11,7 +11,7 @@ const UserCard = ({user}) => {
 
     return (
         <div>
-            <div style={{border:'solid 1px black'}} onClick={()=>navigate(`../users/${_id}`)}>
+            <div style={{border:'solid 1px black'}} onClick={()=>navigate(`../users/${_id}`, {state:user})}>
                 <h3>{name}</h3>
                 {role.includes(roles.REST_ADMIN) && <h5 style={{color: 'purple'}}> Менеджер закладу</h5>}
                 <h4>{email}</h4>

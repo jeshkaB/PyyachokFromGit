@@ -5,15 +5,9 @@ import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} f
 
 const MyAccountPage = () => {
     const dispatch = useDispatch();
-    const {userId, errors: authErrors} = useSelector(state => state.auth);
-    const {user, errors: userErrors} = useSelector(state => state.user);
+    const {authUser:user, errors: authErrors} = useSelector(state => state.auth);
 
     const {restaurants} = useSelector(state => state.restaurant)
-
-    useEffect(() => {
-        dispatch(userActions.getById(userId))
-    }, [userId]);
-
     useEffect(() => {
         dispatch(restaurantActions.getAll())
     }, [dispatch]);
@@ -23,10 +17,7 @@ const MyAccountPage = () => {
             {authErrors &&
             <h3 className={'errors'}> {authErrors.message} </h3>
             }
-            {userErrors &&
-                <h3 className={'errors'}> {userErrors.message} </h3>
-            }
-                <div style={{border: 'solid'}}>
+            <div style={{border: 'solid'}}>
                     <h2>Улюблені заклади</h2>
                     <div><FavoriteRestaurants user={user}/></div>
                 </div>

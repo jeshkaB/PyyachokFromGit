@@ -16,6 +16,7 @@ const Comment = ({comment, restaurants}) => {
             <div style={{margin: 20}}>
                 <div>
                     <h3> {comment.comment} </h3>
+                    <h4> чек {comment.bill} грн. </h4>
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                         <div>{comment.user.name}</div>
                         <div>{date}</div>
@@ -29,6 +30,7 @@ const Comment = ({comment, restaurants}) => {
             <div style={{margin: 20}}>
                 <div>
                     <h4> {restaurant.name} </h4>
+                    <h5> чек {comment.bill} грн. </h5>
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'left'}}>
                         <div>{comment.comment}</div>
                         <div style={{marginLeft: 20}}>{date}</div>

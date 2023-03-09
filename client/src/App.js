@@ -18,7 +18,7 @@ import {
     UsersListPage,
     UserEventPage,
     RestaurantForAdminPage,
-    NewsForAdminPage, MarksInRestPage, GeneralNewsPage, GeneralNewsListPage, UserPage, TopPageForAdmin
+    NewsForAdminPage, MarksInRestPage, GeneralNewsPage, GeneralNewsListPage, UserPage, TopPageForAdmin, PrivacyPolicy
 } from "./pages";
 import {CommentsInRest} from "./components";
 
@@ -49,10 +49,12 @@ const App = () => {
                     <Route path={'restaurants/:id/userEvents'} element={<UserEventsPageInRestaurant/>}/>
                     <Route path={'news'} element={<NewsListPage/>}/>
                     <Route path={'news/:id'} element={<NewsPage/>}/>
-                    <Route path={'UserEvents'} element={<UserEventsListPage/>}/>
-                    <Route path={'UserEvents/:id'} element={<UserEventPage/>}/>
+                    <Route path={'userEvents'} element={<UserEventsListPage/>}/>
+                    <Route path={'userEvents/:id'} element={<UserEventPage/>}/>
                     <Route path={'users'} element={<UsersListPage/>}/>
                     <Route path={'users/:id'} element={<UserPage/>}/>
+
+
                 </Route>
             </Routes>
         </div>

@@ -15,6 +15,7 @@ export * from './GeneralNewsCreate/GeneralNewsCreate';
 export * from './GeneralNewsList/GeneralNewsList';
 export * from './Header/Header';
 export * from './LoginForm/loginForm';
+export * from './LoginForm/AuthProvider';
 export * from './MarksCard/MarksCard';
 export * from './MarksInRest/MarksInRest';
 export * from './News/news';

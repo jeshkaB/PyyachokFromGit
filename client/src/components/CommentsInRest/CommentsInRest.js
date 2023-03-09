@@ -31,12 +31,12 @@ const CommentsInRest = () => {
         case `/restaurants/${id}`:
             return (
                 <div>
-                    {(!comments || JSON.stringify(commentsInRest) !== '{}') && <h3>Відгуків поки що немає</h3>}
+                    {(!comments || JSON.stringify(commentsInRest) === '[]') && <h3>Відгуків поки що немає</h3>}
                     <div style={{border: 'solid', width: '50%'}}>
                         {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
                     </div>
                     <h4 style={{cursor: "pointer"}} onClick={commentClick}>Написати відгук</h4>
-                    {stateForm && <CommentForm/>}
+                    {stateForm && <CommentForm setStateForm={setStateForm}/>}
                 </div>
             );
             break
@@ -44,7 +44,7 @@ const CommentsInRest = () => {
         case `/restaurants/${id}/comments`:
             return (
                 <div>
-                    {!comments || JSON.stringify(commentsInRest) !== '{}' && <h2>Відгуків поки що немає</h2>}
+                    {!comments || JSON.stringify(commentsInRest) === '[]' && <h2>Відгуків поки що немає</h2>}
                     <h4 style={{cursor: "pointer"}} onClick={commentClick}>Написати відгук</h4>
                     {stateForm && <CommentForm/>}
                     <div style={{border: 'solid', width: '50%'}}>

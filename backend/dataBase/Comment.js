@@ -3,7 +3,7 @@ const {Schema, model} = require('mongoose');
 const commentSchema = new Schema({
         comment: {type: String, required: true},
         // images: [String],
-        // bill: Number,
+        bill: Number,
         restaurant: {
             type: Schema.Types.ObjectId,
             ref: 'restaurant',

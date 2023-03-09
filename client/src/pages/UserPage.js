@@ -3,7 +3,8 @@ import {MyComments, MyMarks, MyUserEvents, User, UserUpdateDelete} from "../comp
 import {useDispatch, useSelector} from "react-redux";
 
 import {userActions} from "../redux";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
+import {useList} from "react-firebase-hooks/database";
 
 const UserPage = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const UserPage = () => {
     useEffect(() => {
         dispatch(userActions.getById(id))
     }, [dispatch])
+    // const {state:user} = useLocation()
 
     return (
         <div>

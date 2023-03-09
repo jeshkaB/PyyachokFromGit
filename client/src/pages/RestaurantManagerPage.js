@@ -6,18 +6,13 @@ import {NewsCreate, NewsList, RestaurantCreate, RestaurantsForModeration, Restau
 const RestaurantManagerPage = () => {
     const {errors} = useSelector(state => state.restaurant)
     const {userId} = useSelector(state => state.auth);
-// const dispatch = useDispatch();
 
-
-// const {user} = useSelector(state => state.user);
-// useEffect(()=> {
-//     dispatch(userActions.getById(userId))
-// },[dispatch])
 
     return (
         <div>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
+
             <RestaurantCreate userId={userId}/>
             <div style={{border: 'solid 1px gray'}}>
                 <h3>Заклади на модерації </h3>

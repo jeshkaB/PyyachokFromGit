@@ -51,8 +51,8 @@ module.exports = {
 
     checkRestaurantIsExist: (from='params') => async (req, res, next) => {
         try {
-            const {restId} = req[from];
 
+            const {restId} = req[from];
             const restaurantById = await restaurantService.getRestaurantById(restId)
             if (!restaurantById) {
                 return next(new LocalError('Restaurant is not exist', statusCodes.NOT_FOUND))

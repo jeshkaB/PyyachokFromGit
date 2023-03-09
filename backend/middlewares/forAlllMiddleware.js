@@ -7,7 +7,7 @@ const {stringify} = require("nodemon/lib/utils");
 module.exports = {
     checkIdIsValid: (idName, from = 'params' ) => (req, res, next) => {
         try {
-            if (!isObjectIdOrHexString(req[from][idName])) {//метод монгуса - проверка валідності id
+             if (!isObjectIdOrHexString(req[from][idName])) {//метод монгуса - проверка валідності id
                 return next(new LocalError('Not valid ID', statusCodes.BAD_REQUEST));
 
             }
