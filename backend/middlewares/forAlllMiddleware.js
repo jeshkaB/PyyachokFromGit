@@ -7,7 +7,7 @@ const {stringify} = require("nodemon/lib/utils");
 module.exports = {
     checkIdIsValid: (idName, from = 'params' ) => (req, res, next) => {
         try {
-             if (!isObjectIdOrHexString(req[from][idName])) {//метод монгуса - проверка валідності id
+            if (!isObjectIdOrHexString(req[from][idName])) {//метод монгуса - проверка валідності id
                 return next(new LocalError('Not valid ID', statusCodes.BAD_REQUEST));
 
             }
@@ -35,8 +35,6 @@ module.exports = {
 
     checkIdAreSame: (idName, from = 'params') => (req, res, next) => {
     try {
-
-
         const userId = stringify(req.tokenInfo.user._id);//
 
         const updateUserId = req[from][idName]
@@ -53,7 +51,6 @@ module.exports = {
 
     checkRole: (role) => (req, res, next) => {
         try {
-
             const userRole = (req.tokenInfo.user.role);    // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
 
             if (!userRole.includes(role) && !userRole.includes(roles.SUPER_ADMIN)) {

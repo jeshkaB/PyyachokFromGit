@@ -1,8 +1,8 @@
-const {Router} = require("express");
+const {Router, query} = require("express");
 const upload = require('multer')();
 
 const {restaurantController} = require("../controllers");
-const {restaurantMiddleware, forAllMiddleware, authMiddleware} = require("../middlewares");
+const {restaurantMiddleware, forAllMiddleware, authMiddleware, userMiddleware} = require("../middlewares");
 const {roles} = require("../constants");
 
 const restaurantRouter = Router();
@@ -50,6 +50,16 @@ restaurantRouter.post(
     restaurantMiddleware.checkRestaurantIsExist(),
     authMiddleware.checkAccessToken,
     restaurantController.sendMessage);
+
+restaurantRouter.put(
+    '/:restId/changeAdmin', //userId in query
+    forAllMiddleware.checkIdIsValid('restId'),
+    forAllMiddleware.checkIdIsValid('userId', 'query'),
+    restaurantMiddleware.checkRestaurantIsExist(),
+    userMiddleware.checkUserIsExist('query'),
+    authMiddleware.checkAccessToken,
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    restaurantController.changeRestAdmin);
 
 module.exports = restaurantRouter
 

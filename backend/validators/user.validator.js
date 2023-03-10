@@ -21,6 +21,7 @@ const updateUserBodyValidator = Joi.object({
         name: userNameValidator,
         email: emailValidator.error(new LocalError('email is not valid', BAD_REQUEST)),
         password: passwordValidator.error(new LocalError('password is not valid', BAD_REQUEST)),
+        role: roleValidator
     }
 );
 

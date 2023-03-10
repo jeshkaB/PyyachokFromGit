@@ -26,9 +26,10 @@ const CommentsInRest = () => {
         if (isAuth) setStateForm(true)
         else alert('Увійдіть або зареєструйтеся')
     }
-
+//TODO треба щоб оновлювався комент після редагування
     switch (location.pathname) {
         case `/restaurants/${id}`:
+        case `/restaurantsForAdmin/${id}` :
             return (
                 <div>
                     {(!comments || JSON.stringify(commentsInRest) === '[]') && <h3>Відгуків поки що немає</h3>}

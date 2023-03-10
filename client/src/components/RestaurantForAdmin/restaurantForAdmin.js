@@ -10,16 +10,14 @@ import {NewsCreate} from "../NewsCreate/NewsCreate";
 import {NewsList} from "../NewsList/newsList";
 
 
-const RestaurantForAdmin = () => {
+const RestaurantForAdmin = ({restId, role, restaurant}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {id} = useParams();
-    const {role} = useSelector(state => state.auth);
-    const {restaurant} = useSelector(state => state.restaurant);
+    // const {restaurant} = useSelector(state => state.restaurant);
     const [confirmDelete, setConfirmDelete] = useState(false)
-    useEffect(() => {
-        dispatch(restaurantActions.getById(id))
-    }, [id]);
+    // useEffect(() => {
+    //     dispatch(restaurantActions.getById(restId))
+    // }, []);
 
     let isSuperAdmin
     if (role && role.includes(roles.SUPER_ADMIN)) isSuperAdmin = true
@@ -46,21 +44,21 @@ const RestaurantForAdmin = () => {
                 {confirmDelete &&
                     <div>
                         <p style={{color: 'red'}}> Ви упевнені, що хочете видалити заклад?</p>
-                        <button onClick={() => dispatch(restaurantActions.deleteById(id))}>Так</button>
+                        <button onClick={() => dispatch(restaurantActions.deleteById(restId))}>Так</button>
                         <button onClick={() => setConfirmDelete(false)}>Ні</button>
                     </div>}
             </div>}
             <hr/>
-            <h3 style={{cursor: 'pointer', color: "green"}}
-                onClick={() => navigate(`/restaurants/${id}/marks`)}> Оцінки</h3>
+            {/*<h3 style={{cursor: 'pointer', color: "green"}}*/}
+            {/*    onClick={() => navigate(`/restaurants/${restId}/marks`)}> Оцінки</h3>*/}
 
-            <hr/>
-            <h3 style={{cursor: 'pointer', color: "green"}}
-                onClick={() => navigate(`/restaurants/${id}/comments`)}>Відгуки</h3>
-            <hr/>
-            <h3 style={{color: "green"}}> Новини</h3>
-            <NewsCreate restId={id}/>
-            <NewsList restId={id}/>
+            {/*<hr/>*/}
+            {/*<h3 style={{cursor: 'pointer', color: "green"}}*/}
+            {/*    onClick={() => navigate(`/restaurants/${restId}/comments`)}>Відгуки</h3>*/}
+            {/*<hr/>*/}
+            {/*<h3 style={{color: "green"}}> Новини</h3>*/}
+            {/*<NewsCreate restId={restId}/>*/}
+            {/*<NewsList restId={restId}/>*/}
 
         </div>
     )

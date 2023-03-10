@@ -5,6 +5,7 @@ export * from './AccountComponents/MyMarks/MyMarksCard';
 export * from './AccountComponents/MyComments/MyComments';
 export * from './AccountComponents/MyEvents/MyUserEvents';
 export * from './AccountComponents/MyEvents/MyUserEvent';
+export * from './ChangeManager/ChangeManager';
 export * from './Comment/comment';
 export * from './CommentForm/commentForm';
 export * from './CommentsInRest/CommentsInRest';

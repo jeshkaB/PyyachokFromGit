@@ -2,35 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/LoginForm/AuthProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/firebase.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/ChangeManager/ChangeManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/validators/comment.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/comment.validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/restaurant.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/restaurant.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Comment/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Comment/comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm/loginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/MessageForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/MessageForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/restaurant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LoginPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/API.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +105,7 @@
       <workItem from="1676621642295" duration="7031000" />
       <workItem from="1676734921682" duration="139817000" />
       <workItem from="1678029535640" duration="30480000" />
-      <workItem from="1678174764343" duration="27615000" />
-    </task>
-    <task id="LOCAL-00003" summary="interim">
-      <created>1670867519460</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1670867519460</updated>
+      <workItem from="1678174764343" duration="64385000" />
     </task>
     <task id="LOCAL-00004" summary="interim">
       <created>1670958710213</created>
@@ -455,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678034789110</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="before changing isFavorite">
+      <created>1678386996105</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1678386996106</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,6 +465,7 @@
     <MESSAGE value="client started" />
     <MESSAGE value="client interim" />
     <MESSAGE value="client interim1" />
-    <option name="LAST_COMMIT_MESSAGE" value="client interim1" />
+    <MESSAGE value="before changing isFavorite" />
+    <option name="LAST_COMMIT_MESSAGE" value="before changing isFavorite" />
   </component>
 </project>

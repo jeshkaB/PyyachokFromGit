@@ -114,6 +114,43 @@ module.exports = {
         } catch (e) {
             next(e)
         }
+    },
+    changeRestAdmin: async (req, res, next) => {
+        try {
+            const {restId} = req.params;
+            const {userId}= req.query;
+
+            const {role, restaurants} = req.user
+
+
+            const restaurant = await restaurantService.updateRestaurant(restId, {user: userId});
+
+            if (role.includes(roles.REST_ADMIN)) {
+
+                await userService.updateUser(userId, {
+                    restaurants: [
+                        ...restaurants,
+                        restId]
+                })
+            }
+            else {
+
+                await userService.updateUser(userId, {
+                    restaurants: [
+                        ...restaurants,
+                        restId],
+                    role: [
+                        ...role,
+                        roles.REST_ADMIN
+                    ]
+                })
+            }
+                res.json(restaurant)
+
+
+        } catch (e) {
+            next(e)
+        }
     }
 }
 

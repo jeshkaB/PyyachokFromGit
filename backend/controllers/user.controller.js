@@ -157,11 +157,12 @@ module.exports = {
         async (req, res, next) => {
             try {
                 const {_id} = req.tokenInfo.user;
-                const {favoriteRest} = req.query;
+                const {restId} = req.query
+
                 const user = await userService.getUserById(_id)
                 const prevFavoriteRestaurants = user.favoriteRestaurants;
-                const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => item === favoriteRest)
 
+               const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => JSON.stringify(item) !== JSON.stringify(restId))
                 await userService.updateUser(_id, {
                     favoriteRestaurants: upFavoriteRestaurants
                 });

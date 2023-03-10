@@ -1,17 +1,27 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RestaurantCard} from "../../RestaurantCard/restaurantCard";
 import css from './favoriteRestaurants.module.css';
+import {useEffect} from "react";
+import {restaurantActions, userActions} from "../../../redux";
 
-const FavoriteRestaurants = ({user}) => {
+const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
+    const dispatch = useDispatch();
+    // const {restaurants} = useSelector(state => state.restaurant)
 
-    const {restaurants} = useSelector(state => state.restaurant)
+    const {user} = useSelector(state => state.user)
+
+    useEffect(()=> {
+        dispatch(userActions.getById(_id))
+    },[])
+
     const {favoriteRestaurants} = user //тут айдішки
 
-    const favoriteRests = [];//вибираємо повні обєкти ресторанів, маючи масив айдішок улюблених ресторанів
+    let favoriteRests = [];//вибираємо повні обєкти ресторанів, маючи масив айдішок улюблених ресторанів
     if (favoriteRestaurants) {
         favoriteRestaurants.forEach(favorId => {
             restaurants.forEach(rest => {
                 if (rest._id === favorId) favoriteRests.push(rest);
+
             });
         })
     }

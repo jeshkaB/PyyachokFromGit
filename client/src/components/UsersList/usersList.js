@@ -12,14 +12,12 @@ const UsersList = () => {
     useEffect(()=> {
         dispatch(userActions.getAll())
     }, [dispatch])
-
-    // if (JSON.stringify(users)!=='[]')
-    //     users.sort((a,b)=> a.name.localeCompare(b.name))
+    const usersManagersFirst = [...users].sort((a,b) => b.role.length - a.role.length)
 
     return (
         <div style={{margin: 20}}>
             <div>
-                {users && users.map (user=> <UserCard key={user._id} user={user}/>)}
+                {users && usersManagersFirst.map (user=> <UserCard key={user._id} user={user}/>)}
             </div>
         </div>
     );

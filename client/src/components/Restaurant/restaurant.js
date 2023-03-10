@@ -1,61 +1,66 @@
 import API_URL from "../../config";
 import {StarsRating} from "../StarsRating/starsRating";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {restaurantActions, userActions} from "../../redux";
+import {useEffect, useState} from "react";
+import {authActions, restaurantActions, userActions} from "../../redux";
 import {Link, useParams} from "react-router-dom";
 import {Tag} from "../Tag/Tag";
 
 
 const Restaurant = () => {
-
-    const {restaurant} = useSelector(state => state.restaurant);
-    const {userId} = useSelector(state => state.auth)
-    const {user, isFavorite} = useSelector(state => state.user)
-    const {id} = useParams();
-    const {favoriteRestaurants} = user;
-
-    const tags = restaurant?.tags?.split(',').map(tag=>tag.trim());
-
-
-    let alreadyFavorite
-    if (favoriteRestaurants) alreadyFavorite = favoriteRestaurants.includes(id);
-    // const alreadyFavorite = favoriteRestaurants?.includes(id);
-
     const dispatch = useDispatch();
+    const {restaurant} = useSelector(state => state.restaurant);
+    const {user} = useSelector(state => state.user);
+    const {authUser, isAuth} = useSelector(state => state.auth)
+    const {id} = useParams();
+
+
+    const tags = restaurant?.tags?.split(',').map(tag => tag.trim());
+
+    let alreadyFavorite=false
+    let userId = null
+    if (isAuth)  {
+        alreadyFavorite = user.favoriteRestaurants?.includes(id);
+        userId=authUser._id
+    }
+    const [stateFavorite, setStateFavorite] = useState(alreadyFavorite);
 
     useEffect(() => {
         dispatch(restaurantActions.getById(id))
-    }, [id]);
+    }, []);
 
     useEffect(() => {
         dispatch(userActions.getById(userId))
-    }, [id, isFavorite]);
+    }, [stateFavorite]);
 
 
-//TODO щось дуже перемудрила з "додати до улюблених" стосовно стану улюблений/не улюблений - тре подумати
     const addFavorite = async () => {
-        await dispatch(userActions.addFavoriteRest({userId, restId: id}))
+        if (isAuth) {
+            await dispatch(authActions.addFavoriteRest({userId, restId: id}));
+            setStateFavorite(true)
+        }
+        else alert('Увійдіть або зареєструйтеся')
     };
     const removeFavorite = async () => {
-        await dispatch(userActions.removeFavoriteRest({userId, restId: id}))
+        await dispatch(authActions.removeFavoriteRest({userId, restId: id}))
+        setStateFavorite(false)
     };
-
 
     return (
         <div>
             <div>
                 <h1>{restaurant.name}</h1>
-                {(isFavorite || alreadyFavorite) === false &&
+                {!stateFavorite &&
                     <div>
-                        <h3 style={{cursor: "pointer"}} onClick={() => addFavorite()}>Додати до улюблених</h3>
+                        <h3 style={{cursor: "pointer"}} onClick={addFavorite}>Додати до улюблених</h3>
                     </div>}
-                {(isFavorite || alreadyFavorite) === true &&
+                {stateFavorite &&
                     <div>
-                        <h3 style={{cursor: "pointer"}} onClick={() => removeFavorite()}>Прибрати з улюблених</h3>
+                        <h3 style={{cursor: "pointer"}} onClick={removeFavorite}>Прибрати з улюблених</h3>
                     </div>}
                 <div>
-                    <Link to={'userEvents'}><h3 style={{cursor: "pointer", fontFamily: 'cursive', color: 'blue'}}> Пиячок </h3></Link>
+                    <Link to={'userEvents'}><h3
+                        style={{cursor: "pointer", fontFamily: 'cursive', color: 'blue'}}> Пиячок </h3></Link>
 
                 </div>
             </div>

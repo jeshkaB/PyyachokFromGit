@@ -6,7 +6,6 @@ import {urls} from "../../constants";
 const initialState = {
     users: [],
     user: {},
-    isFavorite: false,
     errors: null
 };
 
@@ -76,28 +75,7 @@ const deleteById = createAsyncThunk(
         }
     }
 );
-const addFavoriteRest = createAsyncThunk(
-    'userSlice/addFavoriteRest',
-    async ({userId,restId}, {rejectWithValue}) => {
-        try {
-            const {data} = await ApiService.addFavoriteRest(entity, userId, restId)
-            return data
-        } catch (e) {
-            return rejectWithValue(e.response.data)
-        }
-    }
-);
-const removeFavoriteRest = createAsyncThunk(
-    'userSlice/removeFavoriteRest',
-    async ({userId,restId}, {rejectWithValue}) => {
-        try {
-            const {data} = await ApiService.removeFavoriteRest(entity, userId, restId)
-            return data
-        } catch (e) {
-            return rejectWithValue(e.response.data)
-        }
-    }
-);
+
 const changePassword = createAsyncThunk(
     'userSlice/changePassword',
     async ({id, passObj}, {rejectWithValue}) => {
@@ -109,6 +87,7 @@ const changePassword = createAsyncThunk(
         }
     }
 );
+
 //__________________________________________________________________
 
 const userSlice = createSlice({
@@ -146,16 +125,7 @@ const userSlice = createSlice({
                     const index = state.users.findIndex(user=>user._id === action.payload._id);
                     state.users.slice(index,1)
                 })
-                .addCase(addFavoriteRest.fulfilled, (state, action) => {
-                    // state.isFavorite = true
-                    state.errors = null;
 
-                })
-                //TODO щось не працює isFavorite
-                .addCase(removeFavoriteRest.fulfilled, (state, action) => {
-                    // state.isFavorite = false
-                    state.errors = null;
-                })
                 .addCase(changePassword.fulfilled, (state, action) => {
                     state.errors = null;
                     // state.user = action.payload
@@ -166,6 +136,6 @@ const userSlice = createSlice({
     },
 )
 const {reducer: userReducer/*, actions: {setStateOfUpdating}*/} = userSlice;
-const userActions = {getAll, getById, create, updateById, deleteById, addFavoriteRest,removeFavoriteRest, changePassword};
+const userActions = {getAll, getById, create, updateById, deleteById, changePassword};
 
 export {userReducer, userActions}

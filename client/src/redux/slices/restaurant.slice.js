@@ -84,6 +84,19 @@ const sendMessage = createAsyncThunk(
         }
     }
 );
+
+
+const changeRestAdmin = createAsyncThunk(
+    'restaurantSlice/changeRestAdmin',
+    async ({restId,userId}, {rejectWithValue}) => {
+        try {
+            const {data} =  await ApiService.changeRestAdmin(entity, restId, userId)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
 //__________________________________________________________________
 
 const restaurantSlice = createSlice({
@@ -119,12 +132,16 @@ const restaurantSlice = createSlice({
                 .addCase(sendMessage.fulfilled, (state, action) => {
                     state.errors = null;
                 })
+                .addCase(changeRestAdmin.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.restaurant = action.payload
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)
                 })
     }
 )
 const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage};
+const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage, changeRestAdmin};
 
 export {restaurantReducer, restaurantActions}

@@ -3,21 +3,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {commentActions} from "../../redux";
 import './commentForm.css'
-import {useState} from "react";
 
 
-const CommentForm = ({setStateForm}) => {
+const CommentForm = ({setStateForm, comment}) => {
         const {register, handleSubmit} = useForm()
         const dispatch = useDispatch();
 
         const {errors} = useSelector(state => state.comment)
-        const {id} = useParams();
+        const {id:idForCreate} = useParams();
+
 
 
         const submit = async (data) => {
-            const {error} = await dispatch(commentActions.create({id, commentObj: data}))
-            if (!error) setStateForm(false)
-            // reset()
+            const {bill} = data;
+            if (bill==='') data= {...data, bill: 0}
+
+            let res = {}
+            if (comment)
+                res = await dispatch(commentActions.updateById({id:comment._id, commentObj: data}))
+            else
+                res = await dispatch(commentActions.create({id:idForCreate, commentObj: data}))
+            if (!res.error) setStateForm(false)
+
         }
         return (
             <div>
@@ -26,9 +33,13 @@ const CommentForm = ({setStateForm}) => {
                         <h2> {errors.message} </h2>}
 
                     <form onSubmit={handleSubmit(submit)}>
-                        <input type='text' placeholder={'ваш відгук'} {...register('comment')}/>
+                        {comment ? <input type='text' defaultValue={comment.comment} {...register('comment')}/>
+                            :
+                            <input type='text' placeholder={'ваш відгук'} {...register('comment')}/>}
                         <br/>
-                        <input type='number' placeholder={'сума чеку'} {...register('bill')}/>
+                        {comment ? <input type='number' defaultValue={comment.bill} {...register('bill')}/>
+                            :
+                            <input type='number' placeholder={'сума чеку'} {...register('bill')}/>}
                         <button>Відправити</button>
                     </form>
 
