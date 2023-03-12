@@ -3,6 +3,7 @@ const upload = require('multer')();     // щоб можна було зчиту
 
 const {authController, userController} = require("../controllers");
 const {userMiddleware, authMiddleware} = require("../middlewares");
+const {tokenTypes} = require("../constants");
 
 const authRouter = Router();
 
@@ -16,12 +17,12 @@ authRouter.post (
 
 authRouter.post (
     '/logout',
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     authController.logout);
 
 authRouter.post (
     '/logout/fromEverywhere',
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     authController.logoutFromEverywhere);
 
 authRouter.post (
@@ -40,9 +41,7 @@ authRouter.post (
 
 authRouter.post (
     '/refresh',
-    authMiddleware.checkRefreshToken,
+    authMiddleware.checkToken(tokenTypes.REFRESH_TYPE),
     authController.refresh);
-
-//TODO nodemailer, password forgot, logout,
 
 module.exports = authRouter

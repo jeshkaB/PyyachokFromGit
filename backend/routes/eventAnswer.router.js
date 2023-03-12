@@ -3,6 +3,7 @@ const {commentController, eventAnswerController} = require("../controllers");
 const {commentMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware, eventAnswerMiddleware,
     userEventMiddleware
 } = require("../middlewares");
+const {tokenTypes} = require("../constants");
 
 const eventAnswerRouter = Router();
 
@@ -12,7 +13,7 @@ eventAnswerRouter.post('/',
     eventAnswerMiddleware.checkAnswerBodyIsValid,
     forAllMiddleware.checkIdIsValid('eventId','query'),//// id події передаємо в query (/eventAnswers?eventId=......)
     userEventMiddleware.checkUserEventIsExist('query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     eventAnswerController.createEventAnswer);
 
 eventAnswerRouter.get('/:answId',
@@ -24,14 +25,14 @@ eventAnswerRouter.patch('/:answId',
     eventAnswerMiddleware.checkAnswerBodyIsValid,
     forAllMiddleware.checkIdIsValid('answId'),
     eventAnswerMiddleware.checkEventAnswerIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('eventAnswer'),
     eventAnswerController.updateEventAnswer);
 
 eventAnswerRouter.delete('/:answId',
     forAllMiddleware.checkIdIsValid('answId'),
     eventAnswerMiddleware.checkEventAnswerIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('eventAnswer'),
     eventAnswerController.deleteEventAnswer);
 

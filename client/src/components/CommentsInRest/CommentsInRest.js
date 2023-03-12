@@ -14,9 +14,10 @@ const CommentsInRest = () => {
     const {comments} = useSelector(state => state.comment);
     const {isAuth} = useSelector(state => state.auth);
     const [stateForm, setStateForm] = useState(false);
+    const [stateChangeComment, setStateChangeComment] = useState(false);
     useEffect(() => {
         dispatch(commentActions.getAll())
-    }, [dispatch])
+    }, [stateChangeComment])
 
 
         const commentsInRest = comments?.filter(item => item.restaurant === id)
@@ -26,7 +27,7 @@ const CommentsInRest = () => {
         if (isAuth) setStateForm(true)
         else alert('Увійдіть або зареєструйтеся')
     }
-//TODO треба щоб оновлювався комент після редагування
+
     switch (location.pathname) {
         case `/restaurants/${id}`:
         case `/restaurantsForAdmin/${id}` :
@@ -34,7 +35,7 @@ const CommentsInRest = () => {
                 <div>
                     {(!comments || JSON.stringify(commentsInRest) === '[]') && <h3>Відгуків поки що немає</h3>}
                     <div style={{border: 'solid', width: '50%'}}>
-                        {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment}/>)}
+                        {commentsFirst5.map(comment => <Comment key={comment._id} comment={comment} stateChangeComment={stateChangeComment} setStateChangeComment={setStateChangeComment}/>)}
                     </div>
                     <h4 style={{cursor: "pointer"}} onClick={commentClick}>Написати відгук</h4>
                     {stateForm && <CommentForm setStateForm={setStateForm}/>}

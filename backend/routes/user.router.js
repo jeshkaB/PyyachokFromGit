@@ -3,6 +3,7 @@ const {Router} = require('express');
 
 const {userController} = require("../controllers");
 const {forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
+const {roles, tokenTypes} = require("../constants");
 
 const userRouter = Router();
 
@@ -15,8 +16,8 @@ userRouter.post(
     '/',
     // upload.any(),
     userMiddleware.checkNewUserBodyIsValid,
-    // authMiddleware.checkAccessToken,
-    // forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+    forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     userMiddleware.checkEmailIsUnique,
     userController.createUser);
 
@@ -31,7 +32,7 @@ userRouter.patch(
     // upload.any(),
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkUpdateUserBodyIsValid,
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
     userController.updateUser);
@@ -39,7 +40,7 @@ userRouter.patch(
 userRouter.put(
     '/:userId/changePassword',
     forAllMiddleware.checkIdIsValid('userId'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     // forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
     userMiddleware.checkPasswordPairIsValid,
@@ -49,7 +50,7 @@ userRouter.put(
 userRouter.delete(
     '/:userId',
     forAllMiddleware.checkIdIsValid('userId'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
     userController.deleteUser);
@@ -57,13 +58,13 @@ userRouter.delete(
 // /для додавання в улюблені: шлях "users/id/favoriteRest?restId=...."
 userRouter.post(
     '/:userId/favoriteRest',
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     userMiddleware.checkUserIsExist(),
     userController.addFavoriteRest);
 
 userRouter.delete(
     '/:userId/favoriteRest',
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     userMiddleware.checkUserIsExist(),
     userController.removeFavoriteRest);
 

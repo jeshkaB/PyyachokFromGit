@@ -1,7 +1,8 @@
 const {hashService, userService, tokenService, authService} = require("../services");
 const {LocalError} = require("../errors");
-const {statusCode} = require("../constants");
+const {statusCode, tokenTypes} = require("../constants");
 const {userValidator} = require("../validators");
+const constants = require("constants");
 
 
 module.exports = {
@@ -29,51 +30,78 @@ module.exports = {
             next(e)
         }
     },
-    checkAccessToken: async (req, res, next) => {
+
+    checkToken: (tokenType) => async (req, res, next) => {
         try {
-            const accessToken = req.get('Authorization');
-            if (!accessToken) {
-                return next(new LocalError('No token', statusCode.UNAUTHORIZED))}
-
-            tokenService.checkToken(accessToken);
-
-            const tokenInfo = await authService.getTokensInstanceWithUser({ accessToken });
-
-            if (!tokenInfo) {
-                return next (new LocalError('Not valid token', statusCode.UNAUTHORIZED));
+            const token = req.get('Authorization');
+            if (!token) {
+                return next(new LocalError('No token', statusCode.UNAUTHORIZED))
             }
 
+            tokenService.checkToken(token, tokenType);
+
+            const tokenInfo = await authService.getTokensInstanceWithUser({[tokenType]: token});
+
+            if (!tokenInfo) {
+                return next(new LocalError('Not valid token', statusCode.UNAUTHORIZED));
+            }
             req.tokenInfo = tokenInfo;
 
             next()
 
-        }catch (e) {
+        } catch (e) {
             next(e)
         }
-    },
-    checkRefreshToken: async (req, res, next) => {
-        try {
-            const refreshToken = req.get('Authorization');
 
-            if (!refreshToken) {
-                return next(new LocalError('No token', statusCode.UNAUTHORIZED))}
-
-            tokenService.checkToken(refreshToken);
-
-            const tokenInfo = await authService.getTokensInstanceWithUser({ refreshToken });
-
-
-
-            if (!tokenInfo) {
-                return next (new LocalError('Not valid token', statusCode.UNAUTHORIZED));
-            }
-
-            req.tokenInfo = tokenInfo;
-
-            next()
-
-        }catch (e) {
-            next(e)
-        }
     },
 }
+
+    // checkAccessToken: async (req, res, next) => {
+    //
+    //     try {
+    //         const accessToken = req.get('Authorization');
+    //         if (!accessToken) {
+    //             return next(new LocalError('No token', statusCode.UNAUTHORIZED))
+    //         }
+    //
+    //         tokenService.checkToken(accessToken, tokenTypes.ACCESS_TYPE);
+    //
+    //         const tokenInfo = await authService.getTokensInstanceWithUser({accessToken});
+    //
+    //         if (!tokenInfo) {
+    //             return next(new LocalError('Not valid token', statusCode.UNAUTHORIZED));
+    //         }
+    //
+    //         req.tokenInfo = tokenInfo;
+    //
+    //         next()
+    //
+    //     } catch (e) {
+    //         next(e)
+    //     }
+    // }
+
+//     checkRefreshToken: async (req, res, next) => {
+//         try {
+//             const refreshToken = req.get('Authorization');
+//
+//             if (!refreshToken) {
+//                 return next(new LocalError('No token', statusCode.UNAUTHORIZED))}
+//
+//             tokenService.checkToken(refreshToken,tokenTypes.REFRESH_TYPE);
+//
+//             const tokenInfo = await authService.getTokensInstanceWithUser({ refreshToken });
+//
+//             if (!tokenInfo) {
+//                 return next (new LocalError('Not valid token', statusCode.UNAUTHORIZED));
+//             }
+//
+//             req.tokenInfo = tokenInfo;
+//
+//             next()
+//
+//         }catch (e) {
+//             next(e)
+//         }
+//     },
+// }

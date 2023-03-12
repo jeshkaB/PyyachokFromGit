@@ -1,6 +1,8 @@
 const {Router} = require('express');
 const {commentController} = require("../controllers");
 const {commentMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware} = require("../middlewares");
+const {tokenTypes} = require("../constants");
+const constants = require("constants");
 
 const commentRouter = Router();
 
@@ -10,7 +12,7 @@ commentRouter.post('/',
     commentMiddleware.checkCommentBodyIsValid,
     forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
     restaurantMiddleware.checkRestaurantIsExist('query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     commentController.createComment);
 
 commentRouter.get('/:comId',
@@ -22,14 +24,14 @@ commentRouter.patch('/:comId',
     commentMiddleware.checkCommentBodyIsValid,
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('comment'),
     commentController.updateComment);
 
 commentRouter.delete('/:comId',
     forAllMiddleware.checkIdIsValid('comId'),
     commentMiddleware.checkCommentIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('comment'),
     commentController.deleteComment);
 

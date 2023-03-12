@@ -5,26 +5,30 @@ import {commentActions} from "../../redux";
 import './commentForm.css'
 
 
-const CommentForm = ({setStateForm, comment}) => {
+const CommentForm = ({setStateForm, comment, stateChangeComment, setStateChangeComment}) => {
         const {register, handleSubmit} = useForm()
         const dispatch = useDispatch();
 
         const {errors} = useSelector(state => state.comment)
-        const {id:idForCreate} = useParams();
-
+        const {id: idForCreate} = useParams();
 
 
         const submit = async (data) => {
             const {bill} = data;
-            if (bill==='') data= {...data, bill: 0}
+            if (bill === '') data = {...data, bill: 0}
 
             let res = {}
-            if (comment)
-                res = await dispatch(commentActions.updateById({id:comment._id, commentObj: data}))
-            else
-                res = await dispatch(commentActions.create({id:idForCreate, commentObj: data}))
-            if (!res.error) setStateForm(false)
-
+            if (comment) {
+                res = await dispatch(commentActions.updateById({id: comment._id, commentObj: data}))
+                if (!res.error) {
+                    setStateChangeComment(!stateChangeComment)
+                    setStateForm(false)
+                }
+            } else {
+                res = await dispatch(commentActions.create({id: idForCreate, commentObj: data}))
+                if (!res.error)
+                    setStateForm(false)
+            }
         }
         return (
             <div>
@@ -48,6 +52,4 @@ const CommentForm = ({setStateForm, comment}) => {
             </div>
         );
     }
-;
-
 export {CommentForm};

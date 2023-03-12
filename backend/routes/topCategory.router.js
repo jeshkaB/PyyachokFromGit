@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const {topCategoryController} = require("../controllers");
 const {topCategoryMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware} = require("../middlewares");
-const {roles} = require("../constants");
+const {roles, tokenTypes} = require("../constants");
 
 const topCategoryRouter = Router();
 
@@ -9,13 +9,13 @@ topCategoryRouter.get('/',topCategoryController.getTopCategories);
 
 topCategoryRouter.post('/',
     topCategoryMiddleware.checkTopCategoryBodyIsValid,
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryController.createTopCategory);
 
 topCategoryRouter.get('/:categId',
     forAllMiddleware.checkIdIsValid('categId'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.getTopCategoryById);
@@ -23,14 +23,14 @@ topCategoryRouter.get('/:categId',
 topCategoryRouter.patch('/:categId',
     topCategoryMiddleware.checkTopCategoryBodyIsValid,
     forAllMiddleware.checkIdIsValid('categId'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.updateTopCategory);
 
 topCategoryRouter.delete('/:categId',
     forAllMiddleware.checkIdIsValid('categId'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.deleteTopCategory);
@@ -39,7 +39,7 @@ topCategoryRouter.delete('/:categId',
 topCategoryRouter.post('/:categId/Restaurant',
     forAllMiddleware.checkIdIsValid('categId'),
     forAllMiddleware.checkIdIsValid('restId','query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     restaurantMiddleware.checkRestaurantIsExist('query'),
@@ -48,7 +48,7 @@ topCategoryRouter.post('/:categId/Restaurant',
 topCategoryRouter.delete('/:categId/Restaurant',
     forAllMiddleware.checkIdIsValid('categId'),
     forAllMiddleware.checkIdIsValid('restId','query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     topCategoryMiddleware.checkTopCategoryIsExist(),
     restaurantMiddleware.checkRestaurantIsExist('query'),

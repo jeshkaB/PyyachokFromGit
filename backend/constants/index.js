@@ -4,6 +4,7 @@ module.exports = {
     regex: require('./regex'),
     roles: require('./roles'),
     pathImg: require('./pathImg'),
-    coordinatesLimit: require('./coordinatesLimit')
+    coordinatesLimit: require('./coordinatesLimit'),
+    tokenTypes: require('./tokenTypes')
 
 }

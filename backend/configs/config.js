@@ -8,10 +8,15 @@ module.exports = {
     ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || '5m',
     REFRESH_TOKEN_LIFETIME: process.env.REFRESH_TOKEN_LIFETIME || '30d',
 
+    ACTION_TOKEN_SECRET_WORD: process.env.ACTION_TOKEN_SECRET_WORD || 'ACTION_TOKEN_SECRET_WORD',
+    ACTION_TOKEN_LIFETIME: process.env.ACTION_TOKEN_LIFETIME || '7d',
+
     SERVER_EMAIL: process.env.SERVER_EMAIl || 'qwerty@mail.com',
     SERVER_EMAIl_PASSWORD: process.env.SERVER_EMAIl_PASSWORD || 'password',
     SERVER_EMAIl_HOST: 'smtp.gmail.com',
     SERVER_EMAIL_PORT: 465,
     SERVER_EMAIL_SECURE: 'true'
+
+
 
 }

@@ -8,7 +8,7 @@ const MarksCard = ({mark}) => {
         <div>
             {mark && <div>
                 <StarsRating rating={mark.mark}/>
-                <p>{mark.user.name}</p>
+                <p>{mark.user?.name}</p>
                 <p>{date}</p>
             </div>}
 

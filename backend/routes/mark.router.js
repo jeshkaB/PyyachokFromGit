@@ -1,6 +1,7 @@
 const {Router} = require ('express');
 const {forAllMiddleware, restaurantMiddleware, authMiddleware, markMiddleware} = require("../middlewares");
 const {markController, commentController} = require("../controllers");
+const {tokenTypes} = require("../constants");
 
 const markRouter = Router();
 
@@ -10,7 +11,7 @@ markRouter.post('/',
     markMiddleware.checkMarkBodyIsValid,
     forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
     restaurantMiddleware.checkRestaurantIsExist('query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     markController.createMark);
 
 markRouter.get('/:markId',
@@ -22,14 +23,14 @@ markRouter.patch('/:markId',
     markMiddleware.checkMarkBodyIsValid,
     forAllMiddleware.checkIdIsValid('markId'),
     markMiddleware.checkMarkIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('mark'),
     markController.updateMark);
 
 markRouter.delete('/:markId',
     forAllMiddleware.checkIdIsValid('markId'),
     markMiddleware.checkMarkIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('mark'),
     markController.deleteMark);
 

@@ -3,7 +3,7 @@ const upload = require('multer')();
 
 const {restaurantController} = require("../controllers");
 const {restaurantMiddleware, forAllMiddleware, authMiddleware, userMiddleware} = require("../middlewares");
-const {roles} = require("../constants");
+const {roles, tokenTypes} = require("../constants");
 
 const restaurantRouter = Router();
 
@@ -15,7 +15,7 @@ restaurantRouter.post(
     '/',
     // upload.any(),
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.REST_ADMIN),
     restaurantMiddleware.checkEmailIsUnique,
     restaurantController.createRestaurant);
@@ -32,7 +32,7 @@ restaurantRouter.patch(
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkUpdateRestaurantBodyIsValid,
     restaurantMiddleware.checkRestaurantIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('restaurant'),    //перевірка доступу - 1) якщо айди юзера в токенинфо співпадає з айди юзера в ресторані або юзер - суперадмін
     restaurantController.updateRestaurant);
 
@@ -40,7 +40,7 @@ restaurantRouter.delete(
     '/:restId',
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkRestaurantIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('restaurant'),
     restaurantController.deleteRestaurant);
 
@@ -48,7 +48,7 @@ restaurantRouter.post(
     '/:restId/message', //+?userId=....
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkRestaurantIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     restaurantController.sendMessage);
 
 restaurantRouter.put(
@@ -57,7 +57,7 @@ restaurantRouter.put(
     forAllMiddleware.checkIdIsValid('userId', 'query'),
     restaurantMiddleware.checkRestaurantIsExist(),
     userMiddleware.checkUserIsExist('query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     restaurantController.changeRestAdmin);
 

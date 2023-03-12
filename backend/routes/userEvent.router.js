@@ -2,6 +2,7 @@ const {Router} = require('express');
 
 const {forAllMiddleware, authMiddleware, restaurantMiddleware, userEventMiddleware} = require("../middlewares");
 const {userEventController} = require("../controllers");
+const {tokenTypes} = require("../constants");
 
 const userEventRouter = Router();
 
@@ -11,7 +12,7 @@ userEventRouter.post('/',
     userEventMiddleware.checkNewUserEventBodyIsValid,
     forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
     restaurantMiddleware.checkRestaurantIsExist('query'),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     userEventController.createUserEvent);
 
 userEventRouter.get('/:eventId',
@@ -23,14 +24,14 @@ userEventRouter.patch('/:eventId',
     userEventMiddleware.checkUpdateUserEventBodyIsValid,
     forAllMiddleware.checkIdIsValid('eventId'),
     userEventMiddleware.checkUserEventIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('userEvent'),
     userEventController.updateUserEvent);
 
 userEventRouter.delete('/:eventId',
     forAllMiddleware.checkIdIsValid('eventId'),
     userEventMiddleware.checkUserEventIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('userEvent'),
     userEventController.deleteUserEvent);
 

@@ -1,7 +1,7 @@
 const {Router} = require ('express');
 const {newsController, generalNewsController} = require("../controllers");
 const {authMiddleware, forAllMiddleware, generalNewsMiddleware} = require("../middlewares");
-const {roles} = require("../constants");
+const {roles, tokenTypes} = require("../constants");
 
 const generalNewsRouter = Router();
 
@@ -9,7 +9,7 @@ generalNewsRouter.get('/', generalNewsController.getNews);
 
 generalNewsRouter.post('/',
     generalNewsMiddleware.checkNewNewsBodyIsValid,
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     generalNewsController.createNews);
 
@@ -22,14 +22,14 @@ generalNewsRouter.patch('/:newsId',
     generalNewsMiddleware.checkUpdateNewsBodyIsValid,
     forAllMiddleware.checkIdIsValid('newsId'),
     generalNewsMiddleware.checkNewsIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('generalNews'),
     generalNewsController.updateNews);
 
 generalNewsRouter.delete('/:newsId',
     forAllMiddleware.checkIdIsValid('newsId'),
     generalNewsMiddleware.checkNewsIsExist(),
-    authMiddleware.checkAccessToken,
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('generalNews'),
     generalNewsController.deleteNews);
 

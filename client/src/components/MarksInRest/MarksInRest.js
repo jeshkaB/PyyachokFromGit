@@ -30,7 +30,7 @@ const MarksInRest = () => {
         else alert('Увійдіть або зареєструйтеся')
     }
 
-    const markAlreadyExist = marksOfRest.some(mark=>mark.user._id===userId)
+    const markAlreadyExist = marksOfRest.some(mark=>mark.user?._id===userId)
 
     const addMark = async (value)=> {
         setRating(value)
