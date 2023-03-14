@@ -18,9 +18,17 @@ import {
     UsersListPage,
     UserEventPage,
     RestaurantForAdminPage,
-    NewsForAdminPage, MarksInRestPage, GeneralNewsPage, GeneralNewsListPage, UserPage, TopPageForAdmin, PrivacyPolicy
+    NewsForAdminPage,
+    MarksInRestPage,
+    GeneralNewsPage,
+    GeneralNewsListPage,
+    UserPage,
+    TopPageForAdmin,
+    PrivacyPolicy,
+    ForgotPasswordPage
 } from "./pages";
 import {CommentsInRest} from "./components";
+import {authService} from "./services";
 
 
 const App = () => {
@@ -32,6 +40,7 @@ const App = () => {
                 <Route path={''} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'home'}/>}/>
                     <Route path={'home'} element={<HomePage/>}/>
+                    <Route path={'forgotPassword'} element={<ForgotPasswordPage/>}/>
                     <Route path={'register'} element={<RegisterPage/>}/>
                     <Route path={'login'} element={<LoginPage/>}/>
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>

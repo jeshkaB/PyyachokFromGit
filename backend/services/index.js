@@ -1,5 +1,5 @@
 module.exports = {
-    actionTokenService: require ('./actionToken.service'),
+    tokenDbService: require ('./tokenDB.service'),
     authService: require ('./auth.service'),
     hashService: require ('./hash.service'),
     commentService: require('./comment.service'),

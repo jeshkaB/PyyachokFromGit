@@ -16,7 +16,7 @@ axiosService.interceptors.request.use((config) => {
 });
 
 let isRefreshing = false; //TODO перевірити як працює рефреш
-axiosService.interceptors.request.use((config) => {
+axiosService.interceptors.response.use((config) => {
         return config;
     },
     async (error) => {

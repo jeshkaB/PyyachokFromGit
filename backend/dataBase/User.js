@@ -3,7 +3,7 @@ const {roles} = require('../constants')
 
 
 const userSchema = new Schema({
-        name: {type: String, trim: true, required: true},
+        name: {type: String, trim: true, required: true, unique: true},
         email: {type: String, trim: true, lowercase: true, required: true, unique: true},
         password: {type: String, required: true, /*select: false*/},
         avatar: {type: String},

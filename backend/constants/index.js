@@ -5,6 +5,7 @@ module.exports = {
     roles: require('./roles'),
     pathImg: require('./pathImg'),
     coordinatesLimit: require('./coordinatesLimit'),
-    tokenTypes: require('./tokenTypes')
+    tokenTypes: require('./tokenTypes'),
+    urls: require('./urls'),
 
 }

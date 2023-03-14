@@ -1,4 +1,4 @@
-import {AuthProvider, LoginForm} from "../components";
+import {AuthProvider, LoginForm, LoginFormForgot} from "../components";
 
 
 const LoginPage = ()=> {
@@ -8,6 +8,7 @@ const LoginPage = ()=> {
 
             <div>
                <LoginForm/>
+               <LoginFormForgot/>
                {/*<AuthProvider/>*/}
             </div>
 

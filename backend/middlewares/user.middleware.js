@@ -33,15 +33,15 @@ module.exports = {
         }
     },
 
-    checkEmailIsUnique: async (req, res, next) => {
-        const {email} = req.body;
-
+    checkUserFieldIsUnique: (fieldName) => async (req, res, next) => {
         try {
-            const userByEmail = await userService.getUserByParams({email})
-            if (userByEmail) {
-                return next(new LocalError('Email is already exist', statusCodes.CONFLICT))
+            const fieldValue = req.body[fieldName];
+            if (fieldValue) {
+                const user = await userService.getUserByParams({[fieldName]: fieldValue})
+                if (user) {
+                    return next(new LocalError(`${fieldName} is already exist`, statusCodes.CONFLICT))
+                }
             }
-
             next()
         } catch (e) {
             next(e)
@@ -95,10 +95,11 @@ module.exports = {
         }
     },
 
-    checkOldPassword: async (req, res, next) => {
+//порівнюємо введений юзером старий пароль з  актуальни в БД (для зміни паролю юзером) - повинні співпадати
+    checkOldPasswordIsRight: async (req, res, next) => {
         try {
-            const {password} = req.user
-            const {oldPassword} = req.body
+            const {password} = req.user//пароль з БД захешований
+            const {oldPassword} = req.body // пароль із запиту не захешований
             const passwordsAreSame = await hashService.comparePasswords(oldPassword, password)
             if (!passwordsAreSame)
                 return next(new LocalError('Old password is wrong', statusCodes.BAD_REQUEST))
@@ -107,6 +108,45 @@ module.exports = {
             next(e)
         }
     },
+
+// порівнюємо введений юзером новий пароль з актуальни в БД (для відновлення паролю) - повинні відрізнятися
+    checkNewPasswordIsDifferent: async (req, res, next) => {
+        try {
+            const {password} = req.tokenInfo.user //пароль з БД захешований
+            const {password:newPassword} = req.body // пароль із запиту не захешований
+            const passwordsAreSame = await hashService.comparePasswords(newPassword, password)
+            if (passwordsAreSame)
+                return next(new LocalError('New password must be different', statusCodes.BAD_REQUEST))
+            next()
+
+        } catch (e) {
+            next(e)
+        }
+    },
+
+    checkEmailIsValid: async (req, res, next) => {
+        try {
+            const validate = userValidator.onlyEmailValidator.validate(req.body);
+            if (validate.error) {
+                return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
+            }
+            req.body = validate.value;
+            next()
+        } catch (e) {
+            next(e)
+        }
+    },
+
+    checkPasswordIsValid: async (req, res, next) => {
+        try {
+            const validate = userValidator.onlyPasswordValidator.validate(req.body);
+            if (validate.error) {
+                return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
+            }
+            req.body = validate.value;
+            next()
+        } catch (e) {
+            next(e)
+        }
+    },
 }
-
-

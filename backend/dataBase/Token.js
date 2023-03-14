@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 
-const actionTokenSchema = new Schema({
-    actionToken: { type: String, required: true },
+const tokenSchema = new Schema({
+    token: { type: String, required: true },
     tokenType: { type: String, required: true },
     user: {
         type: Schema.Types.ObjectId,
@@ -12,5 +12,5 @@ const actionTokenSchema = new Schema({
     versionKey: false
 });
 
-module.exports = model('actionToken', actionTokenSchema)
+module.exports = model('token', tokenSchema)
 

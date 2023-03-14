@@ -1,9 +1,9 @@
-const {userService, hashService, fileService} = require('../services');
+const {userService, hashService, fileService, authService} = require('../services');
 const {statusCode, roles, pathImg} = require('../constants')
 const uuid = require('uuid')
 const path = require("path");
 const {PATH_AVATAR} = require("../constants/pathImg");
-const {comparePasswords} = require("../services/hash.service");
+
 
 
 module.exports = {
@@ -121,11 +121,14 @@ module.exports = {
     updateUserPassword: async (req, res, next) => {
         try {
             const {userId} = req.params;
-            const hashPassword = await hashService.hashPassword(req.body.newPassword);
+            const {newPassword} = req.body;
+
+            const hashPassword = await hashService.hashPassword(newPassword);
+            await authService.deleteMany({user:userId});
+
             const user = await userService.updateUser(userId, { password: hashPassword});
+
             res.json(user)
-
-
 
         } catch (e) {
             next(e)
@@ -163,7 +166,7 @@ module.exports = {
                 const prevFavoriteRestaurants = user.favoriteRestaurants;
 
                const upFavoriteRestaurants = prevFavoriteRestaurants.filter(item => JSON.stringify(item) !== JSON.stringify(restId))
-                await userService.updateUser(_id, {
+               await userService.updateUser(_id, {
                     favoriteRestaurants: upFavoriteRestaurants
                 });
                 res.status(statusCode.NO_CONTENT).json()

@@ -44,4 +44,17 @@ authRouter.post (
     authMiddleware.checkToken(tokenTypes.REFRESH_TYPE),
     authController.refresh);
 
+authRouter.post (
+    '/forgotPassword',
+    userMiddleware.checkEmailIsValid,
+    userMiddleware.checkUserIsExistByEmail,
+    authController.forgotPasswordSendEmail);
+
+authRouter.put (
+    '/forgotPassword',
+    userMiddleware.checkPasswordIsValid,
+    authMiddleware.checkToken(tokenTypes.ACTION_TOKEN_TYPE),
+    userMiddleware.checkNewPasswordIsDifferent,
+    authController.forgotPasswordUpdatePassword);
+
 module.exports = authRouter

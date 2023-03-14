@@ -35,9 +35,21 @@ const changePasswordValidator = Joi.object({
     oldPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
 });
 
+const onlyEmailValidator = Joi.object({
+     email: emailValidator.required().error(new LocalError('email is not valid', BAD_REQUEST)),
+    }
+);
+
+const onlyPasswordValidator = Joi.object({
+    password: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
+    }
+);
+
 module.exports = {
     newUserBodyValidator,
     updateUserBodyValidator,
     loginUserValidator,
-    changePasswordValidator
+    changePasswordValidator,
+    onlyEmailValidator,
+    onlyPasswordValidator
 }

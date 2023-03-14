@@ -10,13 +10,15 @@ export * from './Comment/comment';
 export * from './CommentForm/commentForm';
 export * from './CommentsInRest/CommentsInRest';
 export * from './EventAnswerCard/EventAnswerCard';
+export * from './ForgotPasswordForm/ForgotPasswordForm'
 export * from './GeneralNews/GeneralNews';
 export * from './GeneralNewsCard/GeneralNewsCard';
 export * from './GeneralNewsCreate/GeneralNewsCreate';
 export * from './GeneralNewsList/GeneralNewsList';
 export * from './Header/Header';
-export * from './LoginForm/loginForm';
+export * from './LoginForm/LoginForm';
 export * from './LoginForm/AuthProvider';
+export * from './LoginFormForgot/LoginFormForgot';
 export * from './MarksCard/MarksCard';
 export * from './MarksInRest/MarksInRest';
 export * from './News/news';

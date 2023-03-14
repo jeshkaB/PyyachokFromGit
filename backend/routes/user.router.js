@@ -1,7 +1,7 @@
 const {Router} = require('express');
 // const upload = require('multer')();     // щоб можна було зчитувати data-form
 
-const {userController} = require("../controllers");
+const {userController, authController} = require("../controllers");
 const {forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
 const {roles, tokenTypes} = require("../constants");
 
@@ -18,7 +18,8 @@ userRouter.post(
     userMiddleware.checkNewUserBodyIsValid,
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
-    userMiddleware.checkEmailIsUnique,
+    userMiddleware.checkUserFieldIsUnique('email'),
+    userMiddleware.checkUserFieldIsUnique('name'),
     userController.createUser);
 
 userRouter.get(
@@ -32,6 +33,7 @@ userRouter.patch(
     // upload.any(),
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkUpdateUserBodyIsValid,
+    userMiddleware.checkUserFieldIsUnique('name'),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
@@ -40,11 +42,11 @@ userRouter.patch(
 userRouter.put(
     '/:userId/changePassword',
     forAllMiddleware.checkIdIsValid('userId'),
+    userMiddleware.checkPasswordPairIsValid,
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     // forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
-    userMiddleware.checkPasswordPairIsValid,
-    userMiddleware.checkOldPassword,
+    userMiddleware.checkOldPasswordIsRight,
     userController.updateUserPassword);
 
 userRouter.delete(
@@ -65,6 +67,7 @@ userRouter.post(
 userRouter.delete(
     '/:userId/favoriteRest',
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+    userMiddleware.checkUserIsExist(),
     userMiddleware.checkUserIsExist(),
     userController.removeFavoriteRest);
 

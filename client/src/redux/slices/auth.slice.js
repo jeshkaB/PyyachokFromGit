@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {ApiService, authService, geolocationService} from "../../services";
+import {ApiService, authService, axiosService, geolocationService} from "../../services";
 import {defaultCaseReject} from "./utilityFunctions";
 import {urls} from "../../constants";
 
@@ -85,6 +85,18 @@ const removeFavoriteRest = createAsyncThunk(
     }
 );
 
+const forgotPasswordNewPassword = createAsyncThunk(
+    'authSlice/forgotPasswordNewPassword',
+    async ({password, actionToken}, {rejectWithValue}) => {
+        try {
+            const {data} = await authService.forgotPasswordNewPassword(password, actionToken)
+            return data
+        }catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
+
 //___________________________________________________________________________________________________________________
 const authSlice = createSlice({
     name: 'authSlice',
@@ -117,20 +129,20 @@ const authSlice = createSlice({
             })
             .addCase(addFavoriteRest.fulfilled, (state, action) => {
                 state.errors = null;
-
-
             })
             .addCase(removeFavoriteRest.fulfilled, (state, action) => {
                 state.errors = null;
-
             })
-            .addDefaultCase((state, action) => {
+            .addCase(forgotPasswordNewPassword.fulfilled, (state, action) => {
+                state.errors = null;
+            })
+                        .addDefaultCase((state, action) => {
                 defaultCaseReject(state, action) //тут нам action.payload повертає rejectWithValue(e.response.data) - з функцій-запитів
             })
 
 })
 
 const {reducer: authReducer} = authSlice;
-const authActions = {register, login, logout, logoutFromEverywhere, addFavoriteRest,removeFavoriteRest};
+const authActions = {register, login, logout, logoutFromEverywhere, addFavoriteRest,removeFavoriteRest, forgotPasswordNewPassword};
 
 export {authReducer, authActions}

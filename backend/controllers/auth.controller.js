@@ -1,5 +1,5 @@
-const {authService, tokenService, userService, nodemailerService} = require("../services");
-const {statusCode} = require("../constants");
+const {authService, tokenService, userService, nodemailerService, actionTokenService, tokenDbService, hashService} = require("../services");
+const {statusCode, urls, tokenTypes} = require("../constants");
 
 module.exports = {
     registration: async (req,res,next) => {
@@ -15,7 +15,6 @@ module.exports = {
     login: async (req, res, next) => {
         try {
             const {_id, role, email} = req.user; // з попередньої мідлвари
-
 
             const authTokens = {
                 accessToken: tokenService.createAccessToken({_id}),
@@ -76,5 +75,41 @@ module.exports = {
         } catch (e) {
             next(e);
         }
+    },
+    forgotPasswordSendEmail: async (req,res,next) => {
+        try {
+            const {_id, email} = req.user
+            const actionToken = tokenService.createActionToken({_id})
+            const token = {
+                token: actionToken,
+                tokenType: tokenTypes.ACTION_TOKEN_TYPE,
+                user: _id
+            }
+            await tokenDbService.saveToken(token)
+
+            const url = `${urls.URL_FORGOT_PASSWORD}?token=${actionToken}`
+            await nodemailerService.sendEmail(email, 'Відновлення паролю','Для відновлення паролю перейдіть за посиланням:', url, 'Відновити' )
+
+            res.json()
+
+        }catch (e) {
+            next(e)
+        }
+    },
+    forgotPasswordUpdatePassword: async (req,res,next) => {
+        try {
+            const {password} = req.body;
+            const {token, user:{_id}} = req.tokenInfo;
+
+            const hashPassword = await hashService.hashPassword(password);
+            await authService.deleteMany({user:_id});
+            await tokenDbService.deleteOneByParams({token})
+            const user = await userService.updateUser(_id, { password: hashPassword});
+
+            res.json(user)
+        }catch (e) {
+            next(e)
+        }
     }
+
 }

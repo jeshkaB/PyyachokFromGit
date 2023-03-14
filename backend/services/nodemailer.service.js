@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const {SERVER_EMAIL, SERVER_EMAIl_PASSWORD, SERVER_EMAIl_HOST, SERVER_EMAIL_PORT, SERVER_EMAIL_SECURE} = require("../configs/config");
 
 module.exports = {
-    sendEmail: (userEmail,subject,text)=> {
+    sendEmail: (userEmail,subject,text='', url='',textInUrl='')=> {
         let transporter = nodemailer.createTransport({
             host: SERVER_EMAIl_HOST,
             port: SERVER_EMAIL_PORT,
@@ -17,7 +17,7 @@ module.exports = {
             from: SERVER_EMAIL,
             to: userEmail,
             subject: subject,
-            html: `<b>${text}</b>`,
+            html: `<b>${text}</b> <br> <a href=${url}>${textInUrl}</a>`
         });
     }
 

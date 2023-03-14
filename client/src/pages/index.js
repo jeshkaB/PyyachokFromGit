@@ -1,4 +1,4 @@
-export * from './NewsPage';
+export * from './ForgotPasswordPage';
 export * from './HomePage';
 export * from './GeneralNewsPage';
 export * from './GeneralNewsListPage';
@@ -7,6 +7,7 @@ export * from './MarksInRestPage';
 export * from './MyAccountPage';
 export * from './NewsListPage';
 export * from './NewsForAdminPage';
+export * from './NewsPage';
 export * from './RegisterPage';
 export * from './RestaurantForAdminPage';
 export * from './RestaurantManagerPage';

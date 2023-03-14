@@ -7,7 +7,15 @@ const authService = {
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
     logout: () => axiosService.post(`${urls.auth}/logout`),
     logoutFromEverywhere: () => axiosService.post(`${urls.auth}/logout/fromEverywhere`),
-    refresh: (refreshToken) => axiosService.post(`${urls.auth}/refresh`, {refreshToken}),// чому токен передається в дужках?
+    refresh: (refreshToken) => axiosService.post(`${urls.auth}/refresh`, {refreshToken}),//TODO токен передається в баді???
+
+    forgotPasswordRequest: (email) => axiosService.post(`${urls.auth}/forgotPassword`, email),
+    forgotPasswordNewPassword: (password, actionToken) =>
+        axiosService.put(
+            `${urls.auth}/forgotPassword`,
+            {password},
+            {headers: {Authorization: `${actionToken}`}}),
+
     saveTokensInLS: ({accessToken, refreshToken}) => {
         localStorage.setItem(keysLS.access, accessToken);
         localStorage.setItem(keysLS.refresh, refreshToken)
