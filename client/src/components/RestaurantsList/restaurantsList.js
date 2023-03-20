@@ -9,6 +9,8 @@ import {RestaurantSearchForm} from "./RestaurantSearchForm";
 import {RestaurantsSort} from "./RestaurantsSort";
 import {RestaurantsFilter} from "./RestaurantsFilter";
 import {categoriesForRestSort} from "../../constants";
+import {paginationLimits} from "../../constants/paginationLimits";
+import {PaginationUC} from "../PaginationUC/PaginationUC";
 
 
 const RestaurantsList = ({userId, tag}) => {
@@ -44,25 +46,25 @@ const RestaurantsList = ({userId, tag}) => {
         setSearchParams('')
     }
 
-    let restaurantsForCards=[]
-    if (userId) restaurantsForCards = restaurants.filter(rest => rest.user === userId);
-    else if (searchParams.get('tag')) restaurantsForCards = restaurants.filter(rest => rest.tags?.includes(searchParams.get('tag')))
+    let sortedRestaurantsList=[]
+    if (userId) sortedRestaurantsList = restaurants.filter(rest => rest.user === userId);
+    else if (searchParams.get('tag')) sortedRestaurantsList = restaurants.filter(rest => rest.tags?.includes(searchParams.get('tag')))
     else {
         if (!selectedCatSort)
-            restaurantsForCards = restaurants
+            sortedRestaurantsList = restaurants
         else
             switch (selectedCatSort) {
                 case rating:
-                    restaurantsForCards = [...restaurants].sort((a,b)=> b.rating - a.rating)
+                    sortedRestaurantsList = [...restaurants].sort((a,b)=> b.rating - a.rating)
                     break;
                 case averageBill:
-                    restaurantsForCards = [...restaurants].sort((a,b)=> a.averageBill - b.averageBill)
+                    sortedRestaurantsList = [...restaurants].sort((a,b)=> a.averageBill - b.averageBill)
                     break;
                 case date:
-                    restaurantsForCards = [...restaurants].reverse()// масив початково відсортований по даті від найстаршого до найновішого
+                    sortedRestaurantsList = [...restaurants].reverse()// масив початково відсортований по даті від найстаршого до найновішого
                     break;
                 case name:
-                    restaurantsForCards = [...restaurants].sort((a,b)=> a.name.localeCompare(b.name))
+                    sortedRestaurantsList = [...restaurants].sort((a,b)=> a.name.localeCompare(b.name))
                     break;
                 case distance:
 
@@ -71,13 +73,19 @@ const RestaurantsList = ({userId, tag}) => {
                         if (isLocationAvailable) rest.distance = Math.hypot((rest.coordinates[0] - longitude), (rest.coordinates[1] - latitude))
                         return rest;
                     });
-                    restaurantsForCards = [...restaurantsWithDistance].sort((a,b)=> a.distance - b.distance)
+                    sortedRestaurantsList = [...restaurantsWithDistance].sort((a,b)=> a.distance - b.distance)
                     break;
                 default:
-                    restaurantsForCards = restaurants
+                    sortedRestaurantsList = restaurants
         }
     }
+    const restaurantsListForCards = sortedRestaurantsList
+        .filter(rest => rest.name.toLowerCase().includes(searchQuery))
+        .filter(rest => minRating <= rest.rating && rest.rating <= maxRating)
+        .filter(rest => minBill <= rest.averageBill && rest.averageBill <= maxBill)
+        .filter(rest => tagsFilter !== '' ? rest.tags?.includes(tagsFilter) : rest)
 
+    const [restaurantsOnPage, setRestaurantsOnPage] = useState(restaurantsListForCards.slice(0, paginationLimits.restaurantsLimit))
 
 
     return (
@@ -88,14 +96,9 @@ const RestaurantsList = ({userId, tag}) => {
                 <RestaurantsSort setSelectedCatSort={setSelectedCatSort} selectedCatSort={selectedCatSort}/>
                 <div style={{cursor:'pointer', border:'solid darkorange', color: 'darkorange', width:'400px'}} onClick={()=>resetFilters()}>Скинути всі фільтри і сортування</div>
                 {!isLocationAvailable && <h4> Ваша локація не визначена </h4> }
-                <div className={'RestList'}>{restaurantsForCards
-                    // .sort((a,b)=>(a.rating-b.rating))
-                    .filter(rest => rest.name.toLowerCase().includes(searchQuery))
-                    .filter(rest => minRating <= rest.rating && rest.rating <= maxRating)
-                    .filter(rest => minBill <= rest.averageBill && rest.averageBill <= maxBill)
-                    .filter(rest => tagsFilter !== '' ? rest.tags?.includes(tagsFilter) : rest)
-                    .map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
+                <div className={'RestList'}>{restaurantsOnPage.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
                 </div>
+                <PaginationUC entitiesList={restaurantsListForCards} setEntitiesOnPage={setRestaurantsOnPage} limit={paginationLimits.restaurantsLimit}/>
             </div>
         );
 }

@@ -1,8 +1,5 @@
 import css from './userInfo.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {userActions} from "../../redux";
 import API_URL from "../../config";
-import {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {roles} from "../../constants";
 

@@ -5,7 +5,7 @@ module.exports = {
         return Comment.create(commentObj)
     },
     getComments() {
-        return Comment.find().sort({createdAt:-1}).populate('user')
+        return Comment.find().sort({createdAt: -1}).populate('user')
     },
     getCommentById(comId) {
         return Comment.findById(comId).populate('user')

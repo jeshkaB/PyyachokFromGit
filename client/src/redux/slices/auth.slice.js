@@ -8,7 +8,7 @@ const initialState = {
     userId: null,
     errors: null,
     role: null,
-    authUser:null,
+    authUser: null,
 
 };
 
@@ -31,9 +31,8 @@ const login = createAsyncThunk(
     'authSlice/login',
     async ({user}, {rejectWithValue}) => {
         try {
-            const {data:authData} = await authService.login(user);
-            const {data:userData} = await ApiService.getById(entity, authData.user)
-           return {authData, userData}
+            const {data} = await authService.login(user);
+            return data
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -64,7 +63,7 @@ const logoutFromEverywhere = createAsyncThunk(
 
 const addFavoriteRest = createAsyncThunk(
     'authSlice/addFavoriteRest',
-    async ({userId,restId}, {rejectWithValue}) => {
+    async ({userId, restId}, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.addFavoriteRest(entity, userId, restId)
             return data
@@ -75,7 +74,7 @@ const addFavoriteRest = createAsyncThunk(
 );
 const removeFavoriteRest = createAsyncThunk(
     'authSlice/removeFavoriteRest',
-    async ({userId,restId}, {rejectWithValue}) => {
+    async ({userId, restId}, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.removeFavoriteRest(entity, userId, restId)
             return data
@@ -84,6 +83,18 @@ const removeFavoriteRest = createAsyncThunk(
         }
     }
 );
+const setCurrentUser = createAsyncThunk(
+    'authSlice/setCurrentUser',
+    async ({refreshToken}, {rejectWithValue}) => {
+        try {
+            const {data} = await authService.refresh(refreshToken);
+            return data
+
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
 
 const forgotPasswordNewPassword = createAsyncThunk(
     'authSlice/forgotPasswordNewPassword',
@@ -91,7 +102,7 @@ const forgotPasswordNewPassword = createAsyncThunk(
         try {
             const {data} = await authService.forgotPasswordNewPassword(password, actionToken)
             return data
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -106,10 +117,13 @@ const authSlice = createSlice({
         builder
             .addCase(login.fulfilled, (state, action) => {
                 state.isAuth = true;
-                state.userId = action.payload.authData.user;
-                state.role = action.payload.authData.role;
-                state.authUser = action.payload.userData;
-                authService.saveTokensInLS(action.payload.authData)
+                const {user, tokens} = action.payload;
+                state.userId = user._id;
+                state.role = user.role;
+                state.authUser = user;
+                authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken})
+                authService.saveUserIdInLS(user._id)
+
             })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isAuth = false;
@@ -117,6 +131,7 @@ const authSlice = createSlice({
                 state.userId = null;
                 state.role = null;
                 authService.deleteTokensInLS();
+                authService.deleteUserIdInLS();
                 geolocationService.deleteGeoCoordsInLS();
             })
             .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
@@ -125,6 +140,7 @@ const authSlice = createSlice({
                 // state.userId = null;
                 state.role = null;
                 authService.deleteTokensInLS();
+                authService.deleteUserIdInLS();
                 geolocationService.deleteGeoCoordsInLS();
             })
             .addCase(addFavoriteRest.fulfilled, (state, action) => {
@@ -136,13 +152,32 @@ const authSlice = createSlice({
             .addCase(forgotPasswordNewPassword.fulfilled, (state, action) => {
                 state.errors = null;
             })
-                        .addDefaultCase((state, action) => {
+            .addCase(setCurrentUser.fulfilled, (state, action) => {
+                const {user,tokens} = action.payload
+                state.isAuth = true;
+                state.userId = user._id;
+                state.role = user.role;
+                state.authUser = user;
+                authService.deleteTokensInLS();
+                authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken})
+
+            })
+            .addDefaultCase((state, action) => {
                 defaultCaseReject(state, action) //тут нам action.payload повертає rejectWithValue(e.response.data) - з функцій-запитів
             })
 
 })
-
 const {reducer: authReducer} = authSlice;
-const authActions = {register, login, logout, logoutFromEverywhere, addFavoriteRest,removeFavoriteRest, forgotPasswordNewPassword};
+
+const authActions = {
+    register,
+    login,
+    logout,
+    logoutFromEverywhere,
+    addFavoriteRest,
+    removeFavoriteRest,
+    forgotPasswordNewPassword,
+    setCurrentUser
+};
 
 export {authReducer, authActions}

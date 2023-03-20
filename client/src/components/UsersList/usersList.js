@@ -1,26 +1,33 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {userActions} from "../../redux";
 import {UserCard} from "../UserCard/UserCard";
+
+import {paginationLimits} from "../../constants/paginationLimits";
+import {PaginationUC} from "../PaginationUC/PaginationUC";
 
 
 const UsersList = () => {
 
-    const {users} = useSelector(state => state.user)
+    const {users} = useSelector(state => state.user) || []
     const dispatch = useDispatch()
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(userActions.getAll())
     }, [dispatch])
-    const usersManagersFirst = [...users].sort((a,b) => b.role.length - a.role.length)
+    const usersManagersFirst = [...users].sort((a, b) => b.role.length - a.role.length)
+
+    const [usersOnPage, setUsersOnPage] = useState(usersManagersFirst.slice(0, paginationLimits.usersLimit))
 
     return (
         <div style={{margin: 20}}>
             <div>
-                {users && usersManagersFirst.map (user=> <UserCard key={user._id} user={user}/>)}
+                {users && usersOnPage.map(user => <UserCard key={user._id} user={user}/>)}
             </div>
+            <PaginationUC entitiesList={usersManagersFirst}
+                          setEntitiesOnPage={setUsersOnPage}
+                          limit={paginationLimits.usersLimit}/>
         </div>
     );
 };
-
 export {UsersList}

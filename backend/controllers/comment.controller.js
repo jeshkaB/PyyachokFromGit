@@ -38,7 +38,6 @@ module.exports = {
         try {
             const comments = await commentService.getComments();
             res.json(comments)
-
         } catch (e) {
             next(e)
         }
@@ -70,7 +69,7 @@ module.exports = {
 
             await commentService.deleteComment(comId);
 
-            const userComments = await commentService.getCommentsByParams({user:user._id});
+            const userComments = await commentService.getCommentsByParams({user: user._id});
             const upUserComments = userComments.filter(item => item._id !== comId)
             await userService.updateUser(user._id, {
                 comments: upUserComments

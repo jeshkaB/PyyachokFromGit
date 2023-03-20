@@ -1,4 +1,4 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {restaurantActions, userActions} from "../../redux";
@@ -9,9 +9,11 @@ import {MyMarks} from "../AccountComponents/MyMarks/MyMarks";
 import {MyComments} from "../AccountComponents/MyComments/MyComments";
 import {MyUserEvents} from "../AccountComponents/MyEvents/MyUserEvents";
 
-const User = ({user}) => {
+const User = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location= useLocation();
+    const user = location.state
 
     const {restaurants} = useSelector(state => state.restaurant);
     const {_id, name, email, avatar, restaurants: restOfUserIds, role} = user

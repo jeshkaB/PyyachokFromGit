@@ -6,6 +6,7 @@ import {createBrowserHistory} from 'history';
 const history = createBrowserHistory();
 
 const axiosService = axios.create({baseURL});
+const axiosRefreshService = axios.create({baseURL});
 
 axiosService.interceptors.request.use((config) => {
     const accessToken = authService.getAccessTokenInLS();
@@ -24,8 +25,8 @@ axiosService.interceptors.response.use((config) => {
         if (error.response?.status === 401 && error.config && !isRefreshing && refreshToken) {
             isRefreshing = true;
             try {
-                const {data} = await authService.refresh(refreshToken);
-                authService.saveTokensInLS(data)
+                const {data:{tokens}} = await authService.refresh(refreshToken);
+                authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken})
             } catch (e) {
                 authService.deleteTokensInLS();
                 return history.replace('/login?ExpSession=true')
@@ -36,4 +37,4 @@ axiosService.interceptors.response.use((config) => {
         return Promise.reject(error)
     })
 
-export {axiosService, history}
+export {axiosService, history, axiosRefreshService}

@@ -7,10 +7,10 @@ import {Provider} from "react-redux";
 import {App} from "./App";
 import {history} from './services'
 
-
 const store = setupStore();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
 
       <Provider store={store}>

@@ -2,13 +2,16 @@ import './HeaderStyle.css'
 import {Link, useNavigate} from "react-router-dom";
 import {UserInfo} from "../UserInfo/userInfo";
 import {useDispatch, useSelector} from "react-redux";
-import {authActions} from "../../redux";
+import {authActions, userActions} from "../../redux";
+import {authService} from "../../services";
+import {useEffect} from "react";
 
 
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {isAuth, authUser} = useSelector(state => state.auth);
+    const {user} = useSelector(state => state.user);
     const isManager = true
 
     const clickExit = async ()=> {

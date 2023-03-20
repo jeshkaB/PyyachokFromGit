@@ -3,7 +3,9 @@ import {Header} from "../components";
 import {authService, geolocationService} from "../services";
 import {keysLS} from "../constants";
 import {useDispatch} from "react-redux";
-import {geoActions} from "../redux";
+import {authActions, geoActions} from "../redux";
+import {useEffect} from "react";
+
 
 
  const MainLayout = ()=> {
@@ -16,6 +18,14 @@ import {geoActions} from "../redux";
      else {
          dispatch(geoActions.setGeoLocation(null));
      }
+     const refreshToken = authService.getRefreshTokenInLS();
+
+     useEffect(()=> {
+
+         if (refreshToken)
+             dispatch(authActions.setCurrentUser({refreshToken}))
+     },[])
+
     return (
         <div>
             <Header/>

@@ -1,5 +1,5 @@
 import {keysLS, urls} from "../constants";
-import {axiosService} from "./axios.service";
+import {axiosService,axiosRefreshService} from "./axios.service";
 
 
 const authService = {
@@ -7,7 +7,8 @@ const authService = {
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
     logout: () => axiosService.post(`${urls.auth}/logout`),
     logoutFromEverywhere: () => axiosService.post(`${urls.auth}/logout/fromEverywhere`),
-    refresh: (refreshToken) => axiosService.post(`${urls.auth}/refresh`, {refreshToken}),//TODO токен передається в баді???
+    refresh: (refreshToken) => axiosRefreshService.post(`${urls.auth}/refresh`, {}, {headers: {Authorization: `${refreshToken}`}}),
+
 
     forgotPasswordRequest: (email) => axiosService.post(`${urls.auth}/forgotPassword`, email),
     forgotPasswordNewPassword: (password, actionToken) =>
@@ -18,15 +19,24 @@ const authService = {
 
     saveTokensInLS: ({accessToken, refreshToken}) => {
         localStorage.setItem(keysLS.access, accessToken);
-        localStorage.setItem(keysLS.refresh, refreshToken)
+        localStorage.setItem(keysLS.refresh, refreshToken);
     },
+
     getAccessTokenInLS: () =>
         localStorage.getItem(keysLS.access),
     getRefreshTokenInLS: () =>
         localStorage.getItem(keysLS.refresh),
     deleteTokensInLS: () => {
         localStorage.removeItem(keysLS.access);
-        localStorage.removeItem(keysLS.refresh)}
+        localStorage.removeItem(keysLS.refresh)
+    },
+
+    saveUserIdInLS: (userId) =>
+        localStorage.setItem(keysLS.userId, userId),
+    getUserIdInLS: () =>
+        localStorage.getItem(keysLS.userId),
+    deleteUserIdInLS: () =>
+        localStorage.removeItem(keysLS.userId)
 }
 
 export {authService}

@@ -1,82 +1,87 @@
-const {authService, tokenService, userService, nodemailerService, actionTokenService, tokenDbService, hashService} = require("../services");
+const {
+    authService,
+    tokenService,
+    userService,
+    nodemailerService,
+    actionTokenService,
+    tokenDbService,
+    hashService
+} = require("../services");
 const {statusCode, urls, tokenTypes} = require("../constants");
 
 module.exports = {
-    registration: async (req,res,next) => {
-      try {
-         const user= await userService.createUser(req.body);
-          await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
-          res.status(statusCode.CREATE).json(user)
+    registration: async (req, res, next) => {
+        try {
+            const user = await userService.createUser(req.body);
+            await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+            res.status(statusCode.CREATE).json(user)
 
-      }  catch (e) {
-          next(e)
-      }
-},
+        } catch (e) {
+            next(e)
+        }
+    },
     login: async (req, res, next) => {
         try {
-            const {_id, role, email} = req.user; // з попередньої мідлвари
 
+            const user = req.user; // з попередньої мідлвари
+            const {_id} = user
             const authTokens = {
                 accessToken: tokenService.createAccessToken({_id}),
                 refreshToken: tokenService.createRefreshToken({_id}),
-                user: _id,
-                role: role
+                user: _id
             }
-            await authService.saveTokens({...authTokens});
-
-
-            res.json({
-                ...authTokens,
-                // user: req.user//TODO а чи потрібен мені тут повний юзер????
-            })
+            const tokens = await authService.saveTokens({...authTokens});
+            res.json({tokens, user})
 
         } catch (e) {
             next(e);
         }
     },
 
-    logout: async (req, res, next)=> {
-        try{
+    logout: async (req, res, next) => {
+        try {
             const {user, accessToken} = req.tokenInfo;
-            await authService.deleteOneByParams({user:user._id, accessToken});
+            await authService.deleteOneByParams({user: user._id, accessToken});
             res.sendStatus(statusCode.NO_CONTENT)
-        }catch (e) {
+        } catch (e) {
             next(e)
         }
     },
 
-    logoutFromEverywhere: async (req, res, next)=> {
-        try{
+    logoutFromEverywhere: async (req, res, next) => {
+        try {
             const {user} = req.tokenInfo;
-            await authService.deleteMany({user:user._id});
+            await authService.deleteMany({user: user._id});
             res.sendStatus(statusCode.NO_CONTENT)
-        }catch (e) {
+        } catch (e) {
             next(e)
         }
     },
 
     refresh: async (req, res, next) => {
         try {
-            const {user, refreshToken} = req.tokenInfo;
 
+            const {user, refreshToken} = req.tokenInfo;
+            const {_id} = user
             await authService.deleteTokensPairByParams({refreshToken})
 
             const authTokens = {
-                accessToken: tokenService.createAccessToken({user}),
-                refreshToken: tokenService.createRefreshToken({user}),
-                user:user
+                accessToken: tokenService.createAccessToken({_id}),
+                refreshToken: tokenService.createRefreshToken({_id}),
+                user: _id
             }
-            await authService.saveTokens({...authTokens});
-         res.json({
-                ...authTokens,
-                user
-            })
+            const tokens = await authService.saveTokens({...authTokens});
+            // console.log({...tokens})
+            // об’єкт, отриманий з БД методами монгусаб не можна деструктуризувати як звичайний об’єкт, виходить великий складний об’єкт, де наш tokens сидить в полі _doc
+
+            res.json({tokens,user})
+
 
         } catch (e) {
             next(e);
         }
     },
-    forgotPasswordSendEmail: async (req,res,next) => {
+    forgotPasswordSendEmail: async (req, res, next) => {
         try {
             const {_id, email} = req.user
             const actionToken = tokenService.createActionToken({_id})
@@ -88,26 +93,26 @@ module.exports = {
             await tokenDbService.saveToken(token)
 
             const url = `${urls.URL_FORGOT_PASSWORD}?token=${actionToken}`
-            await nodemailerService.sendEmail(email, 'Відновлення паролю','Для відновлення паролю перейдіть за посиланням:', url, 'Відновити' )
+            await nodemailerService.sendEmail(email, 'Відновлення паролю', 'Для відновлення паролю перейдіть за посиланням:', url, 'Відновити')
 
             res.json()
 
-        }catch (e) {
+        } catch (e) {
             next(e)
         }
     },
-    forgotPasswordUpdatePassword: async (req,res,next) => {
+    forgotPasswordUpdatePassword: async (req, res, next) => {
         try {
             const {password} = req.body;
-            const {token, user:{_id}} = req.tokenInfo;
+            const {token, user: {_id}} = req.tokenInfo;
 
             const hashPassword = await hashService.hashPassword(password);
-            await authService.deleteMany({user:_id});
+            await authService.deleteMany({user: _id});
             await tokenDbService.deleteOneByParams({token})
-            const user = await userService.updateUser(_id, { password: hashPassword});
+            const user = await userService.updateUser(_id, {password: hashPassword});
 
             res.json(user)
-        }catch (e) {
+        } catch (e) {
             next(e)
         }
     }

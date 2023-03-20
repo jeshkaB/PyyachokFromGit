@@ -4,6 +4,7 @@ const upload = require('multer')();     // щоб можна було зчиту
 const {authController, userController} = require("../controllers");
 const {userMiddleware, authMiddleware} = require("../middlewares");
 const {tokenTypes} = require("../constants");
+const {authService} = require("../services");
 
 const authRouter = Router();
 
@@ -56,5 +57,9 @@ authRouter.put (
     authMiddleware.checkToken(tokenTypes.ACTION_TOKEN_TYPE),
     userMiddleware.checkNewPasswordIsDifferent,
     authController.forgotPasswordUpdatePassword);
+
+// authRouter.get (
+//     '/',
+//     authController.getRefresh);
 
 module.exports = authRouter

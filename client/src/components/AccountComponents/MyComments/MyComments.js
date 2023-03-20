@@ -14,7 +14,7 @@ const MyComments = ({user,restaurants}) => {
     }, [dispatch]);
 
     let myComments = [];
-    if (comments) myComments = comments.filter(com => com.user._id === _id); // в коментарях user - populate
+    if (comments) myComments = comments.filter(com => com.user?._id === _id); // в коментарях user - populate
     const [stateComments, setStateComments] = useState(false);
 
 

@@ -7,14 +7,13 @@ import {MyMarksCard} from "./MyMarksCard";
 const MyMarks = ({user}) => {
     const {_id} = user;
     const {marks} = useSelector(state => state.mark);
-
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(markActions.getAll())
     }, [dispatch]);
 
     let myMarks=[]
-    if (marks) myMarks = marks.filter(mark=>mark.user._id===_id)
+    if (marks) myMarks = marks.filter(mark=>mark.user?._id ===_id)
 
     const [stateMarks, setStateMarks] = useState(false)
 

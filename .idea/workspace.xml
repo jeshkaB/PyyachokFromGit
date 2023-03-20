@@ -2,32 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/constants/urls.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/ForgotPasswordForm/ForgotPasswordForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/LoginFormForgot/LoginFormForgot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/ForgotPasswordPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/PaginationUC/PaginationUC.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/constants/paginationLimits.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/ActionToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/comment.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/comment.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/discription" beforeDir="false" afterPath="$PROJECT_DIR$/backend/discription" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/middlewares/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/auth.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/actionToken.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/tokenDB.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/hash.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/hash.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/nodemailer.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/nodemailer.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/comment.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/comment.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/token.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/token.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LoginForm/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginForm/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyComments/MyComments.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyComments/MyComments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/restaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/keysLS.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/keysLS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/auth.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/services/axios.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/axios.service.js" afterDir="false" />
@@ -70,7 +66,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/LoginFormForgot",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/PaginationUC",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
@@ -78,11 +74,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\PaginationUC" />
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\constants" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\LoginFormForgot" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend\services" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend\constants" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\dataBase" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\LoginForm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend" />
@@ -91,6 +87,16 @@
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\AccountComponents" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices\restaurant" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="auth.service.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/client/src/services/auth.service.js" working-dir="$PROJECT_DIR$/client/src/services">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.auth.service.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -110,14 +116,8 @@
       <workItem from="1676621642295" duration="7031000" />
       <workItem from="1676734921682" duration="139817000" />
       <workItem from="1678029535640" duration="30480000" />
-      <workItem from="1678174764343" duration="111965000" />
-    </task>
-    <task id="LOCAL-00006" summary="interim">
-      <created>1671044012242</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1671044012242</updated>
+      <workItem from="1678174764343" duration="148330000" />
+      <workItem from="1679301371588" duration="8511000" />
     </task>
     <task id="LOCAL-00007" summary="interim">
       <created>1671045990451</created>
@@ -455,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678652312071</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="forgot password">
+      <created>1678795740549</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1678795740550</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,6 +480,7 @@
     <MESSAGE value="before changing isFavorite" />
     <MESSAGE value="update comment" />
     <MESSAGE value="current changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="current changes" />
+    <MESSAGE value="forgot password" />
+    <option name="LAST_COMMIT_MESSAGE" value="forgot password" />
   </component>
 </project>
