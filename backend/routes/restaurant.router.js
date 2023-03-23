@@ -61,5 +61,11 @@ restaurantRouter.put(
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
     restaurantController.changeRestAdmin);
 
+restaurantRouter.put(
+    '/:restId/view',
+    forAllMiddleware.checkIdIsValid('restId'),
+    restaurantMiddleware.checkRestaurantIsExist(),
+    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+    restaurantController.completeViews);
 module.exports = restaurantRouter
 

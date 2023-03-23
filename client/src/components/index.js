@@ -6,6 +6,7 @@ export * from './AccountComponents/MyComments/MyComments';
 export * from './AccountComponents/MyEvents/MyUserEvents';
 export * from './AccountComponents/MyEvents/MyUserEvent';
 export * from './ChangeManager/ChangeManager';
+export * from './ChangeManager/ChangeManager';
 export * from './Comment/comment';
 export * from './CommentForm/commentForm';
 export * from './CommentsInRest/CommentsInRest';
@@ -15,6 +16,7 @@ export * from './GeneralNews/GeneralNews';
 export * from './GeneralNewsCard/GeneralNewsCard';
 export * from './GeneralNewsCreate/GeneralNewsCreate';
 export * from './GeneralNewsList/GeneralNewsList';
+export * from './GeneralViewStatistics/GeneralViewStatistics';
 export * from './Header/Header';
 export * from './LoginForm/LoginForm';
 export * from './LoginForm/AuthProvider';
@@ -57,6 +59,7 @@ export * from './UsersList/usersList';
 export * from './User/User';
 export * from './UserCard/UserCard';
 export * from './UserUpdate&Delete/UserUpdate&Delete';
+export * from './ViewsTab/ViewsTab';
 
 
 

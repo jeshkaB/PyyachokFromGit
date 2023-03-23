@@ -24,11 +24,11 @@ import {
     GeneralNewsListPage,
     UserPage,
     TopPageForAdmin,
-    PrivacyPolicy,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    ViewStatisticsPage, GeneralViewStatisticsPage,
+
 } from "./pages";
-import {CommentsInRest} from "./components";
-import {authService} from "./services";
+import {CommentsInRest, GeneralViewStatistics} from "./components";
 
 
 const App = () => {
@@ -49,6 +49,7 @@ const App = () => {
                     <Route path={'restaurantManager'} element={<RestaurantManagerPage/>}/>
                     <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
                     <Route path={'superAdmin/top'} element={<TopPageForAdmin/>}/>
+                    <Route path={'superAdmin/views'} element={<GeneralViewStatisticsPage/>}/>
                     <Route path={'restaurants'} element={<RestaurantsListPage/>}/>
                     <Route path={'restaurants/:id'} element={<RestaurantPage/>}/>
                     <Route path={'restaurantsForAdmin/:id'} element={<RestaurantForAdminPage/>}/>
@@ -62,6 +63,7 @@ const App = () => {
                     <Route path={'userEvents/:id'} element={<UserEventPage/>}/>
                     <Route path={'users'} element={<UsersListPage/>}/>
                     <Route path={'users/:id'} element={<UserPage/>}/>
+                    <Route path={'restaurantsForAdmin/:id/viewStatistics'} element={<ViewStatisticsPage/>}/>
 
 
                 </Route>

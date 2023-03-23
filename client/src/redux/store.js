@@ -10,6 +10,7 @@ import {eventAnswerReducer} from "./slices/eventAnswer.slice";
 import {generalNewsReducer} from "./slices/generalNews.slice";
 import {geoReducer} from "./slices/geo.slice";
 import {topCategoryReducer} from "./slices/topCategory.slice";
+import {viewStatisticsReducer} from "./slices/viewStatistics.slice";
 
 
 let rootReducer;
@@ -24,7 +25,8 @@ rootReducer = combineReducers({
     eventAnswer: eventAnswerReducer,
     generalNews: generalNewsReducer,
     geo:geoReducer,
-    topCategory:topCategoryReducer
+    topCategory:topCategoryReducer,
+    viewStatistics:viewStatisticsReducer
 
 });
 

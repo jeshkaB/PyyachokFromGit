@@ -85,12 +85,23 @@ const sendMessage = createAsyncThunk(
     }
 );
 
-
 const changeRestAdmin = createAsyncThunk(
     'restaurantSlice/changeRestAdmin',
     async ({restId,userId}, {rejectWithValue}) => {
         try {
             const {data} =  await ApiService.changeRestAdmin(entity, restId, userId)
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
+const completeViews = createAsyncThunk(
+    'restaurantSlice/completeViews',
+    async ({restId}, {rejectWithValue}) => {
+        try {
+            const {data} =  await ApiService.completeViews(entity, restId)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -136,12 +147,15 @@ const restaurantSlice = createSlice({
                     state.errors = null;
                     state.restaurant = action.payload
                 })
+                .addCase(completeViews.fulfilled, (state, action) => {
+                    state.errors = null
+                })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)
                 })
     }
 )
 const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage, changeRestAdmin};
+const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage, changeRestAdmin, completeViews};
 
 export {restaurantReducer, restaurantActions}

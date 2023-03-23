@@ -50,7 +50,6 @@ module.exports = {
 
     checkRestaurantIsExist: (from='params') => async (req, res, next) => {
         try {
-
             const {restId} = req[from];
             const restaurantById = await restaurantService.getRestaurantById(restId)
             if (!restaurantById) {

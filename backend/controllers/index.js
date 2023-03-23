@@ -10,5 +10,6 @@ module.exports = {
     topCategoryController: require('./topCategory.controller'),
     userController: require('./user.controller'),
     userEventController: require('./userEvent.controller'),
+    viewStatisticsController: require('./viewStatistics.controller'),
 
 }

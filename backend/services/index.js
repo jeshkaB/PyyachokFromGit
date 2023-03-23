@@ -13,6 +13,8 @@ module.exports = {
     userService: require('./user.service'),
     userEventService: require('./userEvent.service'),
     topCategoryService: require('./topCategory.service'),
-    nodemailerService: require('./nodemailer.service')
+    nodemailerService: require('./nodemailer.service'),
+    viewStatisticsService: require('./viewStatistics.service'),
+
 
 }

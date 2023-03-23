@@ -2,6 +2,7 @@ export * from './ForgotPasswordPage';
 export * from './HomePage';
 export * from './GeneralNewsPage';
 export * from './GeneralNewsListPage';
+export * from './GeneralViewStatisticsPage';
 export * from './LoginPage';
 export * from './MarksInRestPage';
 export * from './MyAccountPage';
@@ -20,5 +21,6 @@ export * from './UserPage';
 export * from './UserEventPage';
 export * from './UserEventsPageInRestaurant';
 export * from './UserEventsListPage';
+export * from './ViewStatisticsPage';
 
 

@@ -67,7 +67,9 @@ const SuperAdminPage = ()=> {
             </div>
             <div> <h3 style={{cursor: "pointer"}} onClick={() => {navigate('top')}}> Топ закладів </h3>
             </div>
-            <div> Analytics</div>
+            <div>
+                <h3 style={{cursor: "pointer"}} onClick={() => {navigate('views')}}> Статистика переглядів по всім закладам </h3>
+            </div>
 
         </div>
     );

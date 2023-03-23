@@ -8,11 +8,12 @@ const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload')
 
 const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter, userRouter, authRouter,
-    eventAnswerRouter, generalNewsRouter, topCategoryRouter
+    eventAnswerRouter, generalNewsRouter, topCategoryRouter, viewStatisticsRouter
 } = require('./routes')
 const {PORT, MONGO_URL} = require("./configs/config");
 const {ErrorMainHandler} = require("./errors");
 const {PATH_AVATAR, PATH_NEWS_PHOTO, PATH_RESTAURANT_PHOTO} = require("./constants/pathImg");
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use('/restaurants', restaurantRouter);
 app.use('/topCategory',topCategoryRouter);
 app.use('/users', userRouter);
 app.use('/userEvents', userEventRouter);
+app.use('/viewStatistics', viewStatisticsRouter);
 
 app.use ('*', (req, res, next)=> {
     next (new Error('Rout not found'))

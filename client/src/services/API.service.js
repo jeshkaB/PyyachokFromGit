@@ -22,7 +22,11 @@ const ApiService = {
     removeRestaurantInCategory: (entity,categId,restId) => axiosService.delete(`${entity}/${categId}/restaurant?restId=${restId}`),
 
     sendMessageToRestaurant: (entity, restId, userId, data) => axiosService.post(`${entity}/${restId}/message?userId=${userId}`, data),
-    changeRestAdmin: (entity,restId,userId) => axiosService.put(`${entity}/${restId}/changeAdmin?userId=${userId}`)
+    changeRestAdmin: (entity,restId,userId) => axiosService.put(`${entity}/${restId}/changeAdmin?userId=${userId}`),
+    completeViews: (entity,restId) => axiosService.put(`${entity}/${restId}/view`),
+
+    getViewStatisticsAll: () => axiosService.get('/ViewStatistics'),
+    getViewStatisticsByRestId: (restId) => axiosService.get(`/ViewStatistics/${restId}`),
 
 }
 

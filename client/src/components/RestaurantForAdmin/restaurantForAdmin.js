@@ -1,23 +1,18 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 import {restaurantActions} from "../../redux";
 import API_URL from "../../config";
 import {StarsRating} from "../StarsRating/starsRating";
 import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 import {roles} from "../../constants";
-import {NewsCreate} from "../NewsCreate/NewsCreate";
-import {NewsList} from "../NewsList/newsList";
 
 
 const RestaurantForAdmin = ({restId, role, restaurant}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const {restaurant} = useSelector(state => state.restaurant);
     const [confirmDelete, setConfirmDelete] = useState(false)
-    // useEffect(() => {
-    //     dispatch(restaurantActions.getById(restId))
-    // }, []);
+
 
     let isSuperAdmin
     if (role && role.includes(roles.SUPER_ADMIN)) isSuperAdmin = true
@@ -49,16 +44,9 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
                     </div>}
             </div>}
             <hr/>
-            {/*<h3 style={{cursor: 'pointer', color: "green"}}*/}
-            {/*    onClick={() => navigate(`/restaurants/${restId}/marks`)}> Оцінки</h3>*/}
+            <button onClick={()=>navigate('viewStatistics')}>Статистика переглядів</button>
 
-            {/*<hr/>*/}
-            {/*<h3 style={{cursor: 'pointer', color: "green"}}*/}
-            {/*    onClick={() => navigate(`/restaurants/${restId}/comments`)}>Відгуки</h3>*/}
-            {/*<hr/>*/}
-            {/*<h3 style={{color: "green"}}> Новини</h3>*/}
-            {/*<NewsCreate restId={restId}/>*/}
-            {/*<NewsList restId={restId}/>*/}
+
 
         </div>
     )

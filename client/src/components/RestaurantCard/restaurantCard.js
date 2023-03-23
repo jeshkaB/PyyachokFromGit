@@ -20,11 +20,16 @@ const RestaurantCard = ({restaurant}) => {
     const[isModerationMessage, setIsModerationMessage] = useState(false)
     const[isModerationDone, setIsModerationDone] = useState(false)
 
+
     if (location.pathname === '/restaurants'|| location.pathname ==='/superAdmin') {
-        const click1 = () => {
+
+        const click1 = async () => {
             if (location.pathname === '/superAdmin')
                 navigate(`../restaurantsForAdmin/${_id}`)
-            else navigate(`${_id}`)
+            else {
+                await dispatch (restaurantActions.completeViews({restId: _id}))
+                navigate(`${_id}`)
+            }
         }
         const moderatedClick = async () => {
             const {error} = await dispatch(restaurantActions.updateById({id:_id, restObj: {'moderated': true}}))
@@ -62,10 +67,13 @@ const RestaurantCard = ({restaurant}) => {
         );
     }
     else {
-        const click2 = () => {
+        const click2 = async () => {
             if (location.pathname === '/restaurantManager')
                 navigate(`../restaurantsForAdmin/${_id}`)
-            else navigate(`../restaurants/${_id}`)
+            else {
+                await dispatch(restaurantActions.completeViews({restId: _id}))
+                navigate(`../restaurants/${_id}`)
+            }
         }
         const click3 = async () => {
             const {error} = await dispatch(restaurantActions.deleteById(_id))

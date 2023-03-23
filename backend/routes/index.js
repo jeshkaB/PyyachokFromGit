@@ -10,5 +10,6 @@ module.exports = {
     topCategoryRouter: require('./topCategory.router'),
     userRouter: require('./user.router'),
     userEventRouter: require('./userEvent.router'),
+    viewStatisticsRouter: require('./viewStatistics.router'),
 
 }

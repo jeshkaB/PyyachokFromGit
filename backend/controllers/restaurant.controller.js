@@ -1,5 +1,6 @@
-const {restaurantService, fileService, userService, commentService, newsService, userEventService, markService,
-    nodemailerService
+const {
+    restaurantService, fileService, userService, commentService, newsService, userEventService, markService,
+    nodemailerService, viewStatisticsService
 } = require("../services");
 const {statusCode, pathImg, roles} = require("../constants");
 const uuid = require("uuid");
@@ -16,7 +17,12 @@ module.exports = {
             const fileName = uuid.v4() + '.jpg';
             const {mainImage} = req.files;
             await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
-            const restaurant = await restaurantService.createRestaurant({...req.body, user: _id, mainImage: fileName, rating:0});
+            const restaurant = await restaurantService.createRestaurant({
+                ...req.body,
+                user: _id,
+                mainImage: fileName,
+                rating: 0
+            });
             if (role.includes(roles.REST_ADMIN)) await userService.updateUser(_id, {
                 restaurants: [
                     ...restaurants,
@@ -73,7 +79,15 @@ module.exports = {
         try {
             const {restId} = req.params;
             // const {_id} = req.tokenInfo.user;
-            const {user, moderated, mainImage, news, comments, userEvents, marks} = await restaurantService.getRestaurantById(restId);//тут всі айдішки
+            const {
+                user,
+                moderated,
+                mainImage,
+                news,
+                comments,
+                userEvents,
+                marks
+            } = await restaurantService.getRestaurantById(restId);//тут всі айдішки
 
             //видаляємо всі сутності, похідні від ресторану, якщо це не видалення закладу, який не пройшов модерацію
             if (moderated) {
@@ -87,8 +101,8 @@ module.exports = {
 
             //видаляємо ресторан з юзера
             const restaurantsOfUser = await restaurantService.getRestaurantByParams({user});
-            const index = restaurantsOfUser.findIndex(rest=>rest._id===restId)
-            const newRestaurantsList = restaurantsOfUser.splice(index,1)
+            const index = restaurantsOfUser.findIndex(rest => rest._id === restId)
+            const newRestaurantsList = restaurantsOfUser.splice(index, 1)
             await userService.updateUser(user, {restaurants: newRestaurantsList})
 
             await restaurantService.deleteRestaurant(restId);
@@ -102,11 +116,11 @@ module.exports = {
     sendMessage: async (req, res, next) => {
         try {
             const {restId} = req.params;
-            const {userId}= req.query;
+            const {userId} = req.query;
             const {text} = req.body;
 
-            const {email:restEmail} = await restaurantService.getRestaurantById(restId);
-            const {email:userEmail, name} = await userService.getUserById(userId);
+            const {email: restEmail} = await restaurantService.getRestaurantById(restId);
+            const {email: userEmail, name} = await userService.getUserById(userId);
             await nodemailerService.sendEmail(restEmail, 'Повідомлення з Пиячка', `${text}. Від користувача ${name}. Email ${userEmail}`)
 
             res.json()
@@ -118,7 +132,7 @@ module.exports = {
     changeRestAdmin: async (req, res, next) => {
         try {
             const {restId} = req.params;
-            const {userId}= req.query;
+            const {userId} = req.query;
 
             const {role, restaurants} = req.user
 
@@ -132,8 +146,7 @@ module.exports = {
                         ...restaurants,
                         restId]
                 })
-            }
-            else {
+            } else {
 
                 await userService.updateUser(userId, {
                     restaurants: [
@@ -145,8 +158,33 @@ module.exports = {
                     ]
                 })
             }
-                res.json(restaurant)
+            res.json(restaurant)
 
+
+        } catch (e) {
+            next(e)
+        }
+    },
+
+    completeViews: async (req, res, next) => {
+        try {
+            const limitTimeOneView = 24 * 60 * 60 * 1000 //24 hours
+
+            const {user: {_id, role}} = req.tokenInfo;
+            const {_id: restId} = req.restaurant;
+
+            const currentDate = new Date();
+            const prevViews = await viewStatisticsService.getViewStatisticsByParams({user: _id, restaurant:restId})
+
+            if (role.includes(roles.REST_ADMIN) || role.includes(roles.SUPER_ADMIN))
+                return res.json('not accepted role')
+
+            if (prevViews.find(view => currentDate - view.createdAt < limitTimeOneView))
+                res.json('re-viewing')
+            else {
+                await viewStatisticsService.createViewStatistics({user:_id, restaurant:restId})
+                }
+                res.json('accept')
 
         } catch (e) {
             next(e)

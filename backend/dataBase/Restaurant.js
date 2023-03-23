@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const {date} = require("joi");
 
 const restaurantSchema = new Schema({
         name: {type: String, trim: true, required: true},
@@ -8,14 +9,15 @@ const restaurantSchema = new Schema({
         averageBill: {type: Number, required: true},
         hours: {type: String, required: true},
         tags: String,
-        categories: [String], //напр. весілля, корпоратив, день народження. А як його сортувати по цих категоріях в топ??????
+        // categories: [String],
         phone: {type: String, required: true},
         email: {type: String, required: true},
         webSite: String,
         rating: Number,
-        coordinates: {type: [String], required:true},
+        coordinates: {type: [String], required: true},
         moderated: {type: Boolean, default: false},//неперевірений - false, перевірений - true
         moderationMessage: String,
+        // viewStatistic:[{userId: String, date: Date}],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',
@@ -39,9 +41,8 @@ const restaurantSchema = new Schema({
         topCategories: {
             type: [Schema.Types.ObjectId],
             ref: 'topCategory'
-        },
-        viewStatistics: {},// TODO
-        },
+        }
+    },
     {
         timestamps: true,
         versionKey: false

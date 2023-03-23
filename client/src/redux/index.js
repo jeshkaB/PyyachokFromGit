@@ -11,3 +11,4 @@ export * from './slices/eventAnswer.slice';
 export * from './slices/generalNews.slice';
 export * from './slices/geo.slice';
 export * from './slices/topCategory.slice';
+export * from './slices/viewStatistics.slice';
