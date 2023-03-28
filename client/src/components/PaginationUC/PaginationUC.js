@@ -6,15 +6,15 @@ import {Pagination} from "react-bootstrap";
 
 const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
     const [currentPage, setPage] = useState(1)
-    const numberPages = Math.ceil(entitiesList.length/limit);
+    const numberPages = Math.ceil(entitiesList.length / limit);
     const pages = [];
     for (let i = 0; i < numberPages; i++) {
         pages.push(i + 1)
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         setEntitiesOnPage(entitiesList.slice(currentPage * limit - limit, limit * currentPage))
-    }, [currentPage])
+    }, [currentPage, JSON.stringify(entitiesList)])
 
     return (
             <div>

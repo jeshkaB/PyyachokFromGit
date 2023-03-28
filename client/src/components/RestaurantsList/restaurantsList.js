@@ -17,13 +17,13 @@ const RestaurantsList = ({userId, tag}) => {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
     const {restaurants} = useSelector(state => state.restaurant);
-    const {isLocationAvailable,latitude, longitude} = useSelector(state => state.geo);
+    const {isLocationAvailable, latitude, longitude} = useSelector(state => state.geo);
 
     if (tag) setSearchParams({tag})
 
     useEffect(() => {
         dispatch(restaurantActions.getAll())
-    }, [dispatch])
+    }, [])
 
     const searchQuery = searchParams.get('restName') || ''
 
@@ -35,7 +35,6 @@ const RestaurantsList = ({userId, tag}) => {
     const [tagsFilter, setTagsFilter] = useState(initialStatesForFilter.startTags)
     const [minRating, maxRating] = ratingFilter;
     const [minBill, maxBill] = billFilter;
-
     const [{name:rating}, {name:averageBill}, {name:date}, {name}, {name:distance}] = categoriesForRestSort.categoriesSort
 
     const resetFilters = ()=> {
@@ -85,8 +84,8 @@ const RestaurantsList = ({userId, tag}) => {
         .filter(rest => minBill <= rest.averageBill && rest.averageBill <= maxBill)
         .filter(rest => tagsFilter !== '' ? rest.tags?.includes(tagsFilter) : rest)
 
-    const [restaurantsOnPage, setRestaurantsOnPage] = useState(restaurantsListForCards.slice(0, paginationLimits.restaurantsLimit))
 
+    const [restaurantsOnPage, setRestaurantsOnPage] = useState([])
 
     return (
             <div >
@@ -96,7 +95,8 @@ const RestaurantsList = ({userId, tag}) => {
                 <RestaurantsSort setSelectedCatSort={setSelectedCatSort} selectedCatSort={selectedCatSort}/>
                 <div style={{cursor:'pointer', border:'solid darkorange', color: 'darkorange', width:'400px'}} onClick={()=>resetFilters()}>Скинути всі фільтри і сортування</div>
                 {!isLocationAvailable && <h4> Ваша локація не визначена </h4> }
-                <div className={'RestList'}>{restaurantsOnPage.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
+
+                    <div className={'RestList'}>{restaurantsOnPage.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
                 </div>
                 <PaginationUC entitiesList={restaurantsListForCards} setEntitiesOnPage={setRestaurantsOnPage} limit={paginationLimits.restaurantsLimit}/>
             </div>

@@ -9,6 +9,7 @@ const initialState = {
     errors: null,
     role: null,
     authUser: null,
+    isGoogle: null
 
 };
 
@@ -39,11 +40,24 @@ const login = createAsyncThunk(
     }
 );
 
+const loginByGoogle = createAsyncThunk(
+    'authSlice/loginByGoogle',
+    async ({user}, {rejectWithValue}) => {
+        try {
+            const {data} = await authService.loginByGoogle(user);
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+);
+
 const logout = createAsyncThunk(
     'authSlice/logout',
     async (_, {rejectWithValue}) => {
         try {
             await authService.logout();
+
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -125,6 +139,17 @@ const authSlice = createSlice({
                 authService.saveUserIdInLS(user._id)
 
             })
+            .addCase(loginByGoogle.fulfilled, (state, action) => {
+                state.isAuth = true;
+                state.isGoodle = true;
+                const {user, tokens} = action.payload;
+                state.userId = user._id;
+                state.role = user.role;
+                state.authUser = user;
+                authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken})
+                authService.saveUserIdInLS(user._id)
+
+            })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isAuth = false;
                 state.errors = null;
@@ -172,6 +197,7 @@ const {reducer: authReducer} = authSlice;
 const authActions = {
     register,
     login,
+    loginByGoogle,
     logout,
     logoutFromEverywhere,
     addFavoriteRest,

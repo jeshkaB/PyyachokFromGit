@@ -5,6 +5,7 @@ import {axiosService,axiosRefreshService} from "./axios.service";
 const authService = {
     register: (user) => axiosService.post(urls.users, user),// в мене на сервери для реєстрації роут "registration"
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
+    loginByGoogle: (user) => axiosService.post(`${urls.auth}/login/google`, user),
     logout: () => axiosService.post(`${urls.auth}/logout`),
     logoutFromEverywhere: () => axiosService.post(`${urls.auth}/logout/fromEverywhere`),
     refresh: (refreshToken) => axiosRefreshService.post(`${urls.auth}/refresh`, {}, {headers: {Authorization: `${refreshToken}`}}),

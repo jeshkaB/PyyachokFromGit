@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider, EmailAuthProvider} from 'firebase/auth';
+import {GoogleAuthProvider, EmailAuthProvider, signInWithPopup, getAuth, signOut} from 'firebase/auth';
+import {authActions} from "../redux";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -18,6 +19,18 @@ const app = initializeApp(firebaseConfig)
 
 const googleAuthProvider = new GoogleAuthProvider();
 // const facebookAuthProvider = new FacebookAuthProvider();
-const emailAuthProvider = new EmailAuthProvider();
+// const emailAuthProvider = new EmailAuthProvider();
 
-export {app, googleAuthProvider, emailAuthProvider}
+const auth = getAuth(app)
+
+const signInByGoogle = ()=> signInWithPopup(auth, googleAuthProvider).then((credential) => {
+    return credential
+}).catch ((error) => alert(error.message))
+
+const signOutByGoogle = () => signOut(auth).then(() => {
+    console.log('signOutByGoogle ok')
+}).catch((error) => {
+    alert(error.message)
+});
+
+export {signInByGoogle,signOutByGoogle}

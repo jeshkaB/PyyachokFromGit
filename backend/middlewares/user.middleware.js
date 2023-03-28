@@ -126,11 +126,11 @@ module.exports = {
 
     checkEmailIsValid: async (req, res, next) => {
         try {
-            const validate = userValidator.onlyEmailValidator.validate(req.body);
+            const validate = userValidator.onlyEmailValidator.validate({email:req.body.email});
             if (validate.error) {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
-            req.body = validate.value;
+            req.body = {...req.body, email:validate.value.email};
             next()
         } catch (e) {
             next(e)

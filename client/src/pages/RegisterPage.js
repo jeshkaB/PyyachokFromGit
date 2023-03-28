@@ -1,4 +1,4 @@
-import {RegisterForm} from "../components";
+import {GoogleSignIn, RegisterForm} from "../components";
 import {useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
 
@@ -13,6 +13,7 @@ const RegisterPage = () => {
                 <h3 className={'errors'}> {errors.message} </h3>}
             <div>
                 <RegisterForm isManager={isManager}/>
+                {/*<GoogleSignIn from={'register'}/>*/}
             </div>
         </div>
     );

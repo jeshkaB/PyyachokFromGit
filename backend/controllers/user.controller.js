@@ -1,4 +1,4 @@
-const {userService, hashService, fileService, authService} = require('../services');
+const {userService, hashService, fileService, authService, nodemailerService} = require('../services');
 const {statusCode, roles, pathImg} = require('../constants')
 const uuid = require('uuid')
 const path = require("path");
@@ -15,9 +15,11 @@ module.exports = {
                 const {avatar: image} = req.files;
                 await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
                 const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
+                await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
                 res.status(statusCode.CREATE).json(user)
             } else {
                 const user = await userService.createUser({...req.body, password: hashPassword});
+                await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
                 res.status(statusCode.CREATE).json(user)
             }
         } catch (e) {

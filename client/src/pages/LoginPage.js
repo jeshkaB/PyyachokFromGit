@@ -1,4 +1,4 @@
-import {AuthProvider, LoginForm, LoginFormForgot} from "../components";
+import {GoogleSignIn, LoginForm, LoginFormForgot} from "../components";
 
 
 const LoginPage = ()=> {
@@ -7,9 +7,11 @@ const LoginPage = ()=> {
         <div>
 
             <div>
+
                <LoginForm/>
                <LoginFormForgot/>
-               {/*<AuthProvider/>*/}
+                {/*<GoogleSignIn from ={'login'}/>*/}
+
             </div>
 
         </div>

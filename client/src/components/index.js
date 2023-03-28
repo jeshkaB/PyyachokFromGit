@@ -19,7 +19,7 @@ export * from './GeneralNewsList/GeneralNewsList';
 export * from './GeneralViewStatistics/GeneralViewStatistics';
 export * from './Header/Header';
 export * from './LoginForm/LoginForm';
-export * from './LoginForm/AuthProvider';
+export * from './GoogleSignIn/GoogleSignIn';
 export * from './LoginFormForgot/LoginFormForgot';
 export * from './MarksCard/MarksCard';
 export * from './MarksInRest/MarksInRest';

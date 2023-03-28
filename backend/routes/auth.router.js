@@ -17,6 +17,11 @@ authRouter.post (
     authController.login);
 
 authRouter.post (
+    '/login/google',
+    userMiddleware.checkEmailIsValid,
+    authController.loginByGoogle);
+
+authRouter.post (
     '/logout',
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     authController.logout);
