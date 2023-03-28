@@ -29,7 +29,7 @@ import {
 
 } from "./pages";
 import {CommentsInRest, GeneralViewStatistics} from "./components";
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
 

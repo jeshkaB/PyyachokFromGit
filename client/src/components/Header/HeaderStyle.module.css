@@ -1,0 +1,102 @@
+.Header {
+    display: flex;
+    background: #bbd5d5;
+    align-items: center;
+    justify-content: space-between;
+}
+.Brand {
+    display: flex;
+    flex-direction: row;
+    font-family:cursive;
+    font-size: 40px;
+    color: darkslategrey;
+}
+.Title {
+    margin-right: 10px;
+}
+.Left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: middle;
+
+}
+.Home {
+    font-size: 20px;
+    color: darkslategrey;
+    font-weight:bold;
+    margin-right: 5px;
+}
+.Pyyachok {
+    font-size: 20px;
+    color: darkslategrey;
+    margin-left: 20px;
+    border: solid 0.5px #619393 ;
+    border-radius: 10px;
+    background: #86aaaa;
+    padding: 5px;
+
+}
+.Right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.Auth {
+    margin: 2px;
+    background: #bbd5d5;
+    border: solid 0.5px darkslategrey;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px
+}
+.Enter {
+    composes: Auth;
+    background: lightgrey;
+
+}
+/*.isAuth {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+.Link {
+    text-decoration: none;
+    color: black;
+ }
+
+/*a {*/
+/*    text-decoration: none;*/
+/*}*/
+/*.Header_dark {*/
+/*    font-size: 20px;*/
+/*    display: flex;*/
+/*    background: #263838;*/
+/*    color: whitesmoke;*/
+/*    align-items: center;*/
+/*    justify-content: space-evenly;*/
+/*}*/
+
+/*.ToddleBlock {*/
+/*    padding: 10px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
+/*.BackButton_light {*/
+/*    height: 75px;*/
+/*    width: 150px;*/
+/*    font-size: 20px;*/
+/*    font-weight: bolder;*/
+/* }*/
+/*.BackButton_dark {*/
+/*    height: 75px;*/
+/*    width: 150px;*/
+/*    font-size: 20px;*/
+/*    font-weight: bolder;*/
+/*    background: #83a1a1*/
+/*}*/

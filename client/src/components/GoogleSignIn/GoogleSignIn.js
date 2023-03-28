@@ -5,7 +5,7 @@ import {authActions} from "../../redux";
 
 import {signInByGoogle} from "../../services";
 
-
+import css from './GoogleSignIn.module.css'
 
 const GoogleSignIn = () => {
     const dispatch = useDispatch();
@@ -21,15 +21,7 @@ const GoogleSignIn = () => {
 
     return (
         <div>
-            <div style={{
-                cursor: 'pointer',
-                background: 'lightgray',
-                border: 'solid 0.5px',
-                width: '250px',
-                height: '30px',
-                textAlign: 'center',
-                fontSize: '15px'
-            }}>
+            <div className={css.Enter}>
                 <p onClick={clickIn}>Увійти через Google</p>
             </div>
         </div>

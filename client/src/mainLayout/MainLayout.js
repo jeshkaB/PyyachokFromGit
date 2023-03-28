@@ -1,12 +1,11 @@
 import {Outlet} from 'react-router-dom'
-import {Header} from "../components";
-import {authService, geolocationService} from "../services";
-import {keysLS} from "../constants";
 import {useDispatch} from "react-redux";
-import {authActions, geoActions} from "../redux";
 import {useEffect} from "react";
-import {ChartUC} from "../components/ChartUC/ChartUC";
 
+import {Header} from "../components";
+
+import {authService, geolocationService} from "../services";
+import {authActions, geoActions} from "../redux";
 
 
  const MainLayout = ()=> {

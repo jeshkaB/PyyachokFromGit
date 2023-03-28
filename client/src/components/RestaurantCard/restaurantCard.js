@@ -9,6 +9,12 @@ import {restaurantActions} from "../../redux";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 
+
+// import Card from 'react-bootstrap/Card'
+// import CardHeader from "react-bootstrap/CardHeader";
+import {Card, CardGroup, CardImg, Col} from "react-bootstrap";
+import CardHeader from "react-bootstrap/CardHeader";
+
 const RestaurantCard = ({restaurant}) => {
     const dispatch = useDispatch();
     const location = useLocation();
@@ -41,18 +47,34 @@ const RestaurantCard = ({restaurant}) => {
             if (!error) setIsModerationDone(true)
         }
 
-        return (<div>
-                <div className={'RestCard'} onClick={click1}>
-                    <h1 className={'RestName'}>{name}</h1>
-                    <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
-                    <div><StarsRating key={_id} rating={rating}/></div>
-                    <div> Адреса: {place}</div>
-                    <div> Телефон: {phone}</div>
-                    <div> Режим роботи: {hours}</div>
-                    <div> email: {email} </div>
-                    <div> Сайт: {webSite} </div>
-                    <div> Середній чек:{averageBill} грн.</div>
-                </div>
+        return ( <div>
+                    <Card onClick={click1}>
+                    <CardImg width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                    <CardHeader style={{alignContent:'center'}}>{name}</CardHeader>
+                    <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
+                    <CardGroup>Адреса: {place} </CardGroup>
+                    <CardGroup>Телефон: {phone} </CardGroup>
+                    <CardGroup>Режим роботи: {hours} </CardGroup>
+                    <CardGroup>email: {email}  </CardGroup>
+                    <CardGroup>Сайт: {webSite} </CardGroup>
+                    <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
+                </Card>
+
+                {/*<div className={'RestCard'} onClick={click1}>*/}
+                {/*    <h1 className={'RestName'}>{name}</h1>*/}
+                {/*    <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>*/}
+                {/*    <div><StarsRating key={_id} rating={rating}/></div>*/}
+                {/*    <div> Адреса: {place}</div>*/}
+                {/*    <div> Телефон: {phone}</div>*/}
+                {/*    <div> Режим роботи: {hours}</div>*/}
+                {/*    <div> email: {email} </div>*/}
+                {/*    <div> Сайт: {webSite} </div>*/}
+                {/*    <div> Середній чек:{averageBill} грн.</div>*/}
+                {/*</div>*/}
+
+
+
+
                 {role && role.includes(roles.SUPER_ADMIN) && !isModerationDone && !moderated &&
                 <div>
                     <button onClick={moderatedClick}>Дозволити розміщення закладу</button>
@@ -81,13 +103,22 @@ const RestaurantCard = ({restaurant}) => {
         }
         return (
             <div>
-                <div className={'RestCardOnHome'} onClick={click2}>
-                    <h1 className={'RestName'}>{name}</h1>
-                    <img width={200} height={200} src={API_URL + mainImage} alt={'зображення закладу'}/>
-                    <div><StarsRating key={_id} rating={rating}/></div>
-                    <div> Адреса: {place}</div>
-                    <div> Середній чек:{averageBill} грн.</div>
-                </div>
+                {/*<div className={'RestCardOnHome'} onClick={click2}>*/}
+                {/*    <h1 className={'RestName'}>{name}</h1>*/}
+                {/*    <img width={200} height={200} src={API_URL + mainImage} alt={'зображення закладу'}/>*/}
+                {/*    <div><StarsRating key={_id} rating={rating}/></div>*/}
+                {/*    <div> Адреса: {place}</div>*/}
+                {/*    <div> Середній чек:{averageBill} грн.</div>*/}
+                {/*</div>*/}
+
+                <Card style={{alignContent:'center'}} onClick={click2}>
+                    <CardImg width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                    <CardHeader>{name}</CardHeader>
+                    <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
+                    <CardGroup>Адреса: {place} </CardGroup>
+                    <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
+                </Card>
+
                 {moderationMessage && user===userId && location.pathname === '/restaurantManager' &&
                     <div style={{border:'solid 2px red'}}>
                     Заклад не пройшов модерацію з причини: {moderationMessage}

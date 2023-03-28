@@ -1,13 +1,23 @@
+.UserInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.Auth {
+    composes: Auth from '../Header/HeaderStyle.module.css';
+}
+.Quit{
+    composes: Auth from '../Header/HeaderStyle.module.css';
+    cursor: pointer;
+}
 .AvatarImg {
     height: 70px;
     width: 70px;
     border: 10px lightgrey solid;
     border-radius: 50%;
 }
-
-.UserInfo {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.Link {
+    text-decoration: none;
+    color: black;
 }

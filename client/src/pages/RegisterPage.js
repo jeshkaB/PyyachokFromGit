@@ -6,7 +6,6 @@ import {useLocation} from "react-router-dom";
 const RegisterPage = () => {
     const {errors} = useSelector(state => state.auth);
     const isManager = useLocation().state
-
     return (
         <div>
             {errors &&

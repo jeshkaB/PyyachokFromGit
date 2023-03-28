@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {commentActions} from "../../redux";
-import './commentForm.css'
+
 
 
 const CommentForm = ({setStateForm, comment, stateChangeComment, setStateChangeComment}) => {
