@@ -40,9 +40,7 @@ const RestaurantPage = (props) => {
                 </div>
             </div>
             <div>
-
                 <div className={'News'}><NewsList restId={id}/></div>
-
             </div>
 
 

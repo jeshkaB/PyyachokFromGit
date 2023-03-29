@@ -10,7 +10,6 @@ const {errors} = useSelector(state => state.news)
         <div>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
-            <Link to={'/generalNews'}> Перейти до списку загальних новин </Link>
             <div><GeneralNewsList/></div>
         </div>
     );

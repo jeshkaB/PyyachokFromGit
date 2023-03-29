@@ -2,30 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/GoogleSignIn/GoogleSignIn.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsCard/GeneralNewsCard.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/-RestaurantCardBig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/-RestaurantCardSmall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/TopCard/TopCard.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/TopList/TopList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/HomePage.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentForm/commentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GoogleSignIn/GoogleSignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GoogleSignIn/GoogleSignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/News/newsStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/News/newsStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/FavoriteRestaurants/favoriteRestaurants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNewsCard/GeneralNewsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsCard/GeneralNewsCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/NewsCard/newsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCard/newsCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsCard/newsCardStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCard/newsCardStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsList/newsListStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsList/newsListStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/restaurantStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/restaurantStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/restCardStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/restCardStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/restaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/restaurantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/restListStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/restListStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/NewsCard/newsCardStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCard/newsCardStyle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/PaginationUC/PaginationUC.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/PaginationUC/PaginationUC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/restCardStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/restaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestaurantCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsForModeration/RestaurantsForModeration.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsForModeration/RestaurantsForModeration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/restListStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/restaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopCard/TopCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopCard/TopCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopList/TopList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopList/TopList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RegisterPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantPageStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/paginationLimits.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/paginationLimits.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GeneralNewsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GeneralNewsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +76,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/GoogleSignIn",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/RestaurantCard",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -74,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantCard" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GoogleSignIn" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\pages" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\redux\slices" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\backend\routes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GoogleSignIn" />
@@ -118,14 +129,7 @@
       <workItem from="1678029535640" duration="30480000" />
       <workItem from="1678174764343" duration="148330000" />
       <workItem from="1679301371588" duration="55948000" />
-      <workItem from="1679902786444" duration="50904000" />
-    </task>
-    <task id="LOCAL-00010" summary="interim">
-      <created>1671821735389</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1671821735389</updated>
+      <workItem from="1679902786444" duration="78715000" />
     </task>
     <task id="LOCAL-00011" summary="interim">
       <created>1671826863426</created>
@@ -463,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679998953567</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="css1">
+      <created>1680041281765</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1680041281765</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,6 +496,7 @@
     <MESSAGE value="pagination" />
     <MESSAGE value="views statistics" />
     <MESSAGE value="google sign in" />
-    <option name="LAST_COMMIT_MESSAGE" value="google sign in" />
+    <MESSAGE value="css1" />
+    <option name="LAST_COMMIT_MESSAGE" value="css1" />
   </component>
 </project>

@@ -1,21 +1,21 @@
-import API_URL from "../../config";
-
-import './restCardStyle.css'
-import {StarsRating} from "../StarsRating/starsRating";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {roles} from "../../constants";
-import {restaurantActions} from "../../redux";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 
+import API_URL from "../../config";
+import {roles} from "../../constants";
+import {restaurantActions} from "../../redux";
 
-// import Card from 'react-bootstrap/Card'
-// import CardHeader from "react-bootstrap/CardHeader";
 import {Card, CardGroup, CardImg, Col} from "react-bootstrap";
 import CardHeader from "react-bootstrap/CardHeader";
+import css from './RestCard.module.css'
+import {StarsRating} from "../StarsRating/starsRating";
 
-const RestaurantCard = ({restaurant}) => {
+
+
+
+const RestaurantCard = ({restaurant, isTop}) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const RestaurantCard = ({restaurant}) => {
 
     if (location.pathname === '/restaurants'|| location.pathname ==='/superAdmin') {
 
-        const click1 = async () => {
+        const clickToRest1 = async () => {
             if (location.pathname === '/superAdmin')
                 navigate(`../restaurantsForAdmin/${_id}`)
             else {
@@ -42,38 +42,22 @@ const RestaurantCard = ({restaurant}) => {
             if (!error) setIsModerationDone(true)
         }
         const submit = async (data) => {
-
             const {error} = await dispatch(restaurantActions.updateById({id:_id, restObj:data}))
             if (!error) setIsModerationDone(true)
         }
 
         return ( <div>
-                    <Card onClick={click1}>
-                    <CardImg width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
-                    <CardHeader style={{alignContent:'center'}}>{name}</CardHeader>
-                    <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
-                    <CardGroup>Адреса: {place} </CardGroup>
-                    <CardGroup>Телефон: {phone} </CardGroup>
-                    <CardGroup>Режим роботи: {hours} </CardGroup>
-                    <CardGroup>email: {email}  </CardGroup>
-                    <CardGroup>Сайт: {webSite} </CardGroup>
-                    <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
-                </Card>
-
-                {/*<div className={'RestCard'} onClick={click1}>*/}
-                {/*    <h1 className={'RestName'}>{name}</h1>*/}
-                {/*    <img width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>*/}
-                {/*    <div><StarsRating key={_id} rating={rating}/></div>*/}
-                {/*    <div> Адреса: {place}</div>*/}
-                {/*    <div> Телефон: {phone}</div>*/}
-                {/*    <div> Режим роботи: {hours}</div>*/}
-                {/*    <div> email: {email} </div>*/}
-                {/*    <div> Сайт: {webSite} </div>*/}
-                {/*    <div> Середній чек:{averageBill} грн.</div>*/}
-                {/*</div>*/}
-
-
-
+                    <Card className={css.BigCard} onClick={clickToRest1}>
+                        <CardImg width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                        <CardHeader><h2>{name}</h2></CardHeader>
+                        <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
+                        <CardGroup>Адреса: {place} </CardGroup>
+                        <CardGroup>Телефон: {phone} </CardGroup>
+                        <CardGroup>Режим роботи: {hours} </CardGroup>
+                        <CardGroup>email: {email}  </CardGroup>
+                        <CardGroup>Сайт: {webSite} </CardGroup>
+                        <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
+                    </Card>
 
                 {role && role.includes(roles.SUPER_ADMIN) && !isModerationDone && !moderated &&
                 <div>
@@ -89,7 +73,7 @@ const RestaurantCard = ({restaurant}) => {
         );
     }
     else {
-        const click2 = async () => {
+        const clickToRest2 = async () => {
             if (location.pathname === '/restaurantManager')
                 navigate(`../restaurantsForAdmin/${_id}`)
             else {
@@ -97,34 +81,39 @@ const RestaurantCard = ({restaurant}) => {
                 navigate(`../restaurants/${_id}`)
             }
         }
-        const click3 = async () => {
+        const clickDel = async () => {
             const {error} = await dispatch(restaurantActions.deleteById(_id))
             if (!error) navigate('../restaurantManager')//???
         }
         return (
             <div>
-                {/*<div className={'RestCardOnHome'} onClick={click2}>*/}
-                {/*    <h1 className={'RestName'}>{name}</h1>*/}
-                {/*    <img width={200} height={200} src={API_URL + mainImage} alt={'зображення закладу'}/>*/}
-                {/*    <div><StarsRating key={_id} rating={rating}/></div>*/}
-                {/*    <div> Адреса: {place}</div>*/}
-                {/*    <div> Середній чек:{averageBill} грн.</div>*/}
-                {/*</div>*/}
+                {!isTop && <Card className={css.SmallCard} onClick={clickToRest2}>
+                     <CardImg height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                     <CardHeader><h2>{name}</h2></CardHeader>
+                     <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
+                     <CardGroup>Адреса: {place} </CardGroup>
+                     <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
+                 </Card>}
 
-                <Card style={{alignContent:'center'}} onClick={click2}>
-                    <CardImg width={300} height={300} src={API_URL + mainImage} alt={'зображення закладу'}/>
-                    <CardHeader>{name}</CardHeader>
-                    <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
-                    <CardGroup>Адреса: {place} </CardGroup>
-                    <CardGroup>Середній чек:{averageBill} грн. </CardGroup>
-                </Card>
+                {isTop && <div className={css.TopCard} onClick={clickToRest2}>
+                    <div className={css.Top1}>
+                        <h2>{name}</h2>
+                        <img style={{height:'150px'}} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                    </div>
+                    <div className={css.Top2}>
+                        <StarsRating key={_id} rating={rating}/>
+                        <br/>
+                        <p>Адреса: {place} </p>
+                        <p>Середній чек:{averageBill} грн. </p>
+                    </div>
+                </div>}
 
                 {moderationMessage && user===userId && location.pathname === '/restaurantManager' &&
                     <div style={{border:'solid 2px red'}}>
                     Заклад не пройшов модерацію з причини: {moderationMessage}
                     <br/>
                     Після усунення причини відмови ви можете створити заклад повторно
-                        <button onClick={click3}>Ок</button>
+                        <button onClick={clickDel}>Ок</button>
                     </div>}
             </div>
         );

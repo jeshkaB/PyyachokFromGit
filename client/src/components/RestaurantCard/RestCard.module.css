@@ -1,0 +1,60 @@
+.SmallCard {
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    margin: 5px;
+}
+
+.BigCard {
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    margin: 5px;
+}
+.TopCard {
+    border: darkslategrey solid 1px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.Top1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Top2 {
+
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    margin: 5px;
+    margin-top: 40px;
+
+}
+/*.RestCardOnHome {*/
+/*    !*;*!*/
+/*    !*flex-wrap: wrap;*!*/
+/*    margin: 20px;*/
+/*    !*align-content: center;*!*/
+
+
+/*}*/
+/*.RestName {*/
+/*   text-align: center;*/
+/*}*/
+/*.PageButton_light {*/
+/*    margin-top: 20px;*/
+/*    width: 75px;*/
+/*    font-size: 20px;*/
+/*    font-style: oblique;*/
+
+/*}*/
+/*.PageButton_dark {*/
+/*    margin-top: 20px;*/
+/*    width: 75px;*/
+/*    font-size: 20px;*/
+/*    font-style: oblique;*/
+/*    background: #83a1a1*/
+/*}*/

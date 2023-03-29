@@ -7,6 +7,7 @@ import {Pagination} from "react-bootstrap";
 const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
     const [currentPage, setPage] = useState(1)
     const numberPages = Math.ceil(entitiesList.length / limit);
+
     const pages = [];
     for (let i = 0; i < numberPages; i++) {
         pages.push(i + 1)
@@ -18,7 +19,7 @@ const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
 
     return (
             <div>
-            <Pagination>
+            <Pagination >
                 {pages.map(page =>
                     <Pagination.Item
                         key={page}
@@ -30,5 +31,7 @@ const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
         </div>
     );
 };
+
+
 
 export {PaginationUC}

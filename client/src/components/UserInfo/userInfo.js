@@ -1,10 +1,11 @@
+import {Link, useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
 import css from './userInfo.module.css';
 import API_URL from "../../config";
-import {Link, useNavigate} from "react-router-dom";
 import {roles} from "../../constants";
 import {signOutByGoogle} from "../../services";
 import {authActions} from "../../redux";
-import {useDispatch} from "react-redux";
 
 
 const UserInfo = ({user, isGoogle}) => {
@@ -29,7 +30,6 @@ const UserInfo = ({user, isGoogle}) => {
                     {role && role.includes(roles.SUPER_ADMIN) &&
                         <div className={css.Auth}><Link className={css.Link} to={'/superAdmin'}>Адміністрування сайту</Link></div>}
                     <div className={css.Quit} onClick={clickExit}>Вийти</div>
-
                 </div>}
             <div className={css.User}>
                 <div><b>{name}</b></div>

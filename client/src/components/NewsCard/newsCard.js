@@ -1,6 +1,6 @@
 import API_URL from "../../config";
 import {useLocation, useNavigate} from 'react-router-dom'
-import './newsCardStyle.css'
+import './newsCardStyle.module.css'
 import {Card, CardGroup, CardImg} from "react-bootstrap";
 import CardHeader from "react-bootstrap/CardHeader";
 import {StarsRating} from "../StarsRating/starsRating";

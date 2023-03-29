@@ -11,6 +11,11 @@
     composes: Auth from '../Header/HeaderStyle.module.css';
     cursor: pointer;
 }
+.User {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .AvatarImg {
     height: 70px;
     width: 70px;

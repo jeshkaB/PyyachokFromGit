@@ -1,18 +1,17 @@
 import {GeneralNewsList, NewsList, RestaurantsList, TopList} from "../components";
- const HomePage = (props) => {
+
+import css from './HomePage.module.css';
+
+const HomePage = () => {
+
     return (
-        <div>
-            <div style={{display:'flex', flexDirection: "column"}}>
+        <div className={css.Hole}>
+            <div className={css.TopList}><TopList/></div>
 
-                <div> <GeneralNewsList/></div>
-                <hr/>
-                <div> <NewsList/></div>
-                <div>
-                    <div> <TopList/> </div>
-                    <div><RestaurantsList/></div>
-                </div>
+            <div className={css.Main}>
+                <div className={css.RestList}><RestaurantsList/></div>
+                <div className={css.News}><GeneralNewsList/></div>
             </div>
-
         </div>
     );
 }

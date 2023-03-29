@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+
 import {restaurantActions} from "../../redux";
-import {RestaurantCard} from "../RestaurantCard/restaurantCard";
+import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
 
 const RestaurantsForModeration = ({userId}) => {
     const dispatch = useDispatch();

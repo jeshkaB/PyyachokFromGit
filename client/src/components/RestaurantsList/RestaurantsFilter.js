@@ -1,7 +1,10 @@
 import {useForm} from "react-hook-form";
-import {restaurantActions} from "../../redux";
-import {Dropdown} from "react-bootstrap";
 import {useState} from "react";
+
+import {Dropdown} from "react-bootstrap";
+
+import css from './RestaurantsList.module.css'
+
 
 
 const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
@@ -17,10 +20,10 @@ const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
 
     const [filterIsOpen, setFilterIsOpen] = useState(false)
 
-    return (<div>
+    return (<div >
             <div>
                 <Dropdown>
-                    <Dropdown.Toggle>{'Фільтр'}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant="outline-secondary">{'Фільтр'}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={() => setFilterIsOpen(true)}>Відкрити фільтр</Dropdown.Item>
                         <Dropdown.Item onClick={() => setFilterIsOpen(false)}>Згорнути фільтр</Dropdown.Item>
@@ -28,20 +31,20 @@ const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
                 </Dropdown>
             </div>
             { filterIsOpen &&
-                <div>
+                <div className={css.Form}>
                 <form onSubmit={handleSubmit(submit)}>
                     <label>Рейтинг від 1 до 5
-                        <input type={'number'}  {...register('ratingMin')}/>
-                        <input type={'number'}  {...register('ratingMax')}/>
+                        <input className={css.Input} type={'number'}  {...register('ratingMin')}/>
+                        <input className={css.Input} type={'number'}  {...register('ratingMax')}/>
                     </label>
                     <br/>
                     <label>Середній чек від...до...
-                        <input type={'number'}  {...register('billMin')}/>
-                        <input type={'number'}  {...register('billMax')}/>
+                        <input className={css.Input} type={'number'}  {...register('billMin')}/>
+                        <input className={css.Input} type={'number'}  {...register('billMax')}/>
                     </label>
                     <br/>
                     <label>Теги (через кому)
-                        <input type={'text'}  {...register('tags')}/>
+                        <input className={css.Input} type={'text'}  {...register('tags')}/>
                     </label>
                     <br/>
                     <button>Відфільтрувати</button>

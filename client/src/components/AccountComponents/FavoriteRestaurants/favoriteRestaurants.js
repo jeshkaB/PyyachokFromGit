@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
-import {RestaurantCard} from "../../RestaurantCard/restaurantCard";
 import css from './favoriteRestaurants.module.css';
 import {useEffect} from "react";
 import {restaurantActions, userActions} from "../../../redux";
+import {RestaurantCard} from "../../RestaurantCard/RestaurantCard";
 
 const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
     const dispatch = useDispatch();

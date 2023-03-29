@@ -1,0 +1,19 @@
+.Hole {
+    background: #EDF5F5FF;
+}
+.TopList {
+    /*margin-left: 20px;*/
+    /*margin-right: 20px;*/
+ }
+.Main {
+      display: flex;
+  }
+.News {
+    width: 20%;
+}
+
+.RestList {
+    display: flex;
+    width: 80%;
+}
+

@@ -1,0 +1,15 @@
+.HoleOnHome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    border-bottom: solid 0.5px #619393 ;
+}
+.HoleInList {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    border-bottom: solid 0.5px #619393 ;
+}

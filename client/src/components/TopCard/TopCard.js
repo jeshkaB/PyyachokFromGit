@@ -1,7 +1,10 @@
-import {RestaurantCard} from "../RestaurantCard/restaurantCard";
 import {useDispatch, useSelector} from "react-redux";
-import {restaurantActions, topCategoryActions} from "../../redux";
 import {useEffect} from "react";
+
+import css from '../TopCard/TopCard.module.css';
+import {restaurantActions} from "../../redux";
+import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
+
 
 const TopCard = ({categ}) => {
     const dispatch = useDispatch();
@@ -19,12 +22,13 @@ const TopCard = ({categ}) => {
     const randomIntForRest = () => Math.floor(Math.random() * restaurantsWithTheCategory.length)
     const restaurantForRender = restaurantsWithTheCategory[randomIntForRest()]
 
+    const isTop = true
     return (
         <div>
             {restaurantForRender &&
-                <div>
-                    <h4> {categ.title}</h4>
-                    <RestaurantCard restaurant={restaurantForRender}/>
+                <div className={css.Hole}>
+                    <div className={css.Title}> {categ.title}</div>
+                    <RestaurantCard restaurant={restaurantForRender} isTop={isTop}/>
                 </div>}
         </div>
     );

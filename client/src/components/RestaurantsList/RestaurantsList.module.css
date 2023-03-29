@@ -1,0 +1,31 @@
+.Hole {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.Nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.Search {
+    width: 300px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+
+.Input {
+    margin: 5px;
+}
+.Form{
+    border: darkslategrey solid 0.5px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+}
+.RestList {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
