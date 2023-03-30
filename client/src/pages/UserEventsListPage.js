@@ -3,14 +3,14 @@ import {useSelector} from "react-redux";
 
 
 const UserEventsListPage = (props) => {
-    const {errors} = useSelector(state => state.userEvent)
+    // const {errors} = useSelector(state => state.userEvent)
     return (
 
        <div>
-           <h1 style={{fontFamily: 'cursive', color: 'blue'}}>ПИЯЧКИ</h1>
+           <h2 style={{fontFamily: 'cursive', color: 'darkslategrey'}}>Пиячки на будь-який смак</h2>
            <UserEventList/>
-           {errors &&
-           <h3 className={'errors'}> {errors.message} </h3>}
+           {/*{errors &&*/}
+           {/*<h2 className={'errors'}> {errors.message} </h2>}*/}
        </div>
     );
 }

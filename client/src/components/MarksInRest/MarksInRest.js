@@ -1,10 +1,15 @@
-import {MarksCard} from "../MarksCard/MarksCard";
 import {useDispatch, useSelector} from "react-redux";
-
-import {markActions} from "../../redux";
 import {useEffect, useState} from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
+
+import {markActions} from "../../redux";
+
+import {MarksCard} from "../MarksCard/MarksCard";
 import StarRatings from "react-star-ratings/build/star-ratings";
+import {ModalUC} from "../ModalUC/ModalUC";
+
+import css from './MarksInRest.module.css'
+
 
 const MarksInRest = () => {
     const location = useLocation();
@@ -24,10 +29,11 @@ const MarksInRest = () => {
 
     const marksOfRest = marks?.filter(mark=>mark.restaurant._id===id)
     const marksFirst5 = [...marksOfRest]?.reverse().slice(0, 5);//в API посортовані від перших до останніх
+    const [modalIsVisible, setModalIsVisible] = useState(false)
 
     const markClick = () => {
         if (isAuth) setStateStars(true)
-        else alert('Увійдіть або зареєструйтеся')
+        else setModalIsVisible(true)
     }
 
     const markAlreadyExist = marksOfRest.some(mark=>mark.user?._id===userId)
@@ -38,7 +44,6 @@ const MarksInRest = () => {
         if (!error) {
             setStateStars(false);
             setIsMarked(true)
-            alert ('Ваша оцінка зарахована')
             navigate(`../restaurants/${id}/marks`)
         }
     }
@@ -47,13 +52,18 @@ const MarksInRest = () => {
         case `/restaurants/${id}`:
             return (
                 <div>
-                    {(!marks || JSON.stringify(marksFirst5) === '[]') && <h3>Оцінок поки що немає</h3>}
-                    <div style={{border: 'solid', width: '50%'}}>
+                    <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+                    {(!marks || JSON.stringify(marksFirst5) === '[]') && <p style={{color:'darkgray'}}>Оцінок поки що немає</p>}
+                    {!markAlreadyExist &&
+                        <div>
+                        <div className={css.CreateMark} onClick={markClick}>Оцінити заклад</div>
+                        {stateStars && <StarRatings rating={rating} changeRating={value => addMark(value)}/>}
+                    </div>}
+
+                    {(markAlreadyExist || isMarked)  && <p>style={{color:'darkgray'}} Ви вже оцінили цей заклад, змінити оцінку можна в особистому кабінеті</p>}
+                    <div>
                         {marksFirst5.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                     </div>
-                    <h4 style={{cursor: "pointer"}} onClick={markClick}>Оцінити заклад</h4>
-                    {(markAlreadyExist || isMarked)  && <p>Ви вже оцінили цей заклад, змінити оцінку можна в особистому кабінеті</p>}
-                    {stateStars && !markAlreadyExist && <StarRatings rating={rating} changeRating={value=>addMark(value)}/>}
                 </div>
             );
             break
@@ -61,7 +71,7 @@ const MarksInRest = () => {
 
             return (
                 <div>
-                    {!marks || JSON.stringify(marksOfRest) === '[]' && <h3>Оцінок поки що немає</h3>}
+                    {!marks || JSON.stringify(marksOfRest) === '[]' && <p style={{color:'darkgray'}}>Оцінок поки що немає</p>}
                     {marksOfRest &&
                         marksOfRest.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                 </div>

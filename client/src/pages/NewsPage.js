@@ -1,7 +1,9 @@
-import {News} from "../components";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
+import {News} from "../components";
+
+import css from './NewsPage.module.css';
 
 const NewsPage = (props) => {
 const {errors} = useSelector(state => state.news)
@@ -10,7 +12,9 @@ const {errors} = useSelector(state => state.news)
         <div>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
-            <Link to={'/news'}> Перейти до списку новин </Link>
+            <div className={css.ToList}>
+                <Link className={css.Link} to={'/news'}> Перейти до всіх новин </Link>
+            </div>
             <div><News/></div>
         </div>
     );

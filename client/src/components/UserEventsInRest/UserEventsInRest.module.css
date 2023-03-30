@@ -1,0 +1,17 @@
+.CreateEvent {
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    /*margin-top: 20px;*/
+    margin-bottom: 10px;
+
+    height: 40px;
+    width: 200px;
+    font-size: 15px;
+
+}

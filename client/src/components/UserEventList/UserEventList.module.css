@@ -1,0 +1,4 @@
+.CreateEvent {
+    composes: CreateEvent from '../UserEventsInRest/UserEventsInRest.module.css';
+
+}

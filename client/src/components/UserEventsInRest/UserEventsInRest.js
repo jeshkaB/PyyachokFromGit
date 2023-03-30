@@ -1,8 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+
 import {restaurantActions, userEventActions} from "../../redux";
 import {UserEventForm} from "../UserEventForm/UserEventForm";
-import {useNavigate, useParams} from "react-router-dom";
+import {ModalUC} from "../ModalUC/ModalUC";
+
+import css from './UserEventsInRest.module.css'
 
 
 const UserEventsInRest = () => {
@@ -34,28 +38,34 @@ const UserEventsInRest = () => {
             });
         })
     }
+
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+
     const clickCreateEvent = ()=> {
         if (isAuth) dispatch(userEventActions.setStateForm(true))
-        else alert ('Увійдіть або зареєструйтеся')
+        else setModalIsVisible(true)
     }
 
 //TODO подія створюється, але у списку подій відображається тільки після перезавантаження сторінки. State перезаписується і відображається напряму, без усіх моїх маніпуляцій
     return (
         <div>
+            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
             <h1>Пиячок в {name}</h1>
             <div>
-                {userEventsInRest.length >= 1 &&
+                {JSON.stringify(userEventsInRest)!== '[]' ?
                     <div style={{cursor:"pointer"}}>{userEventsInRest.map(event =>
                         <div style={{border: 'solid grey 1px', margin: 2}} key={event._id} onClick={() => navigate(`../UserEvents/${event._id}`)}>
                             <p>{event.date.slice(0, 10)}</p>
                             <h3>{event.purpose}</h3>
                         </div>)}
-                    </div>}
-                {userEventsInRest.length < 1 &&
-                    <h3>Подій поки що немає</h3>}
+                    </div>
+                :
+                    <p style={{color:'darkgray'}}>Подій поки що немає</p>}
+
             </div>
-            <div style={{cursor:"pointer"}}>
-                <h3 onClick={() => clickCreateEvent()}> Створити свою подію</h3>
+            <div className={css.CreateEvent}>
+                <p onClick={() => clickCreateEvent()}> Створити свою подію</p>
+
                 {stateForm &&
                     <div>
                         <UserEventForm/>

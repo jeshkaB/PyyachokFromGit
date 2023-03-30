@@ -1,12 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import css from './favoriteRestaurants.module.css';
 import {useEffect} from "react";
-import {restaurantActions, userActions} from "../../../redux";
+
+import {userActions} from "../../../redux";
 import {RestaurantCard} from "../../RestaurantCard/RestaurantCard";
 
 const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
     const dispatch = useDispatch();
-    // const {restaurants} = useSelector(state => state.restaurant)
 
     const {user} = useSelector(state => state.user)
 
@@ -29,10 +28,10 @@ const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
     return (
         <div>
                 {favoriteRests.length > 0 &&
-                    <div className={css.FavRest}> {favoriteRests.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
+                    <div className={css.RestList} > {favoriteRests.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)} </div>
                 }
                 {favoriteRests.length < 1 &&
-                    <div> У вас досі немає улюблених закладів </div>
+                    <p style={{color:'darkgray'}}>У вас досі немає улюблених закладів</p>
                 }
 
         </div>

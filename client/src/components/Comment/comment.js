@@ -35,14 +35,16 @@ const Comment = ({comment, restaurants, stateChangeComment, setStateChangeCommen
         return (
             <div style={{margin: 20}}>
                 <div>
-                    <h4> {body} </h4>
+                    <h5> {body} </h5>
                     {!!bill && bill !==0 &&
-                        <h5> чек {bill} грн. </h5>}
+                        <p> чек {bill} грн. </p>}
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                         <div>{name}</div>
                         <div>{date}</div>
+
                     </div>
                 </div>
+                <hr/>
                 {role && role.includes(roles.SUPER_ADMIN) &&
                     <div>
                         <button onClick={()=>setStateForm(true)}> Редагувати </button>

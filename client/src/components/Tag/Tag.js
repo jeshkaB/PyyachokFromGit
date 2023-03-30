@@ -4,7 +4,7 @@ const Tag = ({tag}) => {
     const navigate = useNavigate()
 
     return (
-        <p onClick={()=>navigate('../restaurants', {state:{tag}}) }>
+        <p style={{cursor:'pointer', color: 'teal', margin: 0}} onClick={()=>navigate('../restaurants', {state:{tag}}) }>
             {tag}
         </p>
     );

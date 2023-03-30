@@ -1,0 +1,10 @@
+.News {
+    margin-left: 20px;
+    display: flex;
+}
+.Body {
+    margin: 50px;
+    margin-top: 80px;
+
+    font-size: 25px;
+}

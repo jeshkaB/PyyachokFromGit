@@ -10,7 +10,9 @@ const MarksCard = ({mark}) => {
                 <StarsRating rating={mark.mark}/>
                 <p>{mark.user?.name}</p>
                 <p>{date}</p>
-            </div>}
+                <hr/>
+            </div>
+            }
 
         </div>
     );

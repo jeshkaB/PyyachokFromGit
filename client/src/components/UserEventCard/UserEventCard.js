@@ -9,6 +9,7 @@ const UserEventCard = ({event}) => {
             <h3>{purpose}</h3>
             <p>в {restaurant.name}</p>
             <p>{date.slice(0, 10)}</p>
+            <hr/>
         </div>
     );
 };

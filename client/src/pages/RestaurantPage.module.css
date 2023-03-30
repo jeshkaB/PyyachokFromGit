@@ -1,0 +1,70 @@
+.Link {
+    text-decoration: none;
+    color: black;
+}
+
+.HolePage {
+    display: flex;
+}
+
+.RestBlock {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.To {
+    display: flex;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    /*margin-bottom: 10px;*/
+}
+
+.ToRest {
+    composes: To;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    /*width: 140px;*/
+    height: 40px;
+    font-size: 15px;
+}
+
+.Comments {
+    border: solid 2px #619393  ;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top:20px;
+}
+.ToComments {
+    width: 200px;
+    height: 40px;
+    composes: To;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.NewsBlock {
+     width: 30%;
+     /*display: flex;*/
+     flex-direction: row;
+     /*flex-wrap: wrap;*/
+     margin: 20px;
+     align-content: center;
+     text-align: center;
+ }
+.Message {
+    font-size: 15px;
+    border: solid 0.5px #619393 ;
+    border-radius: 10px;
+    background: #bbd5d5;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+.News {
+    border-left: darkslategray solid 2px;
+    padding-left: 10px;
+}
+

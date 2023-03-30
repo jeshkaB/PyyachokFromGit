@@ -1,0 +1,33 @@
+.Hole {
+    display: flex;
+    margin-left: 20px ;
+
+}
+.FavRest {
+    border: solid 2px #619393;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+
+
+/*.ToList {*/
+/*    cursor: pointer;*/
+/*    display: flex;*/
+/*
+/*    */
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin-left: 20px;*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+
+/*    height: 40px;*/
+/*    width: 200px;*/
+/*    font-size: 15px;*/
+
+/*}*/
+/*.Link {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/

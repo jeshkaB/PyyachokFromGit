@@ -1,9 +1,11 @@
-import API_URL from "../../config";
 import {useParams} from 'react-router-dom'
-import './newsStyle.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+
+import API_URL from "../../config";
 import {newsActions} from "../../redux";
+
+import css from './News.module.css'
 
 const News = () => {
     const dispatch = useDispatch();
@@ -14,17 +16,21 @@ const News = () => {
         dispatch(newsActions.getById(id))
     }, [dispatch])
 
-    const {title, content, newsImage, category, restaurant} = newsOne
+    const {title, content, newsImage, category, restaurant, createdAt} = newsOne
 
     return (
-        <div>
-            <div className={'News'}>
+        <div className={css.News}>
+            <div>
                 <h2>{title}</h2>
                 {JSON.stringify(newsOne) !== '{}' &&
-                    <h3> від {restaurant.name}</h3>}
-                <div>{category}</div>
-                <div>{content}</div>
+                <h3> від {restaurant.name}</h3>}
                 {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+            </div>
+            <div className={css.Body}>
+                <div>{category},</div>
+                <div>опубліковано {createdAt.slice(0,10)}</div>
+                <hr/>
+                <div>{content}</div>
             </div>
         </div>
     );

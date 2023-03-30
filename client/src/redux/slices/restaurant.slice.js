@@ -43,6 +43,7 @@ const getById = createAsyncThunk(
         try {
             const {data} = await ApiService.getById(entity, id);
             return data
+
         } catch (e) {
             return rejectWithValue(e.response.data)
         }

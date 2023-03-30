@@ -1,48 +1,61 @@
-import {CommentsInRest, MarksInRest, MessageForm, NewsList, Restaurant,} from "../components";
-import {Link, useParams} from "react-router-dom";
-import './RestaurantPageStyle.css'
 import {useSelector} from "react-redux";
 import {useState} from "react";
 
+import {CommentsInRest, MarksInRest, MessageForm, ModalUC, NewsList, Restaurant,} from "../components";
+import {Link, useParams} from "react-router-dom";
 
-const RestaurantPage = (props) => {
+import css from './RestaurantPage.module.css'
+
+
+
+const RestaurantPage = () => {
     const {id} = useParams()
     const {errors} = useSelector(state => state.restaurant)
     const [stateMessageForm, setStateMessageForm] = useState(false)
     const {isAuth, userId} = useSelector(state => state.auth)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
 
-    const messageClick = ()=> {
+    const messageClick = () => {
         if (isAuth) setStateMessageForm(true)
-        else alert('Увійдіть або зареєструйтеся')
+        else
+            setModalIsVisible(true)
     }
     return (
-        <div className={'HolePage'}>
+        <div className={css.HolePage}>
+            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
+                     onHide={setModalIsVisible}></ModalUC>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
-            <div className={'RestBlock'}>
-                <Link to={'/restaurants'}> Перейти до списку закладів </Link>
+
+            <div className={css.RestBlock}>
+                <div className={css.ToRest}> <Link className={css.Link} to={'/restaurants'}> До всіх закладів </Link></div>
                 <div className={'Rest'}><Restaurant/></div>
-                <div className={'Comments'}>
-                    <Link to={'comments'}><h3>Всі відгуки</h3></Link>
+                <div className={css.Comments}>
+                    <div className={css.ToComments}>
+                        <Link className={css.Link} to={'comments'}>Подивитись всі відгуки</Link>
+                    </div>
                     <CommentsInRest/>
                 </div>
-                <div className={'Marks'}>
-                    <Link to={'marks'}><h3>Оцінки</h3></Link>
+                <div className={css.Comments}>
+                    <div className={css.ToComments}>
+                        <Link className={css.Link} to={'marks'}>Подивитись всі оцінки</Link>
+                    </div>
                     <MarksInRest/>
                 </div>
-                    <div className={'Message'}>
-                    <h3 style={{cursor: 'pointer'}} onClick={messageClick}>Написати менеджеру закладу</h3>
+            </div>
+
+            <div className={css.NewsBlock}>
+                <div className={css.Message}>
+                    <p style={{cursor: 'pointer'}} onClick={messageClick}>Написати менеджеру закладу</p>
                     {stateMessageForm &&
                         <div>
                             <MessageForm restId={id} userId={userId} setStateMessageForm={setStateMessageForm}/>
                             <button onClick={() => setStateMessageForm(false)}>Згорнути</button>
                         </div>}
                 </div>
+                <h2>Новини</h2>
+                <div className={css.News}><NewsList restId={id}/></div>
             </div>
-            <div>
-                <div className={'News'}><NewsList restId={id}/></div>
-            </div>
-
 
         </div>
     );

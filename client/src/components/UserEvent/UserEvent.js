@@ -1,10 +1,13 @@
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {eventAnswerActions, restaurantActions, userActions, userEventActions} from "../../redux";
-import {EventAnswerCard} from "../EventAnswerCard/EventAnswerCard";
 import {useForm} from "react-hook-form";
 
+import {eventAnswerActions, restaurantActions, userActions, userEventActions} from "../../redux";
+import {EventAnswerCard} from "../EventAnswerCard/EventAnswerCard";
+
+import css from './UserEvent.module.css'
+import {ModalUC} from "../ModalUC/ModalUC";
 
 const UserEvent = () => {
     const dispatch = useDispatch();
@@ -30,6 +33,9 @@ const UserEvent = () => {
 
 
     const [stateForm, setStateForm] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+
+
 
     const submit = async (data) => {
         await dispatch(eventAnswerActions.create({id: _id, answObj: data}))
@@ -39,13 +45,14 @@ const UserEvent = () => {
     const answerClick = () => {
         if (isAuth)
             setStateForm(true)
-        else alert('Увійдіть або зареєструйтеся')
+        else setModalIsVisible(true)
     }
 
     return (
         <div>
-            <h1 style={{fontFamily: 'cursive', color: 'blue'}}>ПИЯЧОК</h1>
-            <div style={{background: "lightgray"}}>
+            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+            <h1 style={{fontFamily: 'cursive', color: 'darkslategray'}}>Пиячок в</h1>
+            <div className={css.Event}>
                 {JSON.stringify(restaurant) !== '{}' &&
                     <h2>{restaurant.name}</h2>}
                 {JSON.stringify(userEvent) !== '{}' &&
@@ -57,19 +64,22 @@ const UserEvent = () => {
                     </div>}
                 {user && <p>Ініціатор: {user.name}</p>}
             </div>
-            <div style={{border: "solid gray 1px", margin: 2}}>
-                {eventAnswers &&
-                    eventAnswers.map(answer => <EventAnswerCard key={answer._id} answ={answer}/>)}
-            </div>
-            <h4 style={{cursor: "pointer"}} onClick={() => answerClick()}>Додайте відповідь</h4>
+            <div className={css.CreateAnsw} onClick={answerClick}>Додайте відповідь</div>
             {stateForm &&
                 <div>
                     <form onSubmit={handleSubmit(submit)}>
-                        <input type={'text'} placeholder={'напишіть відповідь'} {...register('answer')} />
+                        <textarea rows="5" cols="50" placeholder={'напишіть відповідь'} {...register('answer')}> </textarea>
+                        <br/>
                         <button>Відповісти</button>
+                        <button onClick={()=>setStateForm(false)}>Згорнути</button>
                     </form>
-
                 </div>}
+            <div>
+                {eventAnswers &&
+                    eventAnswers.map(answer => <EventAnswerCard key={answer._id} answ={answer}/>)}
+            </div>
+
+
 
         </div>
     );

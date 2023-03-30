@@ -88,9 +88,8 @@ const RestaurantsList = ({userId, tag}) => {
         .filter(rest => minBill <= rest.averageBill && rest.averageBill <= maxBill)
         .filter(rest => tagsFilter !== '' ? rest.tags?.includes(tagsFilter) : rest)
 
-    console.log(restaurantsListForCards)
     const [restaurantsOnPage, setRestaurantsOnPage] = useState([])
-    console.log(restaurantsOnPage);
+
     return (
         <div className={css.Hole}>
             {/*{JSON.stringify(restaurants)==='[]' && <h4> Закладів поки що немає </h4> }*/}
