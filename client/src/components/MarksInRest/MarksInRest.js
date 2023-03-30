@@ -60,7 +60,7 @@ const MarksInRest = () => {
                         {stateStars && <StarRatings rating={rating} changeRating={value => addMark(value)}/>}
                     </div>}
 
-                    {(markAlreadyExist || isMarked)  && <p>style={{color:'darkgray'}} Ви вже оцінили цей заклад, змінити оцінку можна в особистому кабінеті</p>}
+                    {(markAlreadyExist || isMarked)  && <p style={{color:'darkgray'}}> Ви вже оцінили цей заклад, змінити оцінку можна в особистому кабінеті</p>}
                     <div>
                         {marksFirst5.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                     </div>
@@ -71,7 +71,7 @@ const MarksInRest = () => {
 
             return (
                 <div>
-                    {!marks || JSON.stringify(marksOfRest) === '[]' && <p style={{color:'darkgray'}}>Оцінок поки що немає</p>}
+                    {!marks || JSON.stringify(marksOfRest) === '[]' && <p style={{color:'darkgray'}} >Оцінок поки що немає</p>}
                     {marksOfRest &&
                         marksOfRest.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                 </div>

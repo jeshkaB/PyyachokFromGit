@@ -28,7 +28,7 @@ const News = () => {
             </div>
             <div className={css.Body}>
                 <div>{category},</div>
-                <div>опубліковано {createdAt.slice(0,10)}</div>
+                <div>опубліковано {createdAt?.slice(0,10)}</div>
                 <hr/>
                 <div>{content}</div>
             </div>

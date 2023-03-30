@@ -23,8 +23,8 @@ const MyComments = ({user,restaurants}) => {
             <h3 style={{cursor: "pointer"}} onClick={() => setStateComments(true)}>Мої коментарі</h3>
             {stateComments &&
                 <div>
-                    {myComments.map(com => <Comment key={com._id} comment={com} restaurants={restaurants}/>)}
                     <button onClick={() => setStateComments(false)}>Згорнути</button>
+                    {myComments.map(com => <Comment key={com._id} comment={com} restaurants={restaurants}/>)}
                 </div>}
 
         </div>

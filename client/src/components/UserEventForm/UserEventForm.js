@@ -42,11 +42,11 @@ const UserEventForm = () => {
     }
 
     return (
-        <div>
+        <div style={{border:'solid 0.5px darkgrey', borderRadius:'20px', width:'30%', margin: '10px', padding: '10px'} }>
             {errors && <ModalUC modalText={`${errors.message}`} show={modalIsVisible} onHide={setModalIsVisible} type={'danger'}></ModalUC>}
             {!restId && restaurants &&
                 <Dropdown>
-                    <Dropdown.Toggle>{selectedRest.name || "Оберіть заклад"}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={"outline-secondary"}>{selectedRest.name || "Оберіть заклад"}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {restaurants.map(rest =>
                             <Dropdown.Item key={rest._id} onClick={() => setSelectedRest(rest)}>{rest.name}</Dropdown.Item>

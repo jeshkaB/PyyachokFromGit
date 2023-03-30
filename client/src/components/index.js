@@ -24,7 +24,7 @@ export * from './LoginFormForgot/LoginFormForgot';
 export * from './MarksCard/MarksCard';
 export * from './MarksInRest/MarksInRest';
 export * from './ModalUC/ModalUC';
-export * from './News/news';
+export * from './News/News';
 export * from './NewsForAdmin/NewsForAdmin';
 export * from './NewsCard/newsCard';
 export * from './NewsCreate/NewsCreate';

@@ -4,6 +4,7 @@ import {authActions, userActions} from "../../../redux";
 import {useState} from "react";
 import {authService} from "../../../services";
 import {useNavigate} from "react-router-dom";
+import css from './updateAccount.module.css'
 
 
 const UpdateAccount = ({user}) => {
@@ -39,8 +40,8 @@ const UpdateAccount = ({user}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateUpd(true)}>Оновити особисті дані</h3>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateUpdPassword(true)}>Змінити пароль</h3>
+            <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
+            <div className={css.To} onClick={() => setStateUpdPassword(true)}>Змінити пароль</div>
             {stateUpd &&
                 <div style={{border: 'solid'}}>
                     <form onSubmit={handleSubmit(submit)}>

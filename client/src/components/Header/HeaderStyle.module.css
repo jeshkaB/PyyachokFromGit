@@ -49,6 +49,7 @@
     margin: 2px;
     background: #bbd5d5;
     border: solid 0.5px darkslategrey;
+    border-radius: 5px;
     width: 250px;
     height: 30px;
     text-align: center;

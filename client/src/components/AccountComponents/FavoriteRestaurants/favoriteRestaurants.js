@@ -3,6 +3,7 @@ import {useEffect} from "react";
 
 import {userActions} from "../../../redux";
 import {RestaurantCard} from "../../RestaurantCard/RestaurantCard";
+import css from './FavoriteRestaurants.module.css'
 
 const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
     const dispatch = useDispatch();

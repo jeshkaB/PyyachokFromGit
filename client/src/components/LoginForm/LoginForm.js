@@ -23,7 +23,7 @@ const LoginForm = () => {
 
 
     return (
-        <div>
+        <div style={{marginLeft: '20px'}}>
             <form onSubmit={handleSubmit(submit)}>
                 <input type='text' placeholder={'email'} {...register('email')}/>
                 <input type='text' placeholder={'пароль'} {...register('password')}/>

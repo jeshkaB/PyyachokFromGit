@@ -22,8 +22,8 @@ const MyMarks = ({user}) => {
             <h3 style={{cursor: "pointer"}} onClick={()=>setStateMarks(true)}>Мої оцінки</h3>
             {stateMarks &&
                 <div>
-                    {myMarks.map(mark=><MyMarksCard key = {mark._id} mark={mark}/>)}
                     <button onClick={()=>setStateMarks(false)}>Згорнути</button>
+                    {myMarks.map(mark=><MyMarksCard key = {mark._id} mark={mark}/>)}
                 </div>}
 
         </div>

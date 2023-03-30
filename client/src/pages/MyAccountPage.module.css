@@ -4,13 +4,32 @@
 
 }
 .FavRest {
+    width: 50%;
     border: solid 2px #619393;
     border-radius: 20px;
     padding: 5px;
 }
 
+.Account {
+    composes: FavRest;
 
+}
+.To {
+    cursor: pointer;
+    display: flex;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bolder;
+}
 
+.ToAc {
+    composes: To;
+    justify-content: end;
+}
 /*.ToList {*/
 /*    cursor: pointer;*/
 /*    display: flex;*/

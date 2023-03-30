@@ -1,0 +1,4 @@
+.RestList {
+    display: flex;
+    flex-wrap: wrap;
+}

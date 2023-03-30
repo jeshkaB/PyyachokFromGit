@@ -23,8 +23,8 @@ const MyUserEvents = ({user}) => {
             <h3 style={{cursor: "pointer"}} onClick={() => setStateEvents(true)}>Мої події</h3>
             {stateEvents && myEvents &&
                 <div>
-                    {myEvents.map(event => <MyUserEvent key={event._id} event={event}/>)}
                     <button onClick={() => setStateEvents(false)}>Згорнути</button>
+                    {myEvents.map(event => <MyUserEvent key={event._id} event={event}/>)}
                 </div>}
 
         </div>

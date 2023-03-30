@@ -24,18 +24,18 @@ const MyAccountPage = () => {
     }, []);
 
     return (
-        <div className={css.Hole}>
+        <div >
             {isAuth &&
-                <div>
+                <div className={css.Hole}>
                     <div className={css.FavRest}>
                         <h2>Улюблені заклади</h2>
                         <div><FavoriteRestaurants user={user} restaurants={restaurants}/></div>
                     </div>
-                    <div>
-                        <div><UpdateAccount user={user}/></div>
-                        <div><MyMarks user={user}/></div>
-                        <div><MyComments user={user} restaurants={restaurants}/></div>
-                        <div><MyUserEvents user={user}/></div>
+                    <div className={css.Account}>
+                        <div className={css.ToAc}><UpdateAccount user={user}/></div>
+                        <div className={css.To}><MyMarks user={user}/></div>
+                        <div className={css.To}><MyComments user={user} restaurants={restaurants}/></div>
+                        <div className={css.To}><MyUserEvents user={user}/></div>
                     </div>
                 </div>
 

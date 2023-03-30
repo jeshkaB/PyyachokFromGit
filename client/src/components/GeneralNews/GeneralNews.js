@@ -6,6 +6,7 @@ import {generalNewsActions} from "../../redux";
 import {roles} from "../../constants";
 import API_URL from "../../config";
 import {NewsUpdate} from "../NewsUpdate/NewsUpdate";
+import css from './GeneralNews.module.css';
 
 const GeneralNews = () => {
     const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const GeneralNews = () => {
     const {id} = useParams();
     const {role} = useSelector(state => state.auth);
     const {newsOne} = useSelector(state => state.generalNews);
-    const {title, content, newsImage, category,createdAt } = newsOne
+    const {title, content, newsImage, category, createdAt} = newsOne
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     useEffect(() => {
@@ -26,14 +27,18 @@ const GeneralNews = () => {
     }
 
     return (
-        <div>
-            <div className={'News'}>
+        <div className={css.News}>
+            <div >
                 <h2>{title}</h2>
-                <div>{category}</div>
-                <div>опубліковано {createdAt.slice(0, 10)}</div>
                 {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+            </div>
+            <div className={css.Body}>
+                <div>{category}</div>
+                <div>опубліковано {createdAt?.slice(0, 10)}</div>
+                <hr/>
                 <div>{content}</div>
             </div>
+
             {role === roles.SUPER_ADMIN &&
                 <div>
                     <div>

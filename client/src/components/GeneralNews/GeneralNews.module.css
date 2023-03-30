@@ -1,0 +1,9 @@
+.News {
+    display: flex;
+}
+.Body {
+    margin: 50px;
+    margin-top: 70px;
+
+    font-size: 25px;
+}
