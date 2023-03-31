@@ -1,4 +1,4 @@
-.CreateCom {
+.To {
     cursor: pointer;
     display: flex;
     border: solid 0.5px #619393  ;
@@ -6,10 +6,16 @@
     padding: 5px;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
     margin-bottom: 10px;
     height: 40px;
     width: 200px;
     font-size: 20px;
-
+}
+.Form {
+    border: solid 2px #619393  ;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }

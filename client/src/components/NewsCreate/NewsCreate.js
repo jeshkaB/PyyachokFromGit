@@ -1,12 +1,14 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {newsActions, restaurantActions} from "../../redux";
 import {useNavigate} from "react-router-dom";
-import {Dropdown} from "react-bootstrap";
+
+import {newsActions, restaurantActions} from "../../redux";
+
 import {categoriesOfNews} from "../../constants";
 
-
+import css from './NewsCreate.module.css'
+import {Dropdown} from "react-bootstrap";
 
 const NewsCreate = ({restId}) => {
     const dispatch = useDispatch();
@@ -32,11 +34,11 @@ const NewsCreate = ({restId}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateCreate(true)}> Створити новину </h3>
+            <div className={css.To} onClick={() => setStateCreate(true)}> Створити новину </div>
             {stateCreate &&
-                <div style={{border: 'solid'}}>
+                <div className={css.Form}>
                     <Dropdown>
-                        <Dropdown.Toggle>{selectedCategory || "Оберіть категорію новини"}</Dropdown.Toggle>
+                        <Dropdown.Toggle variant={'outline-secondary'}>{selectedCategory || "Оберіть категорію новини"}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {categories.map(categ =>
                                 <Dropdown.Item key={categ} onClick={() => setSelectedCategory(categ)}>{categ}</Dropdown.Item>
@@ -44,16 +46,16 @@ const NewsCreate = ({restId}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "orange"}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Заголовок* <input  required={true} {...register('title')}/></label>
+                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <label>Заголовок* <textarea rows="2" cols="60" required={true} {...register('title')}></textarea></label>
                         <br/>
-                        <label>Зміст* <input required={true} {...register('content')}/></label>
+                        <label>Зміст/текст* <textarea rows="5" cols="60" required={true} {...register('content')}></textarea></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
                         <br/>
                         <button>Створити</button>
                     </form>
-                    <button onClick={() => setStateCreate(false)}> Відмінити</button>
+                    <button style={{marginTop:5}} onClick={() => setStateCreate(false)}> Відмінити</button>
                 </div>
             }
 

@@ -1,0 +1,23 @@
+.To {
+    display: flex;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.Form {
+    border: solid 2px #619393  ;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}

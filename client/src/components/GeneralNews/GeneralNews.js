@@ -6,7 +6,7 @@ import {generalNewsActions} from "../../redux";
 import {roles} from "../../constants";
 import API_URL from "../../config";
 import {NewsUpdate} from "../NewsUpdate/NewsUpdate";
-import css from './GeneralNews.module.css';
+import css from '../NewsForAdmin/NewsForAdmin.module.css';
 
 const GeneralNews = () => {
     const dispatch = useDispatch();
@@ -27,34 +27,40 @@ const GeneralNews = () => {
     }
 
     return (
-        <div className={css.News}>
-            <div >
-                <h2>{title}</h2>
-                {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+        <div>
+            <div className={css.Header}>
+                <div><h2>{title}</h2></div>
+                {role.includes(roles.SUPER_ADMIN) &&
+                    <div>
+                        <div>
+                            <NewsUpdate news={newsOne}/>
+                        </div>
+                        <div>
+                            <div className={css.Del}
+                                 onClick={() => setConfirmDelete(true)}> Видалити новину
+                            </div>
+                            {confirmDelete &&
+                                <div>
+                                    <p style={{color: 'red'}}> Ви упевнені що хочете видалити цю новину?</p>
+                                    <button onClick={clickDelete}>Так</button>
+                                    <button onClick={() => setConfirmDelete(false)}>Ні</button>
+                                </div>}
+                        </div>
+                    </div>}
             </div>
-            <div className={css.Body}>
-                <div>{category}</div>
-                <div>опубліковано {createdAt?.slice(0, 10)}</div>
-                <hr/>
-                <div>{content}</div>
+            <div className={css.News}>
+                <div>
+                    {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                </div>
+                <div className={css.Body}>
+                    <p>{category}</p>
+                    <p style={{marginBottom: 0}}>опубліковано {createdAt?.slice(0, 10)}</p>
+                    <hr/>
+                    <p>{content}</p>
+                </div>
             </div>
 
-            {role === roles.SUPER_ADMIN &&
-                <div>
-                    <div>
-                        <NewsUpdate news={newsOne}/>
-                    </div>
-                    <div>
-                        <h3 style={{cursor: "pointer", fontSize: '20px', color: 'orange'}}
-                            onClick={() => setConfirmDelete(true)}> Видалити новину </h3>
-                        {confirmDelete &&
-                            <div>
-                                <p style={{color: 'red'}}> Ви упевнені що хочете видалити цю новину?</p>
-                                <button onClick={clickDelete}>Так</button>
-                                <button onClick={() => setConfirmDelete(false)}>Ні</button>
-                            </div>}
-                    </div>
-                </div>}
+
         </div>
     );
 };

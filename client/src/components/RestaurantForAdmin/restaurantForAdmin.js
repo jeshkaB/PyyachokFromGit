@@ -1,12 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+
 import {restaurantActions} from "../../redux";
 import API_URL from "../../config";
-import {StarsRating} from "../StarsRating/starsRating";
-import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 import {roles} from "../../constants";
 
+import {StarsRating} from "../StarsRating/starsRating";
+import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 
 const RestaurantForAdmin = ({restId, role, restaurant}) => {
     const dispatch = useDispatch();
@@ -28,8 +29,10 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
                 <div> Режим роботи: {restaurant.hours}</div>
                 <div> email: {restaurant.email} </div>
                 <div> Сайт: {restaurant.webSite} </div>
-                <div> Середній чек:{restaurant.averageBill} грн.</div>
+                <div style={{marginBottom:'20px'}}> Середній чек:{restaurant.averageBill} грн.</div>
             </div>
+            <button onClick={()=>navigate('viewStatistics')}>Статистика переглядів</button>
+            <hr/>
             <div>
                 <RestaurantUpdate restaurant={restaurant}/>
             </div>
@@ -43,8 +46,8 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
                         <button onClick={() => setConfirmDelete(false)}>Ні</button>
                     </div>}
             </div>}
-            <hr/>
-            <button onClick={()=>navigate('viewStatistics')}>Статистика переглядів</button>
+
+
 
 
 

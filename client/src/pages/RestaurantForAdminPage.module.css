@@ -1,0 +1,30 @@
+.Hole {
+    display: flex;
+
+
+}
+.To {
+    display: flex;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 25px;
+}
+.ToMark {
+    composes: To ;
+    cursor: pointer;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+}
+.Block {
+    width: 50%;
+}

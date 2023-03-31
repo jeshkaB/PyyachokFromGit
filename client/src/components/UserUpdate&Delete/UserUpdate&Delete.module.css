@@ -1,0 +1,13 @@
+.Hole {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.To {
+    composes: To from '../AccountComponents/MyMarks/MyMarks.module.css';
+
+}
+.ToDel {
+    composes: To;
+    color: red;
+    border: solid 0.5px red  ;
+}

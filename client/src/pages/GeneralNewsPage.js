@@ -10,7 +10,7 @@ const GeneralNewsPage = () => {
     const {errors} = useSelector(state => state.generalNews)
 
     return (
-        <div style={{marginLeft: '20px'}}>
+        <div style={{marginLeft: 20, marginTop:10}}>
             {errors &&
                 <h3 className={'errors'}> {errors.message} </h3>}
                 <Button variant="outline-secondary" onClick={() => navigate('/generalNews')}>Всі новини </Button>

@@ -1,8 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {MyUserEvent} from "./MyUserEvent";
+
 import {userEventActions} from "../../../redux";
 
+import {MyUserEvent} from "./MyUserEvent";
+
+import css from '../MyMarks/MyMarks.module.css'
 
 const MyUserEvents = ({user}) => {
     const {_id} = user;
@@ -20,7 +23,7 @@ const MyUserEvents = ({user}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateEvents(true)}>Мої події</h3>
+            <div className={css.To} onClick={() => setStateEvents(true)}>Мої події</div>
             {stateEvents && myEvents &&
                 <div>
                     <button onClick={() => setStateEvents(false)}>Згорнути</button>

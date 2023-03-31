@@ -1,8 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+
 import {markActions} from "../../../redux";
+
 import {MyMarksCard} from "./MyMarksCard";
 
+import css from './MyMarks.module.css'
 
 const MyMarks = ({user}) => {
     const {_id} = user;
@@ -19,7 +22,7 @@ const MyMarks = ({user}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={()=>setStateMarks(true)}>Мої оцінки</h3>
+            <div className={css.To} onClick={()=>setStateMarks(true)}>Мої оцінки</div>
             {stateMarks &&
                 <div>
                     <button onClick={()=>setStateMarks(false)}>Згорнути</button>

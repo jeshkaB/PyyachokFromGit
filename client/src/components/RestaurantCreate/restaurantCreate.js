@@ -4,7 +4,7 @@ import {useState} from "react";
 import {restaurantActions} from "../../redux";
 import {useNavigate} from "react-router-dom";
 
-
+import css  from '../RestaurantUpdate/RestaurantUpdate.module.css'
 
 const RestaurantCreate = ({userId}) => {
     const dispatch = useDispatch();
@@ -38,11 +38,11 @@ const RestaurantCreate = ({userId}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateCreate(true)}> Створити заклад </h3>
+            <h3 className={css.To} onClick={() => setStateCreate(true)}> Створити заклад </h3>
             {stateCreate &&
-                <div style={{border: 'solid'}}>
+                <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "orange"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Назва* <input  required={true} {...register('name')}/></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" required={true} {...register('mainImage')}/></label>
@@ -66,11 +66,9 @@ const RestaurantCreate = ({userId}) => {
                         <br/>
                         <label>Теги <input {...register('tags')}/></label>
                         <br/>
-                        {/*<label>Категорії {...register('categories')}/></label>*/}
-                        {/*<br/>*/}
                         <button>Створити</button>
                     </form>
-                    <button onClick={() => setStateCreate(false)}> Відмінити</button>
+                    <button style={{marginTop:5}} onClick={() => setStateCreate(false)}> Відмінити</button>
                 </div>
             }
 

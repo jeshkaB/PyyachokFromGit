@@ -1,7 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+
 import {commentActions} from "../../../redux";
+
 import {Comment} from "../../Comment/comment";
+
+import css from "../MyMarks/MyMarks.module.css";
 
 
 const MyComments = ({user,restaurants}) => {
@@ -20,7 +24,7 @@ const MyComments = ({user,restaurants}) => {
 
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateComments(true)}>Мої коментарі</h3>
+            <div className={css.To} onClick={() => setStateComments(true)}>Мої коментарі</div>
             {stateComments &&
                 <div>
                     <button onClick={() => setStateComments(false)}>Згорнути</button>

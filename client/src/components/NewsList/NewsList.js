@@ -1,9 +1,8 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+
 import {newsActions} from "../../redux";
 
-
-import './newsListStyle.css'
 import {NewsCard} from "../NewsCard/newsCard";
 
 const NewsList = ({restId}) => {
@@ -15,7 +14,6 @@ const NewsList = ({restId}) => {
     }, [dispatch])
 
     if (restId) {
-
         const newsOfRest = newsAll.filter(item => item.restaurant._id === restId)
         return (
             <div>

@@ -1,18 +1,20 @@
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {restaurantActions, userActions} from "../../redux";
-import css from "../UserInfo/userInfo.module.css";
+
+import {restaurantActions} from "../../redux";
 import API_URL from "../../config";
 import {roles} from "../../constants";
+
 import {MyMarks} from "../AccountComponents/MyMarks/MyMarks";
 import {MyComments} from "../AccountComponents/MyComments/MyComments";
 import {MyUserEvents} from "../AccountComponents/MyEvents/MyUserEvents";
 
+import css from './User.module.css'
 const User = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const location= useLocation();
+    const location = useLocation();
     const user = location.state
 
     const {restaurants} = useSelector(state => state.restaurant);
@@ -26,8 +28,8 @@ const User = () => {
     if (restOfUserIds)
         restaurantsOfUser = restaurants.filter(rest => rest.user === _id)
     return (
-        <div>
-            <div style={{border: 'solid 1px black'}}>
+        <div className={css.Hole}>
+            <div className={css.UserInfo}>
                 <h4>{name}</h4>
                 <h4>{email}</h4>
                 {avatar &&
@@ -35,15 +37,17 @@ const User = () => {
                 {role && role.includes(roles.REST_ADMIN) &&
                     <div>
                         Адміністратор закладу:
-                        {restaurantsOfUser.map(rest => <h4 style={{cursor:'pointer'}} key={rest._id} onClick={()=>navigate(`../restaurantsForAdmin/${_id}`)} > {rest.name} </h4>)}
+                        {restaurantsOfUser.map(rest => <h4 style={{cursor: 'pointer'}} key={rest._id}
+                                                           onClick={() => navigate(`../restaurantsForAdmin/${_id}`)}> {rest.name} </h4>)}
                     </div>}
-                <div style={{border:'solid 1px '}}>
-                    <h3>Діяльність користувача </h3>
-                    <div> <MyMarks user={user}/></div>
-                    <div> <MyComments user={user} restaurants={restaurantsOfUser}/></div>
-                    <div> <MyUserEvents user={user}/></div>
-                </div>
             </div>
+            <div className={css.UserActs}>
+                <h3>Діяльність користувача </h3>
+                <div><MyMarks user={user}/></div>
+                <div><MyComments user={user} restaurants={restaurantsOfUser}/></div>
+                <div><MyUserEvents user={user}/></div>
+            </div>
+
         </div>
     );
 };

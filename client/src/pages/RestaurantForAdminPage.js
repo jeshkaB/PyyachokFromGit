@@ -1,10 +1,13 @@
-import {ChangeManager, CommentsInRest, NewsCreate, NewsForAdmin, NewsList, RestaurantForAdmin} from "../components";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
-import {roles} from "../constants";
-
-import {restaurantActions} from "../redux";
 import {useEffect} from "react";
+
+import {roles} from "../constants";
+import {restaurantActions} from "../redux";
+
+import css from './RestaurantForAdminPage.module.css'
+
+import {ChangeManager, CommentsInRest, NewsCreate, NewsList, RestaurantForAdmin} from "../components";
 
 const RestaurantForAdminPage = () => {
     const dispatch = useDispatch();
@@ -12,7 +15,6 @@ const RestaurantForAdminPage = () => {
     const {id} = useParams();
     const {role, isAuth} = useSelector(state => state.auth)
     const {errors} = useSelector(state => state.restaurant);
-
 
     const {restaurant} = useSelector(state => state.restaurant);
 
@@ -22,25 +24,24 @@ const RestaurantForAdminPage = () => {
 
 
     return (
-        <div>
-            {errors &&
-                <h3 className={'errors'}> {errors.message} </h3>}
-            {isAuth && role.includes(roles.SUPER_ADMIN) && <ChangeManager restId = {id}/>}
-            <RestaurantForAdmin restId = {id} role = {role} restaurant={restaurant}/>
+        <div className={css.Hole}>
+            {/*{errors &&*/}
+            {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
+            <div className={css.Block}>
+                {isAuth && role.includes(roles.SUPER_ADMIN) && <ChangeManager restId = {id}/>}
+                <RestaurantForAdmin restId = {id} role = {role} restaurant={restaurant}/>
 
-            <h3 style={{cursor: 'pointer', color: "green"}}
-                onClick={() => navigate(`/restaurants/${id}/marks`)}> Оцінки</h3>
+                <div className={css.ToMark}
+                     onClick={() => navigate(`/restaurants/${id}/marks`)}>Оцінки</div>
+                <Link className={css.Link} to={`../restaurants/${id}/comments`}><div className={css.To}>Відгуки</div></Link>
+                {/*<CommentsInRest/>*/}
 
-            <hr/>
-            {/*<h3 style={{cursor: 'pointer', color: "green"}}*/}
-            {/*    onClick={() => navigate(`/restaurants/${id}/comments`)}>Відгуки</h3>*/}
-            <Link to={`../restaurants/${id}/comments`}><h3>Всі відгуки</h3></Link>
-            <CommentsInRest/>
-            <hr/>
-            <h3 style={{color: "green"}}> Новини</h3>
-            <NewsCreate restId={id}/>
-            <NewsList restId={id}/>
-
+            </div>
+            <div className={css.Block}>
+                <h3 style={{textAlign:'center'}}> Новини </h3>
+                <NewsCreate restId={id}/>
+                <NewsList restId={id}/>
+            </div>
         </div>
     );
 };

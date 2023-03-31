@@ -1,8 +1,13 @@
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {useState} from 'react'
-import {restaurantActions, userActions} from "../../redux";
 import {useNavigate} from "react-router-dom";
+
+import {userActions} from "../../redux";
+import {ModalUC} from "../ModalUC/ModalUC";
+
+import css from './UserUpdate&Delete.module.css'
+
 
 const UserUpdateDelete = ({user}) => {
     const dispatch = useDispatch();
@@ -12,6 +17,9 @@ const UserUpdateDelete = ({user}) => {
     const {_id, name} = user;
     const [stateUpd, setStateUpd] = useState(false)
     const [confirmDelete, setConfirmDelete] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+
+
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -21,7 +29,7 @@ const UserUpdateDelete = ({user}) => {
 
         await dispatch(userActions.updateById({id: _id, userObj: formData}))
         setStateUpd(false)
-        alert('Дані успішно змінено')
+        setModalIsVisible(true)
     }
     const clickDelete = async ()=> {
         const {error} = await dispatch(userActions.deleteById(_id));
@@ -29,8 +37,10 @@ const UserUpdateDelete = ({user}) => {
     }
 
     return (
-        <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateUpd(true)}>Оновити особисті дані</h3>
+        <div className={css.Hole}>
+            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+            <h3>Редагування користувача </h3>
+            <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
             {stateUpd &&
                 <div style={{border: 'solid'}}>
                     <form onSubmit={handleSubmit(submit)}>
@@ -40,17 +50,17 @@ const UserUpdateDelete = ({user}) => {
                         <br/>
                         <button>Оновити</button>
                     </form>
-                    <button onClick={() => setStateUpd(false)}> Відмінити</button>
+                    <button style={{marginTop:5}} onClick={() => setStateUpd(false)}> Відмінити</button>
                 </div>
             }
                 <div>
-                <h3 style={{cursor: 'pointer', fontSize: '20px', color: 'orange'}}
-                    onClick={() => setConfirmDelete(true)}> Видалити користувача</h3>
+                <div className={css.ToDel}
+                    onClick={() => setConfirmDelete(true)}> Видалити користувача</div>
                 {confirmDelete &&
                     <div>
                         <p style={{color: 'red'}}> Ви упевнені що хочете видалити користувача?</p>
                         <button onClick={clickDelete}>Так</button>
-                        <button onClick={() => setConfirmDelete(false)}>Ні</button>
+                        <button style={{marginLeft:5}}onClick={() => setConfirmDelete(false)}>Ні</button>
                     </div>}
             </div>
         </div>

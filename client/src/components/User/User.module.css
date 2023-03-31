@@ -1,0 +1,20 @@
+.Hole {
+    display: flex;
+}
+
+.UserInfo {
+    border: solid 1px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 30%;
+}
+.AvatarImg {
+    width: 150px;
+}
+.UserActs {
+    composes: UserInfo;
+    width: 70%;
+}

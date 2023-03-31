@@ -8,8 +8,8 @@ const NewsForAdminPage = () => {
 
     return (
         <div>
-            {errors &&
-                <h3 className={'errors'}> {errors.message} </h3>}
+            {/*{errors &&*/}
+            {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
                  <NewsForAdmin/>
         </div>
     );

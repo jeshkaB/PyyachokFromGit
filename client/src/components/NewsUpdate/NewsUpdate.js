@@ -1,12 +1,13 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {generalNewsActions, newsActions, restaurantActions} from "../../redux";
 import {useLocation, useNavigate} from "react-router-dom";
+
+import {generalNewsActions, newsActions} from "../../redux";
 import {Dropdown} from "react-bootstrap";
 import {categoriesOfNews} from "../../constants";
 
-
+import css from './NewsUpdate.module.css'
 
 const NewsUpdate = ({news}) => {
     const location = useLocation();
@@ -40,11 +41,11 @@ const NewsUpdate = ({news}) => {
     }
     return (
         <div>
-            <h3 style={{cursor: "pointer"}} onClick={() => setStateUpdate(true)}> Редагувати новину </h3>
+            <div className={css.To} onClick={() => setStateUpdate(true)}> Редагувати новину </div>
             {stateUpdate &&
-                <div style={{border: 'solid'}}>
+                <div className={css.Form}>
                     <Dropdown>
-                        <Dropdown.Toggle>{selectedCategory || category}</Dropdown.Toggle>
+                        <Dropdown.Toggle variant={"outline-secondary"}>{selectedCategory || category}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {categories.map(categ =>
                                 <Dropdown.Item key={categ} onClick={() => setSelectedCategory(categ)}>{categ}</Dropdown.Item>
@@ -52,14 +53,14 @@ const NewsUpdate = ({news}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "orange"}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Заголовок* <input  required={true} defaultValue={title} {...register('title')}/></label>
+                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <label>Заголовок* <textarea rows="2" cols="60" required={true} defaultValue={title} {...register('title')}></textarea></label>
                         <br/>
-                        <label>Зміст* <input required={true} defaultValue={content} {...register('content')}/></label>
+                        <label>Зміст/текст* <textarea rows="5" cols="60" required={true} defaultValue={content} {...register('content')}></textarea></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
                         <br/>
-                        <button>Оновити</button>
+                        <button style={{marginBottom:5}}>Оновити</button>
                     </form>
                     <button onClick={() => setStateUpdate(false)}> Відмінити</button>
                 </div>

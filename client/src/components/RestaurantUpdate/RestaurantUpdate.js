@@ -1,14 +1,14 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {restaurantActions} from "../../redux";
-import {useNavigate} from "react-router-dom";
 
+import {restaurantActions} from "../../redux";
+
+import css from './RestaurantUpdate.module.css'
 
 
 const RestaurantUpdate= ({restaurant}) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {errors} = useSelector(state => state.restaurant)
     const {register, handleSubmit} = useForm()
 
@@ -29,7 +29,6 @@ const RestaurantUpdate= ({restaurant}) => {
         formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
-        // formData.append('categories', data.categories);
         await dispatch(restaurantActions.updateById({id:_id, restObj: formData}))
         setStateUpdate(false)
         if (!errors) alert('Дані успішно оновлено')
@@ -37,11 +36,11 @@ const RestaurantUpdate= ({restaurant}) => {
 
     return (
         <div>
-            <h3 style={{cursor:'pointer'}} onClick={()=>setStateUpdate(true)}> Оновити дані закладу</h3>
+            <div className={css.To} onClick={()=>setStateUpdate(true)}> Оновити дані закладу</div>
             {stateUpdate &&
-                <div style={{border: 'solid'}}>
+                <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "orange"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Назва* <input required={true} defaultValue={name} {...register('name')}/></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('mainImage')}/></label>
@@ -67,7 +66,7 @@ const RestaurantUpdate= ({restaurant}) => {
                         <br/>
                         <button>Оновити</button>
                     </form>
-                    <button onClick={() => setStateUpdate(false)}> Відмінити</button>
+                    <button style={{marginTop:5}} onClick={() => setStateUpdate(false)}> Відмінити</button>
                 </div>
             }
 

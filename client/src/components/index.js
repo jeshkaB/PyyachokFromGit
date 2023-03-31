@@ -28,7 +28,7 @@ export * from './News/News';
 export * from './NewsForAdmin/NewsForAdmin';
 export * from './NewsCard/newsCard';
 export * from './NewsCreate/NewsCreate';
-export * from './NewsList/newsList';
+export * from './NewsList/NewsList';
 export * from './NewsUpdate/NewsUpdate';
 export * from './RegisterForm/registerForm';
 export * from './RestaurantsList/RestaurantsList';

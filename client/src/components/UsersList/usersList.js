@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+
 import {userActions} from "../../redux";
-import {UserCard} from "../UserCard/UserCard";
-
 import {paginationLimits} from "../../constants/paginationLimits";
-import {PaginationUC} from "../PaginationUC/PaginationUC";
 
+import {UserCard} from "../UserCard/UserCard";
+import {PaginationUC} from "../PaginationUC/PaginationUC";
 
 const UsersList = () => {
 
