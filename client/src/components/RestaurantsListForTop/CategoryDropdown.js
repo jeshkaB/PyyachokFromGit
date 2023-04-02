@@ -15,7 +15,7 @@ const CategoryDropdown = ({restId, categoriesForSelection,setCategoriesForSelect
     return (<div>
             <div>
                 <Dropdown>
-                    <Dropdown.Toggle>Додати в топ-категорію</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={"outline-secondary"}>Додати в топ-категорію</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {categoriesForSelection && categoriesForSelection.map(categ =>
                             <Dropdown.Item key={categ._id}

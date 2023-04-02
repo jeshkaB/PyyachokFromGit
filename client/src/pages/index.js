@@ -16,7 +16,6 @@ export * from './RestaurantPage';
 export * from './SuperAdminPage';
 export * from './RestaurantsListPage';
 export * from './TopPageForAdmin';
-export * from './UsersListPage';
 export * from './UserPage';
 export * from './UserEventPage';
 export * from './UserEventsPageInRestaurant';

@@ -35,10 +35,11 @@ module.exports = {
 
     checkUserFieldIsUnique: (fieldName) => async (req, res, next) => {
         try {
+            const {userId} = req.params;
             const fieldValue = req.body[fieldName];
             if (fieldValue) {
                 const user = await userService.getUserByParams({[fieldName]: fieldValue})
-                if (user) {
+                if (user && user._id+'' !== userId+'') {
                     return next(new LocalError(`${fieldName} is already exist`, statusCodes.CONFLICT))
                 }
             }

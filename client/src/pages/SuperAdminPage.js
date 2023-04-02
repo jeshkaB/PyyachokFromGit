@@ -58,8 +58,7 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateGenNewsList(true)}> Створення та редагування загальних
-                    новин
+                <div className={css.To} onClick={() => setStateGenNewsList(true)}> Створення та редагування загальнихновин
                 </div>
                 {stateGenNewsList &&
                     <div>

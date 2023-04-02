@@ -1,25 +1,29 @@
 import {useParams} from "react-router-dom";
-
-import {Dropdown, Modal} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {restaurantActions, userActions} from "../../redux";
+
+import {Dropdown} from "react-bootstrap";
 import {roles} from "../../constants";
-import {UserCard} from "../UserCard/UserCard";
+import {restaurantActions, userActions} from "../../redux";
+
+import css from './ChangeManager.module.css'
+
 
 const ChangeManager = ({restId}) => {
     const dispatch = useDispatch();
     const {users} = useSelector(state => state.user);
-    useEffect(() => {
+        useEffect(() => {
         dispatch(userActions.getAll())
     }, [])
+
     const {restaurant} = useSelector(state => state.restaurant);
     useEffect(() => {
         dispatch(restaurantActions.getById(restId))
     }, []);
-    const [selectedManager, setSelectedManager] = useState({});
 
+    const [selectedManager, setSelectedManager] = useState({});
     const [stateConfirm, setStateConfirm] = useState(false);
+
     const managers = users.filter(user => user.role.includes(roles.REST_ADMIN) && user._id !== restaurant.user)
     const notManagers = users.filter(user => !user.role.includes(roles.REST_ADMIN) && !user.role.includes(roles.SUPER_ADMIN))
     const currentManager = users.find(user => user._id === restaurant.user)
@@ -30,7 +34,7 @@ const ChangeManager = ({restId}) => {
     }
 
     const changeManager = async () => {
-        const {error, data} = await dispatch(restaurantActions.changeRestAdmin({restId, userId: selectedManager._id}))
+        const {error} = await dispatch(restaurantActions.changeRestAdmin({restId, userId: selectedManager._id}))
 
         if (!error) {
             setStateConfirm(false);
@@ -39,13 +43,18 @@ const ChangeManager = ({restId}) => {
     }
 
     return (
-        <div>
-
+        <div className={css.Hole}>
             <div>
-                {currentManager && <div>Наразі адміністратор закладу <h5>{currentManager.name}</h5></div>}
-                <h3>Вибрати нового адміністартора закладу:</h3>
+                <h3>Адміністрування закладу</h3>
+                {currentManager &&
+                    <div>
+                        Чинний адміністратор -
+                        <h5 className={css.Name}>{currentManager.name} ({currentManager.email})</h5>
+
+                    </div>}
+                <h5>Вибрати нового адміністартора закладу:</h5>
                 <Dropdown>
-                    <Dropdown.Toggle>{selectedManager.name || "з адміністарторів закладів "}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={"outline-secondary"}>{"з адміністарторів закладів "}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {managers.map(manager =>
                             <Dropdown.Item key={manager._id}
@@ -54,21 +63,23 @@ const ChangeManager = ({restId}) => {
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
-                    <Dropdown.Toggle>{selectedManager.name || "зі звичайних користувачів"}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={"outline-secondary"}>{"зі звичайних користувачів"}</Dropdown.Toggle>
                     <Dropdown.Menu>
-                        {notManagers.map(manager =>
-                            <Dropdown.Item key={manager._id}
-                                           onClick={() => clickSelectedManager(manager)}>{manager.name}</Dropdown.Item>
+                        {notManagers.map(user =>
+                            <Dropdown.Item key={user._id}
+                                           onClick={() => clickSelectedManager(user)}>{user.name}</Dropdown.Item>
                         )}
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
             {stateConfirm &&
-                <div>
-                    <div> Ви впевнені, що хочете призначити <h5>{selectedManager.name}</h5> адміністратором закладу?
+                <div className={css.Conf}>
+                    <div> Ви впевнені, що хочете призначити
+                        <h5 style={{margin:0}}>{selectedManager.name} ({selectedManager.email})</h5>
+                        адміністратором закладу?
                     </div>
                     <button onClick={changeManager}>Підтвердити</button>
-                    <button onClick={() => setStateConfirm(false)}>Відмінити</button>
+                    <button style={{marginLeft:5}} onClick={() => setStateConfirm(false)}>Відмінити</button>
                 </div>}
 
         </div>

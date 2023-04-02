@@ -1,5 +1,5 @@
 export * from './AccountComponents/FavoriteRestaurants/favoriteRestaurants';
-export * from './AccountComponents/UpdateAccount/updateAccount';
+export * from './AccountComponents/UpdateAccount/UpdateAccount';
 export * from './AccountComponents/MyMarks/MyMarks';
 export * from './AccountComponents/MyMarks/MyMarksCard';
 export * from './AccountComponents/MyComments/MyComments';
@@ -62,6 +62,7 @@ export * from './UsersList/usersList';
 export * from './User/User';
 export * from './UserCard/UserCard';
 export * from './UserUpdate&Delete/UserUpdate&Delete';
+export * from './UsersList/UsersSearchForm';
 export * from './ViewsTab/ViewsTab';
 
 

@@ -2,42 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NewsForAdmin/NewsForAdmin.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/User/User.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/ChangeManager/ChangeManager.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/RestaurantForAdmin.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UsersList/UsersList.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UsersList/UsersSearchForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/TopPageForAdmin.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyComments/MyComments.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyComments/MyComments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyEvents/MyUserEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyEvents/MyUserEvents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CommentsInRest/CommentsInRest.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNews/GeneralNews.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNewsCreate/GeneralNewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsCreate/GeneralNewsCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsForAdmin/NewsForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsForAdmin/NewsForAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsList/newsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsList/NewsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsList/newsListStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/user.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarksCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/MyMarks/MyMarksCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/UpdateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/updateAccount.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AccountComponents/UpdateAccount/UpdateAccount.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ChangeManager/ChangeManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ChangeManager/ChangeManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralViewStatistics/GeneralViewStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralViewStatistics/GeneralViewStatistics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/HeaderStyle.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestaurantCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantForAdmin/restaurantForAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsForModeration/RestaurantsForModeration.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsForModeration/RestaurantsForModeration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/-CategoryCheckbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/CategoryDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/CategoryDropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopCategoriesList/TopCategoriesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserCard/UserCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserEventList/UserEventList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEventList/UserEventList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInfo/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ViewsTab/ViewsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ViewsTab/ViewsTab.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/GeneralNewsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/constants/paginationLimits.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/constants/paginationLimits.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GeneralViewStatisticsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GeneralViewStatisticsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TopPageForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TopPageForAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/UsersListPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ViewStatisticsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ViewStatisticsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/restaurant.slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +89,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/GeneralNews",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/client/src/components/UsersList",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -86,11 +98,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\UsersList" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GeneralNews" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\pages" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\UserEventList" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantCard" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GoogleSignIn" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantUpdate" />
@@ -131,14 +143,7 @@
       <workItem from="1678174764343" duration="148330000" />
       <workItem from="1679301371588" duration="55948000" />
       <workItem from="1679902786444" duration="107107000" />
-      <workItem from="1680204160848" duration="20000000" />
-    </task>
-    <task id="LOCAL-00014" summary="interim">
-      <created>1671903455260</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1671903455260</updated>
+      <workItem from="1680204160848" duration="45968000" />
     </task>
     <task id="LOCAL-00015" summary="interim">
       <created>1672009439798</created>
@@ -476,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680211142673</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="css SuperAdm1">
+      <created>1680296285895</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1680296285895</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,6 +514,7 @@
     <MESSAGE value="css2" />
     <MESSAGE value="css3" />
     <MESSAGE value="css RestAdm start" />
-    <option name="LAST_COMMIT_MESSAGE" value="css RestAdm start" />
+    <MESSAGE value="css SuperAdm1" />
+    <option name="LAST_COMMIT_MESSAGE" value="css SuperAdm1" />
   </component>
 </project>

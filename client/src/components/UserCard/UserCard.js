@@ -1,10 +1,11 @@
-
-import css from "../UserInfo/userInfo.module.css";
-import API_URL from "../../config";
 import {useNavigate} from "react-router-dom";
-import {roles} from "../../constants";
 import {useDispatch} from "react-redux";
+
+import API_URL from "../../config";
+import {roles} from "../../constants";
 import {userActions} from "../../redux";
+
+import css from "./UserCard.module.css";
 
 const UserCard = ({user}) => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const UserCard = ({user}) => {
 
     return (
         <div>
-            <div style={{border:'solid 1px black'}} onClick={()=>navigate(`../users/${_id}`, {state: user})}>
+            <div className={css.Hole} onClick={()=>navigate(`../users/${_id}`, {state: user})}>
                 <h3>{name}</h3>
                 {role.includes(roles.REST_ADMIN) && <div>
                     <h5 style={{color: 'purple'}}> Адміністратор закладу</h5>

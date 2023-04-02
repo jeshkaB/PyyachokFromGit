@@ -1,9 +1,12 @@
-import {CategoryCheckbox} from "./-CategoryCheckbox";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+
 import {topCategoryActions} from "../../redux";
-import button from "bootstrap/js/src/button";
+
+// import button from "bootstrap/js/src/button";
 import {CategoryDropdown} from "./CategoryDropdown";
+
+import css from './RestaurantCardForTop.module.css'
 
 const RestaurantCardForTop = ({restaurant}) => {
     const dispatch = useDispatch();
@@ -15,10 +18,10 @@ const RestaurantCardForTop = ({restaurant}) => {
     }, [])
 
     let categoriesNotInRest = [];
-     topCategories.forEach(categ => {
-         if (!categoriesIdsInRest.includes(categ._id))
-             categoriesNotInRest.push(categ)
-     })
+    topCategories.forEach(categ => {
+        if (!categoriesIdsInRest.includes(categ._id))
+            categoriesNotInRest.push(categ)
+    })
 
     const [categoriesForSelection, setCategoriesForSelection] = useState(categoriesNotInRest)
 
@@ -30,28 +33,31 @@ const RestaurantCardForTop = ({restaurant}) => {
         }))
 
     const removeFromTop = async (categId) => {
-        const returnedCategory = topCategories.find(categ=>categ._id === categId)
-        setCategoriesForSelection (
-            categoriesForSelection.includes(returnedCategory) ? categoriesForSelection: [...categoriesForSelection,returnedCategory]);
+        const returnedCategory = topCategories.find(categ => categ._id === categId)
+        setCategoriesForSelection(
+            categoriesForSelection.includes(returnedCategory) ? categoriesForSelection : [...categoriesForSelection, returnedCategory]);
         await dispatch(topCategoryActions.removeRestaurantInCategory({categId, restId: _id}));
 
     }
 
     return (
-        <div style={{display: 'flex'}}>
-            <div>
+        <div className={css.Hole}>
+            <div className={css.Title}>
                 <h4>{name}</h4>
                 <p>{place}</p>
             </div>
-            <div style={{flexDirection: 'column'}}>
-                <div style={{flexDirection: 'row'}}>
-                    {JSON.stringify(categoriesInRest) !== '[]' && categoriesInRest.map(categ =>
-                        <div key={categ._id}>
-                            <p style={{cursor: 'pointer', color: 'violet'}}>{categ.title} </p>
-                            <button onClick={() => removeFromTop(categ._id)}>Видалити з топ</button>
-                        </div>)}
-                </div>
-                <CategoryDropdown categoriesForSelection={categoriesForSelection} setCategoriesForSelection={setCategoriesForSelection} restId={_id}/>
+
+            <div className={css.IsTop}>
+                {JSON.stringify(categoriesInRest) !== '[]' && categoriesInRest.map(categ =>
+                    <div className={css.Del} key={categ._id}>
+                        <div className={css.CatName}>{categ.title} </div>
+                        <button style={{marginLeft:5}} onClick={() => removeFromTop(categ._id)}>Видалити з топ</button>
+                    </div>)}
+            </div>
+
+            <div>
+                <CategoryDropdown categoriesForSelection={categoriesForSelection}
+                                  setCategoriesForSelection={setCategoriesForSelection} restId={_id}/>
             </div>
 
         </div>

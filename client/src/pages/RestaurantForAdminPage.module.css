@@ -1,5 +1,6 @@
 .Hole {
     display: flex;
+    margin: 20px;
 
 
 }
@@ -27,4 +28,8 @@
 }
 .Block {
     width: 50%;
+}
+.BlockNews {
+    width: 50%;
+    margin-left: 10px;
 }

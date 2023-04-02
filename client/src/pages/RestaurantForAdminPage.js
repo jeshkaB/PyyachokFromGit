@@ -28,7 +28,8 @@ const RestaurantForAdminPage = () => {
             {/*{errors &&*/}
             {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
             <div className={css.Block}>
-                {isAuth && role.includes(roles.SUPER_ADMIN) && <ChangeManager restId = {id}/>}
+                {isAuth && role.includes(roles.SUPER_ADMIN) &&
+                    <ChangeManager restId = {id}/>}
                 <RestaurantForAdmin restId = {id} role = {role} restaurant={restaurant}/>
 
                 <div className={css.ToMark}
@@ -37,7 +38,7 @@ const RestaurantForAdminPage = () => {
                 {/*<CommentsInRest/>*/}
 
             </div>
-            <div className={css.Block}>
+            <div className={css.BlockNews}>
                 <h3 style={{textAlign:'center'}}> Новини </h3>
                 <NewsCreate restId={id}/>
                 <NewsList restId={id}/>

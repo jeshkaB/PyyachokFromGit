@@ -1,22 +1,23 @@
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {restaurantActions} from "../../redux";
-import {useNavigate} from "react-router-dom";
 
+import {restaurantActions} from "../../redux";
+
+import {ModalUC} from "../ModalUC/ModalUC";
 import css  from '../RestaurantUpdate/RestaurantUpdate.module.css'
 
-const RestaurantCreate = ({userId}) => {
+
+const RestaurantCreate = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {errors} = useSelector(state => state.restaurant)
     const {register, handleSubmit} = useForm()
 
-
     const [stateCreate, setStateCreate] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
 
     const submit = async (data) => {
-
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('mainImage', data.mainImage[0]);
@@ -29,15 +30,18 @@ const RestaurantCreate = ({userId}) => {
         formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
-        // formData.append('categories', data.categories);
-        const {payload} = await dispatch(restaurantActions.create({restObj: formData}))
-       // в payload новий об'єкт
-        setStateCreate(false)
-        if (!errors) alert('Заклад успішно створено, очікує модерацію')
+        const {error} = await dispatch(restaurantActions.create({restObj: formData}))
+        if (!error) {
+            setStateCreate(false)
+            setModalIsVisible(true)}
+        else setErrorIsVisible(true)
     }
 
     return (
         <div>
+            <ModalUC modalText={'Заклад успішно створено, очікує модерацію'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+
             <h3 className={css.To} onClick={() => setStateCreate(true)}> Створити заклад </h3>
             {stateCreate &&
                 <div className={css.Form}>

@@ -1,0 +1,12 @@
+.Hole {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+.Title {
+    font-family: cursive;
+    color: #1f7979;
+}
+.Button {
+    margin: 5px;
+}

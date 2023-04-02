@@ -1,4 +1,5 @@
 .CreateEvent {
     composes: CreateEvent from '../UserEventsInRest/UserEventsInRest.module.css';
+    font-size: 25px;
 
 }

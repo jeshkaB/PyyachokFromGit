@@ -1,0 +1,13 @@
+.Hole {
+    cursor: pointer;
+    border: solid 0.5px #619393  ;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 300px;
+    height: 250px;
+}
+.AvatarImg {
+    width: 50px;
+}

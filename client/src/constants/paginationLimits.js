@@ -1,6 +1,6 @@
 const paginationLimits = {
     usersLimit: 5,
-    restaurantsLimit: 10
+    restaurantsLimit: 5
 }
 
 export {paginationLimits}

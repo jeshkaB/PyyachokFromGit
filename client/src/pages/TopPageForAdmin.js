@@ -1,8 +1,12 @@
 import {useState} from "react";
-import {RestaurantsListForTop, TopCategoriesList} from "../components";
-import {useForm} from "react-hook-form";
-import {topCategoryActions} from "../redux";
 import {useDispatch} from "react-redux";
+import {useForm} from "react-hook-form";
+
+import {topCategoryActions} from "../redux";
+
+import {RestaurantsListForTop, TopCategoriesList} from "../components";
+
+import css from './TopPageForAdmin.module.css'
 
 const TopPageForAdmin = () => {
     const dispatch = useDispatch()
@@ -17,24 +21,27 @@ const TopPageForAdmin = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={css.Hole}>
+            <div className={css.Block}>
                 <TopCategoriesList/>
-                <h3 style={{cursor: "pointer"}} onClick={() => setStateForm(true)}> Створити Топ-категорію </h3>
+                <div className={css.To} onClick={() => setStateForm(true)}> Додати Топ-категорію </div>
                 {stateForm &&
                     <div>
                         <form onSubmit={handleSubmit(submit)}>
-                            Введіть назву топ-категорії <input {...register('title')}/>
+                            Введіть назву топ-категорії <input style={{width:500}} {...register('title')}/>
                             <button>Створити</button>
+                            <button style={{marginLeft:5}} onClick={()=> setStateForm(false)}>Відмінити</button>
                         </form>
                     </div>}
             </div>
-            <div>
-                <h3 style={{cursor: "pointer"}} onClick={() => setStateRestList(true)}> Відкрити список закладів </h3>
-                <h3 style={{cursor: "pointer"}} onClick={() => setStateRestList(false)}> Згорнути список закладів </h3>
-                {stateRestList &&
-                    <RestaurantsListForTop/>}
-            </div>
+            <div className={css.To} onClick={() => setStateRestList(true)}> Заклади в ТОП </div>
+            {stateRestList &&
+                <div>
+                    <button style={{marginBottom:10}} onClick={() => setStateRestList(false)}> Згорнути список закладів </button>
+                    <div className={css.Block}>
+                        <RestaurantsListForTop/>
+                    </div>
+            </div>}
         </div>
     );
 }

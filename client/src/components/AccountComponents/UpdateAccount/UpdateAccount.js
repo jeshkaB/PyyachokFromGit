@@ -1,20 +1,25 @@
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
-import {authActions, userActions} from "../../../redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {authService} from "../../../services";
 import {useNavigate} from "react-router-dom";
-import css from './updateAccount.module.css'
 
+import {authActions, userActions} from "../../../redux";
+
+import css from './UpdateAccount.module.css'
+import {ModalUC} from "../../ModalUC/ModalUC";
 
 const UpdateAccount = ({user}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm({mode:'all'})
     const {_id, name} = user;
-
+    const {errors} = useSelector(state => state.user)
 
     const [stateUpd, setStateUpd] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+     const [errorIsVisible, setErrorIsVisible] = useState(false)
+
+
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -24,8 +29,9 @@ const UpdateAccount = ({user}) => {
         const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}))
         if (!error) {
             setStateUpd(false)
-        alert('Дані успішно змінено')
+            setModalIsVisible(true)
         }
+        else setErrorIsVisible(true)
     }
 
     const [stateUpdPassword, setStateUpdPassword] = useState(false)
@@ -40,6 +46,9 @@ const UpdateAccount = ({user}) => {
 
     return (
         <div>
+            <ModalUC modalText={'Дані успішно оновлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'}></ModalUC>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+
             <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
             <div className={css.To} onClick={() => setStateUpdPassword(true)}>Змінити пароль</div>
             {stateUpd &&

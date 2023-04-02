@@ -61,7 +61,6 @@ const App = () => {
                     <Route path={'news/:id'} element={<NewsPage/>}/>
                     <Route path={'userEvents'} element={<UserEventsListPage/>}/>
                     <Route path={'userEvents/:id'} element={<UserEventPage/>}/>
-                    <Route path={'users'} element={<UsersListPage/>}/>
                     <Route path={'users/:id'} element={<UserPage/>}/>
                     <Route path={'restaurantsForAdmin/:id/viewStatistics'} element={<ViewStatisticsPage/>}/>
 

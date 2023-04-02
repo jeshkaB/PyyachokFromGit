@@ -1,8 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+
 import {viewStatisticsActions} from "../../redux";
 
-import {ChartUC} from "../ChartUC/ChartUC";
 import {ViewsTab} from "../ViewsTab/ViewsTab";
 
 const GeneralViewStatistics = ({period}) => {

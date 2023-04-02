@@ -1,7 +1,8 @@
-import StarRatings from "react-star-ratings/build/star-ratings";
-import {useDispatch} from "react-redux";
-import {markActions} from "../../../redux";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+
+import {markActions} from "../../../redux";
+import StarRatings from "react-star-ratings/build/star-ratings";
 
 const MyMarksCard = ({mark}) => {
     const dispatch = useDispatch()

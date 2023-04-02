@@ -43,7 +43,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
+}
+.User {
+    margin-right: 20px;
 }
 .Auth {
     margin: 2px;

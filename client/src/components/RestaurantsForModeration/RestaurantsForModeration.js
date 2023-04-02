@@ -7,27 +7,22 @@ import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
 const RestaurantsForModeration = ({userId}) => {
     const dispatch = useDispatch();
 
-    const {notModeratedRestaurants} = useSelector(state => state.restaurant)
-    useEffect(()=>{
+    const {notModeratedRestaurants, isChangeRestaurantsList} = useSelector(state => state.restaurant)
+    useEffect(() => {
         dispatch(restaurantActions.getAll())
-    },[dispatch])
+    }, [dispatch, isChangeRestaurantsList])
 
-    let notModeratedRestaurantsByUser
-    if (userId) {// коли переходимо зі сторінки менеджера закладу
-        notModeratedRestaurantsByUser = notModeratedRestaurants.filter(rest=>rest.user===userId)
-        return (
-            <div>
-                {JSON.stringify(notModeratedRestaurants)===`[]` && <p>Закладів на модерації немає</p>}
-                {notModeratedRestaurantsByUser && notModeratedRestaurantsByUser.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
-            </div>
-        )}
-    else // коли переходимо зі сторінки суперадміна
-        return (
-            <div>
-                {JSON.stringify(notModeratedRestaurants)===`[]` && <p>Закладів на модерації немає</p>}
-                {notModeratedRestaurants && notModeratedRestaurants.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
-            </div>
-        );
+    let restaurantsForCard
+    if (userId) // коли переходимо зі сторінки менеджера закладу
+        restaurantsForCard = notModeratedRestaurants.filter(rest => rest.user === userId)
+    else restaurantsForCard = notModeratedRestaurants.filter(rest => !rest.moderationMessage) // зі сторінки суперадміна
+
+    return (
+        <div style={{display: 'flex'}}>
+            {JSON.stringify(notModeratedRestaurants) === `[]` && <p>Закладів на модерації немає</p>}
+            {restaurantsForCard && restaurantsForCard.map(rest => <RestaurantCard key={rest._id} restaurant={rest}/>)}
+        </div>
+    )
 };
 
 export {RestaurantsForModeration}

@@ -4,7 +4,7 @@ const ViewsTab = ({title, array}) => {
 
     return (
         <div>
-            <h4>{title}</h4>
+            <h4 style={{textAlign:'center'}}>{title}</h4>
             <Table striped bordered hover>
                 <thead>
                 <tr>

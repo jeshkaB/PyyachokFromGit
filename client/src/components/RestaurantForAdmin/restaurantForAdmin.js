@@ -9,6 +9,8 @@ import {roles} from "../../constants";
 import {StarsRating} from "../StarsRating/starsRating";
 import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
 
+import css from './RestaurantForAdmin.module.css'
+
 const RestaurantForAdmin = ({restId, role, restaurant}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,37 +22,36 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
 
     return (
         <div>
-            <div>
-                <h2>{restaurant.name}</h2>
-                <img width={'25%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
-                <div><StarsRating rating={restaurant.rating}/></div>
-                <div> Адреса: {restaurant.place}</div>
-                <div> Телефон: {restaurant.phone}</div>
-                <div> Режим роботи: {restaurant.hours}</div>
-                <div> email: {restaurant.email} </div>
-                <div> Сайт: {restaurant.webSite} </div>
-                <div style={{marginBottom:'20px'}}> Середній чек:{restaurant.averageBill} грн.</div>
+            <div className={css.RestAndDel}>
+                <div>
+                    <h2>{restaurant.name}</h2>
+                    <img width={'25%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
+                    <div><StarsRating rating={restaurant.rating}/></div>
+                    <div> Адреса: {restaurant.place}</div>
+                    <div> Телефон: {restaurant.phone}</div>
+                    <div> Режим роботи: {restaurant.hours}</div>
+                    <div> email: {restaurant.email} </div>
+                    <div> Сайт: {restaurant.webSite} </div>
+                    <div style={{marginBottom: '20px'}}> Середній чек:{restaurant.averageBill} грн.</div>
+                </div>
+                <div>
+                    {isSuperAdmin &&
+                        <div>
+                            <div className={css.Del}
+                                onClick={() => setConfirmDelete(true)}> Видалити заклад</div>
+                        </div>}
+                    {confirmDelete &&
+                        <div>
+                            <p style={{color: 'red'}}> Ви упевнені, що хочете видалити заклад?</p>
+                            <button onClick={() => dispatch(restaurantActions.deleteById(restId))}>Так</button>
+                            <button style={{marginLeft:5}} onClick={() => setConfirmDelete(false)}>Ні</button>
+                        </div>}
+                </div>
+
             </div>
-            <button onClick={()=>navigate('viewStatistics')}>Статистика переглядів</button>
+            <button onClick={() => navigate('viewStatistics')}>Статистика переглядів</button>
             <hr/>
-            <div>
-                <RestaurantUpdate restaurant={restaurant}/>
-            </div>
-            {isSuperAdmin && <div>
-                <h3 style={{cursor: 'pointer', fontSize: '10px', color: 'orange'}}
-                    onClick={() => setConfirmDelete(true)}> Видалити заклад</h3>
-                {confirmDelete &&
-                    <div>
-                        <p style={{color: 'red'}}> Ви упевнені, що хочете видалити заклад?</p>
-                        <button onClick={() => dispatch(restaurantActions.deleteById(restId))}>Так</button>
-                        <button onClick={() => setConfirmDelete(false)}>Ні</button>
-                    </div>}
-            </div>}
-
-
-
-
-
+            <RestaurantUpdate restaurant={restaurant}/>
         </div>
     )
 };

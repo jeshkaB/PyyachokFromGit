@@ -1,9 +1,7 @@
-
 import {useForm} from "react-hook-form";
-
 import {useState} from "react";
-import {GeneralViewStatistics} from "../components";
 
+import {GeneralViewStatistics} from "../components";
 
 const GeneralViewStatisticsPage = () => {
     const {register, handleSubmit} = useForm();
@@ -13,7 +11,7 @@ const GeneralViewStatisticsPage = () => {
         setPeriod(data)
     }
         return (
-            <div>
+            <div style={{margin:20}}>
                 <form onSubmit={handleSubmit(submit)}>
                     <input type='date' placeholder={'з'} required={true} {...register('from')}/>
                     <input type='date' placeholder={'по'} required={true} {...register('until')}/>

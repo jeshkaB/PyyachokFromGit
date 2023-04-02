@@ -1,29 +1,17 @@
-import './HeaderStyle.module.css'
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {UserInfo} from "../UserInfo/userInfo";
-import {useDispatch, useSelector} from "react-redux";
-import {authActions, userActions} from "../../redux";
-import {app, authService, signOutByGoogle} from "../../services";
-import {useEffect} from "react";
+import {useSelector} from "react-redux";
+
+import {app} from "../../services";
+
 import {GoogleSignIn} from "../GoogleSignIn/GoogleSignIn";
-import {getAuth, signOut} from "firebase/auth";
-import {Container, Nav, Navbar, NavLink} from "react-bootstrap";
+
 import css from './HeaderStyle.module.css'
 
 
 const Header = () => {
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
     const {isAuth, authUser, isGoogle} = useSelector(state => state.auth);
-    // const {user} = useSelector(state => state.user);
     const isManager = true
-
-    // const clickExit = async () => {
-    //     if (isGoogle)
-    //         await signOutByGoogle()
-    //     await dispatch(authActions.logout())
-    //     navigate('../home')
-    // }
 
     return (
         <div className={css.Header}>
@@ -31,9 +19,6 @@ const Header = () => {
                <div className={css.Home}><Link className={css.Link} to={'/home'}> На головну </Link> </div>
                 <div className={css.Pyyachok}><Link className={css.Link} to={'/UserEvents'}> Пиячки </Link></div>
 
-                {/*<img height={60} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2M7NDUiMnBYxwvity9vzyrtjk0CSJjg3-_Q&usqp=CAU'} alt={''} />*/}
-                {/*<img height={100} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbEflZ9CvifmBGT36_kTwoUaj8w4j11mmmCw&usqp=CAU'} alt={''} />*/}
-                {/*<img height={60} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTItW-Rz1MuaAVROfnE6sfBY7uxNTPr5Wp3GQ&usqp=CAU'} alt={''} />*/}
             </div>
 
             <div className={css.Brand}>
@@ -54,7 +39,7 @@ const Header = () => {
                     </div>
                 </div>
                 :
-                <div>
+                <div className={css.User}>
                     <UserInfo user={authUser} isGoogle={isGoogle}/>
                 </div>}
         </div>

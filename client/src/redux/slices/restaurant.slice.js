@@ -8,7 +8,8 @@ const initialState = {
     restaurants: [],//модеровані ресторани
     notModeratedRestaurants: [],
     restaurant: {},
-    errors: null
+    errors: null,
+    isChangeRestaurantsList:false
 };
 
 const entity = urls.restaurants;
@@ -131,15 +132,18 @@ const restaurantSlice = createSlice({
                     state.errors = null;
                     state.restaurant = action.payload
                     state.restaurants.push(action.payload)
+                    state.isChangeRestaurantsList = !state.isChangeRestaurantsList
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurant = action.payload
+                    state.restaurant = action.payload;
+                    state.isChangeRestaurantsList = !state.isChangeRestaurantsList
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.restaurants.findIndex(rest=>rest._id === action.payload._id);
-                    state.restaurants.slice(index,1)
+                    state.restaurants.slice(index,1);
+                    state.isChangeRestaurantsList = !state.isChangeRestaurantsList
                 })
                 .addCase(sendMessage.fulfilled, (state, action) => {
                     state.errors = null;

@@ -1,0 +1,21 @@
+.Hole {
+    border: solid 1px #619393  ;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Name {
+    color: #1f7979;
+    font-family: cursive;
+}
+
+.Conf {
+    margin-top: 10px;
+    border: solid 0.5px red  ;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    color: red;
+
+}

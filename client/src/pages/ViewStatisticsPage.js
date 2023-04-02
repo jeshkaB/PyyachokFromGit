@@ -1,9 +1,7 @@
-
-import {ViewStatistics} from "../components/ViewStatistics/ViewStatistics";
 import {useForm} from "react-hook-form";
-
 import {useState} from "react";
 
+import {ViewStatistics} from "../components/ViewStatistics/ViewStatistics";
 
 const ViewStatisticsPage = () => {
     const {register, handleSubmit} = useForm();

@@ -1,12 +1,12 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import css from './userInfo.module.css';
 import API_URL from "../../config";
 import {roles} from "../../constants";
-import {signOutByGoogle} from "../../services";
 import {authActions} from "../../redux";
+import {signOutByGoogle} from "../../services";
 
+import css from './userInfo.module.css';
 
 const UserInfo = ({user, isGoogle}) => {
     const {role, name, avatar} = user

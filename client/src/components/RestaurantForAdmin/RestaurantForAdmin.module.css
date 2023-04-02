@@ -1,0 +1,19 @@
+.RestAndDel {
+    display: flex;
+    justify-content: space-between;
+}
+.Del {
+    cursor: pointer;
+    display: flex;
+    border: solid 0.5px red;
+    color: red;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+
+
+}
