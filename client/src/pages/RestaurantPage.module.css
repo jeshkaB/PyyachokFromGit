@@ -5,6 +5,7 @@
 
 .HolePage {
     display: flex;
+    margin: 20px;
 }
 
 .RestBlock {
@@ -35,15 +36,13 @@
 .Comments {
     border: solid 2px #619393  ;
     border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top:20px;
+    margin-top: 10px;
 }
 .ToComments {
     width: 200px;
     height: 40px;
     composes: To;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 20px;
     font-size: 15px;
 }
 .NewsBlock {
@@ -56,12 +55,19 @@
      text-align: center;
  }
 .Message {
+    /*display: flex;*/
     font-size: 15px;
     border: solid 0.5px #619393 ;
     border-radius: 10px;
     background: #bbd5d5;
     margin-bottom: 20px;
-    justify-content: center;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*height: 40px;*/
+}
+.ButMes {
+    cursor: pointer;
+    height: 40px
 }
 .News {
     border-left: darkslategray solid 2px;

@@ -51,7 +51,7 @@ const MarksInRest = () => {
     switch (location.pathname) {
         case `/restaurants/${id}`:
             return (
-                <div>
+                <div style={{margin:20}}>
                     <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
                     {(!marks || JSON.stringify(marksFirst5) === '[]') && <p style={{color:'darkgray'}}>Оцінок поки що немає</p>}
                     {!markAlreadyExist &&

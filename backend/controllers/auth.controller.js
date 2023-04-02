@@ -36,7 +36,7 @@ module.exports = {
             }
             const tokens = await authService.saveTokens({...authTokens});
             res.json({tokens, user})
-
+            console.log()
         } catch (e) {
             next(e);
         }
@@ -81,15 +81,15 @@ module.exports = {
         }
     },
 
-    logoutFromEverywhere: async (req, res, next) => {
-        try {
-            const {user} = req.tokenInfo;
-            await authService.deleteMany({user: user._id});
-            res.sendStatus(statusCode.NO_CONTENT)
-        } catch (e) {
-            next(e)
-        }
-    },
+    // logoutFromEverywhere: async (req, res, next) => {
+    //     try {
+    //         const {user} = req.tokenInfo;
+    //         await authService.deleteMany({user: user._id});
+    //         res.sendStatus(statusCode.NO_CONTENT)
+    //     } catch (e) {
+    //         next(e)
+    //     }
+    // },
 
     refresh: async (req, res, next) => {
         try {

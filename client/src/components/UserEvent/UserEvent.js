@@ -14,12 +14,13 @@ const UserEvent = () => {
     const {register, handleSubmit} = useForm();
     const {id} = useParams();
     const {isAuth} = useSelector(state => state.auth)
+    const {errors, isChangeEventAnswersList} = useSelector(state => state.eventAnswer)
 
     const {userEvent} = useSelector(state => state.userEvent)
     useEffect(() => {
         dispatch(userEventActions.getById(id))
-    }, []);
-    const {_id, date, time, purpose, otherInformation, restaurant: restId, user: userId, eventAnswers} = userEvent//TODO хоча в події розширений юзер (populate), чомусь на клієнті отримується тільки айді
+    }, [isChangeEventAnswersList]);
+    const {_id, date, time, purpose, otherInformation, restaurant: restId, user: userId, eventAnswers} = userEvent;
 
     const {restaurant} = useSelector(state => state.restaurant)
     useEffect(() => {
@@ -31,38 +32,43 @@ const UserEvent = () => {
         dispatch(userActions.getById(userId))
     }, [dispatch]);
 
-
-    const [stateForm, setStateForm] = useState(false)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
-
-
+    const [stateForm, setStateForm] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [modalData, setModalData] = useState({text: '', type: 'secondary'})
 
     const submit = async (data) => {
-        await dispatch(eventAnswerActions.create({id: _id, answObj: data}))
-        setStateForm(false)
-
+        const {error} = await dispatch(eventAnswerActions.create({id: _id, answObj: data}))
+        if (!error)
+            setStateForm(false)
+        else {
+            setErrorIsVisible(true)
+        }
     }
     const answerClick = () => {
         if (isAuth)
             setStateForm(true)
-        else setModalIsVisible(true)
+        else {
+            setModalData({text: 'Увійдіть або зареєструйтеся'})
+            setModalIsVisible(true)
+        }
     }
 
     return (
-        <div>
-            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
-            <h1 style={{fontFamily: 'cursive', color: 'darkslategray'}}>Пиячок в</h1>
-            <div className={css.Event}>
-                {JSON.stringify(restaurant) !== '{}' &&
-                    <h2>{restaurant.name}</h2>}
-                {JSON.stringify(userEvent) !== '{}' &&
-                    <div>
+        <div className={css.Hole}>
+            <ModalUC modalText={modalData.text} type={modalData.type} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+
+            <h1>Пиячок в</h1>
+            <div>
+                    <h2>{restaurant?.name}</h2>
+                    <div className={css.Event}>
                         <h3>Мета зустрічі: {purpose}</h3>
-                        <p>Дата: {date.slice(0, 10)}</p>
+                        <p>Дата: {date?.slice(0, 10)}</p>
                         <p>Час: {time}</p>
                         <p>Інша інформація: {otherInformation}</p>
-                    </div>}
-                {user && <p>Ініціатор: {user.name}</p>}
+                        <p>Ініціатор: {user?.name}</p>
+                    </div>
             </div>
             <div className={css.CreateAnsw} onClick={answerClick}>Додайте відповідь</div>
             {stateForm &&

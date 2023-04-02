@@ -10,7 +10,6 @@ import css from './RestaurantPage.module.css'
 
 const RestaurantPage = () => {
     const {id} = useParams()
-    const {errors} = useSelector(state => state.restaurant)
     const [stateMessageForm, setStateMessageForm] = useState(false)
     const {isAuth, userId} = useSelector(state => state.auth)
     const [modalIsVisible, setModalIsVisible] = useState(false)
@@ -24,8 +23,6 @@ const RestaurantPage = () => {
         <div className={css.HolePage}>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
                      onHide={setModalIsVisible}></ModalUC>
-            {errors &&
-                <h3 className={'errors'}> {errors.message} </h3>}
 
             <div className={css.RestBlock}>
                 <div className={css.ToRest}> <Link className={css.Link} to={'/restaurants'}> До всіх закладів </Link></div>
@@ -46,7 +43,7 @@ const RestaurantPage = () => {
 
             <div className={css.NewsBlock}>
                 <div className={css.Message}>
-                    <p style={{cursor: 'pointer'}} onClick={messageClick}>Написати менеджеру закладу</p>
+                    <div className={css.ButMes} onClick={messageClick}>Написати менеджеру закладу</div>
                     {stateMessageForm &&
                         <div>
                             <MessageForm restId={id} userId={userId} setStateMessageForm={setStateMessageForm}/>

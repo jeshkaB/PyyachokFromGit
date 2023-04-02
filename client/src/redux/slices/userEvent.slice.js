@@ -8,7 +8,8 @@ const initialState = {
     userEvents: [],
     userEvent: {},
     stateForm: false,
-    errors: null
+    errors: null,
+    isChangeUserEventsList: false
 };
 
 const entity = urls.userEvents;
@@ -97,16 +98,19 @@ const userEventSlice = createSlice({
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
                     state.userEvent = action.payload;
-                    state.userEvents.push(action.payload)
+                    state.userEvents.push(action.payload);
+                    state.isChangeUserEventsList = !state.isChangeUserEventsList
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload
+                    state.userEvent = action.payload;
+                    state.isChangeUserEventsList = !state.isChangeUserEventsList;
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.userEvents.findIndex(event=>event._id === action.payload._id)
-                    state.userEvents.splice(index,1)
+                    state.userEvents.splice(index,1);
+                    state.isChangeUserEventsList = !state.isChangeUserEventsList
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

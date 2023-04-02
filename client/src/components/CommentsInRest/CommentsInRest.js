@@ -15,7 +15,7 @@ const CommentsInRest = () => {
     const dispatch = useDispatch();
 
     const {id} = useParams();// айдішка ресторану
-    const {comments} = useSelector(state => state.comment);
+    const {comments,isChangeCommentsList} = useSelector(state => state.comment);
     const {isAuth} = useSelector(state => state.auth);
     const [stateForm, setStateForm] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false)
@@ -23,11 +23,9 @@ const CommentsInRest = () => {
     const commentsInRest = comments?.filter(item => item.restaurant === id)
     const commentsFirst5 = commentsInRest?.slice(0, 5) //в API посортовані по даті створення
 
-    const [stateChangeComment, setStateChangeComment] = useState(false);
-
     useEffect(() => {
         dispatch(commentActions.getAll())
-    }, [stateChangeComment])
+    }, [isChangeCommentsList])
 
     const commentClick = () => {
         if (isAuth) setStateForm(true)
@@ -38,7 +36,7 @@ const CommentsInRest = () => {
         commentsForRender = commentsInRest
 
     return (
-        <div>
+        <div style={{margin:20}} >
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
                      onHide={setModalIsVisible}></ModalUC>
 
@@ -51,9 +49,7 @@ const CommentsInRest = () => {
                     <CommentForm setStateForm={setStateForm}/>
                 </div>}
             <div>
-                {commentsForRender.map(comment => <Comment key={comment._id} comment={comment}
-                                                        stateChangeComment={stateChangeComment}
-                                                        setStateChangeComment={setStateChangeComment}/>)}
+                {commentsForRender.map(comment => <Comment key={comment._id} comment={comment}/>)}
             </div>
 
 

@@ -1,12 +1,11 @@
 import {useNavigate} from 'react-router-dom'
 
-import css from '../GeneralNewsCard/GeneralNewsCard.module.css'
 import API_URL from "../../config";
+import css from '../GeneralNewsCard/GeneralNewsCard.module.css'
 
 const GeneralNewsCard = ({news, isHome}) => {
     const {_id, title, content, newsImage, category, createdAt} = news;
     const navigate = useNavigate();
-
 
         return (
             <div className={isHome ? css.HoleOnHome : css.HoleInList} onClick={() => navigate(`../generalNews/${_id}`)}>

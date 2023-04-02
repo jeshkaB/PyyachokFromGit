@@ -132,6 +132,7 @@ module.exports = {
                 return next(new LocalError(validate.error.message, statusCodes.BAD_REQUEST));
             }
             req.body = {...req.body, email:validate.value.email};
+
             next()
         } catch (e) {
             next(e)

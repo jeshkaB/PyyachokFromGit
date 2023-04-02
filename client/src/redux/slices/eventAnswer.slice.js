@@ -7,7 +7,8 @@ import {urls} from "../../constants";
 const initialState = {
     eventAnswers: [],
     eventAnswer: {},
-    errors: null
+    errors: null,
+    isChangeEventAnswersList: false
 };
 
 const entity = urls.eventAnswers;
@@ -30,8 +31,6 @@ const create = createAsyncThunk(
         try {
             const {data} = await ApiService.createByUserEventId(entity, id, answObj)
             return data
-
-
         } catch (e) {
             return rejectWithValue(e.response.data)
         }
@@ -96,16 +95,19 @@ const eventAnswerSlice = createSlice({
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
                     state.eventAnswer = action.payload;
-                    state.eventAnswers.push(action.payload)
+                    state.eventAnswers.push(action.payload);
+                    state.isChangeEventAnswersList = !state.isChangeEventAnswersList
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.eventAnswer = action.payload
+                    state.eventAnswer = action.payload;
+                    state.isChangeEventAnswersList = !state.isChangeEventAnswersList
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.eventAnswers.findIndex(event=>event._id === action.payload._id)
-                    state.eventAnswers.splice(index,1)
+                    state.eventAnswers.splice(index,1);
+                    state.isChangeEventAnswersList = !state.isChangeEventAnswersList
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

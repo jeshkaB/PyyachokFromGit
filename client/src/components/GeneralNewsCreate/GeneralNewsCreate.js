@@ -8,6 +8,7 @@ import {categoriesOfNews} from "../../constants";
 import {Dropdown} from "react-bootstrap";
 
 import css from '../NewsCreate/NewsCreate.module.css'
+import {ModalUC} from "../ModalUC/ModalUC";
 
 const GeneralNewsCreate = () => {
 
@@ -18,22 +19,27 @@ const GeneralNewsCreate = () => {
 
     const [stateCreate, setStateCreate] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState('')
-
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
     const categories = categoriesOfNews.categories
     const submit = async (data) => {
+        if (!selectedCategory) return setModalIsVisible(true)
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('content', data.content);
         if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
         formData.append('category', selectedCategory);
-
-        const {payload} = await dispatch(generalNewsActions.create({newsObj: formData}))
-
-        setStateCreate(false)
-        if (!errors ?? payload._id) navigate(`../generalNews/${payload._id}`)
+        const {error,payload} = await dispatch(generalNewsActions.create({newsObj: formData}))
+        if (!error && payload._id) {
+            // setStateCreate(false);
+            navigate(`../generalNews/${payload._id}`)
+        } else setErrorIsVisible(true)
     }
+
     return (
         <div>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={'Оберіть категорію'} show={modalIsVisible} onHide={setModalIsVisible} type={'danger'}></ModalUC>
             <div className={css.To} onClick={() => setStateCreate(true)}> Створити новину </div>
             {stateCreate &&
                 <div className={css.Form}>
@@ -51,7 +57,7 @@ const GeneralNewsCreate = () => {
                         <br/>
                         <label>Зміст/текст* <textarea rows="5" cols="60" required={true} {...register('content')}></textarea></label>
                         <br/>
-                        <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
+                        <label>Зображення <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
                         <br/>
                         <button>Створити</button>
                     </form>

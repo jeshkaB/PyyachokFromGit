@@ -7,7 +7,8 @@ import {urls} from "../../constants";
 const initialState = {
     comments: [],
     comment: {},
-    errors: null
+    errors: null,
+    isChangeCommentsList: false
 };
 
 const entity = urls.comments;
@@ -92,16 +93,19 @@ const commentSlice = createSlice({
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
                     state.comment = action.payload;
-                    state.comments.push(action.payload)
+                    state.comments.push(action.payload);
+                    state.isChangeCommentsList = ! state.isChangeCommentsList
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.comment = action.payload
+                    state.comment = action.payload;
+                    state.isChangeCommentsList = ! state.isChangeCommentsList
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.comments.findIndex(event=>event._id === action.payload._id)
-                    state.comments.splice(index,1)
+                    state.comments.splice(index,1);
+                    state.isChangeCommentsList = ! state.isChangeCommentsList
                 })
                 .addDefaultCase((state, action) => {
                     defaultCaseReject(state, action)

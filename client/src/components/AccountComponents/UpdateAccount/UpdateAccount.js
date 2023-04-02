@@ -3,22 +3,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {authActions, userActions} from "../../../redux";
+import {userActions} from "../../../redux";
+import {ModalUC} from "../../ModalUC/ModalUC";
 
 import css from './UpdateAccount.module.css'
-import {ModalUC} from "../../ModalUC/ModalUC";
+
 
 const UpdateAccount = ({user}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {register, handleSubmit} = useForm({mode:'all'})
+    const {register, handleSubmit} = useForm({mode: 'all'})
     const {_id, name} = user;
     const {errors} = useSelector(state => state.user)
+    const {errors: authErrors} = useSelector(state => state.auth)
 
     const [stateUpd, setStateUpd] = useState(false)
     const [modalIsVisible, setModalIsVisible] = useState(false)
-     const [errorIsVisible, setErrorIsVisible] = useState(false)
-
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [modalData, setModalData] = useState({text: '', type: 'secondary'})
 
 
     const submit = async (data) => {
@@ -29,25 +31,25 @@ const UpdateAccount = ({user}) => {
         const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}))
         if (!error) {
             setStateUpd(false)
+            setModalData({text: 'Двні успішно змінено', type: 'success'})
             setModalIsVisible(true)
-        }
-        else setErrorIsVisible(true)
+        } else setErrorIsVisible(true)
     }
 
     const [stateUpdPassword, setStateUpdPassword] = useState(false)
     const submitPass = async (data) => {
-        const {error:userError} = await dispatch(userActions.changePassword({id: _id, passObj: data}))
+        const {error} = await dispatch(userActions.changePassword({id: _id, passObj: data}))
         setStateUpdPassword(false);
-        let resAuth
-        if (!userError) resAuth = await dispatch(authActions.logoutFromEverywhere())
-        if (!userError && !resAuth.error) alert('Пароль успішно змінено, авторизуйтесь з новим паролем')
-        navigate('../login')
+        if (!error) navigate('../login')
+        else setErrorIsVisible(true)
     }
 
     return (
         <div>
-            <ModalUC modalText={'Дані успішно оновлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'}></ModalUC>
-            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={modalData.text} show={modalIsVisible} onHide={setModalIsVisible}
+                     type={modalData.type}></ModalUC>
+            <ModalUC modalText={errors?.message || authErrors?.message} show={errorIsVisible} onHide={setErrorIsVisible}
+                     type={'danger'}></ModalUC>
 
             <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
             <div className={css.To} onClick={() => setStateUpdPassword(true)}>Змінити пароль</div>
@@ -60,7 +62,7 @@ const UpdateAccount = ({user}) => {
                         <br/>
                         <button>Оновити</button>
                     </form>
-                    <button onClick={()=>setStateUpd(false)}> Відмінити </button>
+                    <button onClick={() => setStateUpd(false)}> Відмінити</button>
                 </div>
             }
             {stateUpdPassword &&
@@ -73,8 +75,8 @@ const UpdateAccount = ({user}) => {
                                                     required={true}{...register('newPassword')}/></label>
                         <br/>
                         <button>Змінити</button>
-                     </form>
-                    <button onClick={()=>setStateUpdPassword(false)}> Відмінити </button>
+                    </form>
+                    <button onClick={() => setStateUpdPassword(false)}> Відмінити</button>
                 </div>
             }
         </div>

@@ -64,16 +64,16 @@ const logout = createAsyncThunk(
     }
 );
 
-const logoutFromEverywhere = createAsyncThunk(
-    'authSlice/logoutFromEverywhere',
-    async (_, {rejectWithValue}) => {
-        try {
-            await authService.logoutFromEverywhere()
-        } catch (e) {
-            return rejectWithValue(e.response.data)
-        }
-    }
-);
+// const logoutFromEverywhere = createAsyncThunk(
+//     'authSlice/logoutFromEverywhere',
+//     async (_, {rejectWithValue}) => {
+//         try {
+//             await authService.logoutFromEverywhere()
+//         } catch (e) {
+//             return rejectWithValue(e.response.data)
+//         }
+//     }
+// );
 
 const addFavoriteRest = createAsyncThunk(
     'authSlice/addFavoriteRest',
@@ -110,6 +110,17 @@ const setCurrentUser = createAsyncThunk(
     }
 )
 
+const forgotPasswordRequest = createAsyncThunk(
+    'authSlice/forgotPasswordRequest',
+    async ({email}, {rejectWithValue}) => {
+        try {
+            const {data} = await authService.forgotPasswordRequest({email})
+            return data
+        } catch (e) {
+            return rejectWithValue(e.response.data)
+        }
+    }
+)
 const forgotPasswordNewPassword = createAsyncThunk(
     'authSlice/forgotPasswordNewPassword',
     async ({password, actionToken}, {rejectWithValue}) => {
@@ -159,19 +170,22 @@ const authSlice = createSlice({
                 authService.deleteUserIdInLS();
                 geolocationService.deleteGeoCoordsInLS();
             })
-            .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
-                state.isAuth = false;
-                state.errors = null;
-                // state.userId = null;
-                state.role = null;
-                authService.deleteTokensInLS();
-                authService.deleteUserIdInLS();
-                geolocationService.deleteGeoCoordsInLS();
-            })
+            // .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
+            //     state.isAuth = false;
+            //     state.errors = null;
+            //     // state.userId = null;
+            //     state.role = null;
+            //     authService.deleteTokensInLS();
+            //     authService.deleteUserIdInLS();
+            //     geolocationService.deleteGeoCoordsInLS();
+            // })
             .addCase(addFavoriteRest.fulfilled, (state, action) => {
                 state.errors = null;
             })
             .addCase(removeFavoriteRest.fulfilled, (state, action) => {
+                state.errors = null;
+            })
+            .addCase(forgotPasswordRequest.fulfilled, (state, action) => {
                 state.errors = null;
             })
             .addCase(forgotPasswordNewPassword.fulfilled, (state, action) => {
@@ -199,9 +213,10 @@ const authActions = {
     login,
     loginByGoogle,
     logout,
-    logoutFromEverywhere,
+    // logoutFromEverywhere,
     addFavoriteRest,
     removeFavoriteRest,
+    forgotPasswordRequest,
     forgotPasswordNewPassword,
     setCurrentUser
 };

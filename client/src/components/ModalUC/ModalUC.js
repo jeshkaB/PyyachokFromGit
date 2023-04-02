@@ -1,7 +1,12 @@
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
+import {click} from "@testing-library/user-event/dist/click";
 
-const ModalUC = ({modalText, type="secondary", show, onHide}) => {
+const ModalUC = ({modalText, type="secondary", show, onHide, executingFunction, funcValue}) => {
+    const click = ()=> {
+        onHide(false);
+        if (executingFunction) executingFunction(funcValue || '')
+    }
 
     return (
         <div>
@@ -11,7 +16,7 @@ const ModalUC = ({modalText, type="secondary", show, onHide}) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={()=> onHide(false)} variant={type}>OK</Button>
+                    <Button onClick={click} variant={type}>OK</Button>
                 </Modal.Footer>
             </Modal>
 

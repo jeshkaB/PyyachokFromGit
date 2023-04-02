@@ -25,7 +25,7 @@ module.exports = {
     },
 
     checkToken: (token, tokenType) => {
-       try {
+        try {
             if (tokenType===tokenTypes.ACCESS_TYPE)
                 return Jwt.verify(token, ACCESS_SECRET_WORD) // повертає об’єкт типу:{ _id: '63a5ee4eda883389f8bcb143', iat: 1671819356, exp: 1671819386 }
             else if (tokenType===tokenTypes.REFRESH_TYPE)

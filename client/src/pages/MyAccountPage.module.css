@@ -1,6 +1,7 @@
 .Hole {
     display: flex;
-    margin-left: 20px ;
+    margin: 20px ;
+
 
 }
 .FavRest {
@@ -11,6 +12,7 @@
 }
 
 .Account {
+    margin-left: 10px;
     composes: FavRest;
 
 }

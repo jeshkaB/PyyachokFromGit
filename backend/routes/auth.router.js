@@ -26,10 +26,10 @@ authRouter.post (
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     authController.logout);
 
-authRouter.post (
-    '/logout/fromEverywhere',
-    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-    authController.logoutFromEverywhere);
+// authRouter.post (
+//     '/logout/fromEverywhere',
+//     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+//     authController.logoutFromEverywhere);
 
 authRouter.post (
     '/registration',

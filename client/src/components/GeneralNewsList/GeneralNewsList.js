@@ -8,8 +8,6 @@ import css from '../GeneralNewsList/GeneralNewsList.module.css'
 import {generalNewsActions} from "../../redux";
 import {GeneralNewsCard} from "../GeneralNewsCard/GeneralNewsCard";
 
-
-
 const GeneralNewsList = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -27,8 +25,6 @@ const GeneralNewsList = () => {
         isHome = true
     }
     else newsForCard = newsAll
-
-
 
     return (<div className={location.pathname === '/home' ? css.NewsOnHome : css.NewsInList}>
             {location.pathname === '/home' && <Button variant="outline-secondary" onClick={() => navigate('/generalNews')}>Всі новини </Button>}

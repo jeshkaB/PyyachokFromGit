@@ -54,7 +54,7 @@ const Restaurant = () => {
     };
 
     return (
-        <div>
+        <div className={css.Hole}>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
                      onHide={setModalIsVisible}></ModalUC>
             <div className={css.Header}>

@@ -1,36 +1,38 @@
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-
-
 import {useState} from "react";
-import {authService} from "../../services";
+import {useDispatch, useSelector} from "react-redux";
 
+import {ModalUC} from "../ModalUC/ModalUC";
+import {authActions} from "../../redux";
 
 const LoginFormForgot = () => {
     const {register, handleSubmit} = useForm()
-    const [stateForgot, setStateForgot] = useState(false);
-    const [stateForgotDone, setStateForgotDone] = useState(false);
+    const dispatch = useDispatch()
+    const {errors} = useSelector(state => state.auth)
 
-    let errorMessage = null //TODO
+    const [stateForgot, setStateForgot] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
+
     const submitForgot = async (data) => {
-        const {error, payload} = await authService.forgotPasswordRequest(data)
+        const {error} = await dispatch(authActions.forgotPasswordRequest(data))
         if (!error) {
             setStateForgot(false);
-            setStateForgotDone(true)
-        } else errorMessage = payload.message
+            setModalIsVisible(true)
+        }else setErrorIsVisible(true)
     }
 
     return (
         <div style={{marginLeft: '20px'}}>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={'Перевірте пошту. Вам на пошту був відправлений лист з посиланням на сторінку відновлення паролю'}
+                     show={modalIsVisible}
+                     onHide={setModalIsVisible}
+                     type={'success'}></ModalUC>
             <div >
                 Забули пароль?
                 <button style={{margin: '5px'}} onClick={() => setStateForgot(true)}>Так</button>
             </div>
-            {/*{errorMessage && <h5 style={{color:'red'}}>{errorMessage}</h5>}*/}
-            {stateForgotDone &&
-                <h4>Перевірте пошту. Вам на пошту був відправлений лист з посиланням на сторінку відновлення
-                    паролю</h4>}
             {stateForgot &&
                 <div>
                     <h4> Вкажіть свій email і вам на пошту буде відправлений лист з посиланням на сторінку відновлення
@@ -38,10 +40,9 @@ const LoginFormForgot = () => {
                     <form onSubmit={handleSubmit(submitForgot)}>
                         <input type='text' placeholder={'email'} {...register('email')}/>
                         <button>Відправити</button>
+                        <button style={{margin: '5px'}} onClick={()=>setStateForgot(false)}>Відмінити</button>
                     </form>
                 </div>}
-
-
         </div>
     )
 }
