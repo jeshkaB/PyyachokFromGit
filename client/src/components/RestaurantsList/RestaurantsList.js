@@ -5,13 +5,14 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import {restaurantActions} from "../../redux";
 import {categoriesForRestSort} from "../../constants";
 import {paginationLimits} from "../../constants/paginationLimits";
+import {Button} from "react-bootstrap";
+
 import {RestaurantSearchForm} from "./RestaurantSearchForm";
 import {RestaurantsSort} from "./RestaurantsSort";
 import {RestaurantsFilter} from "./RestaurantsFilter";
 import {PaginationUC} from "../PaginationUC/PaginationUC";
 import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
 
-import {Button} from "react-bootstrap";
 import css from './RestaurantsList.module.css';
 
 const RestaurantsList = ({userId, tag}) => {

@@ -5,16 +5,18 @@ import {useState} from "react";
 import {restaurantActions} from "../../redux";
 
 import css from './RestaurantUpdate.module.css'
+import {ModalUC} from "../ModalUC/ModalUC";
 
 
 const RestaurantUpdate= ({restaurant}) => {
     const dispatch = useDispatch();
     const {errors} = useSelector(state => state.restaurant)
     const {register, handleSubmit} = useForm()
-
-    const {userId} = useSelector(state => state.auth)
-    const [stateUpdate, setStateUpdate] = useState(false)
     const {_id,name,place,hours,phone,averageBill,email,webSite,tags, coordinates:[longitude, latitude]=[]} = restaurant
+
+    const [stateUpdate, setStateUpdate] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -29,13 +31,16 @@ const RestaurantUpdate= ({restaurant}) => {
         formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
-        await dispatch(restaurantActions.updateById({id:_id, restObj: formData}))
-        setStateUpdate(false)
-        if (!errors) alert('Дані успішно оновлено')
+        const {error} = await dispatch(restaurantActions.updateById({id:_id, restObj: formData}))
+        if (!error) setModalIsVisible(true)
+        else setErrorIsVisible(true)
     }
 
     return (
         <div>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={'Дані успішно оновлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'} executingFunction={setStateUpdate} funcValue={false}></ModalUC>
+
             <div className={css.To} onClick={()=>setStateUpdate(true)}> Оновити дані закладу</div>
             {stateUpdate &&
                 <div className={css.Form}>

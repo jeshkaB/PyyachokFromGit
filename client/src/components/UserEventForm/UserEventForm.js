@@ -1,27 +1,26 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import {restaurantActions, userEventActions} from "../../redux";
+import {Dropdown} from "react-bootstrap";
 import {ModalUC} from "../ModalUC/ModalUC";
 
-import {Dropdown} from "react-bootstrap";
-
-
-
-const UserEventForm = () => {
+const UserEventForm = ({setStateForm}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {register, handleSubmit} = useForm()
 
     const {errors} = useSelector(state => state.userEvent);
     const {restaurants} = useSelector(state => state.restaurant)
+
     useEffect(() => {
         dispatch(restaurantActions.getAll())
-    }, [dispatch])
+    }, [])
 
     const [selectedRest, setSelectedRest] = useState({})
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [errorsIsVisible, setErrorsIsVisible] = useState(false)
 
     const {id: restId} = useParams();// якщо виклик форми не зі сторінки ресторану (restId в Params не існує), то запит ресторану через випадаюче меню
     let restIdForCreate;
@@ -29,21 +28,25 @@ const UserEventForm = () => {
     else restIdForCreate = selectedRest._id;
 
     const submit = async (data) => {
-        setModalIsVisible(true)
-        let response =null
+        let response
         if (data.otherInformation !== '')
         response = await dispatch(userEventActions.create({id: restIdForCreate, eventObj: data}));
         else {
             const {otherInformation, ...rest} = data;
-        response = await dispatch(userEventActions.create({id: restIdForCreate, eventObj: rest}))
+            response = await dispatch(userEventActions.create({id: restIdForCreate, eventObj: rest}))
         }
-        if (!response?.error) dispatch(userEventActions.setStateForm(false));
 
+        if (!response?.error) {
+            setStateForm(false)
+            navigate(`../userEvents/${response.payload._id}`)
+        }
+        else setErrorsIsVisible(true)
     }
 
     return (
-        <div style={{border:'solid 0.5px darkgrey', borderRadius:'20px', width:'30%', margin: '10px', padding: '10px'} }>
-            {errors && <ModalUC modalText={`${errors.message}`} show={modalIsVisible} onHide={setModalIsVisible} type={'danger'}></ModalUC>}
+        <div style={{border:'solid 0.5px darkgrey', borderRadius:'20px', margin: '10px', padding: '10px'} }>
+            <ModalUC modalText={errors?.message} show={errorsIsVisible} onHide={setErrorsIsVisible} type={'danger'}></ModalUC>
+
             {!restId && restaurants &&
                 <Dropdown>
                     <Dropdown.Toggle variant={"outline-secondary"}>{selectedRest.name || "Оберіть заклад"}</Dropdown.Toggle>
@@ -58,7 +61,8 @@ const UserEventForm = () => {
                 <label> Оберіть дату <input type="text" required={true}
                                             placeholder={'формат дати 2022-12-31'} {...register('date')}/></label>
                 <br/>
-                <label> Оберіть час <input type="text" required={true} {...register('time')}/></label>
+                <label> Оберіть час <input type="text" required={true}
+                                           placeholder={'формат часу 18:00'} {...register('time')}/></label>
                 <br/>
                 <label> Мета зустрічі <textarea required={true} {...register('purpose')}></textarea></label>
                 <br/>

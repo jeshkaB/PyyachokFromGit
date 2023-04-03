@@ -7,7 +7,6 @@ import {urls} from "../../constants";
 const initialState = {
     userEvents: [],
     userEvent: {},
-    stateForm: false,
     errors: null,
     isChangeUserEventsList: false
 };

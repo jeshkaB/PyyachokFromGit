@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 
 import {userActions} from "../../redux";
 import {paginationLimits} from "../../constants/paginationLimits";
@@ -16,7 +16,6 @@ const UsersList = () => {
 
     const {users} = useSelector(state => state.user) || []
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(userActions.getAll())
@@ -29,7 +28,6 @@ const UsersList = () => {
 
     const searchQuery = searchParams.get('userEmail')
     const usersFound = users.filter(user => user.email.includes(searchQuery))
-    console.log(searchQuery)
 
     return (
         <div>

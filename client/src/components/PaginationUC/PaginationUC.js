@@ -2,8 +2,6 @@ import {useEffect, useState} from "react";
 
 import {Pagination} from "react-bootstrap";
 
-
-
 const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
     const [currentPage, setPage] = useState(1)
     const numberPages = Math.ceil(entitiesList.length / limit);

@@ -10,9 +10,9 @@ import {restaurantActions} from "../../redux";
 import {Card, CardGroup, CardImg} from "react-bootstrap";
 import CardHeader from "react-bootstrap/CardHeader";
 import {StarsRating} from "../StarsRating/starsRating";
+import {ModalUC} from "../ModalUC/ModalUC";
 
 import css from './RestCard.module.css'
-import {ModalUC} from "../ModalUC/ModalUC";
 
 const RestaurantCard = ({restaurant, isTop}) => {
     const dispatch = useDispatch();

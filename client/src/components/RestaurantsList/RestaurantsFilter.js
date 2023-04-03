@@ -5,8 +5,6 @@ import {Dropdown} from "react-bootstrap";
 
 import css from './RestaurantsList.module.css'
 
-
-
 const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
 
     const {register, handleSubmit} = useForm()
@@ -15,7 +13,6 @@ const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
         setRatingFilter([data.ratingMin ==='' ? 0 : data.ratingMin, data.ratingMax===''? 5 : data.ratingMax])
         setBillFilter([data.billMin ==='' ? 0 : data.billMin, data.billMax === '' ? 100000 : data.billMax])
         setTagsFilter(data.tags)
-        // setFilterIsOpen(false)
     }
 
     const [filterIsOpen, setFilterIsOpen] = useState(false)
@@ -55,6 +52,5 @@ const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
 
     )
 }
-// categoriesFilter: ['рейтинг','середній чек','теги']
 
 export {RestaurantsFilter}

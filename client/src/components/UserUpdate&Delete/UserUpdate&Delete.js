@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useState} from 'react'
 import {useNavigate} from "react-router-dom";
 
@@ -12,24 +12,25 @@ import css from './UserUpdate&Delete.module.css'
 const UserUpdateDelete = ({user}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {errors} = useSelector(state => state.user)
 
     const {register, handleSubmit} = useForm()
     const {_id, name} = user;
     const [stateUpd, setStateUpd] = useState(false)
     const [confirmDelete, setConfirmDelete] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
     const [modalIsVisible, setModalIsVisible] = useState(false)
-
-
 
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name)
         if (data.avatar[0])
             formData.append('avatar', data.avatar[0])
-
-        await dispatch(userActions.updateById({id: _id, userObj: formData}))
-        setStateUpd(false)
-        setModalIsVisible(true)
+        const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}))
+        if (!error) {
+            setStateUpd(false)
+            setModalIsVisible(true)
+        } else setErrorIsVisible(true)
     }
     const clickDelete = async ()=> {
         const {error} = await dispatch(userActions.deleteById(_id));
@@ -38,7 +39,9 @@ const UserUpdateDelete = ({user}) => {
 
     return (
         <div className={css.Hole}>
-            <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={'Дані успішно оновлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'}></ModalUC>
+
             <h3>Редагування користувача </h3>
             <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
             {stateUpd &&

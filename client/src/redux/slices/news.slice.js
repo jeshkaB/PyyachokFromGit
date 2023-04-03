@@ -7,7 +7,8 @@ import {urls} from "../../constants";
 const initialState = {
     newsAll: [],
     newsOne: {},
-    errors: null
+    errors: null,
+    isChangeNewsList: false
 };
 
 const entity = urls.news
@@ -92,16 +93,19 @@ const newsSlice = createSlice({
                     state.errors = null;
                     state.newsOne = action.payload
                     state.newsAll.push(action.payload)
+                    state.isChangeNewsList = !state.isChangeNewsList
+
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.newsOne = action.payload
+                    state.newsOne = action.payload;
+                    state.isChangeNewsList = !state.isChangeNewsList
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.newsAll.findIndex(news=>news._id === action.payload._id)
-                    state.newsAll.splice(index,1)
-
+                    state.newsAll.splice(index,1);
+                    state.isChangeNewsList = !state.isChangeNewsList
                 })
                 .addDefaultCase((state, action) => {
                         defaultCaseReject(state, action)

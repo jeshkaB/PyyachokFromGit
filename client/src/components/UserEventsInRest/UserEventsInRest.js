@@ -10,25 +10,25 @@ import css from './UserEventsInRest.module.css'
 
 
 const UserEventsInRest = () => {
-    const {id} = useParams();
-    const {isAuth} = useSelector(state => state.auth);
-    const {restaurant} = useSelector(state => state.restaurant);
-    const {userEvents: userEventsIds, name, _id} = restaurant;
-    const {userEvents} = useSelector(state => state.userEvent);
-
-    const {stateForm} = useSelector(state => state.userEvent);
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const {id} = useParams();
+    const {isAuth} = useSelector(state => state.auth);
+    const {restaurant} = useSelector(state => state.restaurant);
+    const {userEvents: userEventsIds, name} = restaurant;
+    const {userEvents} = useSelector(state => state.userEvent);
+
+    const [stateForm, setStateForm] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false)
 
     useEffect(() => {
         dispatch(userEventActions.getAll())
-    }, [stateForm]);
+    }, []);
 
     useEffect(() => {
         dispatch(restaurantActions.getById(id))
-    }, [dispatch]);
+    }, []);
 
     let userEventsInRest = [];
     if (userEventsIds && userEvents) {
@@ -39,17 +39,15 @@ const UserEventsInRest = () => {
         })
     }
 
-    const [modalIsVisible, setModalIsVisible] = useState(false)
-
     const clickCreateEvent = ()=> {
-        if (isAuth) dispatch(userEventActions.setStateForm(true))
+        if (isAuth) setStateForm(true)
         else setModalIsVisible(true)
     }
 
-//TODO подія створюється, але у списку подій відображається тільки після перезавантаження сторінки. State перезаписується і відображається напряму, без усіх моїх маніпуляцій
     return (
         <div>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
+
             <h1>Пиячок в {name}</h1>
             <div>
                 {JSON.stringify(userEventsInRest)!== '[]' ?
@@ -68,8 +66,8 @@ const UserEventsInRest = () => {
 
                 {stateForm &&
                     <div>
-                        <UserEventForm/>
-                        <button onClick={()=>dispatch(userEventActions.setStateForm(false))}>Згорнути</button>
+                        <UserEventForm setStateForm={setStateForm}/>
+                        <button onClick={()=>setStateForm(false)}>Згорнути</button>
                     </div>}
             </div>
         </div>

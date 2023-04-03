@@ -1,10 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import css from '../TopCard/TopCard.module.css';
 import {restaurantActions} from "../../redux";
 import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
 
+import css from '../TopCard/TopCard.module.css';
 
 const TopCard = ({categ}) => {
     const dispatch = useDispatch();

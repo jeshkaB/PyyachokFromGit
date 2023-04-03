@@ -6,7 +6,8 @@ import {urls} from "../../constants";
 const initialState = {
     users: [],
     user: {},
-    errors: null
+    errors: null,
+    isChangeUsersList: false
 };
 
 const entity = urls.users
@@ -112,18 +113,21 @@ const userSlice = createSlice({
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
                     state.restaurant = action.payload
-                    state.users.push(action.payload)
+                    state.users.push(action.payload);
+                    state.isChangeUsersList = !state.isChangeUsersList
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
                     // const currentUser = state.users.find(item=>item._id = action.payload._id);
                     // state.users = Object.assign(currentUser,action.payload)
-                    state.user = action.payload
+                    state.user = action.payload;
+                    state.isChangeUsersList = !state.isChangeUsersList
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.users.findIndex(user=>user._id === action.payload._id);
-                    state.users.slice(index,1)
+                    state.users.slice(index,1);
+                    state.isChangeUsersList = !state.isChangeUsersList
                 })
 
                 .addCase(changePassword.fulfilled, (state, action) => {

@@ -45,9 +45,9 @@ const Restaurant = () => {
             await dispatch(authActions.addFavoriteRest({userId, restId: id}));
             setStateFavorite(true)
         }
-        // else alert('Увійдіть або зареєструйтеся')
         else setModalIsVisible(true)
     };
+
     const removeFavorite = async () => {
         await dispatch(authActions.removeFavoriteRest({userId, restId: id}))
         setStateFavorite(false)

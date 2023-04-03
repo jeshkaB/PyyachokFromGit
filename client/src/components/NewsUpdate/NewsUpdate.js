@@ -8,17 +8,19 @@ import {Dropdown} from "react-bootstrap";
 import {categoriesOfNews} from "../../constants";
 
 import css from './NewsUpdate.module.css'
+import {ModalUC} from "../ModalUC/ModalUC";
 
 const NewsUpdate = ({news}) => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const {errors} = useSelector(state => state.news)
     const {register, handleSubmit} = useForm()
     const {_id, title, content, category} = news
+    const {errors} = useSelector(state=>state.news)
 
     const [stateUpdate, setStateUpdate] = useState(false)
-    const [selectedCategory, setSelectedCategory] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
 
     const categories = categoriesOfNews.categories
     const submit = async (data) => {
@@ -30,17 +32,19 @@ const NewsUpdate = ({news}) => {
 
         if (location.pathname===`/generalNews/${_id}`) {
             const {error} = await dispatch(generalNewsActions.updateById({id: _id, newsObj: formData}))
-            // setStateUpdate(false)
             if (!error) navigate(-1)
+            else setErrorIsVisible(true)
         }
         else {
             const {error} = await dispatch(newsActions.updateById({id: _id, newsObj: formData}))
-            // if (!error) setStateUpdate(false)
             if (!error) navigate(-1)
+            else setErrorIsVisible(true)
         }
     }
     return (
         <div>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+
             <div className={css.To} onClick={() => setStateUpdate(true)}> Редагувати новину </div>
             {stateUpdate &&
                 <div className={css.Form}>

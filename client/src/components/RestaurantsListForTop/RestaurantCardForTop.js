@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 
 import {topCategoryActions} from "../../redux";
 
-// import button from "bootstrap/js/src/button";
 import {CategoryDropdown} from "./CategoryDropdown";
 
 import css from './RestaurantCardForTop.module.css'

@@ -11,7 +11,6 @@ import {PaginationUC} from "../PaginationUC/PaginationUC";
 
 import css from "../UsersList/UsersList.module.css";
 
-
 const RestaurantsListForTop = () => {
     const dispatch= useDispatch()
     const {restaurants} = useSelector(state => state.restaurant);

@@ -3,17 +3,11 @@
     border: solid 0.5px #619393  ;
     border-radius: 10px;
     padding: 10px;
-
-    /*justify-content: center;*/
-    /*margin-top: 20px;*/
     margin-bottom: 10px;
 }
 .Title {
-    /*border: solid 0.5px #619393  ;*/
-    /*border-radius: 10px;*/
     padding: 10px;
     align-items: center;
-    /*height: 40px;*/
     width: 200px;
 }
 
@@ -29,5 +23,4 @@
 .Del {
     composes: Hole;
     align-items: center;
-
 }

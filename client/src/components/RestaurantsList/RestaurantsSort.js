@@ -1,8 +1,5 @@
 import {Dropdown} from "react-bootstrap";
-
 import {categoriesForRestSort} from "../../constants";
-import css from './RestaurantsList.module.css'
-
 
 const RestaurantsSort = ({selectedCatSort, setSelectedCatSort}) => {
 

@@ -1,8 +1,7 @@
-import {Dropdown} from "react-bootstrap";
 import {useDispatch} from "react-redux";
+import {Dropdown} from "react-bootstrap";
+
 import {topCategoryActions} from "../../redux";
-
-
 
 const CategoryDropdown = ({restId, categoriesForSelection,setCategoriesForSelection}) => {
     const dispatch = useDispatch();

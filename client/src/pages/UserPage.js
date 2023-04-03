@@ -19,7 +19,7 @@ const UserPage = () => {
     return (
         <div>
             <div>
-                <User user={user}/>
+                <User/>
             </div>
             <div>
                 <UserUpdateDelete user={user}/>

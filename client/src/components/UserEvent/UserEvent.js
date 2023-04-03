@@ -5,9 +5,9 @@ import {useForm} from "react-hook-form";
 
 import {eventAnswerActions, restaurantActions, userActions, userEventActions} from "../../redux";
 import {EventAnswerCard} from "../EventAnswerCard/EventAnswerCard";
+import {ModalUC} from "../ModalUC/ModalUC";
 
 import css from './UserEvent.module.css'
-import {ModalUC} from "../ModalUC/ModalUC";
 
 const UserEvent = () => {
     const dispatch = useDispatch();

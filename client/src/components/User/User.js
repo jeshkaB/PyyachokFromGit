@@ -1,8 +1,8 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import {restaurantActions} from "../../redux";
+import {restaurantActions, userActions} from "../../redux";
 import API_URL from "../../config";
 import {roles} from "../../constants";
 
@@ -14,12 +14,15 @@ import css from './User.module.css'
 const User = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const location = useLocation();
-    const user = location.state
+    const {id} = useParams();
 
-    const {restaurants} = useSelector(state => state.restaurant);
+    const {user,isChangeUsersList} = useSelector(state => state.user)
+    useEffect(() => {
+        dispatch(userActions.getById(id))
+    }, [isChangeUsersList])
     const {_id, name, email, avatar, restaurants: restOfUserIds, role} = user
 
+    const {restaurants} = useSelector(state => state.restaurant);
     useEffect(() => {
         dispatch(restaurantActions.getAll())
     }, [dispatch])

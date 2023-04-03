@@ -41,8 +41,6 @@ export * from './RestaurantsListForTop/CategoryDropdown';
 export * from './Restaurant/Restaurant';
 export * from './Restaurant/MessageForm';
 export * from './RestaurantCard/RestaurantCard';
-export * from './RestaurantCard/-RestaurantCardSmall';
-export * from './RestaurantCard/-RestaurantCardBig';
 export * from './RestaurantCreate/restaurantCreate';
 export * from './RestaurantForAdmin/restaurantForAdmin';
 export * from './RestaurantsForModeration/RestaurantsForModeration';

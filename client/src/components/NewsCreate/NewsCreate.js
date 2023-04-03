@@ -3,12 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-import {newsActions, restaurantActions} from "../../redux";
+import {newsActions} from "../../redux";
 
 import {categoriesOfNews} from "../../constants";
 
 import css from './NewsCreate.module.css'
 import {Dropdown} from "react-bootstrap";
+import {ModalUC} from "../ModalUC/ModalUC";
 
 const NewsCreate = ({restId}) => {
     const dispatch = useDispatch();
@@ -17,7 +18,9 @@ const NewsCreate = ({restId}) => {
     const {register, handleSubmit} = useForm()
 
     const [stateCreate, setStateCreate] = useState(false)
-    const [selectedCategory, setSelectedCategory] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [errorIsVisible, setErrorIsVisible] = useState(false)
+
 
     const categories = categoriesOfNews.categories
     const submit = async (data) => {
@@ -26,14 +29,17 @@ const NewsCreate = ({restId}) => {
         formData.append('content', data.content);
         if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
         formData.append('category', selectedCategory);
-
-        const {_id} = await dispatch(newsActions.create({id: restId, newsObj: formData}))
-        setStateCreate(false)
-        if (!errors ?? _id) navigate(`../restaurantsForAdmin/${restId}/newsForAdmin/${_id}`)
+        const {error, payload:{_id} } = await dispatch(newsActions.create({id: restId, newsObj: formData}))
+        if (!error && _id) {
+            setStateCreate(false)
+            navigate(`../restaurantsForAdmin/${restId}/newsForAdmin/${_id}`)
+        } else setErrorIsVisible(true)
     }
 
     return (
         <div>
+            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+
             <div className={css.To} onClick={() => setStateCreate(true)}> Створити новину </div>
             {stateCreate &&
                 <div className={css.Form}>
