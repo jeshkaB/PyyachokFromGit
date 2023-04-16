@@ -1,7 +1,6 @@
 const {Router} = require('express');
-// const upload = require('multer')();     // щоб можна було зчитувати data-form
 
-const {userController, authController} = require("../controllers");
+const {userController} = require("../controllers");
 const {forAllMiddleware, userMiddleware, authMiddleware} = require("../middlewares");
 const {roles, tokenTypes} = require("../constants");
 
@@ -14,7 +13,6 @@ userRouter.get(
 
 userRouter.post(
     '/',
-    // upload.any(),
     userMiddleware.checkNewUserBodyIsValid,
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.SUPER_ADMIN),
@@ -30,7 +28,6 @@ userRouter.get(
 
 userRouter.patch(
     '/:userId',
-    // upload.any(),
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkUpdateUserBodyIsValid,
     userMiddleware.checkUserFieldIsUnique('name'),
@@ -44,7 +41,6 @@ userRouter.put(
     forAllMiddleware.checkIdIsValid('userId'),
     userMiddleware.checkPasswordPairIsValid,
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-    // forAllMiddleware.checkIdAreSame ('userId'),
     userMiddleware.checkUserIsExist(),
     userMiddleware.checkOldPasswordIsRight,
     userController.updateUserPassword);
@@ -57,7 +53,6 @@ userRouter.delete(
     userMiddleware.checkUserIsExist(),
     userController.deleteUser);
 
-// /для додавання в улюблені: шлях "users/id/favoriteRest?restId=...."
 userRouter.post(
     '/:userId/favoriteRest',
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),

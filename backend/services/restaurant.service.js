@@ -1,5 +1,4 @@
 const Restaurant = require('../dataBase/Restaurant')
-const {login} = require("../controllers/auth.controller");
 
 module.exports = {
     createRestaurant (restaurantObj) {

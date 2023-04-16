@@ -14,7 +14,6 @@ const userSchema = new Schema({
             type: [Schema.Types.ObjectId],
             ref: 'restaurant'
         },
-
         comments: {
             type: [Schema.Types.ObjectId],
             ref: 'comment'

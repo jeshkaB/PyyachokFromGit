@@ -14,19 +14,8 @@ const {userMiddleware} = require("../middlewares");
 const {userController} = require("./index");
 
 module.exports = {
-    // registration: async (req, res, next) => {
-    //     try {
-    //         const user = await userService.createUser(req.body);
-    //         await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
-    //         res.status(statusCode.CREATE).json(user)
-    //
-    //     } catch (e) {
-    //         next(e)
-    //     }
-    // },
     login: async (req, res, next) => {
         try {
-
             const user = req.user; // з попередньої мідлвари
             const {_id} = user
             const authTokens = {
@@ -80,17 +69,6 @@ module.exports = {
             next(e)
         }
     },
-
-    // logoutFromEverywhere: async (req, res, next) => {
-    //     try {
-    //         const {user} = req.tokenInfo;
-    //         await authService.deleteMany({user: user._id});
-    //         res.sendStatus(statusCode.NO_CONTENT)
-    //     } catch (e) {
-    //         next(e)
-    //     }
-    // },
-
     refresh: async (req, res, next) => {
         try {
 

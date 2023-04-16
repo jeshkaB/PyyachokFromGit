@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {viewStatisticsActions} from "../../redux";
 import {useParams} from "react-router-dom";
+
+import {viewStatisticsActions} from "../../redux";
 import {ChartUC} from "../ChartUC/ChartUC";
 
 const ViewStatistics = ({period}) => {
@@ -23,7 +24,7 @@ const ViewStatistics = ({period}) => {
         dispatch(viewStatisticsActions.getByRestId(id))
     }, []);
 
-    const viewsMS = []//тут буде наш масив з датами у вигляді мілісекунд
+    const viewsMS = [];//тут буде наш масив з датами у вигляді мілісекунд
     let viewsMsByPeriod
     if (periodForFilter) {
         views.forEach(view => viewsMS.push({...view, createdAt: Date.parse(view.createdAt)})); //Date.parse робить формат дати в мс з 1970р.

@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+
 const {SERVER_EMAIL, SERVER_EMAIl_PASSWORD, SERVER_EMAIl_HOST, SERVER_EMAIL_PORT, SERVER_EMAIL_SECURE} = require("../configs/config");
 
 module.exports = {

@@ -1,10 +1,9 @@
-const {newsService, fileService, userService, restaurantService} = require("../services");
-const uuid = require("uuid");
-const {pathImg, statusCode} = require("../constants");
 const path = require("path");
+const uuid = require("uuid");
+
+const {newsService, fileService, userService, restaurantService} = require("../services");
+const {pathImg, statusCode} = require("../constants");
 const {PATH_NEWS_PHOTO} = require("../constants/pathImg");
-
-
 
 module.exports = {
     createNews: async (req, res, next) => {

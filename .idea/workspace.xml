@@ -2,37 +2,99 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/CommentsInRestPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsCreate/NewsCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/NewsUpdate/NewsUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/PaginationUC/PaginationUC.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/PaginationUC/PaginationUC.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RegisterForm/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RegisterForm/registerForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/roles.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/roles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/eventAnswer.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/eventAnswer.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/generalNews.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/generalNews.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/news.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/news.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/topCategory.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/topCategory.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/userEvent.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/userEvent.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/GeneralNews.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/GeneralNews.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/Mark.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Mark.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/News.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/News.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataBase/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/discription" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/mark.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/mark.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/topCategory.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/topCategory.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/comment.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/comment.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/eventAnswer.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/eventAnswer.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/generalNews.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/generalNews.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/mark.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/mark.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/news.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/news.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/restaurant.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/restaurant.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/topCategory.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/topCategory.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/userEvent.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/userEvent.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/viewStatistics.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/viewStatistics.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/eventAnswer.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/eventAnswer.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/hash.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/hash.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/nodemailer.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/nodemailer.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/restaurant.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/restaurant.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/tokenDB.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/tokenDB.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/topCategory.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/topCategory.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/news.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/news.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/userEvent.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/userEvent.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ChartUC/ChartUC.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ChartUC/ChartUC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GeneralNewsList/GeneralNewsList.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/-RestaurantCardBig.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/-RestaurantCardSmall.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantCard/RestaurantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsFilter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsSort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/CategoryDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/CategoryDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantCardForTop.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsListForTop/RestaurantsListForTop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopCard/TopCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopCard/TopCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopList/TopList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopList/TopList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserEvent/UserEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEvent/UserEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserEventForm/UserEventForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEventForm/UserEventForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Restaurant/Restaurant.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Restaurant/Restaurant.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RestaurantsList/RestaurantsList.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserEventList/UserEventList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEventList/UserEventList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserEventsInRest/UserEventsInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserEventsInRest/UserEventsInRest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UsersList/usersList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ViewStatistics/ViewStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ViewStatistics/ViewStatistics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/mainLayout/MainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GeneralNewsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GeneralNewsListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MarksInRestPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MarksInRestPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MyAccountPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MyAccountPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewsForAdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NewsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewsListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/NewsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NewsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RegisterPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/news.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantForAdminPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantManagerPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/RestaurantsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/RestaurantsListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SuperAdminPage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TopPageForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TopPageForAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/UserEventsListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserEventsListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/UserEventsPageInRestaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/UserEventsPageInRestaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ViewStatisticsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ViewStatisticsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/auth.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/generalNews.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/geo.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/geo.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/slices/topCategory.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/topCategory.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/user.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/slices/userEvent.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/API.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/axios.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/axios.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/firebase.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/firebase.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/geolocation.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/geolocation.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +105,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -126,14 +188,7 @@
       <workItem from="1678174764343" duration="148330000" />
       <workItem from="1679301371588" duration="55948000" />
       <workItem from="1679902786444" duration="107107000" />
-      <workItem from="1680204160848" duration="78363000" />
-    </task>
-    <task id="LOCAL-00017" summary="interim">
-      <created>1673555392933</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1673555392933</updated>
+      <workItem from="1680204160848" duration="99586000" />
     </task>
     <task id="LOCAL-00018" summary="interim">
       <created>1673640910564</created>
@@ -471,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680466269814</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="perfecting 2">
+      <created>1680553359934</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1680553359934</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,6 +562,7 @@
     <MESSAGE value="css SuperAdm1" />
     <MESSAGE value="css finish" />
     <MESSAGE value="perfecting 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="perfecting 1" />
+    <MESSAGE value="perfecting 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="perfecting 2" />
   </component>
 </project>

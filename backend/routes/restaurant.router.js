@@ -1,5 +1,4 @@
-const {Router, query} = require("express");
-const upload = require('multer')();
+const {Router} = require("express");
 
 const {restaurantController} = require("../controllers");
 const {restaurantMiddleware, forAllMiddleware, authMiddleware, userMiddleware} = require("../middlewares");
@@ -13,7 +12,6 @@ restaurantRouter.get(
 
 restaurantRouter.post(
     '/',
-    // upload.any(),
     restaurantMiddleware.checkNewRestaurantBodyIsValid,
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkRole(roles.REST_ADMIN),
@@ -28,12 +26,11 @@ restaurantRouter.get(
 
 restaurantRouter.patch(
     '/:restId',
-    // upload.any(),
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkUpdateRestaurantBodyIsValid,
     restaurantMiddleware.checkRestaurantIsExist(),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-    forAllMiddleware.checkUserIdInEntity('restaurant'),    //перевірка доступу - 1) якщо айди юзера в токенинфо співпадає з айди юзера в ресторані або юзер - суперадмін
+    forAllMiddleware.checkUserIdInEntity('restaurant'),
     restaurantController.updateRestaurant);
 
 restaurantRouter.delete(
@@ -45,14 +42,14 @@ restaurantRouter.delete(
     restaurantController.deleteRestaurant);
 
 restaurantRouter.post(
-    '/:restId/message', //+?userId=....
+    '/:restId/message',
     forAllMiddleware.checkIdIsValid('restId'),
     restaurantMiddleware.checkRestaurantIsExist(),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     restaurantController.sendMessage);
 
 restaurantRouter.put(
-    '/:restId/changeAdmin', //userId in query
+    '/:restId/changeAdmin',
     forAllMiddleware.checkIdIsValid('restId'),
     forAllMiddleware.checkIdIsValid('userId', 'query'),
     restaurantMiddleware.checkRestaurantIsExist(),

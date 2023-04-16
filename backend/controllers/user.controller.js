@@ -1,10 +1,9 @@
-const {userService, hashService, fileService, authService, nodemailerService} = require('../services');
-const {statusCode, roles, pathImg} = require('../constants')
 const uuid = require('uuid')
 const path = require("path");
+
+const {userService, hashService, fileService, authService, nodemailerService} = require('../services');
+const {statusCode, roles, pathImg} = require('../constants')
 const {PATH_AVATAR} = require("../constants/pathImg");
-
-
 
 module.exports = {
     createUser: async (req, res, next) => {
@@ -137,7 +136,6 @@ module.exports = {
         }
     },
 
-    //// id ресторану передаємо в query (/users/id/favoriteRest?restId=......)
     addFavoriteRest:
         async (req, res, next) => {
             try {

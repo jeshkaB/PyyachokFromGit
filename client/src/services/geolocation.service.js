@@ -1,6 +1,5 @@
 import {keysLS} from "../constants";
 
-
 const geolocationService = {
     getGeolocationFromNavigator: () => {
          navigator.geolocation.getCurrentPosition(position => {

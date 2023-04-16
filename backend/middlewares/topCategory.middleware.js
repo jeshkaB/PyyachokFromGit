@@ -1,9 +1,7 @@
-
 const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
 const {topCategoryValidator} = require("../validators");
 const {topCategoryService} = require("../services");
-
 
 module.exports = {
 

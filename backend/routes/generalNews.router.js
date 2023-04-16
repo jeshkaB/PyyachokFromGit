@@ -1,5 +1,6 @@
 const {Router} = require ('express');
-const {newsController, generalNewsController} = require("../controllers");
+
+const {generalNewsController} = require("../controllers");
 const {authMiddleware, forAllMiddleware, generalNewsMiddleware} = require("../middlewares");
 const {roles, tokenTypes} = require("../constants");
 

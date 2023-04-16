@@ -10,7 +10,7 @@ userEventRouter.get('/',userEventController.getUserEvents);
 
 userEventRouter.post('/',
     userEventMiddleware.checkNewUserEventBodyIsValid,
-    forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
+    forAllMiddleware.checkIdIsValid('restId','query'),
     restaurantMiddleware.checkRestaurantIsExist('query'),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     userEventController.createUserEvent);

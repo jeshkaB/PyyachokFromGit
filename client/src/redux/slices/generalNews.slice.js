@@ -3,7 +3,6 @@ import {ApiService} from "../../services";
 import {defaultCaseReject} from "./utilityFunctions";
 import {urls} from "../../constants";
 
-
 const initialState = {
     newsAll: [],
     newsOne: {},

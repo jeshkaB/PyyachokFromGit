@@ -1,10 +1,9 @@
+import {createBrowserHistory} from 'history';
 import axios from "axios";
 import {baseURL} from "../constants";
 import {authService} from "./auth.service";
-import {createBrowserHistory} from 'history';
 
 const history = createBrowserHistory();
-
 const axiosService = axios.create({baseURL});
 const axiosRefreshService = axios.create({baseURL});
 
@@ -16,7 +15,7 @@ axiosService.interceptors.request.use((config) => {
     return config
 });
 
-let isRefreshing = false; //TODO перевірити як працює рефреш
+let isRefreshing = false;
 axiosService.interceptors.response.use((config) => {
         return config;
     },

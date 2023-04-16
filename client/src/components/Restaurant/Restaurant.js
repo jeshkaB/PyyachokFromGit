@@ -11,7 +11,6 @@ import {ModalUC} from "../ModalUC/ModalUC";
 
 import css from './Restaurant.module.css'
 
-
 const Restaurant = () => {
     const dispatch = useDispatch();
     const {restaurant} = useSelector(state => state.restaurant);
@@ -19,7 +18,7 @@ const Restaurant = () => {
     const {authUser, isAuth} = useSelector(state => state.auth)
     const {id} = useParams();
     const [modalIsVisible, setModalIsVisible] = useState(false)
-
+    const {isLocationAvailable, latitude, longitude} = useSelector(state => state.geo);
 
     const tags = restaurant?.tags?.split(',').map(tag => tag.trim());
 
@@ -79,6 +78,9 @@ const Restaurant = () => {
                 <div className={css.TextBlock}>
                     <div style={{marginBottom: 10}}><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>
+                    {isLocationAvailable && restaurant.coordinates && <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[0]},${restaurant.coordinates[1]}`}
+                       className={css.Route}
+                       target="_blank"> Прокласти маршрут</a>}
                     <div> Телефон: {restaurant.phone}</div>
                     <div> Режим роботи: {restaurant.hours}</div>
                     <div> email: {restaurant.email} </div>

@@ -8,7 +8,7 @@ const initialState = {
     userEvents: [],
     userEvent: {},
     errors: null,
-    isChangeUserEventsList: false
+    warningMessage: true
 };
 
 const entity = urls.userEvents;
@@ -80,8 +80,8 @@ const userEventSlice = createSlice({
         name: 'userEventSlice',
         initialState,
         reducers: {
-            setStateForm: (state,action)=>{
-                state.stateForm = action.payload
+            setWarningMessage: (state,action)=>{
+                state.warningMessage = action.payload
             }
         },
         extraReducers: (builder) =>
@@ -117,7 +117,7 @@ const userEventSlice = createSlice({
 
     },
 )
-const {reducer: userEventReducer, actions:{setStateForm}} = userEventSlice;
-const userEventActions = {getAll, getById, create, updateById, deleteById, setStateForm};
+const {reducer: userEventReducer, actions:{setWarningMessage}} = userEventSlice;
+const userEventActions = {getAll, getById, create, updateById, deleteById, setWarningMessage};
 
 export {userEventReducer, userEventActions}

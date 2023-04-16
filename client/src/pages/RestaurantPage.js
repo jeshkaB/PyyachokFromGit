@@ -6,8 +6,6 @@ import {Link, useParams} from "react-router-dom";
 
 import css from './RestaurantPage.module.css'
 
-
-
 const RestaurantPage = () => {
     const {id} = useParams()
     const [stateMessageForm, setStateMessageForm] = useState(false)

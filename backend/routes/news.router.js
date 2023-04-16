@@ -1,5 +1,5 @@
 const {Router} = require ('express');
-const upload = require('multer')();
+
 const {newsController} = require("../controllers");
 const {authMiddleware, restaurantMiddleware, forAllMiddleware, newsMiddleware} = require("../middlewares");
 const {tokenTypes} = require("../constants");
@@ -9,9 +9,8 @@ const newsRouter = Router();
 newsRouter.get('/', newsController.getNews);
 
 newsRouter.post('/',
-    // upload.any(),
     newsMiddleware.checkNewNewsBodyIsValid,
-    forAllMiddleware.checkIdIsValid('restId','query'),//// id ресторану передаємо в query (/comments?restId=......)
+    forAllMiddleware.checkIdIsValid('restId','query'),
     restaurantMiddleware.checkRestaurantIsExist('query'),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     forAllMiddleware.checkUserIdInEntity('restaurant'),
@@ -23,7 +22,6 @@ newsRouter.get('/:newsId',
     newsController.getNewsById,);
 
 newsRouter.patch('/:newsId',
-    // upload.any(),
     newsMiddleware.checkUpdateNewsBodyIsValid,
     forAllMiddleware.checkIdIsValid('newsId'),
     newsMiddleware.checkNewsIsExist(),

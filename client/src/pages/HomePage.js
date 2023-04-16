@@ -1,4 +1,4 @@
-import {GeneralNewsList, NewsList, RestaurantsList, TopList} from "../components";
+import {GeneralNewsList, RestaurantsList, TopList} from "../components";
 
 import css from './HomePage.module.css';
 

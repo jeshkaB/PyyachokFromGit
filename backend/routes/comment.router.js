@@ -1,8 +1,8 @@
 const {Router} = require('express');
+
 const {commentController} = require("../controllers");
 const {commentMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware} = require("../middlewares");
 const {tokenTypes} = require("../constants");
-const constants = require("constants");
 
 const commentRouter = Router();
 

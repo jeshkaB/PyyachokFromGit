@@ -1,7 +1,5 @@
-const {commentService, userService, restaurantService, eventAnswerService, userEventService} = require("../services");
+const {userService, eventAnswerService, userEventService} = require("../services");
 const {statusCode} = require("../constants");
-const {login} = require("./auth.controller");
-
 
 module.exports = {
     createEventAnswer: async (req, res, next) => {

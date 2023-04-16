@@ -1,3 +1,4 @@
+export * from './CommentsInRestPage';
 export * from './ForgotPasswordPage';
 export * from './HomePage';
 export * from './GeneralNewsPage';

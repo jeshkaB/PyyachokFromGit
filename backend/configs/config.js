@@ -16,7 +16,4 @@ module.exports = {
     SERVER_EMAIl_HOST: 'smtp.gmail.com',
     SERVER_EMAIL_PORT: 465,
     SERVER_EMAIL_SECURE: 'true'
-
-
-
 }

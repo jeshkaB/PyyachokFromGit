@@ -1,4 +1,5 @@
 const Joi = require('joi');
+
 const {PASSWORD} = require("../constants/regex");
 const {BAD_REQUEST} = require("../constants/statusCodes");
 const {LocalError} = require("../errors");

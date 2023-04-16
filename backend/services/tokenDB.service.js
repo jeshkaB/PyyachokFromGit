@@ -1,4 +1,5 @@
-const Token = require('../dataBase/Token')
+const Token = require('../dataBase/Token');
+
 module.exports = {
     saveToken(token) {
         return Token.create(token)

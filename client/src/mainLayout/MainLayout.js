@@ -1,8 +1,8 @@
 import {Outlet} from 'react-router-dom'
 import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
-import {Header} from "../components";
+import {Header, ModalUC} from "../components";
 
 import {authService, geolocationService} from "../services";
 import {authActions, geoActions} from "../redux";
@@ -21,13 +21,15 @@ import {authActions, geoActions} from "../redux";
      const refreshToken = authService.getRefreshTokenInLS();
 
      useEffect(()=> {
-
          if (refreshToken)
              dispatch(authActions.setCurrentUser({refreshToken}))
      },[])
 
+     const [modalIsVisible, setModalIsVisible] = useState(!refreshToken)
+
     return (
         <div>
+            <ModalUC modalText={'Запускаючи цей додаток, ви погоджуєтесь, що вам виповнилося 18 років'} show={modalIsVisible} onHide={setModalIsVisible} type={'warning'}></ModalUC>
             <Header/>
             <Outlet/>
         </div>

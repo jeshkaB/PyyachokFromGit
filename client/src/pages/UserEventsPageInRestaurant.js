@@ -1,15 +1,10 @@
-import {useSelector} from "react-redux";
 import {UserEventsInRest} from "../components";
 
 const UserEventsPageInRestaurant = () => {
-    //
-    // const {errors} = useSelector(state => state.userEvent)
 
     return (
-        <div>
+        <div style={{margin:20}}>
             <UserEventsInRest/>
-            {/*{errors &&*/}
-            {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
         </div>
     );
 }

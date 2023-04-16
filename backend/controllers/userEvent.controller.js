@@ -1,6 +1,6 @@
-const {commentService, userService, restaurantService, userEventService, newsService, eventAnswerService} = require("../services");
+const {userService, restaurantService, userEventService, newsService, eventAnswerService} = require("../services");
 const {statusCode} = require("../constants");
-//TODO зробити видалення старих подій
+
 module.exports = {
     createUserEvent: async (req, res, next) => {
         try {
@@ -80,20 +80,6 @@ module.exports = {
             await restaurantService.updateRestaurant(restaurant, {userEvents: newEventsListOfRest})
 
             await userEventService.deleteUserEvent(eventId);
-
-            // const userUserEvents = await userEventService.getUserEventByParams({user});
-            // const upUserUserEvents = userUserEvents.filter(item=>item._id!==eventId)
-            // await userService.updateUser(user, {
-            //     userEvents: upUserUserEvents
-            // });
-            //
-            // const restaurantUserEvents = await userEventService.getUserEventByParams({restaurant:restaurant._id});
-            // const upRestaurantUserEvents = restaurantUserEvents.filter(item=>item._id !==eventId)
-            // await restaurantService.updateRestaurant(restaurant._id, {
-            //     userEvents: upRestaurantUserEvents
-            // });
-
-
 
             res.status(statusCode.NO_CONTENT).json()
 

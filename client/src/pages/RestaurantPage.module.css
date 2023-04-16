@@ -21,14 +21,12 @@
     padding: 5px;
     align-items: center;
     justify-content: center;
-    /*margin-bottom: 10px;*/
 }
 
 .ToRest {
     composes: To;
     margin-top: 20px;
     margin-bottom: 10px;
-    /*width: 140px;*/
     height: 40px;
     font-size: 15px;
 }
@@ -47,23 +45,17 @@
 }
 .NewsBlock {
      width: 30%;
-     /*display: flex;*/
      flex-direction: row;
-     /*flex-wrap: wrap;*/
      margin: 20px;
      align-content: center;
      text-align: center;
  }
 .Message {
-    /*display: flex;*/
     font-size: 15px;
     border: solid 0.5px #619393 ;
     border-radius: 10px;
     background: #bbd5d5;
     margin-bottom: 20px;
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*height: 40px;*/
 }
 .ButMes {
     cursor: pointer;

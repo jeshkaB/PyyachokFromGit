@@ -1,6 +1,4 @@
 const bcrypt = require('bcrypt');
-const {statusCode} = require("../constants");
-const {LocalError} = require("../errors");
 
 module.exports = {
 

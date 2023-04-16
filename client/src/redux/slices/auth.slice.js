@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {ApiService, authService, axiosService, geolocationService} from "../../services";
+import {ApiService, authService, geolocationService} from "../../services";
 import {defaultCaseReject} from "./utilityFunctions";
 import {urls} from "../../constants";
 
@@ -63,17 +63,6 @@ const logout = createAsyncThunk(
         }
     }
 );
-
-// const logoutFromEverywhere = createAsyncThunk(
-//     'authSlice/logoutFromEverywhere',
-//     async (_, {rejectWithValue}) => {
-//         try {
-//             await authService.logoutFromEverywhere()
-//         } catch (e) {
-//             return rejectWithValue(e.response.data)
-//         }
-//     }
-// );
 
 const addFavoriteRest = createAsyncThunk(
     'authSlice/addFavoriteRest',
@@ -170,15 +159,6 @@ const authSlice = createSlice({
                 authService.deleteUserIdInLS();
                 geolocationService.deleteGeoCoordsInLS();
             })
-            // .addCase(logoutFromEverywhere.fulfilled, (state, action) => {
-            //     state.isAuth = false;
-            //     state.errors = null;
-            //     // state.userId = null;
-            //     state.role = null;
-            //     authService.deleteTokensInLS();
-            //     authService.deleteUserIdInLS();
-            //     geolocationService.deleteGeoCoordsInLS();
-            // })
             .addCase(addFavoriteRest.fulfilled, (state, action) => {
                 state.errors = null;
             })
@@ -213,7 +193,6 @@ const authActions = {
     login,
     loginByGoogle,
     logout,
-    // logoutFromEverywhere,
     addFavoriteRest,
     removeFavoriteRest,
     forgotPasswordRequest,

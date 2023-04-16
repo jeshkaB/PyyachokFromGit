@@ -10,6 +10,7 @@ const ViewStatisticsPage = () => {
     const submit = (data) => {
         setPeriod(data)
     }
+
         return (
             <div>
                 <form onSubmit={handleSubmit(submit)}>
@@ -17,6 +18,7 @@ const ViewStatisticsPage = () => {
                     <input type='date' placeholder={'по'} required={true} {...register('until')}/>
                     <button>Показати</button>
                 </form>
+                <button style={{width:370, marginTop:5}} onClick={()=>setPeriod({})}>Показати за весь період</button>
                 <ViewStatistics period={period} />
             </div>
         );

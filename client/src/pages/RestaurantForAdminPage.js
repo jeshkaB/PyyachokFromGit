@@ -14,7 +14,6 @@ const RestaurantForAdminPage = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const {role, isAuth} = useSelector(state => state.auth)
-    const {errors} = useSelector(state => state.restaurant);
 
     const {restaurant} = useSelector(state => state.restaurant);
 
@@ -25,8 +24,6 @@ const RestaurantForAdminPage = () => {
 
     return (
         <div className={css.Hole}>
-            {/*{errors &&*/}
-            {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
             <div className={css.Block}>
                 {isAuth && role.includes(roles.SUPER_ADMIN) &&
                     <ChangeManager restId = {id}/>}
@@ -35,8 +32,6 @@ const RestaurantForAdminPage = () => {
                 <div className={css.ToMark}
                      onClick={() => navigate(`/restaurants/${id}/marks`)}>Оцінки</div>
                 <Link className={css.Link} to={`../restaurants/${id}/comments`}><div className={css.To}>Відгуки</div></Link>
-                {/*<CommentsInRest/>*/}
-
             </div>
             <div className={css.BlockNews}>
                 <h3 style={{textAlign:'center'}}> Новини </h3>

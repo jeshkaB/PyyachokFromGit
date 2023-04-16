@@ -1,8 +1,6 @@
 .Hole {
     display: flex;
     margin: 20px ;
-
-
 }
 .FavRest {
     width: 50%;
@@ -25,30 +23,9 @@
     align-items: center;
     margin-bottom: 10px;
     font-size: 25px;
-    /*font-weight: bolder;*/
 }
 
 .ToAc {
     composes: To;
     justify-content: end;
 }
-/*.ToList {*/
-/*    cursor: pointer;*/
-/*    display: flex;*/
-/*
-/*    */
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    margin-left: 20px;*/
-/*    margin-top: 10px;*/
-/*    margin-bottom: 10px;*/
-
-/*    height: 40px;*/
-/*    width: 200px;*/
-/*    font-size: 15px;*/
-
-/*}*/
-/*.Link {*/
-/*    text-decoration: none;*/
-/*    color: black;*/
-/*}*/

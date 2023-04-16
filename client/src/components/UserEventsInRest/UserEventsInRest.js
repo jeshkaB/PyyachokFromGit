@@ -17,7 +17,7 @@ const UserEventsInRest = () => {
     const {isAuth} = useSelector(state => state.auth);
     const {restaurant} = useSelector(state => state.restaurant);
     const {userEvents: userEventsIds, name} = restaurant;
-    const {userEvents} = useSelector(state => state.userEvent);
+    const {userEvents, warningMessage} = useSelector(state => state.userEvent);
 
     const [stateForm, setStateForm] = useState(false)
     const [modalIsVisible, setModalIsVisible] = useState(false)
@@ -43,9 +43,12 @@ const UserEventsInRest = () => {
         if (isAuth) setStateForm(true)
         else setModalIsVisible(true)
     }
+     const onHide = (value)=> dispatch(userEventActions.setWarningMessage(value))
 
     return (
         <div>
+            <ModalUC modalText={'Адміністрація закликає вас бути обережними і не зустрічатися з незанйомими людьми в незнайомих місцях'} show={warningMessage}
+                     onHide={onHide} type={'warning'}></ModalUC>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
 
             <h1>Пиячок в {name}</h1>

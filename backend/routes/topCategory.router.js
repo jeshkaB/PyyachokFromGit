@@ -1,4 +1,5 @@
 const {Router} = require('express');
+
 const {topCategoryController} = require("../controllers");
 const {topCategoryMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware} = require("../middlewares");
 const {roles, tokenTypes} = require("../constants");
@@ -35,7 +36,6 @@ topCategoryRouter.delete('/:categId',
     topCategoryMiddleware.checkTopCategoryIsExist(),
     topCategoryController.deleteTopCategory);
 
-// id ресторану передаємо в query (/topCategories/id/restaurant?restId=......)
 topCategoryRouter.post('/:categId/Restaurant',
     forAllMiddleware.checkIdIsValid('categId'),
     forAllMiddleware.checkIdIsValid('restId','query'),

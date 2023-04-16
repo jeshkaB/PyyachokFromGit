@@ -1,6 +1,4 @@
 import {axiosService} from "./axios.service";
-import {interceptors} from "axios";
-// import {urls} from "../constants";
 
 const ApiService = {
 

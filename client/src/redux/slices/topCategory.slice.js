@@ -9,7 +9,6 @@ const initialState = {
     topCategory: {},
     stateChangeTop: false,
     errors: null
-
 };
 
 const entity = urls.topCategory;
@@ -32,8 +31,6 @@ const create = createAsyncThunk(
         try {
             const {data} = await ApiService.create(entity, categObj)
             return data
-
-
         } catch (e) {
             return rejectWithValue(e.response.data)
         }

@@ -94,11 +94,7 @@ const changePassword = createAsyncThunk(
 const userSlice = createSlice({
         name: 'userSlice',
         initialState,
-        reducers: {
-            // setStateOfUpdating: (state,action)=> {
-            //     state.stateOfUpdating = action.payload
-            // }
-        },
+        reducers: {},
 
         extraReducers: (builder) =>
             builder

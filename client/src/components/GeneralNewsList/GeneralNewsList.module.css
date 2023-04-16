@@ -10,14 +10,9 @@
     border-left: darkslategrey solid 2px;
     padding-left: 10px;
 }
-.NewsInList {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-}
 .NewsListInList  {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 20px;
 
 }

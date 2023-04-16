@@ -1,12 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {restaurantActions} from "../redux";
 import {FavoriteRestaurants, ModalUC, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
 
 import css from './MyAccountPage.module.css'
-
 
 const MyAccountPage = () => {
     const dispatch = useDispatch();

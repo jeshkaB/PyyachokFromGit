@@ -3,14 +3,10 @@ import {useSelector} from "react-redux";
 
 
 const NewsForAdminPage = () => {
-    const {errors} = useSelector(state => state.news);
-
 
     return (
         <div>
-            {/*{errors &&*/}
-            {/*    <h3 className={'errors'}> {errors.message} </h3>}*/}
-                 <NewsForAdmin/>
+           <NewsForAdmin/>
         </div>
     );
 };

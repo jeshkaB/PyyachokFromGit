@@ -1,6 +1,7 @@
 const {Router} = require('express');
-const {commentController, eventAnswerController} = require("../controllers");
-const {commentMiddleware, forAllMiddleware, authMiddleware, restaurantMiddleware, eventAnswerMiddleware,
+
+const {eventAnswerController} = require("../controllers");
+const {forAllMiddleware, authMiddleware, eventAnswerMiddleware,
     userEventMiddleware
 } = require("../middlewares");
 const {tokenTypes} = require("../constants");
@@ -11,7 +12,7 @@ eventAnswerRouter.get('/',eventAnswerController.getEventAnswers);
 
 eventAnswerRouter.post('/',
     eventAnswerMiddleware.checkAnswerBodyIsValid,
-    forAllMiddleware.checkIdIsValid('eventId','query'),//// id події передаємо в query (/eventAnswers?eventId=......)
+    forAllMiddleware.checkIdIsValid('eventId','query'),
     userEventMiddleware.checkUserEventIsExist('query'),
     authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
     eventAnswerController.createEventAnswer);

@@ -4,7 +4,7 @@ const newsSchema = new Schema({
         title: {type: String, trim: true, required: true},
         content: {type: String, required: true},
         newsImage: String,
-        category: {type: String, required: true},	//main || event || action
+        category: {type: String, required: true},
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',

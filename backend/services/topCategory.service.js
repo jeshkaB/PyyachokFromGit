@@ -5,7 +5,7 @@ module.exports = {
         return TopCategory.create(categObj)
     },
     getTopCategories() {
-        return TopCategory.find()//.populate({path: 'restaurants'})
+        return TopCategory.find()
     },
     getTopCategoryById(categId) {
         return TopCategory.findById(categId)

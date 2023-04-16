@@ -1,5 +1,4 @@
 const ViewStatistics = require('../dataBase/viewStatistics')
-const GeneralNews = require("../dataBase/GeneralNews");
 
 module.exports = {
     createViewStatistics(viewObj) {

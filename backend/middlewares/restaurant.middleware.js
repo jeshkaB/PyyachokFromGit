@@ -1,7 +1,7 @@
 const {restaurantValidator} = require("../validators");
 const {LocalError} = require("../errors");
 const statusCodes = require("../constants/statusCodes");
-const {userService, restaurantService} = require("../services");
+const {restaurantService} = require("../services");
 
 module.exports = {
 

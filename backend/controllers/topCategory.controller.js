@@ -1,6 +1,5 @@
-const {commentService, userService, restaurantService, topCategoryService} = require("../services");
+const {restaurantService, topCategoryService} = require("../services");
 const {statusCode} = require("../constants");
-
 
 module.exports = {
     createTopCategory: async (req, res, next) => {
@@ -80,7 +79,6 @@ module.exports = {
                     categId
                 ]
             })
-
 
             const category = await topCategoryService.getTopCategoryById(categId);
 

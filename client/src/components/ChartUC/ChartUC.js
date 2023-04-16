@@ -12,7 +12,6 @@ import {
 import {Line} from 'react-chartjs-2';
 
 const ChartUC = ({chartTitle, array}) => {
-    console.log(array)
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -53,8 +52,8 @@ const ChartUC = ({chartTitle, array}) => {
             {
                 label: 'restaurant_name',
                 data: array.map((item) => item.value),//вісь у
-                borderColor: 'rgb(53, 162, 235)',
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                borderColor: 'rgb(29,108,108)',
+                // backgroundColor: 'rgba(53, 162, 235, 0.5)',
             }
         ],
     };

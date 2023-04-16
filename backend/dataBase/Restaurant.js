@@ -4,12 +4,10 @@ const {date} = require("joi");
 const restaurantSchema = new Schema({
         name: {type: String, trim: true, required: true},
         mainImage: {type: String, required: true},
-        // images: [String],
         place: {type: String, required: true},
         averageBill: {type: Number, required: true},
         hours: {type: String, required: true},
         tags: String,
-        // categories: [String],
         phone: {type: String, required: true},
         email: {type: String, required: true},
         webSite: String,
@@ -17,7 +15,6 @@ const restaurantSchema = new Schema({
         coordinates: {type: [String], required: true},
         moderated: {type: Boolean, default: false},//неперевірений - false, перевірений - true
         moderationMessage: String,
-        // viewStatistic:[{userId: String, date: Date}],
         user: {
             type: Schema.Types.ObjectId,
             ref: 'user',

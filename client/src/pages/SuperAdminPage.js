@@ -15,7 +15,6 @@ import css from './SuperAdminPage.module.css'
 
 const SuperAdminPage = () => {
     const navigate = useNavigate();
-    // const {errors} = useSelector(state => state.generalNews);
     const {userId} = useSelector(state => state.auth)
     const [stateRestList, setStateRestList] = useState(false);
     const [stateNewsList, setStateNewsList] = useState(false);
@@ -30,7 +29,7 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateRestList(true)}> Створення та редагування закладів</div>
+                <div className={css.To} onClick={() => setStateRestList(true)}> Заклади</div>
                 {stateRestList &&
                     <div>
                         <div className={css.Button}>
@@ -46,7 +45,7 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateNewsList(true)}> Редагування новин закладів</div>
+                <div className={css.To} onClick={() => setStateNewsList(true)}> Новини закладів</div>
                 {stateNewsList &&
                     <div>
                         <div className={css.Button}>
@@ -58,7 +57,7 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateGenNewsList(true)}> Створення та редагування загальних новин
+                <div className={css.To} onClick={() => setStateGenNewsList(true)}> Загальні новини
                 </div>
                 {stateGenNewsList &&
                     <div>

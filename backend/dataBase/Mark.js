@@ -5,7 +5,6 @@ const markSchema = new Schema({
         restaurant: {
             type: Schema.Types.ObjectId,
             ref: 'restaurant',
-
         },
         user: {
             type: Schema.Types.ObjectId,
