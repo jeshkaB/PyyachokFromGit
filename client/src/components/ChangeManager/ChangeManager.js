@@ -1,4 +1,3 @@
-import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 
@@ -14,12 +13,12 @@ const ChangeManager = ({restId}) => {
     const {users} = useSelector(state => state.user);
         useEffect(() => {
         dispatch(userActions.getAll())
-    }, [])
+    }, [dispatch])
 
     const {restaurant} = useSelector(state => state.restaurant);
     useEffect(() => {
         dispatch(restaurantActions.getById(restId))
-    }, []);
+    }, [dispatch]);
 
     const [selectedManager, setSelectedManager] = useState({});
     const [stateConfirm, setStateConfirm] = useState(false);

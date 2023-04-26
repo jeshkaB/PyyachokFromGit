@@ -5,15 +5,15 @@ import {useEffect} from "react";
 import {roles} from "../constants";
 import {restaurantActions} from "../redux";
 
-import css from './RestaurantForAdminPage.module.css'
+import css from './RestaurantForAdminPage.module.css';
 
-import {ChangeManager, CommentsInRest, NewsCreate, NewsList, RestaurantForAdmin} from "../components";
+import {ChangeManager, NewsCreate, NewsList, RestaurantForAdmin} from "../components";
 
 const RestaurantForAdminPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
-    const {role, isAuth} = useSelector(state => state.auth)
+    const {role, isAuth} = useSelector(state => state.auth);
 
     const {restaurant} = useSelector(state => state.restaurant);
 

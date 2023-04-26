@@ -66,9 +66,7 @@ const MarksInRest = () => {
                     </div>
                 </div>
             );
-            break
         case `/restaurants/${id}/marks`:
-
             return (
                 <div>
                     {!marks || JSON.stringify(marksOfRest) === '[]' && <p style={{color:'darkgray'}} >Оцінок поки що немає</p>}
@@ -76,7 +74,8 @@ const MarksInRest = () => {
                         marksOfRest.map(mark => <MarksCard key={mark._id} mark={mark}/>)}
                 </div>
             );
-            break
+        default:
+            break;
     }
 }
 

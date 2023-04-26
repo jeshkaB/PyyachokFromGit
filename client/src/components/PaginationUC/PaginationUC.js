@@ -10,10 +10,10 @@ const PaginationUC = ({entitiesList, setEntitiesOnPage, limit}) => {
     for (let i = 0; i < numberPages; i++) {
         pages.push(i + 1)
     }
-
+    const entitiesListJson = JSON.stringify(entitiesList);
     useEffect(() => {
         setEntitiesOnPage(entitiesList.slice(currentPage * limit - limit, limit * currentPage))
-    }, [currentPage, JSON.stringify(entitiesList)])
+    }, [currentPage, entitiesListJson])
 
     return (
             <div>

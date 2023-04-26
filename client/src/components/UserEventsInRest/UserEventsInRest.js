@@ -47,7 +47,7 @@ const UserEventsInRest = () => {
 
     return (
         <div>
-            <ModalUC modalText={'Адміністрація закликає вас бути обережними і не зустрічатися з незанйомими людьми в незнайомих місцях'} show={warningMessage}
+            <ModalUC modalText={'Адміністрація закликає вас бути обережними і не зустрічатися з незнайомими людьми в незнайомих місцях'} show={warningMessage}
                      onHide={onHide} type={'warning'}></ModalUC>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible} onHide={setModalIsVisible}></ModalUC>
 

@@ -18,8 +18,6 @@ const NewsCard = ({news}) => {
                     <div>{category}, {createdAt.slice(0,10)}</div>
                     {newsImage && <img width={120} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
-            break
-
         case '/news':
             return (
                 <div className={css.Card} onClick={() => navigate(`${_id}`)}>
@@ -29,7 +27,6 @@ const NewsCard = ({news}) => {
                     <div>{content}</div>
                     {newsImage && <img width={250} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
-            break
         case `/restaurants/${restaurant._id}`:
             return (
                 <div className={css.Card} onClick={() => navigate(`../news/${_id}` )}>
@@ -38,8 +35,6 @@ const NewsCard = ({news}) => {
                     <div>{content}</div>
                     {newsImage && <img width={200} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
-
-            break
         case `/restaurantsForAdmin/${restaurant._id}`:
             return (
                 <div className={css.Card} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
@@ -48,7 +43,6 @@ const NewsCard = ({news}) => {
                     <div>{content}</div>
                     {newsImage && <img width={200} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
-            break
         case '/superAdmin':
             return (
                 <div className={css.Card} onClick={() => navigate(`../restaurantsForAdmin/${restaurant._id}/newsForAdmin/${_id}`)}>
@@ -58,6 +52,7 @@ const NewsCard = ({news}) => {
                     <div>{content}</div>
                     {newsImage && <img width={200} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
+        default:
             break
     }
 }

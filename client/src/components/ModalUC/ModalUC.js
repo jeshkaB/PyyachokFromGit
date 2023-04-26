@@ -1,6 +1,5 @@
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
-import {click} from "@testing-library/user-event/dist/click";
 
 const ModalUC = ({modalText, type="secondary", show, onHide, executingFunction, funcValue}) => {
     const click = ()=> {

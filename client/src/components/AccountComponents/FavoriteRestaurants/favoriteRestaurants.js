@@ -12,7 +12,7 @@ const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
 
     useEffect(()=> {
         dispatch(userActions.getById(_id))
-    },[])
+    },[dispatch])
 
     const {favoriteRestaurants} = user //тут айдішки
 

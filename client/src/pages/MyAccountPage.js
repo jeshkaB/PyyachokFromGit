@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {restaurantActions} from "../redux";
-import {FavoriteRestaurants, ModalUC, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
+import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
 
 import css from './MyAccountPage.module.css'
 

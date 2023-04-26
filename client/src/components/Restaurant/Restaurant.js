@@ -80,7 +80,7 @@ const Restaurant = () => {
                     <div> Адреса: {restaurant.place}</div>
                     {isLocationAvailable && restaurant.coordinates && <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[0]},${restaurant.coordinates[1]}`}
                        className={css.Route}
-                       target="_blank"> Прокласти маршрут</a>}
+                       target="_blank" rel="noreferrer"> Прокласти маршрут</a>}
                     <div> Телефон: {restaurant.phone}</div>
                     <div> Режим роботи: {restaurant.hours}</div>
                     <div> email: {restaurant.email} </div>

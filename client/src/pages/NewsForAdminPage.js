@@ -1,6 +1,4 @@
 import {NewsForAdmin} from "../components";
-import {useSelector} from "react-redux";
-
 
 const NewsForAdminPage = () => {
 
