@@ -1,11 +1,11 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {commentActions} from "../../../redux";
+import {commentActions} from '../../../redux';
 
-import {Comment} from "../../Comment/comment";
+import {Comment} from '../../Comment/comment';
 
-import css from "../MyMarks/MyMarks.module.css";
+import css from '../MyMarks/MyMarks.module.css';
 
 
 const MyComments = ({user,restaurants}) => {
@@ -14,7 +14,7 @@ const MyComments = ({user,restaurants}) => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(commentActions.getAll())
+        dispatch(commentActions.getAll());
     }, [dispatch]);
 
     let myComments = [];
@@ -35,4 +35,4 @@ const MyComments = ({user,restaurants}) => {
     );
 };
 
-export {MyComments}
+export {MyComments};

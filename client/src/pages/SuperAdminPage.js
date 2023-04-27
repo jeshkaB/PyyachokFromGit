@@ -1,6 +1,6 @@
-import {useState} from "react";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 import {
     GeneralNewsCreate,
@@ -9,13 +9,13 @@ import {
     RestaurantCreate,
     RestaurantsForModeration,
     RestaurantsList, UsersList
-} from "../components";
+} from '../components';
 
-import css from './SuperAdminPage.module.css'
+import css from './SuperAdminPage.module.css';
 
 const SuperAdminPage = () => {
     const navigate = useNavigate();
-    const {userId} = useSelector(state => state.auth)
+    const {userId} = useSelector(state => state.auth);
     const [stateRestList, setStateRestList] = useState(false);
     const [stateNewsList, setStateNewsList] = useState(false);
     const [stateGenNewsList, setStateGenNewsList] = useState(false);
@@ -82,10 +82,10 @@ const SuperAdminPage = () => {
                     <h4>Оберіть користувача для редагування</h4>
                     <UsersList/>
                 </div>}
-            <div className={css.To} onClick={() => {navigate('top')}}> Топ закладів</div>
-            <div className={css.To} onClick={() => {navigate('views')}}> Статистика переглядів по всім закладам</div>
+            <div className={css.To} onClick={() => {navigate('top');}}> Топ закладів</div>
+            <div className={css.To} onClick={() => {navigate('views');}}> Статистика переглядів по всім закладам</div>
         </div>
     );
-}
+};
 
 export {SuperAdminPage};

@@ -1,40 +1,40 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-import {newsActions} from "../../redux";
+import {newsActions} from '../../redux';
 
-import {categoriesOfNews} from "../../constants";
+import {categoriesOfNews} from '../../constants';
 
-import css from './NewsCreate.module.css'
-import {Dropdown} from "react-bootstrap";
-import {ModalUC} from "../ModalUC/ModalUC";
+import css from './NewsCreate.module.css';
+import {Dropdown} from 'react-bootstrap';
+import {ModalUC} from '../ModalUC/ModalUC';
 
 const NewsCreate = ({restId}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {errors} = useSelector(state => state.news)
-    const {register, handleSubmit} = useForm()
+    const {errors} = useSelector(state => state.news);
+    const {register, handleSubmit} = useForm();
 
-    const [stateCreate, setStateCreate] = useState(false)
+    const [stateCreate, setStateCreate] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
 
-    const categories = categoriesOfNews.categories
+    const categories = categoriesOfNews.categories;
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('content', data.content);
         if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
         formData.append('category', selectedCategory);
-        const {error, payload:{_id} } = await dispatch(newsActions.create({id: restId, newsObj: formData}))
+        const {error, payload:{_id} } = await dispatch(newsActions.create({id: restId, newsObj: formData}));
         if (!error && _id) {
-            setStateCreate(false)
-            navigate(`../restaurantsForAdmin/${restId}/newsForAdmin/${_id}`)
-        } else setErrorIsVisible(true)
-    }
+            setStateCreate(false);
+            navigate(`../restaurantsForAdmin/${restId}/newsForAdmin/${_id}`);
+        } else setErrorIsVisible(true);
+    };
 
     return (
         <div>
@@ -44,7 +44,7 @@ const NewsCreate = ({restId}) => {
             {stateCreate &&
                 <div className={css.Form}>
                     <Dropdown>
-                        <Dropdown.Toggle variant={'outline-secondary'}>{selectedCategory || "Оберіть категорію новини"}</Dropdown.Toggle>
+                        <Dropdown.Toggle variant={'outline-secondary'}>{selectedCategory || 'Оберіть категорію новини'}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {categories.map(categ =>
                                 <Dropdown.Item key={categ} onClick={() => setSelectedCategory(categ)}>{categ}</Dropdown.Item>
@@ -52,7 +52,7 @@ const NewsCreate = ({restId}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Заголовок* <textarea rows="2" cols="60" required={true} {...register('title')}></textarea></label>
                         <br/>
                         <label>Зміст/текст* <textarea rows="5" cols="60" required={true} {...register('content')}></textarea></label>
@@ -67,6 +67,6 @@ const NewsCreate = ({restId}) => {
 
         </div>
     );
-}
+};
 
-export {NewsCreate}
+export {NewsCreate};

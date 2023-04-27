@@ -1,24 +1,24 @@
-import {Link, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
-import API_URL from "../../config";
-import {roles} from "../../constants";
-import {authActions} from "../../redux";
-import {signOutByGoogle} from "../../services";
+import API_URL from '../../config';
+import {roles} from '../../constants';
+import {authActions} from '../../redux';
+import {signOutByGoogle} from '../../services';
 
 import css from './userInfo.module.css';
 
 const UserInfo = ({user, isGoogle}) => {
-    const {role, name, avatar} = user
+    const {role, name, avatar} = user;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const clickExit = async () => {
         if (isGoogle)
-            await signOutByGoogle()
-        await dispatch(authActions.logout())
-        navigate('../home')
-    }
+            await signOutByGoogle();
+        await dispatch(authActions.logout());
+        navigate('../home');
+    };
 
     return (
         <div className={css.UserInfo}>
@@ -40,4 +40,4 @@ const UserInfo = ({user, isGoogle}) => {
     );
 };
 
-export {UserInfo}
+export {UserInfo};

@@ -1,5 +1,5 @@
-import {Button, Form} from "react-bootstrap";
-import css from './RestaurantsList.module.css'
+import {Button, Form} from 'react-bootstrap';
+import css from './RestaurantsList.module.css';
 
 const RestaurantSearchForm = ({setSearchParams}) => {
 
@@ -7,7 +7,7 @@ const RestaurantSearchForm = ({setSearchParams}) => {
         e.preventDefault();
         const query = e.target.search.value;
         setSearchParams({restName: query});
-    }
+    };
 
     return (
         <div className={css.Search}>
@@ -17,12 +17,12 @@ const RestaurantSearchForm = ({setSearchParams}) => {
                                   name="search"
                                   placeholder="пошук по найменуванню"/>
                 </Form.Group>
-                <Button size={"sm"} variant="outline-secondary" type="submit">
+                <Button size={'sm'} variant="outline-secondary" type="submit">
                     Знайти
                 </Button>
                 </Form>
         </div>
 
     );
-}
-export {RestaurantSearchForm}
+};
+export {RestaurantSearchForm};

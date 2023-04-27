@@ -1,11 +1,11 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {userEventActions} from "../../../redux";
+import {userEventActions} from '../../../redux';
 
-import {MyUserEvent} from "./MyUserEvent";
+import {MyUserEvent} from './MyUserEvent';
 
-import css from '../MyMarks/MyMarks.module.css'
+import css from '../MyMarks/MyMarks.module.css';
 
 const MyUserEvents = ({user}) => {
     const {_id} = user;
@@ -13,7 +13,7 @@ const MyUserEvents = ({user}) => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(userEventActions.getAll())
+        dispatch(userEventActions.getAll());
     }, [dispatch]);
 
     let myEvents;
@@ -34,4 +34,4 @@ const MyUserEvents = ({user}) => {
     );
 };
 
-export {MyUserEvents}
+export {MyUserEvents};

@@ -1,4 +1,4 @@
-import {Routes, Route, Navigate} from "react-router-dom";
+import {Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
 
 import {MainLayout} from './mainLayout';
@@ -7,9 +7,9 @@ import {
     RestaurantPage,RestaurantsListPage,SuperAdminPage,UserEventsPageInRestaurant,UserEventsListPage,
     UserEventPage,RestaurantForAdminPage,NewsForAdminPage,MarksInRestPage,GeneralNewsPage,GeneralNewsListPage,
     UserPage,TopPageForAdmin,ForgotPasswordPage,ViewStatisticsPage, GeneralViewStatisticsPage, CommentsInRestPage,
-} from "./pages";
+} from './pages';
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
@@ -47,6 +47,6 @@ const App = () => {
             </Routes>
         </div>
     );
-}
+};
 
 export {App};

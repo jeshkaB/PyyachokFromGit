@@ -1,11 +1,12 @@
-import {useNavigate, useParams} from 'react-router-dom'
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useNavigate, useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {generalNewsActions} from "../../redux";
-import {roles} from "../../constants";
-import API_URL from "../../config";
-import {NewsUpdate} from "../NewsUpdate/NewsUpdate";
+import {generalNewsActions} from '../../redux';
+import {roles} from '../../constants';
+import API_URL from '../../config';
+import {NewsUpdate} from '../NewsUpdate/NewsUpdate';
 import css from '../NewsForAdmin/NewsForAdmin.module.css';
 
 const GeneralNews = () => {
@@ -14,17 +15,17 @@ const GeneralNews = () => {
     const {id} = useParams();
     const {role} = useSelector(state => state.auth);
     const {newsOne} = useSelector(state => state.generalNews);
-    const {title, content, newsImage, category, createdAt} = newsOne
+    const {title, content, newsImage, category, createdAt} = newsOne;
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     useEffect(() => {
-        dispatch(generalNewsActions.getById(id))
-    }, [dispatch])
+        dispatch(generalNewsActions.getById(id));
+    }, [dispatch]);
 
     const clickDelete = async () => {
         const {error} = await dispatch(generalNewsActions.deleteById(id));
-        if (!error) navigate(-1)
-    }
+        if (!error) navigate(-1);
+    };
 
     return (
         <div>

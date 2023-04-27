@@ -1,8 +1,9 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {restaurantActions} from "../../redux";
-import {RestaurantCard} from "../RestaurantCard/RestaurantCard";
+import {restaurantActions} from '../../redux';
+import {RestaurantCard} from '../RestaurantCard/RestaurantCard';
 
 import css from '../TopCard/TopCard.module.css';
 
@@ -11,18 +12,18 @@ const TopCard = ({categ}) => {
     const {restaurants} = useSelector(state => state.restaurant);
 
     useEffect(() => {
-        dispatch(restaurantActions.getAll())
+        dispatch(restaurantActions.getAll());
     }, []);
 
-   let restaurantsWithTheCategory=[]
+   let restaurantsWithTheCategory=[];
    restaurants.forEach(rest => {
        if (rest.topCategories.includes(categ._id))
-           restaurantsWithTheCategory.push(rest)
-   })
-    const randomIntForRest = () => Math.floor(Math.random() * restaurantsWithTheCategory.length)
-    const restaurantForRender = restaurantsWithTheCategory[randomIntForRest()]
+           restaurantsWithTheCategory.push(rest);
+   });
+    const randomIntForRest = () => Math.floor(Math.random() * restaurantsWithTheCategory.length);
+    const restaurantForRender = restaurantsWithTheCategory[randomIntForRest()];
 
-    const isTop = true
+    const isTop = true;
     return (
         <div>
             {restaurantForRender &&
@@ -34,4 +35,4 @@ const TopCard = ({categ}) => {
     );
 };
 
-export {TopCard}
+export {TopCard};

@@ -1,7 +1,7 @@
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 
 const UserEventCard = ({event}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const {date,purpose,restaurant} = event;
 
     return (
@@ -14,4 +14,4 @@ const UserEventCard = ({event}) => {
     );
 };
 
-export {UserEventCard}
+export {UserEventCard};

@@ -1,4 +1,4 @@
-import {GeneralNewsList, RestaurantsList, TopList} from "../components";
+import {GeneralNewsList, RestaurantsList, TopList} from '../components';
 
 import css from './HomePage.module.css';
 
@@ -14,6 +14,6 @@ const HomePage = () => {
             </div>
         </div>
     );
-}
+};
 
 export {HomePage};

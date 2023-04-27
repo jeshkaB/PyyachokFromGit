@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {ApiService} from "../../services";
-import {defaultCaseReject} from "./utilityFunctions";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {ApiService} from '../../services';
+import {defaultCaseReject} from './utilityFunctions';
 
 const initialState = {
     views: [],
@@ -12,10 +12,10 @@ const getAll = createAsyncThunk(
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getViewStatisticsAll();
-            return data
+            return data;
 
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -24,10 +24,10 @@ const getByRestId = createAsyncThunk(
     async (restId, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getViewStatisticsByRestId(restId);
-            return data
+            return data;
 
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -41,19 +41,19 @@ const viewStatisticsSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.views= action.payload
+                    state.views= action.payload;
                 })
                 .addCase(getByRestId.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.views = action.payload
+                    state.views = action.payload;
                 })
                 .addDefaultCase((state, action) => {
-                    defaultCaseReject(state, action)
+                    defaultCaseReject(state, action);
                 })
 
     },
-)
+);
 const {reducer: viewStatisticsReducer} = viewStatisticsSlice;
 const viewStatisticsActions = {getAll, getByRestId};
 
-export {viewStatisticsReducer,viewStatisticsActions}
+export {viewStatisticsReducer,viewStatisticsActions};

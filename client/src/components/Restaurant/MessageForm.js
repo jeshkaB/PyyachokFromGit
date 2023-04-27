@@ -1,28 +1,28 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {restaurantActions} from "../../redux";
+import {restaurantActions} from '../../redux';
 
-import {ModalUC} from "../ModalUC/ModalUC";
+import {ModalUC} from '../ModalUC/ModalUC';
 
 const MessageForm = ({restId, userId, setStateMessageForm}) => {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const dispatch = useDispatch();
-    const {errors} = useSelector(state => state.restaurant)
+    const {errors} = useSelector(state => state.restaurant);
 
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
 
     const submit = async (data) => {
-        const {error} = await dispatch(restaurantActions.sendMessage({restId, userId, text:data}))
+        const {error} = await dispatch(restaurantActions.sendMessage({restId, userId, text:data}));
         if (!error) {
-            setModalIsVisible(true)
+            setModalIsVisible(true);
         }
         else {
-            setErrorIsVisible(true)
+            setErrorIsVisible(true);
         }
-    }
+    };
         return (
             <div>
                 <ModalUC modalText={'Ваше повідомлення відправлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'} executingFunction={setStateMessageForm} funcValue={true}></ModalUC>
@@ -37,5 +37,5 @@ const MessageForm = ({restId, userId, setStateMessageForm}) => {
             </div>
         );
 
-}
-export {MessageForm}
+};
+export {MessageForm};

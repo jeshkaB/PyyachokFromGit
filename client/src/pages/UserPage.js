@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router-dom';
 
-import {userActions} from "../redux";
+import {userActions} from '../redux';
 
-import {User, UserUpdateDelete} from "../components";
+import {User, UserUpdateDelete} from '../components';
 
 const UserPage = () => {
     const dispatch = useDispatch();
@@ -12,8 +13,8 @@ const UserPage = () => {
     const {user} = useSelector(state => state.user);
 
     useEffect(() => {
-        dispatch(userActions.getById(id))
-    }, [dispatch])
+        dispatch(userActions.getById(id));
+    }, [dispatch]);
 
 
     return (
@@ -29,4 +30,4 @@ const UserPage = () => {
     );
 };
 
-export {UserPage}
+export {UserPage};

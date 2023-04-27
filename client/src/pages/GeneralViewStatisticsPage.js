@@ -1,15 +1,15 @@
-import {useForm} from "react-hook-form";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useState} from 'react';
 
-import {GeneralViewStatistics} from "../components";
+import {GeneralViewStatistics} from '../components';
 
 const GeneralViewStatisticsPage = () => {
     const {register, handleSubmit} = useForm();
     const [period, setPeriod] = useState({});
 
     const submit = (data) => {
-        setPeriod(data)
-    }
+        setPeriod(data);
+    };
         return (
             <div style={{margin:20}}>
                 <form onSubmit={handleSubmit(submit)}>
@@ -20,5 +20,5 @@ const GeneralViewStatisticsPage = () => {
                 <GeneralViewStatistics period={period} />
             </div>
         );
-}
-export {GeneralViewStatisticsPage}
+};
+export {GeneralViewStatisticsPage};

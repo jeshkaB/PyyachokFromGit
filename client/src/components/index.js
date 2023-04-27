@@ -11,7 +11,7 @@ export * from './Comment/comment';
 export * from './CommentForm/commentForm';
 export * from './CommentsInRest/CommentsInRest';
 export * from './EventAnswerCard/EventAnswerCard';
-export * from './ForgotPasswordForm/ForgotPasswordForm'
+export * from './ForgotPasswordForm/ForgotPasswordForm';
 export * from './GeneralNews/GeneralNews';
 export * from './GeneralNewsCard/GeneralNewsCard';
 export * from './GeneralNewsCreate/GeneralNewsCreate';

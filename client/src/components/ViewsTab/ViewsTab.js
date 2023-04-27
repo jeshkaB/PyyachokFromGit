@@ -1,4 +1,4 @@
-import {Table} from "react-bootstrap";
+import {Table} from 'react-bootstrap';
 
 const ViewsTab = ({title, array}) => {
 
@@ -24,4 +24,4 @@ const ViewsTab = ({title, array}) => {
     );
 };
 
-export {ViewsTab}
+export {ViewsTab};

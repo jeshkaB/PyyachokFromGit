@@ -43,7 +43,7 @@ const ChartUC = ({chartTitle, array}) => {
     };
 
     const labels = [];
-    array.forEach(item => labels.push(item.label))
+    array.forEach(item => labels.push(item.label));
 
 
     const data = {
@@ -58,7 +58,7 @@ const ChartUC = ({chartTitle, array}) => {
         ],
     };
 
-    return <Line options={options} data={data}/>
+    return <Line options={options} data={data}/>;
 };
 
-export {ChartUC}
+export {ChartUC};

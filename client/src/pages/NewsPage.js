@@ -1,6 +1,6 @@
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
-import {News} from "../components";
+import {News} from '../components';
 
 import css from './NewsPage.module.css';
 
@@ -14,6 +14,6 @@ const NewsPage = (props) => {
             <div><News/></div>
         </div>
     );
-}
+};
 
-export {NewsPage}
+export {NewsPage};

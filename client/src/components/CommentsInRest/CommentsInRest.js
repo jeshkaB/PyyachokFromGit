@@ -1,13 +1,14 @@
-import {useLocation, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useLocation, useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {commentActions} from "../../redux";
-import {Comment} from "../Comment/comment";
-import {CommentForm} from "../CommentForm/commentForm";
-import {ModalUC} from "../ModalUC/ModalUC";
+import {commentActions} from '../../redux';
+import {Comment} from '../Comment/comment';
+import {CommentForm} from '../CommentForm/commentForm';
+import {ModalUC} from '../ModalUC/ModalUC';
 
-import css from './CommentsInRest.module.css'
+import css from './CommentsInRest.module.css';
 
 
 const CommentsInRest = () => {
@@ -18,22 +19,22 @@ const CommentsInRest = () => {
     const {comments,isChangeCommentsList} = useSelector(state => state.comment);
     const {isAuth} = useSelector(state => state.auth);
     const [stateForm, setStateForm] = useState(false);
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false);
 
-    const commentsInRest = comments?.filter(item => item.restaurant === id)
-    const commentsFirst5 = commentsInRest?.slice(0, 5) //в API посортовані по даті створення
+    const commentsInRest = comments?.filter(item => item.restaurant === id);
+    const commentsFirst5 = commentsInRest?.slice(0, 5); //в API посортовані по даті створення
 
     useEffect(() => {
-        dispatch(commentActions.getAll())
-    }, [isChangeCommentsList])
+        dispatch(commentActions.getAll());
+    }, [isChangeCommentsList]);
 
     const commentClick = () => {
-        if (isAuth) setStateForm(true)
-        else setModalIsVisible(true)
-    }
-    let commentsForRender = commentsFirst5
+        if (isAuth) setStateForm(true);
+        else setModalIsVisible(true);
+    };
+    let commentsForRender = commentsFirst5;
     if (location.pathname === `/restaurants/${id}/comments`)
-        commentsForRender = commentsInRest
+        commentsForRender = commentsInRest;
 
     return (
         <div style={{margin:20}} >
@@ -56,7 +57,7 @@ const CommentsInRest = () => {
         </div>
     );
 
-}
+};
 
 
-export {CommentsInRest}
+export {CommentsInRest};

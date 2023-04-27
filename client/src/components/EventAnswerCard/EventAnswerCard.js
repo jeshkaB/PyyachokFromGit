@@ -12,4 +12,4 @@ const EventAnswerCard = ({answ}) => {
     );
 };
 
-export {EventAnswerCard}
+export {EventAnswerCard};

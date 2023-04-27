@@ -1,4 +1,4 @@
-import {MarksInRest} from "../components";
+import {MarksInRest} from '../components';
 
 const MarksInRestPage = () => {
 
@@ -9,4 +9,4 @@ const MarksInRestPage = () => {
     );
 };
 
-export {MarksInRestPage}
+export {MarksInRestPage};

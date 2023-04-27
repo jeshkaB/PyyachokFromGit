@@ -1,4 +1,4 @@
-import {axiosService} from "./axios.service";
+import {axiosService} from './axios.service';
 
 const ApiService = {
 
@@ -26,6 +26,6 @@ const ApiService = {
     getViewStatisticsAll: () => axiosService.get('/ViewStatistics'),
     getViewStatisticsByRestId: (restId) => axiosService.get(`/ViewStatistics/${restId}`),
 
-}
+};
 
-export {ApiService}
+export {ApiService};

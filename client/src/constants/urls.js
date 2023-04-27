@@ -1,6 +1,6 @@
-import API_URL from '../config'
+import API_URL from '../config';
 
-const baseURL = API_URL
+const baseURL = API_URL;
 
 const urls = {
     auth: '/auth',
@@ -13,7 +13,7 @@ const urls = {
     topCategory: '/topCategory',
     users: '/users',
     userEvents: '/userEvents'
-}
+};
 
-export {baseURL,urls}
+export {baseURL,urls};
 

@@ -1,16 +1,16 @@
-import {Link} from "react-router-dom";
-import {UserInfo} from "../UserInfo/userInfo";
-import {useSelector} from "react-redux";
+import {Link} from 'react-router-dom';
+import {UserInfo} from '../UserInfo/userInfo';
+import {useSelector} from 'react-redux';
 
 // import {app} from "../../services";
-import {GoogleSignIn} from "../GoogleSignIn/GoogleSignIn";
+import {GoogleSignIn} from '../GoogleSignIn/GoogleSignIn';
 
-import css from './HeaderStyle.module.css'
+import css from './HeaderStyle.module.css';
 
 
 const Header = () => {
     const {isAuth, authUser, isGoogle} = useSelector(state => state.auth);
-    const isManager = true
+    const isManager = true;
 
     return (
         <div className={css.Header}>
@@ -43,6 +43,6 @@ const Header = () => {
         </div>
 
     );
-}
+};
 
-export {Header}
+export {Header};

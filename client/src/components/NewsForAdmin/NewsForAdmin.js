@@ -1,13 +1,14 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useNavigate, useParams} from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {newsActions} from "../../redux";
-import API_URL from "../../config";
+import {newsActions} from '../../redux';
+import API_URL from '../../config';
 
-import {NewsUpdate} from "../NewsUpdate/NewsUpdate";
+import {NewsUpdate} from '../NewsUpdate/NewsUpdate';
 
-import css from './NewsForAdmin.module.css'
+import css from './NewsForAdmin.module.css';
 
 const NewsForAdmin = () => {
     const dispatch = useDispatch();
@@ -17,14 +18,14 @@ const NewsForAdmin = () => {
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     useEffect(() => {
-        dispatch(newsActions.getById(newsId))
-    }, [dispatch])
+        dispatch(newsActions.getById(newsId));
+    }, [dispatch]);
 
-    const {title, content, newsImage, category, createdAt} = newsOne
+    const {title, content, newsImage, category, createdAt} = newsOne;
     const clickDelete = async () => {
         const {error} = await dispatch(newsActions.deleteById(newsId));
-        if (!error) navigate(-1)
-    }
+        if (!error) navigate(-1);
+    };
 
     return (
         <div>
@@ -56,7 +57,7 @@ const NewsForAdmin = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
-export {NewsForAdmin}
+export {NewsForAdmin};

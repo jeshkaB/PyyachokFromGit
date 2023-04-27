@@ -1,11 +1,11 @@
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
-import API_URL from "../../config";
-import {roles} from "../../constants";
-import {userActions} from "../../redux";
+import API_URL from '../../config';
+import {roles} from '../../constants';
+import {userActions} from '../../redux';
 
-import css from "./UserCard.module.css";
+import css from './UserCard.module.css';
 
 const UserCard = ({user}) => {
     const dispatch = useDispatch();
@@ -13,8 +13,8 @@ const UserCard = ({user}) => {
     const {_id, name, email, avatar, role} = user;
 
     const clickDeleteRole = async ()=> {
-       await dispatch(userActions.updateById({id:_id, userObj: {role: [roles.USER]}}))
-    }
+       await dispatch(userActions.updateById({id:_id, userObj: {role: [roles.USER]}}));
+    };
 
     return (
         <div>

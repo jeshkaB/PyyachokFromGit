@@ -1,19 +1,20 @@
-import {Outlet} from 'react-router-dom'
-import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {Outlet} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {Header, ModalUC} from "../components";
+import {Header, ModalUC} from '../components';
 
-import {authService, geolocationService} from "../services";
-import {authActions, geoActions} from "../redux";
+import {authService, geolocationService} from '../services';
+import {authActions, geoActions} from '../redux';
 
 
  const MainLayout = ()=> {
 
      const dispatch = useDispatch();
-     if ("geolocation" in navigator) {
+     if ('geolocation' in navigator) {
          geolocationService.getGeolocationFromNavigator();
-         dispatch(geoActions.setGeoLocation({isLocationAvailable:true, latitude:geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}))
+         dispatch(geoActions.setGeoLocation({isLocationAvailable:true, latitude:geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}));
      }
      else {
          dispatch(geoActions.setGeoLocation(null));
@@ -22,10 +23,10 @@ import {authActions, geoActions} from "../redux";
 
      useEffect(()=> {
          if (refreshToken)
-             dispatch(authActions.setCurrentUser({refreshToken}))
-     },[])
+             dispatch(authActions.setCurrentUser({refreshToken}));
+     },[]);
 
-     const [modalIsVisible, setModalIsVisible] = useState(!refreshToken)
+     const [modalIsVisible, setModalIsVisible] = useState(!refreshToken);
 
     return (
         <div>
@@ -34,6 +35,6 @@ import {authActions, geoActions} from "../redux";
             <Outlet/>
         </div>
     );
-}
+};
 
-export {MainLayout}
+export {MainLayout};

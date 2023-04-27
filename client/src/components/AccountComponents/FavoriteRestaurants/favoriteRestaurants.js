@@ -1,20 +1,21 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {userActions} from "../../../redux";
-import {RestaurantCard} from "../../RestaurantCard/RestaurantCard";
-import css from './FavoriteRestaurants.module.css'
+import {userActions} from '../../../redux';
+import {RestaurantCard} from '../../RestaurantCard/RestaurantCard';
+import css from './FavoriteRestaurants.module.css';
 
 const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
     const dispatch = useDispatch();
 
-    const {user} = useSelector(state => state.user)
+    const {user} = useSelector(state => state.user);
 
     useEffect(()=> {
-        dispatch(userActions.getById(_id))
-    },[dispatch])
+        dispatch(userActions.getById(_id));
+    },[dispatch]);
 
-    const {favoriteRestaurants} = user //тут айдішки
+    const {favoriteRestaurants} = user; //тут айдішки
 
     let favoriteRests = [];//вибираємо повні обєкти ресторанів, маючи масив айдішок улюблених ресторанів
     if (favoriteRestaurants) {
@@ -23,7 +24,7 @@ const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
                 if (rest._id === favorId) favoriteRests.push(rest);
 
             });
-        })
+        });
     }
 
     return (
@@ -38,6 +39,6 @@ const FavoriteRestaurants = ({user:{_id}, restaurants}) => {
         </div>
 
     );
-}
+};
 
 export {FavoriteRestaurants};

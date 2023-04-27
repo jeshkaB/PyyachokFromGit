@@ -1,11 +1,11 @@
 import {Button} from 'react-bootstrap';
 import {Modal} from 'react-bootstrap';
 
-const ModalUC = ({modalText, type="secondary", show, onHide, executingFunction, funcValue}) => {
+const ModalUC = ({modalText, type='secondary', show, onHide, executingFunction, funcValue}) => {
     const click = ()=> {
         onHide(false);
-        if (executingFunction) executingFunction(funcValue || '')
-    }
+        if (executingFunction) executingFunction(funcValue || '');
+    };
 
     return (
         <div>
@@ -23,4 +23,4 @@ const ModalUC = ({modalText, type="secondary", show, onHide, executingFunction, 
     );
 };
 
-export {ModalUC}
+export {ModalUC};

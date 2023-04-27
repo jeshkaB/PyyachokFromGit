@@ -1,4 +1,4 @@
-import {NewsList} from "../components";
+import {NewsList} from '../components';
 
 const NewsListPage = (props) => {
 
@@ -7,6 +7,6 @@ const NewsListPage = (props) => {
            <NewsList/>
         </div>
     );
-}
+};
 
 export {NewsListPage};

@@ -1,25 +1,25 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
-import {authActions} from "../../redux";
-import {ModalUC} from "../ModalUC/ModalUC";
+import {authActions} from '../../redux';
+import {ModalUC} from '../ModalUC/ModalUC';
 
 const LoginForm = () => {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {errors} = useSelector(state => state.auth)
+    const {errors} = useSelector(state => state.auth);
 
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
     const submit = async (data) => {//дата приходить с форми у вигляді: {name: 'qwer', email: 'qwer@i.ua', password: 'qwer123'}
-        const {error} = await dispatch(authActions.login({user: data}))//  при неуспішному виконанні: error = {message: 'Rejected'}, payload:{message: 'Email is already exist'}
+        const {error} = await dispatch(authActions.login({user: data}));//  при неуспішному виконанні: error = {message: 'Rejected'}, payload:{message: 'Email is already exist'}
         if (!error) {
-            navigate('../home')
-        } else setErrorIsVisible(true)
-    }
+            navigate('../home');
+        } else setErrorIsVisible(true);
+    };
 
     return (
         <div style={{margin: '20px'}}>
@@ -32,8 +32,8 @@ const LoginForm = () => {
                 <button>Увійти</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
 
 export {LoginForm};

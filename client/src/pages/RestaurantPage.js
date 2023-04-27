@@ -1,22 +1,22 @@
-import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {CommentsInRest, MarksInRest, MessageForm, ModalUC, NewsList, Restaurant,} from "../components";
-import {Link, useParams} from "react-router-dom";
+import {CommentsInRest, MarksInRest, MessageForm, ModalUC, NewsList, Restaurant,} from '../components';
+import {Link, useParams} from 'react-router-dom';
 
-import css from './RestaurantPage.module.css'
+import css from './RestaurantPage.module.css';
 
 const RestaurantPage = () => {
-    const {id} = useParams()
-    const [stateMessageForm, setStateMessageForm] = useState(false)
-    const {isAuth, userId} = useSelector(state => state.auth)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const {id} = useParams();
+    const [stateMessageForm, setStateMessageForm] = useState(false);
+    const {isAuth, userId} = useSelector(state => state.auth);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
 
     const messageClick = () => {
-        if (isAuth) setStateMessageForm(true)
+        if (isAuth) setStateMessageForm(true);
         else
-            setModalIsVisible(true)
-    }
+            setModalIsVisible(true);
+    };
     return (
         <div className={css.HolePage}>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
@@ -54,6 +54,6 @@ const RestaurantPage = () => {
 
         </div>
     );
-}
+};
 
 export {RestaurantPage};

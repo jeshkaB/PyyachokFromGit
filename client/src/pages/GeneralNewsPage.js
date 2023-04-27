@@ -1,11 +1,11 @@
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 
-import {Button} from "react-bootstrap";
+import {Button} from 'react-bootstrap';
 
-import {GeneralNews} from "../components";
+import {GeneralNews} from '../components';
 
 const GeneralNewsPage = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     return (
@@ -14,6 +14,6 @@ const GeneralNewsPage = () => {
             <div><GeneralNews/></div>
         </div>
     );
-}
+};
 
-export {GeneralNewsPage}
+export {GeneralNewsPage};

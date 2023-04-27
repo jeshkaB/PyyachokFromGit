@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {GoogleAuthProvider, signInWithPopup, getAuth, signOut} from 'firebase/auth';
-import {FireBaseConfig} from "../config";
+import {FireBaseConfig} from '../config';
 
 const firebaseConfig = {
     apiKey: FireBaseConfig.API_KEY,
@@ -9,22 +9,22 @@ const firebaseConfig = {
     storageBucket: FireBaseConfig.STORAGE_BUCKET,
     messagingSenderId: FireBaseConfig.MESSAGING_SENDER_ID,
     appId: FireBaseConfig.APP_ID
-}
-const app = initializeApp(firebaseConfig)
+};
+const app = initializeApp(firebaseConfig);
 
 const googleAuthProvider = new GoogleAuthProvider();
 // const facebookAuthProvider = new FacebookAuthProvider();
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 const signInByGoogle = ()=> signInWithPopup(auth, googleAuthProvider).then((credential) => {
-    return credential
-}).catch ((error) => alert(error.message))
+    return credential;
+}).catch ((error) => alert(error.message));
 
 const signOutByGoogle = () => signOut(auth).then(() => {
 
 }).catch((error) => {
-    alert(error.message)
+    alert(error.message);
 });
 
-export {signInByGoogle,signOutByGoogle}
+export {signInByGoogle,signOutByGoogle};

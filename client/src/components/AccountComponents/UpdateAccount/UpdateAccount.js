@@ -1,48 +1,48 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-import {userActions} from "../../../redux";
-import {ModalUC} from "../../ModalUC/ModalUC";
+import {userActions} from '../../../redux';
+import {ModalUC} from '../../ModalUC/ModalUC';
 
-import css from './UpdateAccount.module.css'
+import css from './UpdateAccount.module.css';
 
 
 const UpdateAccount = ({user}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {register, handleSubmit} = useForm({mode: 'all'})
+    const {register, handleSubmit} = useForm({mode: 'all'});
     const {_id, name} = user;
-    const {errors} = useSelector(state => state.user)
-    const {errors: authErrors} = useSelector(state => state.auth)
+    const {errors} = useSelector(state => state.user);
+    const {errors: authErrors} = useSelector(state => state.auth);
 
-    const [stateUpd, setStateUpd] = useState(false)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
-    const [modalData, setModalData] = useState({text: '', type: 'secondary'})
+    const [stateUpd, setStateUpd] = useState(false);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [modalData, setModalData] = useState({text: '', type: 'secondary'});
 
 
     const submit = async (data) => {
         const formData = new FormData();
-        formData.append('name', data.name)
+        formData.append('name', data.name);
         if (data.avatar[0])
-            formData.append('avatar', data.avatar[0])
-        const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}))
+            formData.append('avatar', data.avatar[0]);
+        const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
         if (!error) {
-            setStateUpd(false)
-            setModalData({text: 'Двні успішно змінено', type: 'success'})
-            setModalIsVisible(true)
-        } else setErrorIsVisible(true)
-    }
+            setStateUpd(false);
+            setModalData({text: 'Двні успішно змінено', type: 'success'});
+            setModalIsVisible(true);
+        } else setErrorIsVisible(true);
+    };
 
-    const [stateUpdPassword, setStateUpdPassword] = useState(false)
+    const [stateUpdPassword, setStateUpdPassword] = useState(false);
     const submitPass = async (data) => {
-        const {error} = await dispatch(userActions.changePassword({id: _id, passObj: data}))
+        const {error} = await dispatch(userActions.changePassword({id: _id, passObj: data}));
         setStateUpdPassword(false);
-        if (!error) navigate('../login')
-        else setErrorIsVisible(true)
-    }
+        if (!error) navigate('../login');
+        else setErrorIsVisible(true);
+    };
 
     return (
         <div>
@@ -83,4 +83,4 @@ const UpdateAccount = ({user}) => {
     );
 };
 
-export {UpdateAccount}
+export {UpdateAccount};

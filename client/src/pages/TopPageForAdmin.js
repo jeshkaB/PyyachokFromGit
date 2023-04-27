@@ -1,26 +1,26 @@
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useForm} from "react-hook-form";
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useForm} from 'react-hook-form';
 
-import {topCategoryActions} from "../redux";
-import {ModalUC, RestaurantsListForTop, TopCategoriesList} from "../components";
+import {topCategoryActions} from '../redux';
+import {ModalUC, RestaurantsListForTop, TopCategoriesList} from '../components';
 
-import css from './TopPageForAdmin.module.css'
+import css from './TopPageForAdmin.module.css';
 
 const TopPageForAdmin = () => {
-    const dispatch = useDispatch()
-    const {register,handleSubmit} = useForm()
-    const [stateForm, setStateForm] = useState(false)
-    const [stateRestList, setStateRestList] = useState(false)
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
-    const {errors} = useSelector(state => state.topCategory)
+    const dispatch = useDispatch();
+    const {register,handleSubmit} = useForm();
+    const [stateForm, setStateForm] = useState(false);
+    const [stateRestList, setStateRestList] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const {errors} = useSelector(state => state.topCategory);
 
     const submit = async (data)=> {
         const {error} = await dispatch(topCategoryActions.create({categObj:data}));
         if (!error) {
-            setStateForm(false)
-        }else setErrorIsVisible(true)
-    }
+            setStateForm(false);
+        }else setErrorIsVisible(true);
+    };
 
     return (
         <div className={css.Hole}>
@@ -47,6 +47,6 @@ const TopPageForAdmin = () => {
             </div>}
         </div>
     );
-}
+};
 
 export {TopPageForAdmin};

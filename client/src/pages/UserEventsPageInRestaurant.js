@@ -1,4 +1,4 @@
-import {UserEventsInRest} from "../components";
+import {UserEventsInRest} from '../components';
 
 const UserEventsPageInRestaurant = () => {
 
@@ -7,5 +7,5 @@ const UserEventsPageInRestaurant = () => {
             <UserEventsInRest/>
         </div>
     );
-}
-export {UserEventsPageInRestaurant}
+};
+export {UserEventsPageInRestaurant};

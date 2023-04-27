@@ -1,8 +1,8 @@
 
-import {StarsRating} from "../StarsRating/starsRating";
+import {StarsRating} from '../StarsRating/starsRating';
 
 const MarksCard = ({mark}) => {
-    const date = mark.createdAt.slice(0, 10)
+    const date = mark.createdAt.slice(0, 10);
 
     return (
         <div>
@@ -18,4 +18,4 @@ const MarksCard = ({mark}) => {
     );
 };
 
-export {MarksCard}
+export {MarksCard};

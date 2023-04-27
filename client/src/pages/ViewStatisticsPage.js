@@ -1,15 +1,15 @@
-import {useForm} from "react-hook-form";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useState} from 'react';
 
-import {ViewStatistics} from "../components/ViewStatistics/ViewStatistics";
+import {ViewStatistics} from '../components/ViewStatistics/ViewStatistics';
 
 const ViewStatisticsPage = () => {
     const {register, handleSubmit} = useForm();
     const [period, setPeriod] = useState({});
 
     const submit = (data) => {
-        setPeriod(data)
-    }
+        setPeriod(data);
+    };
 
         return (
             <div>
@@ -22,5 +22,5 @@ const ViewStatisticsPage = () => {
                 <ViewStatistics period={period} />
             </div>
         );
-}
-export {ViewStatisticsPage}
+};
+export {ViewStatisticsPage};

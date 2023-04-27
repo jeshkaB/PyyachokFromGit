@@ -1,11 +1,12 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
-import {restaurantActions} from "../redux";
-import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} from "../components";
+import {restaurantActions} from '../redux';
+import {FavoriteRestaurants, MyComments, MyMarks, MyUserEvents, UpdateAccount} from '../components';
 
-import css from './MyAccountPage.module.css'
+import css from './MyAccountPage.module.css';
 
 const MyAccountPage = () => {
     const dispatch = useDispatch();
@@ -14,12 +15,12 @@ const MyAccountPage = () => {
 
     useEffect(()=>{
         if (!isAuth) {
-            navigate('../home')
+            navigate('../home');
         }
-    },[])
-    const {restaurants} = useSelector(state => state.restaurant)
+    },[]);
+    const {restaurants} = useSelector(state => state.restaurant);
     useEffect(() => {
-        dispatch(restaurantActions.getAll())
+        dispatch(restaurantActions.getAll());
     }, []);
 
     return (
@@ -41,6 +42,6 @@ const MyAccountPage = () => {
             }
         </div>
     );
-}
+};
 
 export {MyAccountPage};

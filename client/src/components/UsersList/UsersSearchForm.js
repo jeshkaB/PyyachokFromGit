@@ -1,5 +1,5 @@
-import {Form} from "react-bootstrap";
-import css from '../RestaurantsList/RestaurantsList.module.css'
+import {Form} from 'react-bootstrap';
+import css from '../RestaurantsList/RestaurantsList.module.css';
 
 const UsersSearchForm = ({setSearchParams}) => {
 
@@ -7,7 +7,7 @@ const UsersSearchForm = ({setSearchParams}) => {
         e.preventDefault();
         const query = e.target.search.value;
         setSearchParams({userEmail: query});
-    }
+    };
 
     return (
         <div className={css.Search}>
@@ -22,5 +22,5 @@ const UsersSearchForm = ({setSearchParams}) => {
         </div>
 
     );
-}
-export {UsersSearchForm}
+};
+export {UsersSearchForm};

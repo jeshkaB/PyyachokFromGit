@@ -1,4 +1,4 @@
-import StarRatings from "react-star-ratings/build/star-ratings";
+import StarRatings from 'react-star-ratings/build/star-ratings';
 
 const StarsRating = ({rating}) => {
 
@@ -16,6 +16,6 @@ const StarsRating = ({rating}) => {
             />
         </div>
     );
-}
+};
 
-export {StarsRating}
+export {StarsRating};

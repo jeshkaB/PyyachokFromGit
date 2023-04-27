@@ -1,4 +1,4 @@
-import {UserEventList} from "../components";
+import {UserEventList} from '../components';
 
 const UserEventsListPage = (props) => {
     return (
@@ -9,6 +9,6 @@ const UserEventsListPage = (props) => {
 
        </div>
     );
-}
+};
 
-export {UserEventsListPage}
+export {UserEventsListPage};

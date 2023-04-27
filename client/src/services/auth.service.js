@@ -1,5 +1,5 @@
-import {keysLS, urls} from "../constants";
-import {axiosService,axiosRefreshService} from "./axios.service";
+import {keysLS, urls} from '../constants';
+import {axiosService,axiosRefreshService} from './axios.service';
 
 
 const authService = {
@@ -28,7 +28,7 @@ const authService = {
         localStorage.getItem(keysLS.refresh),
     deleteTokensInLS: () => {
         localStorage.removeItem(keysLS.access);
-        localStorage.removeItem(keysLS.refresh)
+        localStorage.removeItem(keysLS.refresh);
     },
 
     saveUserIdInLS: (userId) =>
@@ -37,6 +37,6 @@ const authService = {
         localStorage.getItem(keysLS.userId),
     deleteUserIdInLS: () =>
         localStorage.removeItem(keysLS.userId)
-}
+};
 
-export {authService}
+export {authService};

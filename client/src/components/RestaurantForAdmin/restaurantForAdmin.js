@@ -1,24 +1,24 @@
-import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
-import {restaurantActions} from "../../redux";
-import API_URL from "../../config";
-import {roles} from "../../constants";
+import {restaurantActions} from '../../redux';
+import API_URL from '../../config';
+import {roles} from '../../constants';
 
-import {StarsRating} from "../StarsRating/starsRating";
-import {RestaurantUpdate} from "../RestaurantUpdate/RestaurantUpdate";
+import {StarsRating} from '../StarsRating/starsRating';
+import {RestaurantUpdate} from '../RestaurantUpdate/RestaurantUpdate';
 
-import css from './RestaurantForAdmin.module.css'
+import css from './RestaurantForAdmin.module.css';
 
 const RestaurantForAdmin = ({restId, role, restaurant}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [confirmDelete, setConfirmDelete] = useState(false);
 
 
-    let isSuperAdmin
-    if (role && role.includes(roles.SUPER_ADMIN)) isSuperAdmin = true
+    let isSuperAdmin;
+    if (role && role.includes(roles.SUPER_ADMIN)) isSuperAdmin = true;
 
     return (
         <div>
@@ -53,7 +53,7 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
             <hr/>
             <RestaurantUpdate restaurant={restaurant}/>
         </div>
-    )
+    );
 };
 
 export {RestaurantForAdmin};

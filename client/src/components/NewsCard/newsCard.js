@@ -1,8 +1,8 @@
-import {useLocation, useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom';
 
-import API_URL from "../../config";
+import API_URL from '../../config';
 
-import css from './newsCardStyle.module.css'
+import css from './newsCardStyle.module.css';
 
 const NewsCard = ({news}) => {
     const {_id, title, content, newsImage, category, restaurant, createdAt} = news;
@@ -53,9 +53,9 @@ const NewsCard = ({news}) => {
                     {newsImage && <img width={200} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 </div>);
         default:
-            break
+            break;
     }
-}
+};
 
 
 export {NewsCard};

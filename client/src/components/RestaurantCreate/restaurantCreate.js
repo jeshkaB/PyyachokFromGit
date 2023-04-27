@@ -1,21 +1,21 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {restaurantActions} from "../../redux";
+import {restaurantActions} from '../../redux';
 
-import {ModalUC} from "../ModalUC/ModalUC";
-import css  from '../RestaurantUpdate/RestaurantUpdate.module.css'
+import {ModalUC} from '../ModalUC/ModalUC';
+import css  from '../RestaurantUpdate/RestaurantUpdate.module.css';
 
 
 const RestaurantCreate = () => {
     const dispatch = useDispatch();
-    const {errors} = useSelector(state => state.restaurant)
-    const {register, handleSubmit} = useForm()
+    const {errors} = useSelector(state => state.restaurant);
+    const {register, handleSubmit} = useForm();
 
-    const [stateCreate, setStateCreate] = useState(false)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [stateCreate, setStateCreate] = useState(false);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -30,12 +30,12 @@ const RestaurantCreate = () => {
         formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
-        const {error} = await dispatch(restaurantActions.create({restObj: formData}))
+        const {error} = await dispatch(restaurantActions.create({restObj: formData}));
         if (!error) {
-            setStateCreate(false)
-            setModalIsVisible(true)}
-        else setErrorIsVisible(true)
-    }
+            setStateCreate(false);
+            setModalIsVisible(true);}
+        else setErrorIsVisible(true);
+    };
 
     return (
         <div>
@@ -46,7 +46,7 @@ const RestaurantCreate = () => {
             {stateCreate &&
                 <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Назва* <input  required={true} {...register('name')}/></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" required={true} {...register('mainImage')}/></label>
@@ -78,6 +78,6 @@ const RestaurantCreate = () => {
 
         </div>
     );
-}
+};
 
-export {RestaurantCreate}
+export {RestaurantCreate};

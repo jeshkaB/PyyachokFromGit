@@ -1,30 +1,31 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
 
-import {restaurantActions} from "../../redux";
-import {paginationLimits} from "../../constants/paginationLimits";
+import {restaurantActions} from '../../redux';
+import {paginationLimits} from '../../constants/paginationLimits';
 
-import {RestaurantCardForTop} from "./RestaurantCardForTop";
-import {RestaurantSearchForm} from "../RestaurantsList/RestaurantSearchForm";
-import {PaginationUC} from "../PaginationUC/PaginationUC";
+import {RestaurantCardForTop} from './RestaurantCardForTop';
+import {RestaurantSearchForm} from '../RestaurantsList/RestaurantSearchForm';
+import {PaginationUC} from '../PaginationUC/PaginationUC';
 
-import css from "../UsersList/UsersList.module.css";
+import css from '../UsersList/UsersList.module.css';
 
 const RestaurantsListForTop = () => {
-    const dispatch= useDispatch()
+    const dispatch= useDispatch();
     const {restaurants} = useSelector(state => state.restaurant);
-    const {stateChangeTop} = useSelector(state => state.topCategory)
+    const {stateChangeTop} = useSelector(state => state.topCategory);
 
-    const [restaurantsOnPage, setRestaurantsOnPage] = useState([])
+    const [restaurantsOnPage, setRestaurantsOnPage] = useState([]);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get('restName') || '';
-    const restaurantsFound = restaurants.filter(rest => rest.name.toLowerCase().includes(searchQuery))
+    const restaurantsFound = restaurants.filter(rest => rest.name.toLowerCase().includes(searchQuery));
 
     useEffect(()=>{
-        dispatch(restaurantActions.getAll())
-    },[stateChangeTop])
+        dispatch(restaurantActions.getAll());
+    },[stateChangeTop]);
 
     return (
         <div>
@@ -46,4 +47,4 @@ const RestaurantsListForTop = () => {
     );
 };
 
-export {RestaurantsListForTop}
+export {RestaurantsListForTop};

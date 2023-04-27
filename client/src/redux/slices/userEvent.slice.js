@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {ApiService} from "../../services";
-import {defaultCaseReject} from "./utilityFunctions";
-import {urls} from "../../constants";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {ApiService} from '../../services';
+import {defaultCaseReject} from './utilityFunctions';
+import {urls} from '../../constants';
 
 
 const initialState = {
@@ -18,9 +18,9 @@ const getAll = createAsyncThunk(
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getAll(entity);
-            return data
+            return data;
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -29,12 +29,12 @@ const create = createAsyncThunk(
     'userEventSlice/create',
     async ({id, eventObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.createByRestId(entity, id, eventObj)
-            return data
+            const {data} = await ApiService.createByRestId(entity, id, eventObj);
+            return data;
 
 
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -43,10 +43,10 @@ const getById = createAsyncThunk(
     'userEventSlice/getById',
     async (id, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getById(entity, id)
-            return data
+            const {data} = await ApiService.getById(entity, id);
+            return data;
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -55,10 +55,10 @@ const updateById = createAsyncThunk(
     'userEventSlice/updateById',
     async ({id, eventObj}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.updateById(entity, id, eventObj)
-            return data
+            const {data} = await ApiService.updateById(entity, id, eventObj);
+            return data;
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -68,9 +68,9 @@ const deleteById = createAsyncThunk(
     async (id, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.deleteById(entity, id);
-            return data
+            return data;
         } catch (e) {
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(e.response.data);
         }
     }
 );
@@ -81,24 +81,24 @@ const userEventSlice = createSlice({
         initialState,
         reducers: {
             setWarningMessage: (state,action)=>{
-                state.warningMessage = action.payload
+                state.warningMessage = action.payload;
             }
         },
         extraReducers: (builder) =>
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvents = action.payload
+                    state.userEvents = action.payload;
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.userEvent = action.payload
+                    state.userEvent = action.payload;
                 })
                 .addCase(create.fulfilled, (state, action) => {
                     state.errors = null;
                     state.userEvent = action.payload;
                     state.userEvents.push(action.payload);
-                    state.isChangeUserEventsList = !state.isChangeUserEventsList
+                    state.isChangeUserEventsList = !state.isChangeUserEventsList;
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
@@ -107,17 +107,17 @@ const userEventSlice = createSlice({
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
-                    const index = state.userEvents.findIndex(event=>event._id === action.payload._id)
+                    const index = state.userEvents.findIndex(event=>event._id === action.payload._id);
                     state.userEvents.splice(index,1);
-                    state.isChangeUserEventsList = !state.isChangeUserEventsList
+                    state.isChangeUserEventsList = !state.isChangeUserEventsList;
                 })
                 .addDefaultCase((state, action) => {
-                    defaultCaseReject(state, action)
+                    defaultCaseReject(state, action);
                 })
 
     },
-)
+);
 const {reducer: userEventReducer, actions:{setWarningMessage}} = userEventSlice;
 const userEventActions = {getAll, getById, create, updateById, deleteById, setWarningMessage};
 
-export {userEventReducer, userEventActions}
+export {userEventReducer, userEventActions};

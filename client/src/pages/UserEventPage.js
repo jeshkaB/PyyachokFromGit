@@ -1,4 +1,4 @@
-import {UserEvent} from "../components";
+import {UserEvent} from '../components';
 
 
 const UserEventPage = () => {
@@ -8,5 +8,5 @@ const UserEventPage = () => {
            <UserEvent/>
         </div>
     );
-}
-export {UserEventPage}
+};
+export {UserEventPage};

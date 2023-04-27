@@ -1,12 +1,13 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 
-import {restaurantActions, userEventActions} from "../../redux";
-import {UserEventForm} from "../UserEventForm/UserEventForm";
-import {ModalUC} from "../ModalUC/ModalUC";
+import {restaurantActions, userEventActions} from '../../redux';
+import {UserEventForm} from '../UserEventForm/UserEventForm';
+import {ModalUC} from '../ModalUC/ModalUC';
 
-import css from './UserEventsInRest.module.css'
+import css from './UserEventsInRest.module.css';
 
 
 const UserEventsInRest = () => {
@@ -19,15 +20,15 @@ const UserEventsInRest = () => {
     const {userEvents: userEventsIds, name} = restaurant;
     const {userEvents, warningMessage} = useSelector(state => state.userEvent);
 
-    const [stateForm, setStateForm] = useState(false)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [stateForm, setStateForm] = useState(false);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
 
     useEffect(() => {
-        dispatch(userEventActions.getAll())
+        dispatch(userEventActions.getAll());
     }, []);
 
     useEffect(() => {
-        dispatch(restaurantActions.getById(id))
+        dispatch(restaurantActions.getById(id));
     }, []);
 
     let userEventsInRest = [];
@@ -36,14 +37,14 @@ const UserEventsInRest = () => {
             userEvents.forEach(event => {
                 if (event._id === eventId) userEventsInRest.push(event);
             });
-        })
+        });
     }
 
     const clickCreateEvent = ()=> {
-        if (isAuth) setStateForm(true)
-        else setModalIsVisible(true)
-    }
-     const onHide = (value)=> dispatch(userEventActions.setWarningMessage(value))
+        if (isAuth) setStateForm(true);
+        else setModalIsVisible(true);
+    };
+     const onHide = (value)=> dispatch(userEventActions.setWarningMessage(value));
 
     return (
         <div>
@@ -54,7 +55,7 @@ const UserEventsInRest = () => {
             <h1>Пиячок в {name}</h1>
             <div>
                 {JSON.stringify(userEventsInRest)!== '[]' ?
-                    <div style={{cursor:"pointer"}}>{userEventsInRest.map(event =>
+                    <div style={{cursor:'pointer'}}>{userEventsInRest.map(event =>
                         <div style={{border: 'solid grey 1px', margin: 2}} key={event._id} onClick={() => navigate(`../UserEvents/${event._id}`)}>
                             <p>{event.date.slice(0, 10)}</p>
                             <h3>{event.purpose}</h3>
@@ -75,6 +76,6 @@ const UserEventsInRest = () => {
             </div>
         </div>
     );
-}
+};
 
-export {UserEventsInRest}
+export {UserEventsInRest};

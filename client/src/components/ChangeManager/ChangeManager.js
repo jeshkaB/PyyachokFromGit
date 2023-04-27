@@ -1,45 +1,46 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {Dropdown} from "react-bootstrap";
-import {roles} from "../../constants";
-import {restaurantActions, userActions} from "../../redux";
+import {Dropdown} from 'react-bootstrap';
+import {roles} from '../../constants';
+import {restaurantActions, userActions} from '../../redux';
 
-import css from './ChangeManager.module.css'
+import css from './ChangeManager.module.css';
 
 
 const ChangeManager = ({restId}) => {
     const dispatch = useDispatch();
     const {users} = useSelector(state => state.user);
         useEffect(() => {
-        dispatch(userActions.getAll())
-    }, [dispatch])
+        dispatch(userActions.getAll());
+    }, [dispatch]);
 
     const {restaurant} = useSelector(state => state.restaurant);
     useEffect(() => {
-        dispatch(restaurantActions.getById(restId))
+        dispatch(restaurantActions.getById(restId));
     }, [dispatch]);
 
     const [selectedManager, setSelectedManager] = useState({});
     const [stateConfirm, setStateConfirm] = useState(false);
 
-    const managers = users.filter(user => user.role.includes(roles.REST_ADMIN) && user._id !== restaurant.user)
-    const notManagers = users.filter(user => !user.role.includes(roles.REST_ADMIN) && !user.role.includes(roles.SUPER_ADMIN))
-    const currentManager = users.find(user => user._id === restaurant.user)
+    const managers = users.filter(user => user.role.includes(roles.REST_ADMIN) && user._id !== restaurant.user);
+    const notManagers = users.filter(user => !user.role.includes(roles.REST_ADMIN) && !user.role.includes(roles.SUPER_ADMIN));
+    const currentManager = users.find(user => user._id === restaurant.user);
 
     const clickSelectedManager = (manager) => {
         setSelectedManager(manager);
         setStateConfirm(true);
-    }
+    };
 
     const changeManager = async () => {
-        const {error} = await dispatch(restaurantActions.changeRestAdmin({restId, userId: selectedManager._id}))
+        const {error} = await dispatch(restaurantActions.changeRestAdmin({restId, userId: selectedManager._id}));
 
         if (!error) {
             setStateConfirm(false);
             setSelectedManager({});
         }
-    }
+    };
 
     return (
         <div className={css.Hole}>
@@ -53,7 +54,7 @@ const ChangeManager = ({restId}) => {
                     </div>}
                 <h5>Вибрати нового адміністартора закладу:</h5>
                 <Dropdown>
-                    <Dropdown.Toggle variant={"outline-secondary"}>{"з адміністарторів закладів "}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={'outline-secondary'}>{'з адміністарторів закладів '}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {managers.map(manager =>
                             <Dropdown.Item key={manager._id}
@@ -62,7 +63,7 @@ const ChangeManager = ({restId}) => {
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
-                    <Dropdown.Toggle variant={"outline-secondary"}>{"зі звичайних користувачів"}</Dropdown.Toggle>
+                    <Dropdown.Toggle variant={'outline-secondary'}>{'зі звичайних користувачів'}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {notManagers.map(user =>
                             <Dropdown.Item key={user._id}
@@ -85,4 +86,4 @@ const ChangeManager = ({restId}) => {
     );
 };
 
-export {ChangeManager}
+export {ChangeManager};

@@ -7,7 +7,7 @@ const FireBaseConfig = {
     STORAGE_BUCKET: process.env.REACT_APP_STORAGE_BUCKET,
     MESSAGING_SENDER_ID: process.env.REACT_APP_MESSAGING_SENDER_ID,
     APP_ID: process.env.REACT_APP_APP_ID
-}
+};
 
-export default API_URL
-export {FireBaseConfig}
+export default API_URL;
+export {FireBaseConfig};

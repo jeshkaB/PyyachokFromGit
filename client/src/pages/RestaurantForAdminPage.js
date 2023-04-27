@@ -1,13 +1,14 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {Link, useNavigate, useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {roles} from "../constants";
-import {restaurantActions} from "../redux";
+import {roles} from '../constants';
+import {restaurantActions} from '../redux';
 
 import css from './RestaurantForAdminPage.module.css';
 
-import {ChangeManager, NewsCreate, NewsList, RestaurantForAdmin} from "../components";
+import {ChangeManager, NewsCreate, NewsList, RestaurantForAdmin} from '../components';
 
 const RestaurantForAdminPage = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const RestaurantForAdminPage = () => {
     const {restaurant} = useSelector(state => state.restaurant);
 
     useEffect(() => {
-        dispatch(restaurantActions.getById(id))
+        dispatch(restaurantActions.getById(id));
     }, []);
 
 

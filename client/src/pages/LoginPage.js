@@ -1,4 +1,4 @@
-import {LoginForm, LoginFormForgot} from "../components";
+import {LoginForm, LoginFormForgot} from '../components';
 
 const LoginPage = ()=> {
 
@@ -8,6 +8,6 @@ const LoginPage = ()=> {
                <LoginFormForgot/>
         </div>
     );
-}
+};
 
 export {LoginPage};

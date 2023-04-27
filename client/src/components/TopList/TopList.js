@@ -1,17 +1,18 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import {topCategoryActions} from "../../redux";
-import {TopCard} from "../TopCard/TopCard";
+import {topCategoryActions} from '../../redux';
+import {TopCard} from '../TopCard/TopCard';
 
-import css from '../TopList/TopList.module.css'
+import css from '../TopList/TopList.module.css';
 
 const TopList = () => {
     const dispatch = useDispatch();
     const {topCategories} = useSelector(state => state.topCategory);
 
     useEffect(() => {
-        dispatch(topCategoryActions.getAll())
+        dispatch(topCategoryActions.getAll());
     }, []);
 
     return (
@@ -22,4 +23,4 @@ const TopList = () => {
     );
 };
 
-export {TopList}
+export {TopList};

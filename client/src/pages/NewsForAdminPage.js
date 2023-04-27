@@ -1,4 +1,4 @@
-import {NewsForAdmin} from "../components";
+import {NewsForAdmin} from '../components';
 
 const NewsForAdminPage = () => {
 

@@ -1,34 +1,34 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
-import {authActions} from "../../redux";
-import {roles} from "../../constants"
+import {authActions} from '../../redux';
+import {roles} from '../../constants';
 
-import {ModalUC} from "../ModalUC/ModalUC";
+import {ModalUC} from '../ModalUC/ModalUC';
 
 
 const RegisterForm = ({isManager}) => {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {errors} = useSelector(state => state.auth)
+    const {errors} = useSelector(state => state.auth);
 
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
     const submit = async (data) => {//дата приходить с форми у вигляді: {name: 'qwer', email: 'qwer@i.ua', password: 'qwer123'}
         let res;
         if (!isManager)
-            res = await dispatch(authActions.register({user: data}))
+            res = await dispatch(authActions.register({user: data}));
         else
-            res = await dispatch(authActions.register({user: {...data, role: [roles.USER, roles.REST_ADMIN]}}))
+            res = await dispatch(authActions.register({user: {...data, role: [roles.USER, roles.REST_ADMIN]}}));
         //  при неуспішному виконанні цей запит повератє: {error} = {message: 'Rejected'}, payload:{message: 'Email is already exist'}
 
         if (!res.error) {
-            navigate('../login')
-        }else setErrorIsVisible(true)
-    }
+            navigate('../login');
+        }else setErrorIsVisible(true);
+    };
 
     return (
         <div>
@@ -45,7 +45,7 @@ const RegisterForm = ({isManager}) => {
             </form>
 
         </div>
-    )
-}
+    );
+};
 
 export {RegisterForm};

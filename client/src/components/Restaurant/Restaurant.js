@@ -1,55 +1,56 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {Link, useParams} from 'react-router-dom';
 
-import API_URL from "../../config";
-import {authActions, restaurantActions, userActions} from "../../redux";
+import API_URL from '../../config';
+import {authActions, restaurantActions, userActions} from '../../redux';
 
-import {StarsRating} from "../StarsRating/starsRating";
-import {Tag} from "../Tag/Tag";
-import {ModalUC} from "../ModalUC/ModalUC";
+import {StarsRating} from '../StarsRating/starsRating';
+import {Tag} from '../Tag/Tag';
+import {ModalUC} from '../ModalUC/ModalUC';
 
-import css from './Restaurant.module.css'
+import css from './Restaurant.module.css';
 
 const Restaurant = () => {
     const dispatch = useDispatch();
     const {restaurant} = useSelector(state => state.restaurant);
     const {user} = useSelector(state => state.user);
-    const {authUser, isAuth} = useSelector(state => state.auth)
+    const {authUser, isAuth} = useSelector(state => state.auth);
     const {id} = useParams();
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [modalIsVisible, setModalIsVisible] = useState(false);
     const {isLocationAvailable, latitude, longitude} = useSelector(state => state.geo);
 
     const tags = restaurant?.tags?.split(',').map(tag => tag.trim());
 
-    let alreadyFavorite = false
-    let userId = null
+    let alreadyFavorite = false;
+    let userId = null;
     if (isAuth) {
         alreadyFavorite = user.favoriteRestaurants?.includes(id);
-        userId = authUser._id
+        userId = authUser._id;
     }
     const [stateFavorite, setStateFavorite] = useState(alreadyFavorite);
 
     useEffect(() => {
-        dispatch(restaurantActions.getById(id))
+        dispatch(restaurantActions.getById(id));
     }, []);
 
     useEffect(() => {
-        dispatch(userActions.getById(userId))
-    }, [stateFavorite]);
+        dispatch(userActions.getById(userId));
+    }, [stateFavorite, userId]);
 
 
     const addFavorite = async () => {
         if (isAuth) {
             await dispatch(authActions.addFavoriteRest({userId, restId: id}));
-            setStateFavorite(true)
+            setStateFavorite(true);
         }
-        else setModalIsVisible(true)
+        else setModalIsVisible(true);
     };
 
     const removeFavorite = async () => {
-        await dispatch(authActions.removeFavoriteRest({userId, restId: id}))
-        setStateFavorite(false)
+        await dispatch(authActions.removeFavoriteRest({userId, restId: id}));
+        setStateFavorite(false);
     };
 
     return (
@@ -65,7 +66,7 @@ const Restaurant = () => {
                         <h1>{restaurant.name}</h1>
                     </div>
                     {!stateFavorite &&
-                        <h3 style={{cursor: "pointer"}} onClick={addFavorite}>Додати до улюблених</h3>}
+                        <h3 style={{cursor: 'pointer'}} onClick={addFavorite}>Додати до улюблених</h3>}
                     {stateFavorite &&
                         <h5 className={css.NotFav} onClick={removeFavorite}>Прибрати з улюблених</h5>}
                 </div>
@@ -93,7 +94,7 @@ const Restaurant = () => {
             </div>
 
         </div>
-    )
+    );
 };
 
 export {Restaurant};

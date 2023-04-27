@@ -1,37 +1,37 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useParams} from 'react-router-dom';
+import {useState} from 'react';
 
-import {commentActions} from "../../redux";
-import {ModalUC} from "../ModalUC/ModalUC";
+import {commentActions} from '../../redux';
+import {ModalUC} from '../ModalUC/ModalUC';
 
 
 const CommentForm = ({setStateForm, comment}) => {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const dispatch = useDispatch();
     const {id: idForCreate} = useParams();
-    const {errors} = useSelector(state => state.comment)
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const {errors} = useSelector(state => state.comment);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
 
     const submit = async (data) => {
         const {bill} = data;
-        if (bill === '') data = {...data, bill: 0}
+        if (bill === '') data = {...data, bill: 0};
 
-        let res = {}
+        let res = {};
         if (comment) {
-            res = await dispatch(commentActions.updateById({id: comment._id, commentObj: data}))
+            res = await dispatch(commentActions.updateById({id: comment._id, commentObj: data}));
             if (!res.error) {
-                setStateForm(false)
-            } else setErrorIsVisible(true)
+                setStateForm(false);
+            } else setErrorIsVisible(true);
         } else {
-            res = await dispatch(commentActions.create({id: idForCreate, commentObj: data}))
+            res = await dispatch(commentActions.create({id: idForCreate, commentObj: data}));
             if (!res.error)
-                setStateForm(false)
-            else setErrorIsVisible(true)
+                setStateForm(false);
+            else setErrorIsVisible(true);
         }
-    }
+    };
     return (
         <div>
             <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible}
@@ -53,5 +53,5 @@ const CommentForm = ({setStateForm, comment}) => {
             </div>
         </div>
     );
-}
+};
 export {CommentForm};

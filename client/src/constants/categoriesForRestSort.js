@@ -7,6 +7,6 @@ const categoriesForRestSort = {
         {key:'name',name:'назва за алфавітом'},
         {key:'distance', name:'віддаленість (спочатку найближчий)'}]
 
-}
-export {categoriesForRestSort}
+};
+export {categoriesForRestSort};
 

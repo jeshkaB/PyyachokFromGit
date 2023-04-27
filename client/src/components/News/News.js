@@ -1,11 +1,12 @@
-import {useParams} from 'react-router-dom'
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
-import API_URL from "../../config";
-import {newsActions} from "../../redux";
+import API_URL from '../../config';
+import {newsActions} from '../../redux';
 
-import css from './News.module.css'
+import css from './News.module.css';
 
 const News = () => {
     const dispatch = useDispatch();
@@ -13,10 +14,10 @@ const News = () => {
     const {newsOne} = useSelector(state => state.news);
 
     useEffect(() => {
-        dispatch(newsActions.getById(id))
-    }, [dispatch])
+        dispatch(newsActions.getById(id));
+    }, [dispatch]);
 
-    const {title, content, newsImage, category, restaurant, createdAt} = newsOne
+    const {title, content, newsImage, category, restaurant, createdAt} = newsOne;
 
     return (
         <div className={css.News}>

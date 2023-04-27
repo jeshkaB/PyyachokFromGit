@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 
 const initialState = {
@@ -13,13 +13,13 @@ const geoSlice = createSlice({
         setGeoLocation: (state,action)=> {
             state.isLocationAvailable = action.payload.isLocationAvailable;
             state.latitude = action.payload.latitude;
-            state.longitude = action.payload.longitude
+            state.longitude = action.payload.longitude;
         }
     }
 
-})
+});
 
 const {reducer: geoReducer, actions:{setGeoLocation}} = geoSlice;
 const geoActions = {setGeoLocation};
 
-export {geoReducer, geoActions}
+export {geoReducer, geoActions};

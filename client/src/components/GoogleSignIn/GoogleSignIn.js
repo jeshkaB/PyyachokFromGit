@@ -1,20 +1,20 @@
-import {useDispatch} from "react-redux";
+import {useDispatch} from 'react-redux';
 
-import {authActions} from "../../redux";
-import {signInByGoogle} from "../../services";
+import {authActions} from '../../redux';
+import {signInByGoogle} from '../../services';
 
-import css from './GoogleSignIn.module.css'
+import css from './GoogleSignIn.module.css';
 
 const GoogleSignIn = () => {
     const dispatch = useDispatch();
 
     const clickIn = async () => {
         const credential = await signInByGoogle();
-            const {displayName, email, providerData} = credential.user
-            const user = {name: displayName, email, uid: providerData[0].uid}
-            await dispatch(authActions.loginByGoogle({user}))
+            const {displayName, email, providerData} = credential.user;
+            const user = {name: displayName, email, uid: providerData[0].uid};
+            await dispatch(authActions.loginByGoogle({user}));
 
-    }
+    };
 
     return (
         <div>
@@ -22,8 +22,8 @@ const GoogleSignIn = () => {
                 <p onClick={clickIn}>Увійти через Google</p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 
 export {GoogleSignIn};

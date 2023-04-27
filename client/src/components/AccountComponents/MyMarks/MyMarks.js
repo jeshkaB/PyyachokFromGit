@@ -1,24 +1,24 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 
-import {markActions} from "../../../redux";
+import {markActions} from '../../../redux';
 
-import {MyMarksCard} from "./MyMarksCard";
+import {MyMarksCard} from './MyMarksCard';
 
-import css from './MyMarks.module.css'
+import css from './MyMarks.module.css';
 
 const MyMarks = ({user}) => {
     const {_id} = user;
     const {marks} = useSelector(state => state.mark);
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(markActions.getAll())
+        dispatch(markActions.getAll());
     }, [dispatch]);
 
-    let myMarks=[]
-    if (marks) myMarks = marks.filter(mark=>mark.user?._id ===_id)
+    let myMarks=[];
+    if (marks) myMarks = marks.filter(mark=>mark.user?._id ===_id);
 
-    const [stateMarks, setStateMarks] = useState(false)
+    const [stateMarks, setStateMarks] = useState(false);
 
     return (
         <div>
@@ -33,4 +33,4 @@ const MyMarks = ({user}) => {
     );
 };
 
-export {MyMarks}
+export {MyMarks};

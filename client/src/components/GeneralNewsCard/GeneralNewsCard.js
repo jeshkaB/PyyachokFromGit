@@ -1,7 +1,7 @@
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
-import API_URL from "../../config";
-import css from '../GeneralNewsCard/GeneralNewsCard.module.css'
+import API_URL from '../../config';
+import css from '../GeneralNewsCard/GeneralNewsCard.module.css';
 
 const GeneralNewsCard = ({news, isHome}) => {
     const {_id, title, content, newsImage, category, createdAt} = news;
@@ -14,7 +14,7 @@ const GeneralNewsCard = ({news, isHome}) => {
                 <div>опубліковано {createdAt.slice(0, 10)}</div>
                 {newsImage && <img height={100} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 {!isHome && <div>{content}</div>}
-            </div>)
- }
+            </div>);
+ };
 
 export {GeneralNewsCard};

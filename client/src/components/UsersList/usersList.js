@@ -1,33 +1,33 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
 
-import {userActions} from "../../redux";
-import {paginationLimits} from "../../constants/paginationLimits";
+import {userActions} from '../../redux';
+import {paginationLimits} from '../../constants/paginationLimits';
 
-import {UserCard} from "../UserCard/UserCard";
-import {PaginationUC} from "../PaginationUC/PaginationUC";
-import {UsersSearchForm} from "./UsersSearchForm";
+import {UserCard} from '../UserCard/UserCard';
+import {PaginationUC} from '../PaginationUC/PaginationUC';
+import {UsersSearchForm} from './UsersSearchForm';
 
-import css from './UsersList.module.css'
+import css from './UsersList.module.css';
 
 
 const UsersList = () => {
 
-    const {users} = useSelector(state => state.user) || []
+    const {users} = useSelector(state => state.user) || [];
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(userActions.getAll())
-    }, [dispatch])
-    const usersManagersFirst = [...users].sort((a, b) => b.role.length - a.role.length)
+        dispatch(userActions.getAll());
+    }, [dispatch]);
+    const usersManagersFirst = [...users].sort((a, b) => b.role.length - a.role.length);
 
 
-    const [usersOnPage, setUsersOnPage] = useState(usersManagersFirst.slice(0, paginationLimits.usersLimit))
+    const [usersOnPage, setUsersOnPage] = useState(usersManagersFirst.slice(0, paginationLimits.usersLimit));
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const searchQuery = searchParams.get('userEmail')
-    const usersFound = users.filter(user => user.email.includes(searchQuery))
+    const searchQuery = searchParams.get('userEmail');
+    const usersFound = users.filter(user => user.email.includes(searchQuery));
 
     return (
         <div>
@@ -52,4 +52,4 @@ const UsersList = () => {
         </div>
     );
 };
-export {UsersList}
+export {UsersList};

@@ -1,4 +1,4 @@
-import {CommentsInRest} from "../components";
+import {CommentsInRest} from '../components';
 
 const CommentsInRestPage = () => {
 
@@ -9,4 +9,4 @@ const CommentsInRestPage = () => {
     );
 };
 
-export {CommentsInRestPage}
+export {CommentsInRestPage};

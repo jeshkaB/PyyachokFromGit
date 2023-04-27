@@ -1,36 +1,37 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {useForm} from "react-hook-form";
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useForm} from 'react-hook-form';
 
-import {topCategoryActions} from "../../redux";
+import {topCategoryActions} from '../../redux';
 
-import css from './TopCategoriesList.module.css'
+import css from './TopCategoriesList.module.css';
 
 const TopCategoriesList = () => {
     const dispatch = useDispatch();
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
     const [stateUpdate, setStateUpdate] = useState(false);
     const [currentCategory, setCurrentCategory] = useState({});
     const {topCategories} = useSelector(state => state.topCategory);
 
     useEffect(()=> {
-        dispatch(topCategoryActions.getAll())
+        dispatch(topCategoryActions.getAll());
     }, []);
 
     const clickUpdate = (categ)=>{
         setStateUpdate(true);
-        setCurrentCategory(categ)
-    }
+        setCurrentCategory(categ);
+    };
     const submitUpdate = async (data)=> {
-        const {error} = await dispatch(topCategoryActions.updateById({id:currentCategory._id, categObj: data}))
+        const {error} = await dispatch(topCategoryActions.updateById({id:currentCategory._id, categObj: data}));
         if (!error) {
-            setStateUpdate(false)
+            setStateUpdate(false);
         }
-    }
+    };
 
     const clickDelete = async (categId)=>{
-        await dispatch(topCategoryActions.deleteById(categId))
-    }
+        await dispatch(topCategoryActions.deleteById(categId));
+    };
 
     return (
         <div>
@@ -56,4 +57,4 @@ const TopCategoriesList = () => {
     );
 };
 
-export {TopCategoriesList}
+export {TopCategoriesList};

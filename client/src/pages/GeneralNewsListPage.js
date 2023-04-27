@@ -1,4 +1,4 @@
-import {GeneralNewsList} from "../components";
+import {GeneralNewsList} from '../components';
 
 const GeneralNewsListPage = () => {
 
@@ -7,6 +7,6 @@ const GeneralNewsListPage = () => {
             <GeneralNewsList/>
         </div>
     );
-}
+};
 
-export {GeneralNewsListPage}
+export {GeneralNewsListPage};

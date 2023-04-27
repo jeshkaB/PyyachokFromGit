@@ -1,9 +1,9 @@
-import {useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useLocation} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {roles} from "../../constants";
-import {CommentForm} from "../CommentForm/commentForm";
+import {roles} from '../../constants';
+import {CommentForm} from '../CommentForm/commentForm';
 
 const Comment = ({comment, restaurants}) => {
 
@@ -11,10 +11,10 @@ const Comment = ({comment, restaurants}) => {
     const [stateForm, setStateForm] = useState(false);
     const {role} = useSelector(state => state.auth);
     const {comment:body, bill, user:{name}} = comment;
-    const date = comment.createdAt.slice(0, 10)
+    const date = comment.createdAt.slice(0, 10);
 
-    let restaurant = {}
-    if (restaurants) restaurant = restaurants.find(rest => rest._id === comment.restaurant)
+    let restaurant = {};
+    if (restaurants) restaurant = restaurants.find(rest => rest._id === comment.restaurant);
 
      if (location.pathname === '/myAccount') {
         return (
@@ -29,7 +29,7 @@ const Comment = ({comment, restaurants}) => {
                     </div>
                 </div>
             </div>
-        )
+        );
 
     } else {
         return (
@@ -58,4 +58,4 @@ const Comment = ({comment, restaurants}) => {
         );
     }
 };
-export {Comment}
+export {Comment};

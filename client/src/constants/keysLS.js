@@ -5,7 +5,7 @@ const keysLS = {
 
     userLatitude: 'userLatitude',
     userLongitude: 'userLongitude'
-}
+};
 
-export {keysLS}
+export {keysLS};
 

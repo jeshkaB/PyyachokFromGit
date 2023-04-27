@@ -1,21 +1,21 @@
-import {useForm} from "react-hook-form";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useState} from 'react';
 
-import {Dropdown} from "react-bootstrap";
+import {Dropdown} from 'react-bootstrap';
 
-import css from './RestaurantsList.module.css'
+import css from './RestaurantsList.module.css';
 
 const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
 
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit} = useForm();
 
     const submit = async (data) => {
-        setRatingFilter([data.ratingMin ==='' ? 0 : data.ratingMin, data.ratingMax===''? 5 : data.ratingMax])
-        setBillFilter([data.billMin ==='' ? 0 : data.billMin, data.billMax === '' ? 100000 : data.billMax])
-        setTagsFilter(data.tags)
-    }
+        setRatingFilter([data.ratingMin ==='' ? 0 : data.ratingMin, data.ratingMax===''? 5 : data.ratingMax]);
+        setBillFilter([data.billMin ==='' ? 0 : data.billMin, data.billMax === '' ? 100000 : data.billMax]);
+        setTagsFilter(data.tags);
+    };
 
-    const [filterIsOpen, setFilterIsOpen] = useState(false)
+    const [filterIsOpen, setFilterIsOpen] = useState(false);
 
     return (<div >
             <div>
@@ -50,7 +50,7 @@ const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
 
         </div>
 
-    )
-}
+    );
+};
 
-export {RestaurantsFilter}
+export {RestaurantsFilter};

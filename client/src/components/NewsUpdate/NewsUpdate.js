@@ -1,28 +1,28 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 
-import {generalNewsActions, newsActions} from "../../redux";
-import {Dropdown} from "react-bootstrap";
-import {categoriesOfNews} from "../../constants";
+import {generalNewsActions, newsActions} from '../../redux';
+import {Dropdown} from 'react-bootstrap';
+import {categoriesOfNews} from '../../constants';
 
-import css from './NewsUpdate.module.css'
-import {ModalUC} from "../ModalUC/ModalUC";
+import css from './NewsUpdate.module.css';
+import {ModalUC} from '../ModalUC/ModalUC';
 
 const NewsUpdate = ({news}) => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {register, handleSubmit} = useForm()
-    const {_id, title, content, category} = news
-    const {errors} = useSelector(state=>state.news)
+    const {register, handleSubmit} = useForm();
+    const {_id, title, content, category} = news;
+    const {errors} = useSelector(state=>state.news);
 
-    const [stateUpdate, setStateUpdate] = useState(false)
+    const [stateUpdate, setStateUpdate] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
 
-    const categories = categoriesOfNews.categories
+    const categories = categoriesOfNews.categories;
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('title', data.title);
@@ -31,16 +31,16 @@ const NewsUpdate = ({news}) => {
         formData.append('category', selectedCategory || category);
 
         if (location.pathname===`/generalNews/${_id}`) {
-            const {error} = await dispatch(generalNewsActions.updateById({id: _id, newsObj: formData}))
-            if (!error) navigate(-1)
-            else setErrorIsVisible(true)
+            const {error} = await dispatch(generalNewsActions.updateById({id: _id, newsObj: formData}));
+            if (!error) navigate(-1);
+            else setErrorIsVisible(true);
         }
         else {
-            const {error} = await dispatch(newsActions.updateById({id: _id, newsObj: formData}))
-            if (!error) navigate(-1)
-            else setErrorIsVisible(true)
+            const {error} = await dispatch(newsActions.updateById({id: _id, newsObj: formData}));
+            if (!error) navigate(-1);
+            else setErrorIsVisible(true);
         }
-    }
+    };
     return (
         <div>
             <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
@@ -49,7 +49,7 @@ const NewsUpdate = ({news}) => {
             {stateUpdate &&
                 <div className={css.Form}>
                     <Dropdown>
-                        <Dropdown.Toggle variant={"outline-secondary"}>{selectedCategory || category}</Dropdown.Toggle>
+                        <Dropdown.Toggle variant={'outline-secondary'}>{selectedCategory || category}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {categories.map(categ =>
                                 <Dropdown.Item key={categ} onClick={() => setSelectedCategory(categ)}>{categ}</Dropdown.Item>
@@ -57,7 +57,7 @@ const NewsUpdate = ({news}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Заголовок* <textarea rows="2" cols="60" required={true} defaultValue={title} {...register('title')}></textarea></label>
                         <br/>
                         <label>Зміст/текст* <textarea rows="5" cols="60" required={true} defaultValue={content} {...register('content')}></textarea></label>
@@ -72,6 +72,6 @@ const NewsUpdate = ({news}) => {
 
         </div>
     );
-}
+};
 
-export {NewsUpdate}
+export {NewsUpdate};

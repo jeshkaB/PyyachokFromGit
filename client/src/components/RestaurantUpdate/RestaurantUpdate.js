@@ -1,22 +1,22 @@
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {restaurantActions} from "../../redux";
+import {restaurantActions} from '../../redux';
 
-import css from './RestaurantUpdate.module.css'
-import {ModalUC} from "../ModalUC/ModalUC";
+import css from './RestaurantUpdate.module.css';
+import {ModalUC} from '../ModalUC/ModalUC';
 
 
 const RestaurantUpdate= ({restaurant}) => {
     const dispatch = useDispatch();
-    const {errors} = useSelector(state => state.restaurant)
-    const {register, handleSubmit} = useForm()
-    const {_id,name,place,hours,phone,averageBill,email,webSite,tags, coordinates:[longitude, latitude]=[]} = restaurant
+    const {errors} = useSelector(state => state.restaurant);
+    const {register, handleSubmit} = useForm();
+    const {_id,name,place,hours,phone,averageBill,email,webSite,tags, coordinates:[longitude, latitude]=[]} = restaurant;
 
-    const [stateUpdate, setStateUpdate] = useState(false)
-    const [errorIsVisible, setErrorIsVisible] = useState(false)
-    const [modalIsVisible, setModalIsVisible] = useState(false)
+    const [stateUpdate, setStateUpdate] = useState(false);
+    const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
 
     const submit = async (data) => {
         const formData = new FormData();
@@ -31,10 +31,10 @@ const RestaurantUpdate= ({restaurant}) => {
         formData.append('coordinates', data.latitude);
         data.webSite && formData.append('webSite', data.webSite);
         data.tags && formData.append('tags', data.tags);
-        const {error} = await dispatch(restaurantActions.updateById({id:_id, restObj: formData}))
-        if (!error) setModalIsVisible(true)
-        else setErrorIsVisible(true)
-    }
+        const {error} = await dispatch(restaurantActions.updateById({id:_id, restObj: formData}));
+        if (!error) setModalIsVisible(true);
+        else setErrorIsVisible(true);
+    };
 
     return (
         <div>
@@ -45,7 +45,7 @@ const RestaurantUpdate= ({restaurant}) => {
             {stateUpdate &&
                 <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
-                        <p style={{color: "royalblue"}}>Поля, позначені *, обов’язкові для заповнення!</p>
+                        <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
                         <label>Назва* <input required={true} defaultValue={name} {...register('name')}/></label>
                         <br/>
                         <label>Зображення* <input type="file" accept="image/png, image/jpeg" {...register('mainImage')}/></label>
@@ -77,6 +77,6 @@ const RestaurantUpdate= ({restaurant}) => {
 
         </div>
     );
-}
+};
 
-export {RestaurantUpdate}
+export {RestaurantUpdate};

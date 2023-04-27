@@ -1,11 +1,11 @@
-import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
-import {RestaurantCreate, RestaurantsForModeration, RestaurantsList} from "../components";
+import {RestaurantCreate, RestaurantsForModeration, RestaurantsList} from '../components';
 
 const RestaurantManagerPage = () => {
     const {userId} = useSelector(state => state.auth);
-    const [wasCreated, setWasCreated] = useState(false)
+    const [wasCreated, setWasCreated] = useState(false);
 
     return (
         <div style={{marginLeft:20}}>
@@ -20,6 +20,6 @@ const RestaurantManagerPage = () => {
             </div>
         </div>
     );
-}
+};
 
 export {RestaurantManagerPage};

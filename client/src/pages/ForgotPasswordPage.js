@@ -1,4 +1,4 @@
-import {ForgotPasswordForm} from "../components";
+import {ForgotPasswordForm} from '../components';
 
 const ForgotPasswordPage = () => {
 
@@ -9,4 +9,4 @@ const ForgotPasswordPage = () => {
     );
 };
 
-export {ForgotPasswordPage}
+export {ForgotPasswordPage};
