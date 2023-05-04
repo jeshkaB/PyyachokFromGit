@@ -23,7 +23,7 @@ module.exports = {
       const {_id:userId,role} = req.tokenInfo.user; // в токенинфо у нас юзер - цілий об’єкт, а в ентити - тільки айдішка
       // eslint-disable-next-line max-len
       const entityId = req[entity].user; //в мідлварі для перевірки існування кожної сутності (checkIsExist) ми створюємо в req поле сутності (req[entity])
-      if ((userId+'')!==(entityId+'') && role!==roles.SUPER_ADMIN) {
+      if ((userId+'')!==(entityId+'') && !role.includes(roles.SUPER_ADMIN)) {
         return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN));
       }
 
@@ -39,7 +39,7 @@ module.exports = {
 
       const updateUserId = req[from][idName];
 
-      if ((userId+'')!==(updateUserId+'') && role!==roles.SUPER_ADMIN) {
+      if ((userId+'')!==(updateUserId+'') && !role.includes(roles.SUPER_ADMIN)) {
         return next (new LocalError('Access is forbidden', statusCode.FORBIDDEN));
       }
 

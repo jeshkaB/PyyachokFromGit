@@ -186,7 +186,6 @@ module.exports = {
         password: hashPassword,
         role: [
           roles.USER,
-          roles.REST_ADMIN,
           roles.SUPER_ADMIN
         ]
       });

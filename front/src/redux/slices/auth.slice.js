@@ -17,9 +17,12 @@ const entity = urls.users;
 
 const register = createAsyncThunk(
     'authSlice/register',
-    async ({user}, {rejectWithValue}) => {
+    async ({user, isManager}, {rejectWithValue}) => {
         try {
-            await authService.register(user);
+            if (isManager)
+                await authService.registerAsRestaurantAdmin(user);
+            else
+                await authService.register(user);
 
         } catch (e) {
             return rejectWithValue(e.response.data);// e.response.data = {message: 'Email is already exist'} - response з АРІ

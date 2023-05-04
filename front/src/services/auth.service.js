@@ -3,7 +3,8 @@ import {axiosService,axiosRefreshService} from './axios.service';
 
 
 const authService = {
-    register: (user) => axiosService.post(urls.users, user),// в мене на сервери для реєстрації роут "registration"
+    register: (user) => axiosService.post(`${urls.auth}/registration`, user),
+    registerAsRestaurantAdmin: (user) => axiosService.post(`${urls.auth}/registration/asRestaurantAdmin`, user),
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
     loginByGoogle: (user) => axiosService.post(`${urls.auth}/login/google`, user),
     logout: () => axiosService.post(`${urls.auth}/logout`),

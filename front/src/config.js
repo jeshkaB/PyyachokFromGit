@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5000/';
+// const API_URL = 'http://localhost:5000/';
+const API_URL = '/api/';
 
 const FireBaseConfig = {
     API_KEY: process.env.REACT_APP_API_KEY,

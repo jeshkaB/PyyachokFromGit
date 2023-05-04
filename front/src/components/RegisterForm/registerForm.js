@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 
 import {authActions} from '../../redux';
-import {roles} from '../../constants';
 
 import {ModalUC} from '../ModalUC/ModalUC';
 
@@ -18,14 +17,8 @@ const RegisterForm = ({isManager}) => {
     const [errorIsVisible, setErrorIsVisible] = useState(false);
 
     const submit = async (data) => {//дата приходить с форми у вигляді: {name: 'qwer', email: 'qwer@i.ua', password: 'qwer123'}
-        let res;
-        if (!isManager)
-            res = await dispatch(authActions.register({user: data}));
-        else
-            res = await dispatch(authActions.register({user: {...data, role: [roles.USER, roles.REST_ADMIN]}}));
-        //  при неуспішному виконанні цей запит повератє: {error} = {message: 'Rejected'}, payload:{message: 'Email is already exist'}
-
-        if (!res.error) {
+           const {error} = await dispatch(authActions.register({user: data, isManager}));
+        if (!error) {
             navigate('../login');
         }else setErrorIsVisible(true);
     };
