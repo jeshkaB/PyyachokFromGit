@@ -3,13 +3,35 @@ import './App.css';
 
 import {MainLayout} from './mainLayout';
 import {
-    HomePage,LoginPage,MyAccountPage,NewsListPage,NewsPage,RegisterPage,RestaurantManagerPage,
-    RestaurantPage,RestaurantsListPage,SuperAdminPage,UserEventsPageInRestaurant,UserEventsListPage,
-    UserEventPage,RestaurantForAdminPage,NewsForAdminPage,MarksInRestPage,GeneralNewsPage,GeneralNewsListPage,
-    UserPage,TopPageForAdmin,ForgotPasswordPage,ViewStatisticsPage, GeneralViewStatisticsPage, CommentsInRestPage,
+    HomePage,
+    LoginPage,
+    MyAccountPage,
+    NewsListPage,
+    NewsPage,
+    RegisterPage,
+    RestaurantManagerPage,
+    RestaurantPage,
+    RestaurantsListPage,
+    SuperAdminPage,
+    UserEventsPageInRestaurant,
+    UserEventsListPage,
+    UserEventPage,
+    RestaurantForAdminPage,
+    NewsForAdminPage,
+    MarksInRestPage,
+    GeneralNewsPage,
+    GeneralNewsListPage,
+    UserPage,
+    TopPageForAdmin,
+    ForgotPasswordPage,
+    ViewStatisticsPage,
+    GeneralViewStatisticsPage,
+    CommentsInRestPage,
+    RegisterSuperadminPage,
 } from './pages';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {urls} from './constants';
 
 const App = () => {
 
@@ -22,6 +44,7 @@ const App = () => {
                     <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'forgotPassword'} element={<ForgotPasswordPage/>}/>
                     <Route path={'register'} element={<RegisterPage/>}/>
+                    <Route path={urls.superadminRegistrationUrl} element={<RegisterSuperadminPage/>}/>
                     <Route path={'login'} element={<LoginPage/>}/>
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>
                     <Route path={'generalNews'} element={<GeneralNewsListPage/>}/>

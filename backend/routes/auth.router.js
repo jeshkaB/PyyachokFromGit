@@ -26,6 +26,7 @@ authRouter.post (
 authRouter.post (
   '/registration/superadmin',
   userMiddleware.checkSuperAdminIsNotExist,
+  userMiddleware.checkEmailIsValid,
   userController.createSuperAdmin);
 
 authRouter.post (

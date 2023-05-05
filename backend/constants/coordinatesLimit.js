@@ -1,3 +1,4 @@
+// координати обмежені Києвом
 module.exports = {
   LONGITUDE_MIN: 50.1,
   LONGITUDE_MAX: 50.7,

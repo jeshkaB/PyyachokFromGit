@@ -11,6 +11,7 @@ export * from './NewsListPage';
 export * from './NewsForAdminPage';
 export * from './NewsPage';
 export * from './RegisterPage';
+export * from './RegisterSuperadminPage';
 export * from './RestaurantForAdminPage';
 export * from './RestaurantManagerPage';
 export * from './RestaurantPage';

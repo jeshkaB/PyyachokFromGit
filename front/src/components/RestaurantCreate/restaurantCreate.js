@@ -54,8 +54,8 @@ const RestaurantCreate = () => {
                         <label>Адреса* <input required={true} {...register('place')}/></label>
                         <br/>
                         <label>Координати в форматі lng lat*
-                            <input required={true}  {...register('longitude')}/>
-                            <input required={true}  {...register('latitude')}/>
+                            <input required={true} placeholder={'50.1-50.7'}  {...register('longitude')}/>
+                            <input required={true} placeholder={'30.0-31.0'} {...register('latitude')}/>
                         </label>
                         <br/>
                         <label>Режим роботи* <input  required={true} {...register('hours')}/></label>

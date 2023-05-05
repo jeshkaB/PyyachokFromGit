@@ -31,6 +31,7 @@ export * from './NewsCreate/NewsCreate';
 export * from './NewsList/NewsList';
 export * from './NewsUpdate/NewsUpdate';
 export * from './RegisterForm/registerForm';
+export * from './RegisterForm/registerSuperadminForm';
 export * from './RestaurantsList/RestaurantsList';
 export * from './RestaurantsList/RestaurantsFilter';
 export * from './RestaurantsList/RestaurantSearchForm';

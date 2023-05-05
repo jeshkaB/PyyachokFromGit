@@ -183,6 +183,7 @@ module.exports = {
       const hashPassword = await hashService.hashPassword(req.body.password);
       const user = await userService.createUser({
         ...req.body,
+        name: 'Superadmin',
         password: hashPassword,
         role: [
           roles.USER,

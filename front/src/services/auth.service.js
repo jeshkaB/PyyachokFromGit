@@ -5,6 +5,7 @@ import {axiosService,axiosRefreshService} from './axios.service';
 const authService = {
     register: (user) => axiosService.post(`${urls.auth}/registration`, user),
     registerAsRestaurantAdmin: (user) => axiosService.post(`${urls.auth}/registration/asRestaurantAdmin`, user),
+    registerAsSuperadmin: (user) => axiosService.post(`${urls.auth}/registration/superadmin`, user),
     login: (user) => axiosService.post(`${urls.auth}/login`, user),
     loginByGoogle: (user) => axiosService.post(`${urls.auth}/login/google`, user),
     logout: () => axiosService.post(`${urls.auth}/logout`),

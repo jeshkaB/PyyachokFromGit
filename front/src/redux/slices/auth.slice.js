@@ -17,10 +17,12 @@ const entity = urls.users;
 
 const register = createAsyncThunk(
     'authSlice/register',
-    async ({user, isManager}, {rejectWithValue}) => {
+    async ({user, isManager, isSuperadmin}, {rejectWithValue}) => {
         try {
             if (isManager)
                 await authService.registerAsRestaurantAdmin(user);
+            else if (isSuperadmin)
+                await authService.registerAsSuperadmin(user);
             else
                 await authService.register(user);
 
