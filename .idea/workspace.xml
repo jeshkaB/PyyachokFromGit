@@ -2,35 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/Images/Avatars/8bea9227-4c6c-45eb-9b7d-d0e7c0b77ae2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/00e12961-42be-4a70-ba0c-3f84a55077bd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/0e23f6db-a12c-4531-ad2e-d6a6af2185c6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/1ec759b5-db78-4f37-9c4e-71239c5c9c67.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/96c6b3e4-f079-4d5e-8404-8540dc37577b.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/b3a44448-de82-442d-8b7f-1a4c10ae625d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/d9182a6a-67c6-4a1d-b895-fe9256e2f213.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/e95021f8-1564-44f2-bdf3-ff60f6176eea.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/1ed7a96d-f336-4706-a245-ac756a4c8d09.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/46f5fbad-28f3-4003-9495-3bbc76cfb097.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/59b0ef04-7140-4d35-b6ad-9b340e1409af.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/81eed8a7-bab2-4a60-85bd-37c47e62cea0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/d22347ed-fb58-4635-87ff-3551d287a219.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/RegisterForm/registerSuperadminForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/RegisterSuperadminPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongo_db/diagnostic.data/metrics.2023-05-04T16-27-38Z-00000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mongo_db/diagnostic.data/metrics.2023-05-04T16-55-21Z-00000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/coordinatesLimit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/coordinatesLimit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/auth.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/firebase.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/firebase.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RegisterForm/registerSuperadminForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RegisterForm/registerSuperadminForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,31 +44,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.10",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/front/src/pages",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/fin_project/front/src/pages&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\IdeaProjects\fin_project\front\src\pages" />
@@ -156,14 +131,8 @@
       <workItem from="1683218121098" duration="4111000" />
       <workItem from="1683229940131" duration="1503000" />
       <workItem from="1683302437393" duration="958000" />
-      <workItem from="1683303774349" duration="3791000" />
-    </task>
-    <task id="LOCAL-00022" summary="client started">
-      <created>1674071194830</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1674071194830</updated>
+      <workItem from="1683303774349" duration="4360000" />
+      <workItem from="1683313360195" duration="2447000" />
     </task>
     <task id="LOCAL-00023" summary="client interim">
       <created>1674240553134</created>
@@ -501,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683228537048</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="finish2">
+      <created>1683312770891</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1683312770894</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +510,8 @@
     <MESSAGE value="perfecting 2" />
     <MESSAGE value="lint" />
     <MESSAGE value="finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish" />
+    <MESSAGE value="finish2" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

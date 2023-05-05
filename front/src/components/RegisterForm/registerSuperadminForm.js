@@ -29,6 +29,7 @@ const RegisterSuperadminForm = () => {
             <form onSubmit={handleSubmit(submit)}>
                 <input type='text' placeholder={'email'} {...register('email')}/>
                 <input type='text' placeholder={'пароль'} {...register('password')}/>
+                <button>Зареєструватись</button>
             </form>
 
         </div>
