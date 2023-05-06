@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/urls.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,14 +138,7 @@
       <workItem from="1683302437393" duration="958000" />
       <workItem from="1683303774349" duration="4360000" />
       <workItem from="1683313360195" duration="3053000" />
-      <workItem from="1683363461144" duration="1224000" />
-    </task>
-    <task id="LOCAL-00024" summary="client interim">
-      <created>1674246329284</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1674246329284</updated>
+      <workItem from="1683363461144" duration="2269000" />
     </task>
     <task id="LOCAL-00025" summary="client interim">
       <created>1674334827325</created>
@@ -484,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683317335426</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="added .env.example">
+      <created>1683365574747</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1683365574752</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +518,8 @@
     <MESSAGE value="finish" />
     <MESSAGE value="finish2" />
     <MESSAGE value="full finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="full finish" />
+    <MESSAGE value="added .env.example" />
+    <option name="LAST_COMMIT_MESSAGE" value="added .env.example" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
