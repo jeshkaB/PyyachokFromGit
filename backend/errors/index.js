@@ -1,4 +1,4 @@
 module.exports = {
-    ErrorMainHandler: require('./ErrorMainHandler'),
-    LocalError: require('./LocalError')
-}
+  ErrorMainHandler: require('./ErrorMainHandler'),
+  LocalError: require('./LocalError')
+};

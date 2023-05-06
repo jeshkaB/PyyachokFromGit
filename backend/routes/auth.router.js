@@ -1,55 +1,61 @@
 const Router = require ('express');
-const upload = require('multer')();    //  щоб можна було зчитувати data-form в постмані
-const {authController, userController} = require("../controllers");
-const {userMiddleware, authMiddleware} = require("../middlewares");
-const {tokenTypes} = require("../constants");
+// const upload = require('multer')(); //  щоб можна було зчитувати data-form в постмані
+const {authController, userController} = require('../controllers');
+const {userMiddleware, authMiddleware} = require('../middlewares');
+const {tokenTypes} = require('../constants');
 
 const authRouter = Router();
 
 authRouter.post (
-    '/login',
-    authMiddleware.checkLoginBodyIsValid,
-    userMiddleware.checkUserIsExistByEmail,
-    authMiddleware.checkPasswordsAreSame,
-    authController.login);
+  '/login',
+  authMiddleware.checkLoginBodyIsValid,
+  userMiddleware.checkUserIsExistByEmail,
+  authMiddleware.checkPasswordsAreSame,
+  authController.login);
 
 authRouter.post (
-    '/login/google',
-    userMiddleware.checkEmailIsValid,
-    authController.loginByGoogle);
+  '/login/google',
+  userMiddleware.checkEmailIsValid,
+  authController.loginByGoogle);
 
 authRouter.post (
-    '/logout',
-    authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-    authController.logout);
+  '/logout',
+  authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+  authController.logout);
 
 authRouter.post (
-    '/registration',
-    // upload.any(),
-    userMiddleware.checkNewUserBodyIsValid,
-    userController.createUser);
+  '/registration/superadmin',
+  userMiddleware.checkSuperAdminIsNotExist,
+  userMiddleware.checkEmailIsValid,
+  userController.createSuperAdmin);
 
 authRouter.post (
-    '/registration/asRestaurantAdmin',
-    userMiddleware.checkNewUserBodyIsValid,
-    userController.createUserAsRestaurantAdmin);
+  '/registration',
+  // upload.any(),
+  userMiddleware.checkNewUserBodyIsValid,
+  userController.createUser);
 
 authRouter.post (
-    '/refresh',
-    authMiddleware.checkToken(tokenTypes.REFRESH_TYPE),
-    authController.refresh);
+  '/registration/asRestaurantAdmin',
+  userMiddleware.checkNewUserBodyIsValid,
+  userController.createUserAsRestaurantAdmin);
 
 authRouter.post (
-    '/forgotPassword',
-    userMiddleware.checkEmailIsValid,
-    userMiddleware.checkUserIsExistByEmail,
-    authController.forgotPasswordSendEmail);
+  '/refresh',
+  authMiddleware.checkToken(tokenTypes.REFRESH_TYPE),
+  authController.refresh);
+
+authRouter.post (
+  '/forgotPassword',
+  userMiddleware.checkEmailIsValid,
+  userMiddleware.checkUserIsExistByEmail,
+  authController.forgotPasswordSendEmail);
 
 authRouter.put (
-    '/forgotPassword',
-    userMiddleware.checkPasswordIsValid,
-    authMiddleware.checkToken(tokenTypes.ACTION_TOKEN_TYPE),
-    userMiddleware.checkNewPasswordIsDifferent,
-    authController.forgotPasswordUpdatePassword);
+  '/forgotPassword',
+  userMiddleware.checkPasswordIsValid,
+  authMiddleware.checkToken(tokenTypes.ACTION_TOKEN_TYPE),
+  userMiddleware.checkNewPasswordIsDifferent,
+  authController.forgotPasswordUpdatePassword);
 
-module.exports = authRouter
+module.exports = authRouter;

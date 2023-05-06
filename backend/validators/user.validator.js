@@ -1,56 +1,63 @@
 const Joi = require('joi');
 
-const {PASSWORD} = require("../constants/regex");
-const {BAD_REQUEST} = require("../constants/statusCodes");
-const {LocalError} = require("../errors");
-const {roles} = require("../constants");
+const {PASSWORD} = require('../constants/regex');
+const {BAD_REQUEST} = require('../constants/statusCodes');
+const {LocalError} = require('../errors');
+const {roles} = require('../constants');
 
 
-const userNameValidator = Joi.string().alphanum().min(3).max(20).trim().error(new LocalError('name is not valid', BAD_REQUEST));
-const emailValidator = Joi.string().trim().email();
-const passwordValidator = Joi.string().trim().regex(PASSWORD);
-const roleValidator = Joi.array().items(Joi.string().valid(roles.USER, roles.REST_ADMIN, roles.SUPER_ADMIN)).error(new LocalError('role is not valid', BAD_REQUEST));
+const userNameValidator = Joi.string().alphanum()
+  .min(3)
+  .max(20)
+  .trim()
+  .error(new LocalError('name is not valid', BAD_REQUEST));
+const emailValidator = Joi.string().trim()
+  .email();
+const passwordValidator = Joi.string().trim()
+  .regex(PASSWORD);
+const roleValidator = Joi.array().items(Joi.string().valid(roles.USER, roles.REST_ADMIN, roles.SUPER_ADMIN))
+  .error(new LocalError('role is not valid', BAD_REQUEST));
 
 const newUserBodyValidator = Joi.object({
-        name: userNameValidator.required(),
-        email: emailValidator.required().error(new LocalError('email is not valid', BAD_REQUEST)),
-        password: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
-        role: roleValidator
-    }
+  name: userNameValidator.required(),
+  email: emailValidator.required().error(new LocalError('email is not valid', BAD_REQUEST)),
+  password: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
+  role: roleValidator
+}
 );
 const updateUserBodyValidator = Joi.object({
-        name: userNameValidator,
-        email: emailValidator.error(new LocalError('email is not valid', BAD_REQUEST)),
-        password: passwordValidator.error(new LocalError('password is not valid', BAD_REQUEST)),
-        role: roleValidator
-    }
+  name: userNameValidator,
+  email: emailValidator.error(new LocalError('email is not valid', BAD_REQUEST)),
+  password: passwordValidator.error(new LocalError('password is not valid', BAD_REQUEST)),
+  role: roleValidator
+}
 );
 
 const loginUserValidator = Joi.object({
-    email: emailValidator.required().error(new LocalError('email or password is wrong', BAD_REQUEST)),
-    password: passwordValidator.required().error(new LocalError('email or password is wrong', BAD_REQUEST)),
+  email: emailValidator.required().error(new LocalError('email or password is wrong', BAD_REQUEST)),
+  password: passwordValidator.required().error(new LocalError('email or password is wrong', BAD_REQUEST)),
 });
 
 const changePasswordValidator = Joi.object({
-    newPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
-    oldPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
+  newPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
+  oldPassword: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
 });
 
 const onlyEmailValidator = Joi.object({
-     email: emailValidator.required().error(new LocalError('email is not valid', BAD_REQUEST)),
-    }
+  email: emailValidator.required().error(new LocalError('email is not valid', BAD_REQUEST)),
+}
 );
 
 const onlyPasswordValidator = Joi.object({
-    password: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
-    }
+  password: passwordValidator.required().error(new LocalError('password is not valid', BAD_REQUEST)),
+}
 );
 
 module.exports = {
-    newUserBodyValidator,
-    updateUserBodyValidator,
-    loginUserValidator,
-    changePasswordValidator,
-    onlyEmailValidator,
-    onlyPasswordValidator
-}
+  newUserBodyValidator,
+  updateUserBodyValidator,
+  loginUserValidator,
+  changePasswordValidator,
+  onlyEmailValidator,
+  onlyPasswordValidator
+};
