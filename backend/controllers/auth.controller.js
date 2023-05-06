@@ -35,7 +35,7 @@ module.exports = {
         const hashPassword = await hashService.hashPassword(uid);
         const userObj = ({name, email, password: hashPassword});
         user = await userService.createUser(userObj);
-        await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+        await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зарeєструвались на сайті "Пиячок"');
       }
       const {_id} = user;
       const authTokens = {
