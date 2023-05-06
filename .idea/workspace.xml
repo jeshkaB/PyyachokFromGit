@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/viewStatistics.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RegisterForm/registerSuperadminForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RegisterForm/registerSuperadminForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,13 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/dataBase/ViewStatistics.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/services/userEvent.service.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/backend/services/viewStatistics.service.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/src/constants/urls.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -132,14 +138,8 @@
       <workItem from="1683229940131" duration="1503000" />
       <workItem from="1683302437393" duration="958000" />
       <workItem from="1683303774349" duration="4360000" />
-      <workItem from="1683313360195" duration="2447000" />
-    </task>
-    <task id="LOCAL-00023" summary="client interim">
-      <created>1674240553134</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1674240553134</updated>
+      <workItem from="1683313360195" duration="3053000" />
+      <workItem from="1683363461144" duration="1224000" />
     </task>
     <task id="LOCAL-00024" summary="client interim">
       <created>1674246329284</created>
@@ -477,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683312770894</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="full finish">
+      <created>1683317335423</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1683317335426</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +518,8 @@
     <MESSAGE value="lint" />
     <MESSAGE value="finish" />
     <MESSAGE value="finish2" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish2" />
+    <MESSAGE value="full finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="full finish" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
