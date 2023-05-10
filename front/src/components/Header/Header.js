@@ -9,7 +9,7 @@ import css from './HeaderStyle.module.css';
 
 
 const Header = () => {
-    const {isAuth, authUser, isGoogle} = useSelector(state => state.auth);
+    const {isAuth, authUser, isSocNetwork} = useSelector(state => state.auth);
     const isManager = true;
 
     return (
@@ -38,7 +38,7 @@ const Header = () => {
                 </div>
                 :
                 <div className={css.User}>
-                    <UserInfo user={authUser} isGoogle={isGoogle}/>
+                    <UserInfo user={authUser} isSocNetwork={isSocNetwork}/>
                 </div>}
         </div>
 

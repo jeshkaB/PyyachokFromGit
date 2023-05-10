@@ -12,8 +12,7 @@ const urls = {
     restaurants: '/restaurants',
     topCategory: '/topCategory',
     users: '/users',
-    userEvents: '/userEvents',
-    superadminRegistrationUrl:'/superadminRegistrationUrl'
+    userEvents: '/userEvents'
 };
 
 export {baseURL,urls};

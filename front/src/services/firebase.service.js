@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {GoogleAuthProvider, signInWithPopup, getAuth, signOut} from 'firebase/auth';
+import {GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, getAuth, signOut} from 'firebase/auth';
 import {FireBaseConfig} from '../config';
 
 const firebaseConfig = {
@@ -13,6 +13,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const googleAuthProvider = new GoogleAuthProvider();
+const facebookAuthProvider = new FacebookAuthProvider();
 
 const auth = getAuth(app);
 
@@ -21,9 +22,17 @@ const signInByGoogle = ()=> signInWithPopup(auth, googleAuthProvider).then((cred
 }).catch ((error) => alert(error.message));
 
 const signOutByGoogle = () => signOut(auth).then(() => {
-
 }).catch((error) => {
     alert(error.message);
 });
 
-export {signInByGoogle,signOutByGoogle};
+const signInByFacebook = ()=> signInWithPopup(auth, facebookAuthProvider).then((credential) => {
+    return credential;
+}).catch ((error) => alert(error.message));
+
+const signOutByFacebook = () => signOut(auth).then(() => {
+}).catch((error) => {
+    alert(error.message);
+});
+
+export {signInByGoogle,signOutByGoogle, signInByFacebook,signOutByFacebook};

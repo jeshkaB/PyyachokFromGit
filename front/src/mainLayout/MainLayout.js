@@ -8,16 +8,15 @@ import {Header, ModalUC} from '../components';
 import {authService, geolocationService} from '../services';
 import {authActions, geoActions} from '../redux';
 
-
- const MainLayout = ()=> {
+const MainLayout = ()=> {
 
      const dispatch = useDispatch();
      if ('geolocation' in navigator) {
          geolocationService.getGeolocationFromNavigator();
-         dispatch(geoActions.setGeoLocation({isLocationAvailable:true, latitude:geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}));
+         dispatch(geoActions.setGeoLocation({isLocationAvailable: true, latitude: geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}));
      }
      else {
-         dispatch(geoActions.setGeoLocation(null));
+         dispatch(geoActions.setGeoLocation({isLocationAvailable: null, latitude: null, longitude: null}));
      }
      const refreshToken = authService.getRefreshTokenInLS();
 

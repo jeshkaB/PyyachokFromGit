@@ -52,7 +52,6 @@ const Restaurant = () => {
         await dispatch(authActions.removeFavoriteRest({userId, restId: id}));
         setStateFavorite(false);
     };
-
     return (
         <div className={css.Hole}>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
@@ -79,7 +78,8 @@ const Restaurant = () => {
                 <div className={css.TextBlock}>
                     <div style={{marginBottom: 10}}><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>
-                    {isLocationAvailable && restaurant.coordinates && <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[0]},${restaurant.coordinates[1]}`}
+                    {isLocationAvailable && restaurant.coordinates &&
+                        <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[0]},${restaurant.coordinates[1]}`}
                        className={css.Route}
                        target="_blank" rel="noreferrer"> Прокласти маршрут</a>}
                     <div> Телефон: {restaurant.phone}</div>

@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 const initialState = {
     isLocationAvailable: null,
     latitude: null,

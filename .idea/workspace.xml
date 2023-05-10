@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/asset-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/css/main.e214bb65.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/css/main.e214bb65.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/pages/PrivacyPolicyPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/urls.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/urls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/firebase.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/firebase.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +31,8 @@
       <list>
         <option value="package.json" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -141,14 +156,11 @@
       <workItem from="1683303774349" duration="4360000" />
       <workItem from="1683313360195" duration="3053000" />
       <workItem from="1683363461144" duration="4130000" />
-      <workItem from="1683373137819" duration="4329000" />
-    </task>
-    <task id="LOCAL-00026" summary="client interim">
-      <created>1674415879633</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1674415879633</updated>
+      <workItem from="1683373137819" duration="4512000" />
+      <workItem from="1683378391410" duration="2902000" />
+      <workItem from="1683392301071" duration="6100000" />
+      <workItem from="1683659181833" duration="4363000" />
+      <workItem from="1683731902320" duration="8538000" />
     </task>
     <task id="LOCAL-00027" summary="client interim">
       <created>1674467073045</created>
@@ -486,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683366839121</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="changed favicon">
+      <created>1683378017124</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1683378017124</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +516,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mongoose schemas 1" />
     <MESSAGE value="interim" />
     <MESSAGE value="client started" />
     <MESSAGE value="client interim" />
@@ -522,7 +540,8 @@
     <MESSAGE value="finish2" />
     <MESSAGE value="full finish" />
     <MESSAGE value="added .env.example" />
-    <option name="LAST_COMMIT_MESSAGE" value="added .env.example" />
+    <MESSAGE value="changed favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed favicon" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -28,10 +28,10 @@ import {
     GeneralViewStatisticsPage,
     CommentsInRestPage,
     RegisterSuperadminPage,
+    PrivacyPolicyPage,
 } from './pages';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {urls} from './constants';
 
 const App = () => {
 
@@ -44,7 +44,7 @@ const App = () => {
                     <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'forgotPassword'} element={<ForgotPasswordPage/>}/>
                     <Route path={'register'} element={<RegisterPage/>}/>
-                    <Route path={urls.superadminRegistrationUrl} element={<RegisterSuperadminPage/>}/>
+                    <Route path={'/superadminRegistrationUrl'} element={<RegisterSuperadminPage/>}/>
                     <Route path={'login'} element={<LoginPage/>}/>
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>
                     <Route path={'generalNews'} element={<GeneralNewsListPage/>}/>
@@ -66,6 +66,7 @@ const App = () => {
                     <Route path={'userEvents/:id'} element={<UserEventPage/>}/>
                     <Route path={'users/:id'} element={<UserPage/>}/>
                     <Route path={'restaurantsForAdmin/:id/viewStatistics'} element={<ViewStatisticsPage/>}/>
+                    <Route path={'privacyPolicy'} element={<PrivacyPolicyPage/>}/>
                 </Route>
             </Routes>
         </div>

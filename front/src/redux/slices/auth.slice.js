@@ -9,7 +9,7 @@ const initialState = {
     errors: null,
     role: null,
     authUser: null,
-    isGoogle: null
+    isSocNetwork: null
 
 };
 
@@ -47,6 +47,18 @@ const login = createAsyncThunk(
 
 const loginByGoogle = createAsyncThunk(
     'authSlice/loginByGoogle',
+    async ({user}, {rejectWithValue}) => {
+        try {
+            const {data} = await authService.loginByGoogle(user);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.response.data);
+        }
+    }
+);
+
+const loginByFacebook = createAsyncThunk(
+    'authSlice/loginByFacebook',
     async ({user}, {rejectWithValue}) => {
         try {
             const {data} = await authService.loginByGoogle(user);
@@ -142,18 +154,26 @@ const authSlice = createSlice({
                 state.authUser = user;
                 authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
                 authService.saveUserIdInLS(user._id);
-
             })
             .addCase(loginByGoogle.fulfilled, (state, action) => {
                 state.isAuth = true;
-                state.isGoodle = true;
+                state.isSocNetwork = 'google';
                 const {user, tokens} = action.payload;
                 state.userId = user._id;
                 state.role = user.role;
                 state.authUser = user;
                 authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
                 authService.saveUserIdInLS(user._id);
-
+            })
+            .addCase(loginByFacebook.fulfilled, (state, action) => {
+                state.isAuth = true;
+                state.isSocNetwork = 'facebook';
+                const {user, tokens} = action.payload;
+                state.userId = user._id;
+                state.role = user.role;
+                state.authUser = user;
+                authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
+                authService.saveUserIdInLS(user._id);
             })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isAuth = false;
@@ -197,6 +217,7 @@ const authActions = {
     register,
     login,
     loginByGoogle,
+    loginByFacebook,
     logout,
     addFavoriteRest,
     removeFavoriteRest,

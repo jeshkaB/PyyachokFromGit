@@ -4,18 +4,20 @@ import {useDispatch} from 'react-redux';
 import API_URL from '../../config';
 import {roles} from '../../constants';
 import {authActions} from '../../redux';
-import {signOutByGoogle} from '../../services';
+import {signOutByFacebook, signOutByGoogle} from '../../services';
 
 import css from './userInfo.module.css';
 
-const UserInfo = ({user, isGoogle}) => {
+const UserInfo = ({user, isSocNetwork}) => {
     const {role, name, avatar} = user;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const clickExit = async () => {
-        if (isGoogle)
+        if (isSocNetwork==='google')
             await signOutByGoogle();
+        else if (isSocNetwork==='facebook')
+            await signOutByFacebook();
         await dispatch(authActions.logout());
         navigate('../home');
     };
