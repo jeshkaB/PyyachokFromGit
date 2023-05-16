@@ -1,4 +1,5 @@
 const Restaurant = require('../dataBase/Restaurant');
+const {logout} = require("../controllers/auth.controller");
 
 module.exports = {
   createRestaurant(restaurantObj) {
@@ -18,6 +19,28 @@ module.exports = {
   },
   deleteRestaurant(restId) {
     return Restaurant.deleteOne ({_id: restId});
+  },
+  getRestaurantsListByParams(filter, sort, skip, limit) {
+    const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
+    console.log(tagsValue);
+    if (tagsValue !== '') {
+      return Restaurant.find({
+        rating: {$gte: ratingMin, $lte: ratingMax},
+        averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+        tags: {$all: tagsValue}
+      })
+        .sort(sort)
+        .skip(skip)
+        .limit(limit);
+    }
+    return Restaurant.find({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax}
+    })
+      .sort(sort)
+      .skip(skip)
+      .limit(limit);
+
   },
 
 };

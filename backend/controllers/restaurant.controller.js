@@ -14,11 +14,13 @@ module.exports = {
       const {_id, role} = req.tokenInfo.user;
       const restaurants = await restaurantService.getRestaurantByParams({user: _id});
 
+      const tagsArray = req.body.tags.split(',');
       const fileName = uuid.v4() + '.jpg';
       const {mainImage} = req.files;
       await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
       const restaurant = await restaurantService.createRestaurant({
         ...req.body,
+        tags: tagsArray,
         user: _id,
         mainImage: fileName,
         rating: 0
@@ -45,6 +47,28 @@ module.exports = {
       next(e);
     }
   },
+  getRestaurantsListByParams: async (req, res, next) => {
+    try {
+      const queryParams = req.query;
+      const sort = queryParams.sort ? JSON.parse(`{"${queryParams.sort}" : "${queryParams.sortOrder}"}`) : '';
+
+      const ratingMin = queryParams.rating ? +queryParams.rating.split('-')[0] : 0;
+      const ratingMax = queryParams.rating ? +queryParams.rating.split('-')[1] : 5;
+
+      const averageBillMin = queryParams.averageBill ? +queryParams.averageBill.split('-')[0] : 0;
+      const averageBillMax = queryParams.averageBill ? +queryParams.averageBill.split('-')[1] : 100000;
+
+      const tagsValue = queryParams.tags ? queryParams.tags.split(',') : '';
+      const filter = {ratingMin, ratingMax,averageBillMin,averageBillMax,tagsValue};
+
+      const restaurants = await restaurantService.getRestaurantsListByParams(filter,sort);
+
+      res.json(restaurants);
+
+    } catch (e) {
+      next(e);
+    }
+  },
   getRestaurantById: async (req, res, next) => {
     try {
       const {restId} = req.params;
@@ -59,7 +83,9 @@ module.exports = {
   updateRestaurant: async (req, res, next) => {
     try {
       const {restId} = req.params;
-      const restaurant = await restaurantService.updateRestaurant(restId, req.body);
+      // const tagsArray = req.body.tags.replace(/\s/g,'').split(',');
+      const tagsArray = req.body.tags.split(',');
+      const restaurant = await restaurantService.updateRestaurant(restId, {...req.body,tags: tagsArray});
       res.json(restaurant);
 
       if (req.files) {

@@ -12,8 +12,7 @@ const averageBillValidator = Joi.number().error(new LocalError('average bill is 
 const webSiteValidator = Joi.string().regex(regex.WEBSITE)
   .error(new LocalError('web site is not valid', BAD_REQUEST));
 const hoursValidator = Joi.string().error(new LocalError('hours is not valid', BAD_REQUEST));
-const tagsValidator = Joi.string().error(new LocalError('tag is not valid', BAD_REQUEST));
-// const categoriesValidator = Joi.array().items(Joi.string()).error(new LocalError('category is not valid', BAD_REQUEST));
+const tagsValidator = Joi.string().trim().error(new LocalError('tag is not valid', BAD_REQUEST));
 const phoneValidator = Joi.string().regex(regex.PHONE)
   .error(new LocalError('phone is not valid', BAD_REQUEST));
 const restaurantEmailValidator = Joi.string().email()

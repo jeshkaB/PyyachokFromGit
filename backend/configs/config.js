@@ -1,11 +1,11 @@
 module.exports = {
   PORT: process.env.PORT ||5000,
 
-  MONGO_URL: process.env.MONGO_URL /*|| 'mongodb://localhost:27017/some_DB'*/,
+  MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/some_DB',
 
   ACCESS_SECRET_WORD: process.env.ACCESS_SECRET_WORD || 'ACCESS_SECRET_WORD',
   REFRESH_SECRET_WORD: process.env.REFRESH_SECRET_WORD || 'REFRESH_SECRET_WORD',
-  ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || '15s',
+  ACCESS_TOKEN_LIFETIME: process.env.ACCESS_TOKEN_LIFETIME || '15m',
   REFRESH_TOKEN_LIFETIME: process.env.REFRESH_TOKEN_LIFETIME || '30d',
 
   ACTION_TOKEN_SECRET_WORD: process.env.ACTION_TOKEN_SECRET_WORD || 'ACTION_TOKEN_SECRET_WORD',

@@ -6,7 +6,7 @@ const restaurantSchema = new Schema({
   place: {type: String, required: true},
   averageBill: {type: Number, required: true},
   hours: {type: String, required: true},
-  tags: String,
+  tags: [String],
   phone: {type: String, required: true},
   email: {type: String, required: true},
   webSite: String,
