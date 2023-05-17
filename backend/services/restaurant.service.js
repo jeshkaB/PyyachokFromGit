@@ -1,5 +1,5 @@
 const Restaurant = require('../dataBase/Restaurant');
-const {logout} = require("../controllers/auth.controller");
+const {PAGE_LIMIT_REST} = require('../constants/pageLimit');
 
 module.exports = {
   createRestaurant(restaurantObj) {
@@ -20,27 +20,28 @@ module.exports = {
   deleteRestaurant(restId) {
     return Restaurant.deleteOne ({_id: restId});
   },
-  getRestaurantsListByParams(filter, sort, skip, limit) {
+  getCountRestaurantsByParams(filter, searchByName) {
     const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
-    console.log(tagsValue);
-    if (tagsValue !== '') {
-      return Restaurant.find({
-        rating: {$gte: ratingMin, $lte: ratingMax},
-        averageBill: {$gte: averageBillMin, $lte: averageBillMax},
-        tags: {$all: tagsValue}
-      })
-        .sort(sort)
-        .skip(skip)
-        .limit(limit);
-    }
+    return Restaurant.countDocuments({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'}
+    });
+  },
+  getRestaurantsListByParams(filter, searchByName, moderated, sort, page) {
+    const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
+    const skip = !page ? 0 : (page-1)*PAGE_LIMIT_REST;
     return Restaurant.find({
       rating: {$gte: ratingMin, $lte: ratingMax},
-      averageBill: {$gte: averageBillMin, $lte: averageBillMax}
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'},
+      moderated: true
     })
       .sort(sort)
       .skip(skip)
-      .limit(limit);
-
+      .limit(PAGE_LIMIT_REST);
   },
 
 };

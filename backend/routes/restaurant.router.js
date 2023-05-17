@@ -11,8 +11,8 @@ restaurantRouter.get(
   restaurantController.getRestaurants);
 
 restaurantRouter.get(
-  '/options', 
-  restaurantController.getRestaurantsListByParams);
+  '/advancedSearch',
+  restaurantController.getRestaurantsByParams);
 
 restaurantRouter.post(
   '/',

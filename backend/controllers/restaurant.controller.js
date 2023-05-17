@@ -7,20 +7,18 @@ const {
 } = require('../services');
 const {statusCode, pathImg, roles} = require('../constants');
 const {PATH_RESTAURANT_PHOTO} = require('../constants/pathImg');
+const {PAGE_LIMIT_REST} = require('../constants/pageLimit');
 
 module.exports = {
   createRestaurant: async (req, res, next) => {
     try {
       const {_id, role} = req.tokenInfo.user;
       const restaurants = await restaurantService.getRestaurantByParams({user: _id});
-
-      const tagsArray = req.body.tags.split(',');
       const fileName = uuid.v4() + '.jpg';
       const {mainImage} = req.files;
       await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
       const restaurant = await restaurantService.createRestaurant({
         ...req.body,
-        tags: tagsArray,
         user: _id,
         mainImage: fileName,
         rating: 0
@@ -47,28 +45,32 @@ module.exports = {
       next(e);
     }
   },
-  getRestaurantsListByParams: async (req, res, next) => {
+  getRestaurantsByParams: async (req, res, next) => {
     try {
       const queryParams = req.query;
+      const page = queryParams.page ? queryParams.page : 1;
+      const moderated = queryParams.moderated;
       const sort = queryParams.sort ? JSON.parse(`{"${queryParams.sort}" : "${queryParams.sortOrder}"}`) : '';
-
       const ratingMin = queryParams.rating ? +queryParams.rating.split('-')[0] : 0;
       const ratingMax = queryParams.rating ? +queryParams.rating.split('-')[1] : 5;
 
       const averageBillMin = queryParams.averageBill ? +queryParams.averageBill.split('-')[0] : 0;
       const averageBillMax = queryParams.averageBill ? +queryParams.averageBill.split('-')[1] : 100000;
 
-      const tagsValue = queryParams.tags ? queryParams.tags.split(',') : '';
+      const tagsValue = queryParams.tags ? queryParams.tags : '.*';
+      const searchByName = queryParams.search ? queryParams.search : '.*'; //пошук тільки по полю 'name'
       const filter = {ratingMin, ratingMax,averageBillMin,averageBillMax,tagsValue};
 
-      const restaurants = await restaurantService.getRestaurantsListByParams(filter,sort);
+      const totalItemsByParams = await restaurantService.getCountRestaurantsByParams(filter,searchByName);
+      const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,page);
 
-      res.json(restaurants);
+      res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_REST, restaurants});
 
     } catch (e) {
       next(e);
     }
   },
+
   getRestaurantById: async (req, res, next) => {
     try {
       const {restId} = req.params;
@@ -83,9 +85,7 @@ module.exports = {
   updateRestaurant: async (req, res, next) => {
     try {
       const {restId} = req.params;
-      // const tagsArray = req.body.tags.replace(/\s/g,'').split(',');
-      const tagsArray = req.body.tags.split(',');
-      const restaurant = await restaurantService.updateRestaurant(restId, {...req.body,tags: tagsArray});
+      const restaurant = await restaurantService.updateRestaurant(restId, req.body);
       res.json(restaurant);
 
       if (req.files) {

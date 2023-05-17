@@ -1,4 +1,3 @@
-
 module.exports = {
   authRouter: require ('./auth.router'),
   commentRouter: require('./comment.router'),
@@ -11,5 +10,4 @@ module.exports = {
   userRouter: require('./user.router'),
   userEventRouter: require('./userEvent.router'),
   viewStatisticsRouter: require('./viewStatistics.router'),
-
 };
