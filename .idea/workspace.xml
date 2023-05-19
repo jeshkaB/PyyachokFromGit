@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/constants/pageLimit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataBase/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/restaurant.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/restaurant.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/restaurant.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/restaurant.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/PaginationUC/PaginationUC.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/PaginationUC/PaginationUC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/constants/categoriesForRestSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/categoriesForRestSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/restaurant.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/restaurant.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/API.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +156,6 @@
       <workItem from="1683731902320" duration="8738000" />
       <workItem from="1683807972106" duration="1065000" />
       <workItem from="1684143019145" duration="22741000" />
-    </task>
-    <task id="LOCAL-00028" summary="client interim">
-      <created>1674494661046</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1674494661046</updated>
     </task>
     <task id="LOCAL-00029" summary="client interim">
       <created>1674638601321</created>
@@ -497,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683748890781</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="filter on backend">
+      <created>1684347633318</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1684347633318</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +511,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="client started" />
     <MESSAGE value="client interim" />
     <MESSAGE value="client interim1" />
     <MESSAGE value="before changing isFavorite" />
@@ -533,7 +535,8 @@
     <MESSAGE value="added .env.example" />
     <MESSAGE value="changed favicon" />
     <MESSAGE value="sign in with Facebook" />
-    <option name="LAST_COMMIT_MESSAGE" value="sign in with Facebook" />
+    <MESSAGE value="filter on backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="filter on backend" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

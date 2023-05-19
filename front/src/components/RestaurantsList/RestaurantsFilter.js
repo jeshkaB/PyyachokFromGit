@@ -5,14 +5,23 @@ import {Dropdown} from 'react-bootstrap';
 
 import css from './RestaurantsList.module.css';
 
-const RestaurantsFilter = ({setBillFilter, setRatingFilter, setTagsFilter}) => {
+const RestaurantsFilter = ({setSearchParams, searchParams}) => {
 
     const {register, handleSubmit} = useForm();
 
     const submit = async (data) => {
-        setRatingFilter([data.ratingMin ==='' ? 0 : data.ratingMin, data.ratingMax===''? 5 : data.ratingMax]);
-        setBillFilter([data.billMin ==='' ? 0 : data.billMin, data.billMax === '' ? 100000 : data.billMax]);
-        setTagsFilter(data.tags);
+        // searchParams.delete('rating', 'averageBill', 'tags')
+        const ratingFilterMin = data.ratingMin ==='' ? 0 : data.ratingMin;
+        const ratingFilterMax = data.ratingMax===''? 5 : data.ratingMax;
+        const billFilterMin = data.billMin ==='' ? 0 : data.billMin;
+        const billFilterMax = data.billMax === '' ? 100000 : data.billMax;
+        const tagsFilter = data.tags;
+        setSearchParams (searchParams => {
+            searchParams.set('rating', `${ratingFilterMin}-${ratingFilterMax}`);
+            searchParams.set('averageBill', `${billFilterMin}-${billFilterMax}`);
+            tagsFilter && searchParams.set('tags', tagsFilter);
+            return searchParams;
+        });
     };
 
     const [filterIsOpen, setFilterIsOpen] = useState(false);

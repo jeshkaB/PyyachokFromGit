@@ -6,6 +6,9 @@ import {urls} from '../../constants';
 
 const initialState = {
     restaurants: [],//модеровані ресторани
+    totalItems: 0,
+    page: 1,
+    limit: 5,
     notModeratedRestaurants: [],
     restaurant: {},
     errors: null,
@@ -19,6 +22,18 @@ const getAll = createAsyncThunk(
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await ApiService.getAll(entity);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.response.data);
+        }
+    }
+);
+
+const getModeratedRestByParams = createAsyncThunk(
+    'restaurantSlice/getModeratedRestByParams',
+    async ({rating, averageBill, tags, search, moderated=true, sort, sortOrder, page}, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.getRestaurantsByParams(entity, rating, averageBill, tags, search, moderated, sort, sortOrder, page);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data);
@@ -120,9 +135,15 @@ const restaurantSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurants = action.payload.filter(rest=>rest.moderated === true); //модеровані ресторани
+                    // state.restaurants = action.payload.filter(rest=>rest.moderated === true); //модеровані ресторани
                     state.notModeratedRestaurants = action.payload.filter(rest=>rest.moderated === false);
-
+                })
+                .addCase(getModeratedRestByParams.fulfilled, (state, action) => {
+                    state.errors = null;
+                    state.restaurants = action.payload.restaurants;
+                    state.totalItems = action.payload.totalItems;
+                    state.page = action.payload.page;
+                    state.limit = action.payload.limit;
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;
@@ -161,6 +182,6 @@ const restaurantSlice = createSlice({
     }
 );
 const {reducer: restaurantReducer} = restaurantSlice;
-const restaurantActions = {getAll, getById, create, updateById, deleteById, sendMessage, changeRestAdmin, completeViews};
+const restaurantActions = {getAll, getModeratedRestByParams, getById, create, updateById, deleteById, sendMessage, changeRestAdmin, completeViews};
 
 export {restaurantReducer, restaurantActions};

@@ -63,7 +63,6 @@ module.exports = {
 
       const totalItemsByParams = await restaurantService.getCountRestaurantsByParams(filter,searchByName);
       const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,page);
-
       res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_REST, restaurants});
 
     } catch (e) {
