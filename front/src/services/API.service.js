@@ -26,9 +26,8 @@ const ApiService = {
     getViewStatisticsAll: () => axiosService.get('/ViewStatistics'),
     getViewStatisticsByRestId: (restId) => axiosService.get(`/ViewStatistics/${restId}`),
 
-    getRestaurantsByParams: (entity, rating, averageBill, tags, search, moderated, sort, sortOrder, page ) =>
-        axiosService.get(`${entity}/advancedSearch`, {params: {rating, averageBill, tags, search, moderated, sort, sortOrder, page}})
-
+    getRestaurantsByParams: (entity, latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page) =>
+        axiosService.get(`${entity}/advancedSearch`, {params: {latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page}})
 };
 
 export {ApiService};

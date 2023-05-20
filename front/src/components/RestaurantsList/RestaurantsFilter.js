@@ -1,16 +1,19 @@
 import {useForm} from 'react-hook-form';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {Dropdown} from 'react-bootstrap';
 
 import css from './RestaurantsList.module.css';
 
-const RestaurantsFilter = ({setSearchParams, searchParams}) => {
+const RestaurantsFilter = ({setSearchParams, isReset}) => {
+
+    useEffect(()=> {
+        setFilterIsOpen(false);
+    }, [isReset]);
 
     const {register, handleSubmit} = useForm();
 
     const submit = async (data) => {
-        // searchParams.delete('rating', 'averageBill', 'tags')
         const ratingFilterMin = data.ratingMin ==='' ? 0 : data.ratingMin;
         const ratingFilterMax = data.ratingMax===''? 5 : data.ratingMax;
         const billFilterMin = data.billMin ==='' ? 0 : data.billMin;
@@ -25,6 +28,9 @@ const RestaurantsFilter = ({setSearchParams, searchParams}) => {
     };
 
     const [filterIsOpen, setFilterIsOpen] = useState(false);
+    useEffect(()=> {
+        setFilterIsOpen(false);
+    }, [isReset]);
 
     return (<div >
             <div>

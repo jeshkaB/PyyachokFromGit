@@ -5,7 +5,8 @@ import {urls} from '../../constants';
 
 
 const initialState = {
-    restaurants: [],//модеровані ресторани
+    restaurants: [],//всі модеровані ресторани
+    restaurantsSorted: [],//модеровані ресторани для сортування
     totalItems: 0,
     page: 1,
     limit: 5,
@@ -31,9 +32,9 @@ const getAll = createAsyncThunk(
 
 const getModeratedRestByParams = createAsyncThunk(
     'restaurantSlice/getModeratedRestByParams',
-    async ({rating, averageBill, tags, search, moderated=true, sort, sortOrder, page}, {rejectWithValue}) => {
+    async ({latitude, longitude, rating, averageBill, tags, search, moderated=true, sort, sortOrder, page}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getRestaurantsByParams(entity, rating, averageBill, tags, search, moderated, sort, sortOrder, page);
+            const {data} = await ApiService.getRestaurantsByParams(entity, latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data);
@@ -135,12 +136,12 @@ const restaurantSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    // state.restaurants = action.payload.filter(rest=>rest.moderated === true); //модеровані ресторани
+                    state.restaurants = action.payload.filter(rest=>rest.moderated === true); //модеровані ресторани
                     state.notModeratedRestaurants = action.payload.filter(rest=>rest.moderated === false);
                 })
                 .addCase(getModeratedRestByParams.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.restaurants = action.payload.restaurants;
+                    state.restaurantsSorted = action.payload.restaurants;
                     state.totalItems = action.payload.totalItems;
                     state.page = action.payload.page;
                     state.limit = action.payload.limit;

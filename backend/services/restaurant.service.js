@@ -29,17 +29,33 @@ module.exports = {
       name: {$regex: '.*' + searchByName + '.*', $options: 'i'}
     });
   },
-  getRestaurantsListByParams(filter, searchByName, moderated, sort, page) {
+  getRestaurantsListByParams(filter, searchByName, moderated, sort, longitude, latitude, page) {
     const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
     const skip = !page ? 0 : (page-1)*PAGE_LIMIT_REST;
+
+    if (!longitude || !latitude)
+    {return Restaurant.find({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'},
+      moderated: true,
+    })
+      .sort(sort)
+      .skip(skip)
+      .limit(PAGE_LIMIT_REST);}
+    
     return Restaurant.find({
       rating: {$gte: ratingMin, $lte: ratingMax},
       averageBill: {$gte: averageBillMin, $lte: averageBillMax},
       tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
       name: {$regex: '.*' + searchByName + '.*', $options: 'i'},
-      moderated: true
+      moderated: true,
+      coordinates: {$near: [
+        longitude,
+        latitude
+      ]}
     })
-      .sort(sort)
       .skip(skip)
       .limit(PAGE_LIMIT_REST);
   },

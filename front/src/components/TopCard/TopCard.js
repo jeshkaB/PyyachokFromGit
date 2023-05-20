@@ -12,7 +12,7 @@ const TopCard = ({categ}) => {
     const {restaurants} = useSelector(state => state.restaurant);
 
     useEffect(() => {
-        dispatch(restaurantActions.getModeratedRestByParams());
+        dispatch(restaurantActions.getAll());
     }, []);
 
    let restaurantsWithTheCategory=[];

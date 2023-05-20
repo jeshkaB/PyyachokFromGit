@@ -51,6 +51,7 @@ module.exports = {
       const page = queryParams.page ? queryParams.page : 1;
       const moderated = queryParams.moderated;
       const sort = queryParams.sort ? JSON.parse(`{"${queryParams.sort}" : "${queryParams.sortOrder}"}`) : '';
+      const {longitude,latitude} = queryParams;
       const ratingMin = queryParams.rating ? +queryParams.rating.split('-')[0] : 0;
       const ratingMax = queryParams.rating ? +queryParams.rating.split('-')[1] : 5;
 
@@ -62,7 +63,8 @@ module.exports = {
       const filter = {ratingMin, ratingMax,averageBillMin,averageBillMax,tagsValue};
 
       const totalItemsByParams = await restaurantService.getCountRestaurantsByParams(filter,searchByName);
-      const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,page);
+      const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,longitude,latitude,page);
+
       res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_REST, restaurants});
 
     } catch (e) {

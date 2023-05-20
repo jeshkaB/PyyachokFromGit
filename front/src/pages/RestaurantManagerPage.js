@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
 import {useState} from 'react';
 
-import {RestaurantCreate, RestaurantsForModeration, RestaurantsList} from '../components';
+import {ManagerRestaurantsList, RestaurantCreate, RestaurantsForModeration} from '../components';
 
 const RestaurantManagerPage = () => {
     const {userId} = useSelector(state => state.auth);
@@ -16,7 +16,7 @@ const RestaurantManagerPage = () => {
              </div>
             <div>
             <h3>Мої заклади </h3>
-            <RestaurantsList userId={userId}/>
+            <ManagerRestaurantsList userId={userId}/>
             </div>
         </div>
     );

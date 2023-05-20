@@ -1,16 +1,22 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {Dropdown} from 'react-bootstrap';
 import {categoriesForRestSort} from '../../constants';
 
 
-const RestaurantsSort = ({setSearchParams, searchParams}) => {
-
+const RestaurantsSort = ({setSearchParams, isReset}) => {
     const {categoriesSort} = categoriesForRestSort;
     const [currentCateg, setCurrentCateg] = useState('');
-    
+
+    useEffect(()=> {
+        setCurrentCateg('Сортувати по');
+    }, [isReset]);
+
     const click = (categ) => {
         setSearchParams (searchParams => {
+            if (categ.key !== 'distance') {
+                searchParams.delete('longitude');
+                searchParams.delete('latitude');}
             searchParams.set('sort', categ.key);
             searchParams.set('sortOrder', `${categ.sortOrder}`);
             return searchParams;
