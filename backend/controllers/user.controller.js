@@ -14,11 +14,13 @@ module.exports = {
         const {avatar: image} = req.files;
         await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
         const user = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
-        await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+        //TODO
+        // await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
         res.status(statusCode.CREATE).json(user);
       } else {
         const user = await userService.createUser({...req.body, password: hashPassword});
-        await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+        //TODO
+        // await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
         res.status(statusCode.CREATE).json(user);
       }
     } catch (e) {
