@@ -37,7 +37,6 @@ const newRestaurantBodyValidator = Joi.object({
   averageBill: averageBillValidator.required(),
   hours: hoursValidator.required(),
   tags: tagsValidator,
-  // categories: categoriesValidator,
   phone: phoneValidator.required(),
   email: restaurantEmailValidator.required(),
   webSite: webSiteValidator,

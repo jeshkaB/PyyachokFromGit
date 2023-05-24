@@ -15,7 +15,6 @@ const RegisterForm = ({isManager}) => {
 
     const [errorIsVisible, setErrorIsVisible] = useState(false);
     const [errorsMessage, setErrorsMessage] = useState(false);
-   
     const regexPassword = regex.password;
     const regexEmail = regex.email;
 
@@ -34,6 +33,7 @@ const RegisterForm = ({isManager}) => {
         }
          else {
              const {error} = await dispatch(authActions.register({user: data, isManager}));
+
                 if (error) {
                     setErrorsMessage(errors.message);
                     setErrorIsVisible(true);
@@ -49,7 +49,7 @@ const RegisterForm = ({isManager}) => {
             <form onSubmit={handleSubmit(submit)}>
                 <input type='text' placeholder={'ім’я'} {...register('name')}/>
                 <input type='text' placeholder={'email'} {...register('email')}/>
-                <input type='text' placeholder={'пароль'} {...register('password')}/>
+                <input type='password' placeholder={'пароль'} {...register('password')}/>
                 {!isManager ?
                     <button>Зареєструватись</button>
                     :

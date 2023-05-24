@@ -2,14 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/constants/regex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/constants/acceptedFileTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/constants/coordinatesLimit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/coordinatesLimit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/AccountComponents/UpdateAccount/UpdateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/AccountComponents/UpdateAccount/UpdateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/LoginForm/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/LoginForm/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/RegisterForm/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RegisterForm/registerForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserEventForm/UserEventForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserEventForm/UserEventForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UsersList/UsersList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UsersList/UsersList.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UsersList/UsersSearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UsersList/UsersSearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UsersList/usersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UsersList/usersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/constants/categoriesForRestFilter.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/constants/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/user.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/services/API.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/API.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,14 +172,7 @@
       <workItem from="1683731902320" duration="8738000" />
       <workItem from="1683807972106" duration="1065000" />
       <workItem from="1684143019145" duration="22741000" />
-      <workItem from="1684759390320" duration="13029000" />
-    </task>
-    <task id="LOCAL-00031" summary="client interim">
-      <created>1674764572705</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1674764572705</updated>
+      <workItem from="1684759390320" duration="44850000" />
     </task>
     <task id="LOCAL-00032" summary="client interim">
       <created>1675108292950</created>
@@ -498,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684607105114</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="add some validation on front">
+      <created>1684789291262</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1684789291262</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +528,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="client interim1" />
     <MESSAGE value="before changing isFavorite" />
     <MESSAGE value="update comment" />
     <MESSAGE value="current changes" />
@@ -534,7 +552,8 @@
     <MESSAGE value="sign in with Facebook" />
     <MESSAGE value="filter on backend" />
     <MESSAGE value="filter on backend done" />
-    <option name="LAST_COMMIT_MESSAGE" value="filter on backend done" />
+    <MESSAGE value="add some validation on front" />
+    <option name="LAST_COMMIT_MESSAGE" value="add some validation on front" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

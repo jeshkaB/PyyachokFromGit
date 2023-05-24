@@ -6,10 +6,12 @@ const {roles, tokenTypes} = require('../constants');
 
 const userRouter = Router();
 
-
 userRouter.get(
   '/',
-  userController.getUsers);
+
+  authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+  forAllMiddleware.checkRole(roles.SUPER_ADMIN),
+  userController.getUsersWithoutPass);
 
 userRouter.post(
   '/',
@@ -22,9 +24,12 @@ userRouter.post(
 
 userRouter.get(
   '/:userId',
+
+  authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
+  forAllMiddleware.checkRole(roles.SUPER_ADMIN),
   forAllMiddleware.checkIdIsValid('userId'),
   userMiddleware.checkUserIsExist(),
-  userController.getUserById);
+  userController.getUserByIdWithoutPass);
 
 userRouter.patch(
   '/:userId',

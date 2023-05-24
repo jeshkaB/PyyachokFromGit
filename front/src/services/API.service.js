@@ -2,7 +2,8 @@ import {axiosService} from './axios.service';
 
 const ApiService = {
 
-    getAll: (entity) => axiosService.get(`${entity}`),
+    getAll: (entity, email, page) => axiosService.get(`${entity}`, {params: {email, page}}),
+
     create: (entity, data) => axiosService.post(`${entity}`,data),
     getById: (entity, id) => axiosService.get(`${entity}/${id}`),
     deleteById: (entity, id) => axiosService.delete(`${entity}/${id}`),
@@ -27,7 +28,8 @@ const ApiService = {
     getViewStatisticsByRestId: (restId) => axiosService.get(`/ViewStatistics/${restId}`),
 
     getRestaurantsByParams: (entity, latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page) =>
-        axiosService.get(`${entity}/advancedSearch`, {params: {latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page}})
+        axiosService.get(`${entity}/advancedSearch`, {params: {latitude, longitude, rating, averageBill, tags, search, moderated, sort, sortOrder, page}}),
+    
 };
 
 export {ApiService};

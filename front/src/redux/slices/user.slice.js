@@ -6,6 +6,9 @@ import {urls} from '../../constants';
 const initialState = {
     users: [],
     user: {},
+    totalItems: 0,
+    page: 1,
+    limit: 10,
     errors: null,
     isChangeUsersList: false
 };
@@ -14,12 +17,12 @@ const entity = urls.users;
 
 const getAll = createAsyncThunk(
     'userSlice/getAll',
-    async (_, {rejectWithValue}) => {
+    async ({email, page}, {rejectWithValue}) => {
         try {
-            const {data} = await ApiService.getAll(entity);
+
+            const {data} = await ApiService.getAll(entity, email, page);
+            console.log(data)
             return data;
-
-
         } catch (e) {
             return rejectWithValue(e.response.data);
         }
@@ -100,7 +103,10 @@ const userSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
-                    state.users = action.payload;
+                    state.users = action.payload.users;
+                    state.totalItems = action.payload.totalItems;
+                    state.page = action.payload.page;
+                    state.limit = action.payload.limit;
                 })
                 .addCase(getById.fulfilled, (state, action) => {
                     state.errors = null;

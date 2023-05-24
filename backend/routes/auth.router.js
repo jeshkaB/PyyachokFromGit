@@ -33,10 +33,14 @@ authRouter.post (
   '/registration',
   // upload.any(),
   userMiddleware.checkNewUserBodyIsValid,
+  userMiddleware.checkUserFieldIsUnique('name'),
+  userMiddleware.checkUserFieldIsUnique('email'),
   userController.createUser);
 
 authRouter.post (
   '/registration/asRestaurantAdmin',
+  userMiddleware.checkUserFieldIsUnique('name'),
+  userMiddleware.checkUserFieldIsUnique('email'),
   userMiddleware.checkNewUserBodyIsValid,
   userController.createUserAsRestaurantAdmin);
 

@@ -23,6 +23,7 @@ const RestaurantsFilter = ({setSearchParams, isReset}) => {
             searchParams.set('rating', `${ratingFilterMin}-${ratingFilterMax}`);
             searchParams.set('averageBill', `${billFilterMin}-${billFilterMax}`);
             tagsFilter && searchParams.set('tags', tagsFilter);
+            searchParams.delete('page');
             return searchParams;
         });
     };

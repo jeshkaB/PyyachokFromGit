@@ -8,6 +8,7 @@ const RestaurantSearchForm = ({setSearchParams}) => {
         const query = e.target.search.value;
         setSearchParams(searchParams => {
                 searchParams.set('search', query);
+                searchParams.delete('page');
                 return searchParams;
             });
     };

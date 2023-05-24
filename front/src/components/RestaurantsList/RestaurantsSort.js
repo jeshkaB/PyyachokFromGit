@@ -19,6 +19,7 @@ const RestaurantsSort = ({setSearchParams, isReset}) => {
                 searchParams.delete('latitude');}
             searchParams.set('sort', categ.key);
             searchParams.set('sortOrder', `${categ.sortOrder}`);
+            searchParams.delete('page');
             return searchParams;
         });
         setCurrentCateg(categ.name);
