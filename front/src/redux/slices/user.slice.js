@@ -17,11 +17,21 @@ const entity = urls.users;
 
 const getAll = createAsyncThunk(
     'userSlice/getAll',
+    async (_, {rejectWithValue}) => {
+        try {
+            const {data} = await ApiService.getAll(entity);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.response.data);
+        }
+    }
+);
+
+const getUsersByParams = createAsyncThunk(
+    'userSlice/getUsersByParams',
     async ({email, page}, {rejectWithValue}) => {
         try {
-
-            const {data} = await ApiService.getAll(entity, email, page);
-            console.log(data)
+            const {data} = await ApiService.getUsersByParams(entity, email, page);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data);
@@ -103,6 +113,10 @@ const userSlice = createSlice({
             builder
                 .addCase(getAll.fulfilled, (state, action) => {
                     state.errors = null;
+                    state.users = action.payload;
+                })
+                .addCase(getUsersByParams.fulfilled, (state, action) => {
+                    state.errors = null;
                     state.users = action.payload.users;
                     state.totalItems = action.payload.totalItems;
                     state.page = action.payload.page;
@@ -142,6 +156,6 @@ const userSlice = createSlice({
     },
 );
 const {reducer: userReducer/*, actions: {setStateOfUpdating}*/} = userSlice;
-const userActions = {getAll, getById, create, updateById, deleteById, changePassword};
+const userActions = {getAll, getUsersByParams, getById, create, updateById, deleteById, changePassword};
 
 export {userReducer, userActions};

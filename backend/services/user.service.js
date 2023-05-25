@@ -6,14 +6,14 @@ module.exports = {
     return User.create(userObj);
   },
   getUsers() {
-    return User.find();
+    return User.find().select({password:0});
   },
   getCountUsersByParams(email) {
     return User.countDocuments({
       email: {$regex: '.*' + email + '.*', $options: 'i'}
     });
   },
-  getUsersWithoutPass(email, page) {
+  getUsersByParams(email, page) {
     const skip = !page ? 0 : (page-1)*PAGE_LIMIT_USERS;
     return User
       .find({email: {$regex: '.*' + email + '.*', $options: 'i'}})

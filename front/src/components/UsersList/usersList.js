@@ -18,7 +18,7 @@ const UsersList = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        dispatch(userActions.getAll({email: searchParams.get('userEmail'), page: searchParams.get('page')}));
+        dispatch(userActions.getUsersByParams({email: searchParams.get('userEmail'), page: searchParams.get('page')}));
     }, [searchParams]);
 
     return (

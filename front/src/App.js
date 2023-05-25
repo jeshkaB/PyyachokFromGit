@@ -30,16 +30,29 @@ import {
     RegisterSuperadminPage,
     PrivacyPolicyPage,
 } from './pages';
+import {RestadminRoutes, SuperadminRoutes} from './routingAccess';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
 
       return (
         <div>
-
             <Routes>
                 <Route path={''} element={<MainLayout/>}>
+                    <Route element={<SuperadminRoutes/>}>
+                        <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
+                        <Route path={'superAdmin/top'} element={<TopPageForAdmin/>}/>
+                        <Route path={'superAdmin/views'} element={<GeneralViewStatisticsPage/>}/>
+                        <Route path={'users/:id'} element={<UserPage/>}/>
+                    </Route>
+                    <Route element={<RestadminRoutes/>}>
+                        <Route path={'restaurantManager'} element={<RestaurantManagerPage/>}/>
+                        <Route path={'restaurantsForAdmin/:id'} element={<RestaurantForAdminPage/>}/>
+                        <Route path={'restaurantsForAdmin/:restId/newsForAdmin/:newsId'} element={<NewsForAdminPage/>}/>
+                        <Route path={'restaurantsForAdmin/:id/viewStatistics'} element={<ViewStatisticsPage/>}/>
+                    </Route>
                     <Route index element={<Navigate to={'home'}/>}/>
                     <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'forgotPassword'} element={<ForgotPasswordPage/>}/>
@@ -49,14 +62,8 @@ const App = () => {
                     <Route path={'myAccount'} element={<MyAccountPage/>}/>
                     <Route path={'generalNews'} element={<GeneralNewsListPage/>}/>
                     <Route path={'generalNews/:id'} element={<GeneralNewsPage/>}/>
-                    <Route path={'restaurantManager'} element={<RestaurantManagerPage/>}/>
-                    <Route path={'superAdmin'} element={<SuperAdminPage/>}/>
-                    <Route path={'superAdmin/top'} element={<TopPageForAdmin/>}/>
-                    <Route path={'superAdmin/views'} element={<GeneralViewStatisticsPage/>}/>
                     <Route path={'restaurants'} element={<RestaurantsListPage/>}/>
                     <Route path={'restaurants/:id'} element={<RestaurantPage/>}/>
-                    <Route path={'restaurantsForAdmin/:id'} element={<RestaurantForAdminPage/>}/>
-                    <Route path={'restaurantsForAdmin/:restId/newsForAdmin/:newsId'} element={<NewsForAdminPage/>}/>
                     <Route path={'restaurants/:id/comments'} element={<CommentsInRestPage/>}/>
                     <Route path={'restaurants/:id/marks'} element={<MarksInRestPage/>}/>
                     <Route path={'restaurants/:id/userEvents'} element={<UserEventsPageInRestaurant/>}/>
@@ -64,8 +71,6 @@ const App = () => {
                     <Route path={'news/:id'} element={<NewsPage/>}/>
                     <Route path={'userEvents'} element={<UserEventsListPage/>}/>
                     <Route path={'userEvents/:id'} element={<UserEventPage/>}/>
-                    <Route path={'users/:id'} element={<UserPage/>}/>
-                    <Route path={'restaurantsForAdmin/:id/viewStatistics'} element={<ViewStatisticsPage/>}/>
                     <Route path={'privacyPolicy'} element={<PrivacyPolicyPage/>}/>
                 </Route>
             </Routes>

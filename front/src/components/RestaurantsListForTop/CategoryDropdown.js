@@ -1,16 +1,32 @@
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useState} from 'react';
 import {Dropdown} from 'react-bootstrap';
 
 import {topCategoryActions} from '../../redux';
 
-const CategoryDropdown = ({restId, categoriesForSelection,setCategoriesForSelection}) => {
+const CategoryDropdown = ({restId}) => {
+    const {topCategories, stateChangeTop} = useSelector(state => state.topCategory);
     const dispatch = useDispatch();
+    const [categoriesForSelection, setCategoriesForSelection] = useState([])
+
+    useEffect(() => {
+        dispatch(topCategoryActions.getAll());
+    }, [stateChangeTop]);
+
+
+useEffect(()=> {
+    let categoriesNotInRest = [];
+    topCategories.forEach(categ => {
+        if (!categ.restaurants.includes(restId))
+            categoriesNotInRest.push(categ);
+    });
+    setCategoriesForSelection(categoriesNotInRest);
+},[topCategories])
 
      const clickCategory = async (categId)=> {
-         setCategoriesForSelection (categoriesForSelection.filter(categ => categ._id !== categId));
+         // setCategoriesForSelection (categoriesForSelection.filter(categ => categ._id !== categId));
          await dispatch (topCategoryActions.addRestaurantInCategory({categId, restId}));
      };
-
     return (<div>
             <div>
                 <Dropdown>

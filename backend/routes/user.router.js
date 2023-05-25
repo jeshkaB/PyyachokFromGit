@@ -8,10 +8,11 @@ const userRouter = Router();
 
 userRouter.get(
   '/',
+  userController.getUsers);
 
-  authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-  forAllMiddleware.checkRole(roles.SUPER_ADMIN),
-  userController.getUsersWithoutPass);
+userRouter.get(
+  '/advancedSearch',
+  userController.getUsersByParams);
 
 userRouter.post(
   '/',
@@ -24,9 +25,6 @@ userRouter.post(
 
 userRouter.get(
   '/:userId',
-
-  authMiddleware.checkToken(tokenTypes.ACCESS_TYPE),
-  forAllMiddleware.checkRole(roles.SUPER_ADMIN),
   forAllMiddleware.checkIdIsValid('userId'),
   userMiddleware.checkUserIsExist(),
   userController.getUserByIdWithoutPass);

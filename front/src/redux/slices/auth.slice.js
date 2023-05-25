@@ -154,6 +154,7 @@ const authSlice = createSlice({
                 state.authUser = user;
                 authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
                 authService.saveUserIdInLS(user._id);
+                authService.saveUserRoleInLS(user.role);
             })
             .addCase(loginByGoogle.fulfilled, (state, action) => {
                 state.isAuth = true;
@@ -164,6 +165,7 @@ const authSlice = createSlice({
                 state.authUser = user;
                 authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
                 authService.saveUserIdInLS(user._id);
+                authService.saveUserRoleInLS(user.role);
             })
             .addCase(loginByFacebook.fulfilled, (state, action) => {
                 state.isAuth = true;
@@ -174,6 +176,7 @@ const authSlice = createSlice({
                 state.authUser = user;
                 authService.saveTokensInLS({accessToken:tokens.accessToken, refreshToken:tokens.refreshToken});
                 authService.saveUserIdInLS(user._id);
+                authService.saveUserRoleInLS(user.role);
             })
             .addCase(logout.fulfilled, (state, action) => {
                 state.isAuth = false;
@@ -182,6 +185,8 @@ const authSlice = createSlice({
                 state.role = null;
                 authService.deleteTokensInLS();
                 authService.deleteUserIdInLS();
+                authService.deleteUserIdInLS();
+                authService.deleteUserRoleInLS();
                 geolocationService.deleteGeoCoordsInLS();
             })
             .addCase(addFavoriteRest.fulfilled, (state, action) => {

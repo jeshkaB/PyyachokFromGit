@@ -1,10 +1,10 @@
 const uuid = require('uuid');
 const path = require('path');
 
-const {userService, hashService, fileService, authService, nodemailerService, restaurantService} = require('../services');
+const {userService, hashService, fileService, authService, nodemailerService} = require('../services');
 const {statusCode, roles, pathImg} = require('../constants');
 const {PATH_AVATAR} = require('../constants/pathImg');
-const {PAGE_LIMIT_REST, PAGE_LIMIT_USERS} = require("../constants/pageLimit");
+const {PAGE_LIMIT_USERS} = require('../constants/pageLimit');
 
 module.exports = {
   createUser: async (req, res, next) => {
@@ -79,12 +79,12 @@ module.exports = {
       next(e);
     }
   },
-  getUsersWithoutPass: async (req, res, next) => {
+  getUsersByParams: async (req, res, next) => {
     try {
       const searchParams = req.query;
       const email = searchParams.email ? searchParams.email : '';
       const page = searchParams.page ? searchParams.page : 1;
-      const users = await userService.getUsersWithoutPass(email, page);
+      const users = await userService.getUsersByParams(email, page);
       const totalItemsByParams = await userService.getCountUsersByParams(email);
 
       res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_USERS, users});

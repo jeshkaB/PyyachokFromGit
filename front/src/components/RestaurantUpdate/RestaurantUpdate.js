@@ -35,29 +35,30 @@ const RestaurantUpdate = ({restaurant}) => {
 
     const submit = async (data) => {
         const formData = new FormData();
-        if (acceptedImageTypes.includes(data.mainImage[0].type)) {
-            formData.append('name', data.name);
-            data.mainImage[0] && formData.append('mainImage', data.mainImage[0]);
-            formData.append('place', data.place);
-            formData.append('hours', data.hours);
-            formData.append('phone', data.phone);
-            formData.append('averageBill', data.averageBill);
-            formData.append('email', data.email);
-            formData.append('coordinates', data.longitude);
-            formData.append('coordinates', data.latitude);
-            data.webSite && formData.append('webSite', data.webSite);
-            data.tags && formData.append('tags', data.tags);
-            const {error} = await dispatch(restaurantActions.updateById({id: _id, restObj: formData}));
-            if (!error) setModalIsVisible(true);
-            else {
-                setErrorsMessage(errors?.message);
+        formData.append('name', data.name);
+        formData.append('place', data.place);
+        formData.append('hours', data.hours);
+        formData.append('phone', data.phone);
+        formData.append('averageBill', data.averageBill);
+        formData.append('email', data.email);
+        formData.append('coordinates', data.longitude);
+        formData.append('coordinates', data.latitude);
+        if (data.mainImage[0]) {
+            if (acceptedImageTypes.includes(data.mainImage[0].type)) {
+                formData.append('mainImage', data.mainImage[0]);
+            } else {
+                setErrorsMessage('Виберіть файл типу "jpg"/"jpeg');
                 setErrorIsVisible(true);
             }
-        } else {
-            setErrorsMessage('Виберіть файл типу "jpg"/"jpeg');
+        }
+            data.webSite && formData.append('webSite', data.webSite);
+            data.tags && formData.append('tags', data.tags);
+        const {error} = await dispatch(restaurantActions.updateById({id: _id, restObj: formData}));
+        if (!error) setModalIsVisible(true);
+            else {
+            setErrorsMessage(errors?.message);
             setErrorIsVisible(true);
         }
-
     };
 
     return (

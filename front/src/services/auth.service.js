@@ -35,10 +35,16 @@ const authService = {
 
     saveUserIdInLS: (userId) =>
         localStorage.setItem(keysLS.userId, userId),
+    saveUserRoleInLS: (role) =>
+        localStorage.setItem(keysLS.role, role),
     getUserIdInLS: () =>
         localStorage.getItem(keysLS.userId),
+    getUserRoleInLS: () =>
+        localStorage.getItem(keysLS.role),
     deleteUserIdInLS: () =>
-        localStorage.removeItem(keysLS.userId)
+        localStorage.removeItem(keysLS.userId),
+    deleteUserRoleInLS: () =>
+        localStorage.removeItem(keysLS.role)
 };
 
 export {authService};
