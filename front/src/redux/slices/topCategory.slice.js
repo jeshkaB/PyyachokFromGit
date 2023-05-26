@@ -116,17 +116,20 @@ const topCategorySlice = createSlice({
                     state.errors = null;
                     state.topCategory = action.payload;
                     state.topCategories.push(action.payload);
+                    state.stateChangeTop = !state.stateChangeTop;
                 })
                 .addCase(updateById.fulfilled, (state, action) => {
                     state.errors = null;
                     state.topCategory = action.payload;
                     const index = state.topCategories.findIndex(item => item._id === action.payload._id);
                     state.topCategories[index].title = action.payload.title;
+                    state.stateChangeTop = !state.stateChangeTop;
                 })
                 .addCase(deleteById.fulfilled, (state, action) => {
                     state.errors = null;
                     const index = state.topCategories.findIndex(item => item._id === action.payload._id);
                     state.topCategories.splice(index, 1);
+                    state.stateChangeTop = !state.stateChangeTop;
                 })
                 .addCase(addRestaurantInCategory.fulfilled, (state, action) => {
                     state.errors = null;

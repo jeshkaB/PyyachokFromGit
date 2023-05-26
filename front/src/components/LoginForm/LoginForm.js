@@ -28,7 +28,7 @@ const LoginForm = () => {
 
             <form onSubmit={handleSubmit(submit)}>
                 <input type='text' placeholder={'email'} {...register('email')}/>
-                <input type='text' placeholder={'пароль'} {...register('password')}/>
+                <input type='password' placeholder={'пароль'} {...register('password')}/>
                 <button>Увійти</button>
             </form>
         </div>

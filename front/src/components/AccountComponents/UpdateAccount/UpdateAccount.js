@@ -2,9 +2,10 @@ import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-
 import {userActions} from '../../../redux';
+
 import {ModalUC} from '../../ModalUC/ModalUC';
+import {acceptedFileTypes} from '../../../constants';
 
 import css from './UpdateAccount.module.css';
 
@@ -20,20 +21,31 @@ const UpdateAccount = ({user}) => {
     const [stateUpd, setStateUpd] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [errorsMessage, setErrorsMessage] = useState(false);
     const [modalData, setModalData] = useState({text: '', type: 'secondary'});
 
+    const {acceptedImageTypes} = acceptedFileTypes;
 
     const submit = async (data) => {
-        const formData = new FormData();
-        formData.append('name', data.name);
-        if (data.avatar[0])
-            formData.append('avatar', data.avatar[0]);
-        const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
-        if (!error) {
-            setStateUpd(false);
-            setModalData({text: 'Двні успішно змінено', type: 'success'});
-            setModalIsVisible(true);
-        } else setErrorIsVisible(true);
+            const formData = new FormData();
+            formData.append('name', data.name);
+            if (data.avatar[0]) {
+                if (acceptedImageTypes.includes(data.avatar[0].type))
+                    formData.append('avatar', data.avatar[0]);
+                else {
+                    setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
+                    setErrorIsVisible(true);
+                }
+            }
+            const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
+            if (!error) {
+                setStateUpd(false);
+                setModalData({text: 'Двні успішно змінено', type: 'success'});
+                setModalIsVisible(true);
+            } else {
+                setErrorsMessage(errors?.message);
+                setErrorIsVisible(true);
+            }
     };
 
     const [stateUpdPassword, setStateUpdPassword] = useState(false);
@@ -48,7 +60,7 @@ const UpdateAccount = ({user}) => {
         <div>
             <ModalUC modalText={modalData.text} show={modalIsVisible} onHide={setModalIsVisible}
                      type={modalData.type}></ModalUC>
-            <ModalUC modalText={errors?.message || authErrors?.message} show={errorIsVisible} onHide={setErrorIsVisible}
+            <ModalUC modalText={errorsMessage || authErrors?.message} show={errorIsVisible} onHide={setErrorIsVisible}
                      type={'danger'}></ModalUC>
 
             <div className={css.To} onClick={() => setStateUpd(true)}>Оновити особисті дані</div>
@@ -58,7 +70,7 @@ const UpdateAccount = ({user}) => {
                     <form onSubmit={handleSubmit(submit)}>
                         <label>Ім'я <input type="text" defaultValue={name} {...register('name')}/></label>
                         <br/>
-                        <label>Аватарка <input type="file" {...register('avatar')}/></label>
+                        <label>Аватарка <input type="file" accept=".jpg, .jpeg" {...register('avatar')}/></label>
                         <br/>
                         <button>Оновити</button>
                     </form>

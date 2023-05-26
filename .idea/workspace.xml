@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/asset-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/css/main.e214bb65.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/css/main.e214bb65.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/PrivacyPolicyPage.js" afterDir="false" />
+    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="finish check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/urls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/forAlllMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/restaurant.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/restaurant.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/static/css/main.e214bb65.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/static/css/main.e214bb65.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/AccountComponents/UpdateAccount/UpdateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/AccountComponents/UpdateAccount/UpdateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/ForgotPasswordForm/ForgotPasswordForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/ForgotPasswordForm/ForgotPasswordForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/NewsUpdate/NewsUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/NewsUpdate/NewsUpdate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/services/firebase.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/services/firebase.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantForAdmin/restaurantForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantForAdmin/restaurantForAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsListForTop/CategoryDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsListForTop/CategoryDropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserUpdate&amp;Delete/UserUpdate&amp;Delete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/SuperAdminPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="docker" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,45 +71,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.10&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/fin_project/front/src/pages&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.15.1",
+    "javascript.nodejs.core.library.typings.version": "16.18.10",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/fin_project/front/src/routingAccess",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\front\src\routingAccess" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\front\src\pages" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\front\src\components\RegisterForm" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\UsersList" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GeneralNews" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\fin_project\front\src" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\backend" />
       <recent name="C:\Users\User\IdeaProjects\fin_project" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\RestaurantUpdate" />
       <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GoogleSignIn" />
-      <recent name="C:\Users\User\IdeaProjects\fin_project\client\src\components\GeneralViewStatistics" />
     </key>
   </component>
   <component name="RunManager">
@@ -160,56 +166,10 @@
       <workItem from="1683378391410" duration="2902000" />
       <workItem from="1683392301071" duration="6100000" />
       <workItem from="1683659181833" duration="4363000" />
-      <workItem from="1683731902320" duration="8538000" />
-    </task>
-    <task id="LOCAL-00027" summary="client interim">
-      <created>1674467073045</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1674467073045</updated>
-    </task>
-    <task id="LOCAL-00028" summary="client interim">
-      <created>1674494661046</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1674494661046</updated>
-    </task>
-    <task id="LOCAL-00029" summary="client interim">
-      <created>1674638601321</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1674638601321</updated>
-    </task>
-    <task id="LOCAL-00030" summary="client interim">
-      <created>1674642923557</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1674642923557</updated>
-    </task>
-    <task id="LOCAL-00031" summary="client interim">
-      <created>1674764572705</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1674764572705</updated>
-    </task>
-    <task id="LOCAL-00032" summary="client interim">
-      <created>1675108292950</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1675108292950</updated>
-    </task>
-    <task id="LOCAL-00033" summary="client interim">
-      <created>1675254289159</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1675254289159</updated>
+      <workItem from="1683731902320" duration="8738000" />
+      <workItem from="1683807972106" duration="1065000" />
+      <workItem from="1684143019145" duration="22741000" />
+      <workItem from="1684759390320" duration="78169000" />
     </task>
     <task id="LOCAL-00034" summary="client interim">
       <created>1675281157165</created>
@@ -505,7 +465,56 @@
       <option name="project" value="LOCAL" />
       <updated>1683378017124</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="sign in with Facebook">
+      <created>1683748890780</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1683748890781</updated>
+    </task>
+    <task id="LOCAL-00077" summary="filter on backend">
+      <created>1684347633318</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1684347633318</updated>
+    </task>
+    <task id="LOCAL-00078" summary="filter on backend">
+      <created>1684509330191</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1684509330191</updated>
+    </task>
+    <task id="LOCAL-00079" summary="filter on backend done">
+      <created>1684607105114</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1684607105114</updated>
+    </task>
+    <task id="LOCAL-00080" summary="add some validation on front">
+      <created>1684789291262</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1684789291262</updated>
+    </task>
+    <task id="LOCAL-00081" summary="add check of files type &amp; user pagination">
+      <created>1684938016150</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1684938016150</updated>
+    </task>
+    <task id="LOCAL-00082" summary="finish check">
+      <created>1685045790422</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1685045790422</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,12 +525,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="interim" />
-    <MESSAGE value="client started" />
-    <MESSAGE value="client interim" />
-    <MESSAGE value="client interim1" />
-    <MESSAGE value="before changing isFavorite" />
-    <MESSAGE value="update comment" />
     <MESSAGE value="current changes" />
     <MESSAGE value="forgot password" />
     <MESSAGE value="pagination" />
@@ -541,7 +544,13 @@
     <MESSAGE value="full finish" />
     <MESSAGE value="added .env.example" />
     <MESSAGE value="changed favicon" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed favicon" />
+    <MESSAGE value="sign in with Facebook" />
+    <MESSAGE value="filter on backend" />
+    <MESSAGE value="filter on backend done" />
+    <MESSAGE value="add some validation on front" />
+    <MESSAGE value="add check of files type &amp; user pagination" />
+    <MESSAGE value="finish check" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish check" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

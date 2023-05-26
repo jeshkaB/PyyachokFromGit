@@ -6,10 +6,13 @@ const {roles, tokenTypes} = require('../constants');
 
 const userRouter = Router();
 
-
 userRouter.get(
   '/',
   userController.getUsers);
+
+userRouter.get(
+  '/advancedSearch',
+  userController.getUsersByParams);
 
 userRouter.post(
   '/',
@@ -24,7 +27,7 @@ userRouter.get(
   '/:userId',
   forAllMiddleware.checkIdIsValid('userId'),
   userMiddleware.checkUserIsExist(),
-  userController.getUserById);
+  userController.getUserByIdWithoutPass);
 
 userRouter.patch(
   '/:userId',

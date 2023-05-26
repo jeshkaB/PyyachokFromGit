@@ -1,4 +1,5 @@
 const Restaurant = require('../dataBase/Restaurant');
+const {PAGE_LIMIT_REST} = require('../constants/pageLimit');
 
 module.exports = {
   createRestaurant(restaurantObj) {
@@ -18,6 +19,45 @@ module.exports = {
   },
   deleteRestaurant(restId) {
     return Restaurant.deleteOne ({_id: restId});
+  },
+  getCountRestaurantsByParams(filter, searchByName) {
+    const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
+    return Restaurant.countDocuments({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'}
+    });
+  },
+  getRestaurantsListByParams(filter, searchByName, moderated, sort, longitude, latitude, page) {
+    const {ratingMin, ratingMax, averageBillMin, averageBillMax, tagsValue} = filter;
+    const skip = !page ? 0 : (page-1)*PAGE_LIMIT_REST;
+
+    if (!longitude || !latitude)
+    {return Restaurant.find({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'},
+      moderated: true,
+    })
+      .sort(sort)
+      .skip(skip)
+      .limit(PAGE_LIMIT_REST);}
+    
+    return Restaurant.find({
+      rating: {$gte: ratingMin, $lte: ratingMax},
+      averageBill: {$gte: averageBillMin, $lte: averageBillMax},
+      tags: {$regex: '.*' + tagsValue + '.*', $options: 'i'},
+      name: {$regex: '.*' + searchByName + '.*', $options: 'i'},
+      moderated: true,
+      coordinates: {$near: [
+        longitude,
+        latitude
+      ]}
+    })
+      .skip(skip)
+      .limit(PAGE_LIMIT_REST);
   },
 
 };

@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 
 import {topCategoryActions} from '../../redux';
-
 import {CategoryDropdown} from './CategoryDropdown';
 
 import css from './RestaurantCardForTop.module.css';
@@ -11,19 +10,11 @@ import css from './RestaurantCardForTop.module.css';
 const RestaurantCardForTop = ({restaurant}) => {
     const dispatch = useDispatch();
     const {_id, name, place, topCategories: categoriesIdsInRest} = restaurant;
-    const {topCategories} = useSelector(state => state.topCategory);
+    const {topCategories, stateChangeTop} = useSelector(state => state.topCategory);
 
     useEffect(() => {
         dispatch(topCategoryActions.getAll());
-    }, []);
-
-    let categoriesNotInRest = [];
-    topCategories.forEach(categ => {
-        if (!categoriesIdsInRest.includes(categ._id))
-            categoriesNotInRest.push(categ);
-    });
-
-    const [categoriesForSelection, setCategoriesForSelection] = useState(categoriesNotInRest);
+    }, [stateChangeTop]);
 
     let categoriesInRest = [];
     topCategories.forEach(categ =>
@@ -32,13 +23,20 @@ const RestaurantCardForTop = ({restaurant}) => {
                 categoriesInRest.push(categ);
         }));
 
+
     const removeFromTop = async (categId) => {
-        const returnedCategory = topCategories.find(categ => categ._id === categId);
-        setCategoriesForSelection(
-            categoriesForSelection.includes(returnedCategory) ? categoriesForSelection : [...categoriesForSelection, returnedCategory]);
-        await dispatch(topCategoryActions.removeRestaurantInCategory({categId, restId: _id}));
+       await dispatch(topCategoryActions.removeRestaurantInCategory({categId, restId: _id}));
 
     };
+
+
+    // const removeFromTop = async (categId) => {
+    //     const returnedCategory = topCategories.find(categ => categ._id === categId);
+    //     setCategoriesForSelection(
+    //         categoriesForSelection.includes(returnedCategory) ? categoriesForSelection : [...categoriesForSelection, returnedCategory]);
+    //     await dispatch(topCategoryActions.removeRestaurantInCategory({categId, restId: _id}));
+    //
+    // };
 
     return (
         <div className={css.Hole}>
@@ -56,8 +54,7 @@ const RestaurantCardForTop = ({restaurant}) => {
             </div>
 
             <div>
-                <CategoryDropdown categoriesForSelection={categoriesForSelection}
-                                  setCategoriesForSelection={setCategoriesForSelection} restId={_id}/>
+                <CategoryDropdown restId={_id}/>
             </div>
 
         </div>

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 
 import {
     GeneralNewsCreate,
@@ -14,12 +14,15 @@ import {
 import css from './SuperAdminPage.module.css';
 
 const SuperAdminPage = () => {
+
     const navigate = useNavigate();
     const {userId} = useSelector(state => state.auth);
     const [stateRestList, setStateRestList] = useState(false);
     const [stateNewsList, setStateNewsList] = useState(false);
     const [stateGenNewsList, setStateGenNewsList] = useState(false);
     const [stateUsers, setStateUsers] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+
 
     return (
         <div className={css.Hole}>
@@ -29,11 +32,17 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateRestList(true)}> Заклади</div>
+                <div className={css.To} onClick={() => {
+                    setStateRestList(true);
+                    setSearchParams('');
+                }}> Заклади</div>
                 {stateRestList &&
                     <div>
                         <div className={css.Button}>
-                            <button onClick={() => setStateRestList(false)}>Згорнути</button>
+                            <button onClick={() => {
+                                setStateRestList(false);
+                                setSearchParams('');
+                            }}>Згорнути</button>
                         </div>
                         <RestaurantCreate userId={userId}/>
                         <h4>або</h4>
@@ -45,7 +54,10 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateNewsList(true)}> Новини закладів</div>
+                <div className={css.To} onClick={() => {
+                    setStateNewsList(true);
+                    setSearchParams('');
+                }}> Новини закладів</div>
                 {stateNewsList &&
                     <div>
                         <div className={css.Button}>
@@ -57,7 +69,10 @@ const SuperAdminPage = () => {
             </div>
 
             <div>
-                <div className={css.To} onClick={() => setStateGenNewsList(true)}> Загальні новини
+                <div className={css.To} onClick={() => {
+                    setStateGenNewsList(true);
+                    setSearchParams('');
+                }}> Загальні новини
                 </div>
                 {stateGenNewsList &&
                     <div>
@@ -73,11 +88,17 @@ const SuperAdminPage = () => {
 
                     </div>}
             </div>
-            <div className={css.To} onClick={() => setStateUsers(true)}>Користувачі</div>
+            <div className={css.To} onClick={() => {
+                setStateUsers(true);
+                setSearchParams('');
+            }}>Користувачі</div>
             {stateUsers &&
                 <div>
                     <div className={css.Button}>
-                        <button onClick={() => setStateUsers(false)}>Згорнути</button>
+                        <button onClick={() => {
+                            setStateUsers(false);
+                            setSearchParams('');
+                        }}>Згорнути</button>
                     </div>
                     <h4>Оберіть користувача для редагування</h4>
                     <UsersList/>

@@ -12,14 +12,17 @@ const {statusCode, urls, tokenTypes} = require('../constants');
 module.exports = {
   login: async (req, res, next) => {
     try {
-      const user = req.user; // з попередньої мідлвари
-      const {_id} = user;
+      const userWithPass = req.user; // з попередньої мідлвари
+      const {_id} = userWithPass;
       const authTokens = {
         accessToken: tokenService.createAccessToken({_id}),
         refreshToken: tokenService.createRefreshToken({_id}),
         user: _id
       };
       const tokens = await authService.saveTokens({...authTokens});
+
+      // eslint-disable-next-line no-unused-vars
+      const {password, ...user} = userWithPass.toObject();
       res.json({tokens, user});
     } catch (e) {
       next(e);
@@ -29,23 +32,25 @@ module.exports = {
   loginByGoogle: async (req, res, next) => {//увійти, а якщо перший раз, то зареєструватися і зразу увійти
     try {
       const {name, email, uid} = req.body;
-      let user = await userService.getUserByParams({email});
+      let userWithPass = await userService.getUserByParams({email});
 
-      if (!user) {
+      if (!userWithPass) {
         const hashPassword = await hashService.hashPassword(uid);
         const userObj = ({name, email, password: hashPassword});
-        user = await userService.createUser(userObj);
-        await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зарeєструвались на сайті "Пиячок"');
+        userWithPass = await userService.createUser(userObj);
+        await nodemailerService.sendEmail(userWithPass.email, 'Вхід', 'Ви успішно зарeєструвались на сайті "Пиячок"');
       }
-      const {_id} = user;
+      const {_id} = userWithPass;
       const authTokens = {
         accessToken: tokenService.createAccessToken({_id}),
         refreshToken: tokenService.createRefreshToken({_id}),
         user: _id
       };
       const tokens = await authService.saveTokens({...authTokens});
-      res.json({tokens, user});
 
+      // eslint-disable-next-line no-unused-vars
+      const {password, ...user} = userWithPass.toObject();
+      res.json({tokens, user});
 
     } catch (e) {
       next(e);
@@ -108,12 +113,12 @@ module.exports = {
     try {
       const {password} = req.body;
       const {token, user: {_id}} = req.tokenInfo;
-
       const hashPassword = await hashService.hashPassword(password);
       await authService.deleteMany({user: _id});
       await tokenDbService.deleteOneByParams({token});
-      const user = await userService.updateUser(_id, {password: hashPassword});
-
+      const userWithPass = await userService.updateUser(_id, {password: hashPassword});
+      // eslint-disable-next-line no-unused-vars
+      const {password:_, ...user} = userWithPass.toObject();
       res.json(user);
     } catch (e) {
       next(e);

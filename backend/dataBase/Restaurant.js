@@ -11,7 +11,7 @@ const restaurantSchema = new Schema({
   email: {type: String, required: true},
   webSite: String,
   rating: Number,
-  coordinates: {type: [String], required: true},
+  coordinates: {type: [Number], index:{ type: '2d', sparse: false }, required: true},
   moderated: {type: Boolean, default: false},//неперевірений - false, перевірений - true
   moderationMessage: String,
   user: {
@@ -43,6 +43,8 @@ const restaurantSchema = new Schema({
   timestamps: true,
   versionKey: false
 });
+
+// restaurantSchema.index({coordinates: '2d'});
 
 module.exports = model('restaurant', restaurantSchema);
 

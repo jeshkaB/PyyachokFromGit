@@ -7,13 +7,13 @@ const {
 } = require('../services');
 const {statusCode, pathImg, roles} = require('../constants');
 const {PATH_RESTAURANT_PHOTO} = require('../constants/pathImg');
+const {PAGE_LIMIT_REST} = require('../constants/pageLimit');
 
 module.exports = {
   createRestaurant: async (req, res, next) => {
     try {
       const {_id, role} = req.tokenInfo.user;
       const restaurants = await restaurantService.getRestaurantByParams({user: _id});
-
       const fileName = uuid.v4() + '.jpg';
       const {mainImage} = req.files;
       await mainImage.mv(path.resolve(__dirname, '..', PATH_RESTAURANT_PHOTO, fileName));
@@ -45,6 +45,34 @@ module.exports = {
       next(e);
     }
   },
+  getRestaurantsByParams: async (req, res, next) => {
+    try {
+      const queryParams = req.query;
+      const page = queryParams.page ? queryParams.page : 1;
+      const moderated = queryParams.moderated;
+      const sort = queryParams.sort ? JSON.parse(`{"${queryParams.sort}" : "${queryParams.sortOrder}"}`) : '';
+      const {longitude,latitude} = queryParams;
+      const ratingMin = queryParams.rating ? +queryParams.rating.split('-')[0] : 0;
+      const ratingMax = queryParams.rating ? +queryParams.rating.split('-')[1] : 5;
+
+      const averageBillMin = queryParams.averageBill ? +queryParams.averageBill.split('-')[0] : 0;
+      const averageBillMax = queryParams.averageBill ? +queryParams.averageBill.split('-')[1] : 100000;
+
+      const tagsValue = queryParams.tags ? queryParams.tags : '.*';
+      const searchByName = queryParams.search ? queryParams.search : '.*'; //пошук тільки по полю 'name'
+      const filter = {ratingMin, ratingMax,averageBillMin,averageBillMax,tagsValue};
+
+      const totalItemsByParams = await restaurantService.getCountRestaurantsByParams(filter,searchByName);
+      // eslint-disable-next-line max-len
+      const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,longitude,latitude,page);
+
+      res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_REST, restaurants});
+
+    } catch (e) {
+      next(e);
+    }
+  },
+
   getRestaurantById: async (req, res, next) => {
     try {
       const {restId} = req.params;

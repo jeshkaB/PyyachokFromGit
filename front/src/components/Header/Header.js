@@ -1,8 +1,6 @@
 import {Link} from 'react-router-dom';
 import {UserInfo} from '../UserInfo/userInfo';
 import {useSelector} from 'react-redux';
-
-// import {app} from "../../services";
 import {GoogleSignIn} from '../GoogleSignIn/GoogleSignIn';
 
 import css from './HeaderStyle.module.css';

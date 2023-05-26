@@ -2,11 +2,15 @@ import {Button, Form} from 'react-bootstrap';
 import css from './RestaurantsList.module.css';
 
 const RestaurantSearchForm = ({setSearchParams}) => {
-
+    
     const submit = (e) => {
         e.preventDefault();
         const query = e.target.search.value;
-        setSearchParams({restName: query});
+        setSearchParams(searchParams => {
+                searchParams.set('search', query);
+                searchParams.delete('page');
+                return searchParams;
+            });
     };
 
     return (

@@ -24,9 +24,10 @@ const ChangeManager = ({restId}) => {
     const [selectedManager, setSelectedManager] = useState({});
     const [stateConfirm, setStateConfirm] = useState(false);
 
+    const currentManager = users.find(user => user._id === restaurant.user);
     const managers = users.filter(user => user.role.includes(roles.REST_ADMIN) && user._id !== restaurant.user);
     const notManagers = users.filter(user => !user.role.includes(roles.REST_ADMIN) && !user.role.includes(roles.SUPER_ADMIN));
-    const currentManager = users.find(user => user._id === restaurant.user);
+
 
     const clickSelectedManager = (manager) => {
         setSelectedManager(manager);

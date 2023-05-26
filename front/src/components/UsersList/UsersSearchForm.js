@@ -6,7 +6,11 @@ const UsersSearchForm = ({setSearchParams}) => {
     const submit = (e) => {
         e.preventDefault();
         const query = e.target.search.value;
-        setSearchParams({userEmail: query});
+        setSearchParams(searchParams => {
+            searchParams.set('userEmail', query);
+            searchParams.delete('page');
+            return searchParams;
+        });
     };
 
     return (

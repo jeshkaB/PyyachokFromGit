@@ -5,12 +5,13 @@ import {Link, useParams} from 'react-router-dom';
 
 import API_URL from '../../config';
 import {authActions, restaurantActions, userActions} from '../../redux';
-
+import {geolocationService} from '../../services';
 import {StarsRating} from '../StarsRating/starsRating';
 import {Tag} from '../Tag/Tag';
 import {ModalUC} from '../ModalUC/ModalUC';
 
 import css from './Restaurant.module.css';
+
 
 const Restaurant = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,9 @@ const Restaurant = () => {
     const {authUser, isAuth} = useSelector(state => state.auth);
     const {id} = useParams();
     const [modalIsVisible, setModalIsVisible] = useState(false);
-    const {isLocationAvailable, latitude, longitude} = useSelector(state => state.geo);
+    const {isLocationAvailable} = useSelector(state => state.geo);
+    const longitude = geolocationService.getLongitudeInLS();
+    const latitude = geolocationService.getLatitudeInLS();
 
     const tags = restaurant?.tags?.split(',').map(tag => tag.trim());
 
@@ -52,6 +55,7 @@ const Restaurant = () => {
         await dispatch(authActions.removeFavoriteRest({userId, restId: id}));
         setStateFavorite(false);
     };
+
     return (
         <div className={css.Hole}>
             <ModalUC modalText={'Увійдіть або зареєструйтеся'} show={modalIsVisible}
@@ -74,12 +78,12 @@ const Restaurant = () => {
                 </div>
             </div>
             <div className={css.RestBlock}>
-                <img width={'50%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
+                <img width={'50%'} src={API_URL + restaurant?.mainImage} alt={'зображення закладу'}/>
                 <div className={css.TextBlock}>
                     <div style={{marginBottom: 10}}><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>
                     {isLocationAvailable && restaurant.coordinates &&
-                        <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[0]},${restaurant.coordinates[1]}`}
+                        <a href={`https://maps.google.com?saddr=${latitude},${longitude}&daddr=${restaurant.coordinates[1]},${restaurant.coordinates[0]}`}
                        className={css.Route}
                        target="_blank" rel="noreferrer"> Прокласти маршрут</a>}
                     <div> Телефон: {restaurant.phone}</div>

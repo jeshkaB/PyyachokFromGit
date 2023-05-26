@@ -10,6 +10,10 @@ restaurantRouter.get(
   '/',
   restaurantController.getRestaurants);
 
+restaurantRouter.get(
+  '/advancedSearch',
+  restaurantController.getRestaurantsByParams);
+
 restaurantRouter.post(
   '/',
   restaurantMiddleware.checkNewRestaurantBodyIsValid,

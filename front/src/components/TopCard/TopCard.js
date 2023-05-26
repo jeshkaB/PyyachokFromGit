@@ -16,7 +16,7 @@ const TopCard = ({categ}) => {
     }, []);
 
    let restaurantsWithTheCategory=[];
-   restaurants.forEach(rest => {
+   restaurants && restaurants.forEach(rest => {
        if (rest.topCategories.includes(categ._id))
            restaurantsWithTheCategory.push(rest);
    });

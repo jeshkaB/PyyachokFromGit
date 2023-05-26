@@ -26,9 +26,11 @@ const ForgotPasswordForm = () => {
             setErrorIsVisible(true);
         } else {
             const {error} = await dispatch(authActions.forgotPasswordNewPassword({password, actionToken}));
+            console.log(error);
+            console.log(errors?.message);
             if (!error) setModalIsVisible(true);
             else {
-                setStateError(errors.message);
+                setStateError(errors?.message);
                 setErrorIsVisible(true);
             }
         }

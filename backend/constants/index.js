@@ -1,10 +1,10 @@
 module.exports = {
-  statusCode: require('./statusCodes'),
+  coordinatesLimit: require('./coordinatesLimit'),
+  pageLimit: require('./pageLimit'),
+  pathImg: require('./pathImg'),
   regex: require('./regex'),
   roles: require('./roles'),
-  pathImg: require('./pathImg'),
-  coordinatesLimit: require('./coordinatesLimit'),
+  statusCode: require('./statusCodes'),
   tokenTypes: require('./tokenTypes'),
   urls: require('./urls'),
-
 };

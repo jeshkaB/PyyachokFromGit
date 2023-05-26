@@ -7,6 +7,7 @@ import {userActions} from '../../redux';
 import {ModalUC} from '../ModalUC/ModalUC';
 
 import css from './UserUpdate&Delete.module.css';
+import {acceptedFileTypes} from '../../constants';
 
 
 const UserUpdateDelete = ({user}) => {
@@ -19,19 +20,32 @@ const UserUpdateDelete = ({user}) => {
     const [stateUpd, setStateUpd] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [errorsMessage, setErrorsMessage] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
+    const {acceptedImageTypes} = acceptedFileTypes;
+
     const submit = async (data) => {
-        const formData = new FormData();
-        formData.append('name', data.name);
-        if (data.avatar[0])
-            formData.append('avatar', data.avatar[0]);
-        const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
-        if (!error) {
-            setStateUpd(false);
-            setModalIsVisible(true);
-        } else setErrorIsVisible(true);
+            const formData = new FormData();
+            formData.append('name', data.name);
+            if (data.avatar[0]) {
+                if (acceptedImageTypes.includes(data.avatar[0].type))
+                    formData.append('avatar', data.avatar[0]);
+                else {
+                    setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
+                    setErrorIsVisible(true);
+                }
+            }
+            const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
+            if (!error) {
+                setStateUpd(false);
+                setModalIsVisible(true);
+            } else {
+                setErrorsMessage(errors?.message);
+                setErrorIsVisible(true);
+        }
     };
+
     const clickDelete = async ()=> {
         const {error} = await dispatch(userActions.deleteById(_id));
         if (!error) navigate(-1);
@@ -39,7 +53,7 @@ const UserUpdateDelete = ({user}) => {
 
     return (
         <div className={css.Hole}>
-            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={errorsMessage} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
             <ModalUC modalText={'Дані успішно оновлено'} show={modalIsVisible} onHide={setModalIsVisible} type={'success'}></ModalUC>
 
             <h3>Редагування користувача </h3>
@@ -49,7 +63,7 @@ const UserUpdateDelete = ({user}) => {
                     <form onSubmit={handleSubmit(submit)}>
                         <label>Ім'я <input type="text" defaultValue={name} {...register('name')}/></label>
                         <br/>
-                        <label>Аватарка <input type="file" {...register('avatar')}/></label>
+                        <label>Аватарка <input type="file" accept=".jpg, .jpeg" {...register('avatar')}/></label>
                         <br/>
                         <button>Оновити</button>
                     </form>
