@@ -63,6 +63,7 @@ module.exports = {
       const filter = {ratingMin, ratingMax,averageBillMin,averageBillMax,tagsValue};
 
       const totalItemsByParams = await restaurantService.getCountRestaurantsByParams(filter,searchByName);
+      // eslint-disable-next-line max-len
       const restaurants = await restaurantService.getRestaurantsListByParams(filter,searchByName,moderated,sort,longitude,latitude,page);
 
       res.json({totalItems:totalItemsByParams, page, limit: PAGE_LIMIT_REST, restaurants});

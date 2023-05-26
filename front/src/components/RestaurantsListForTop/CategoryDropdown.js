@@ -7,7 +7,7 @@ import {topCategoryActions} from '../../redux';
 const CategoryDropdown = ({restId}) => {
     const {topCategories, stateChangeTop} = useSelector(state => state.topCategory);
     const dispatch = useDispatch();
-    const [categoriesForSelection, setCategoriesForSelection] = useState([])
+    const [categoriesForSelection, setCategoriesForSelection] = useState([]);
 
     useEffect(() => {
         dispatch(topCategoryActions.getAll());
@@ -21,7 +21,7 @@ useEffect(()=> {
             categoriesNotInRest.push(categ);
     });
     setCategoriesForSelection(categoriesNotInRest);
-},[topCategories])
+},[topCategories]);
 
      const clickCategory = async (categId)=> {
          // setCategoriesForSelection (categoriesForSelection.filter(categ => categ._id !== categId));

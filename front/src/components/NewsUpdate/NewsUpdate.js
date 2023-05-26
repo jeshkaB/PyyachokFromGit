@@ -1,11 +1,11 @@
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
 import {generalNewsActions, newsActions} from '../../redux';
 import {Dropdown} from 'react-bootstrap';
-import {categoriesOfNews} from '../../constants';
+import {acceptedFileTypes, categoriesOfNews} from '../../constants';
 
 import css from './NewsUpdate.module.css';
 import {ModalUC} from '../ModalUC/ModalUC';
@@ -13,7 +13,6 @@ import {ModalUC} from '../ModalUC/ModalUC';
 const NewsUpdate = ({news}) => {
     const location = useLocation();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const {_id, title, content, category} = news;
     const {errors} = useSelector(state=>state.news);
@@ -21,29 +20,45 @@ const NewsUpdate = ({news}) => {
     const [stateUpdate, setStateUpdate] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [errorIsVisible, setErrorIsVisible] = useState(false);
+    const [errorsMessage, setErrorsMessage] = useState(false);
+    const {acceptedImageTypes} = acceptedFileTypes;
 
     const categories = categoriesOfNews.categories;
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('title', data.title);
         formData.append('content', data.content);
-        if (data.newsImage[0]) formData.append('newsImage', data.newsImage[0]);
+        if (data.newsImage[0]) {
+            if (acceptedImageTypes.includes(data.newsImage[0].type))
+                formData.append('newsImage', data.newsImage[0]);
+            else {
+                setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
+                setErrorIsVisible(true);
+            }
+        }
         formData.append('category', selectedCategory || category);
-
         if (location.pathname===`/generalNews/${_id}`) {
             const {error} = await dispatch(generalNewsActions.updateById({id: _id, newsObj: formData}));
-            if (!error) navigate(-1);
-            else setErrorIsVisible(true);
+            if (!error)
+                setStateUpdate(false);
+            else {
+                setErrorsMessage(errors?.message);
+                setErrorIsVisible(true);
+            }
         }
         else {
             const {error} = await dispatch(newsActions.updateById({id: _id, newsObj: formData}));
-            if (!error) navigate(-1);
-            else setErrorIsVisible(true);
+            if (!error)
+                setStateUpdate(false);
+            else {
+                setErrorsMessage(errors?.message);
+                setErrorIsVisible(true);
+            }
         }
     };
     return (
         <div>
-            <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
+            <ModalUC modalText={errorsMessage} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
 
             <div className={css.To} onClick={() => setStateUpdate(true)}> Редагувати новину </div>
             {stateUpdate &&

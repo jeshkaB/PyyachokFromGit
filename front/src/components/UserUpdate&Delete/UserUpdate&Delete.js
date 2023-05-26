@@ -7,7 +7,7 @@ import {userActions} from '../../redux';
 import {ModalUC} from '../ModalUC/ModalUC';
 
 import css from './UserUpdate&Delete.module.css';
-import {acceptedFileTypes} from "../../constants";
+import {acceptedFileTypes} from '../../constants';
 
 
 const UserUpdateDelete = ({user}) => {
@@ -26,11 +26,16 @@ const UserUpdateDelete = ({user}) => {
     const {acceptedImageTypes} = acceptedFileTypes;
 
     const submit = async (data) => {
-        if (acceptedImageTypes.includes(data.avatar[0].type)) {
             const formData = new FormData();
             formData.append('name', data.name);
-            if (data.avatar[0])
-                formData.append('avatar', data.avatar[0]);
+            if (data.avatar[0]) {
+                if (acceptedImageTypes.includes(data.avatar[0].type))
+                    formData.append('avatar', data.avatar[0]);
+                else {
+                    setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
+                    setErrorIsVisible(true);
+                }
+            }
             const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
             if (!error) {
                 setStateUpd(false);
@@ -38,10 +43,6 @@ const UserUpdateDelete = ({user}) => {
             } else {
                 setErrorsMessage(errors?.message);
                 setErrorIsVisible(true);
-            }
-        }else {
-            setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
-            setErrorIsVisible(true);
         }
     };
 

@@ -27,11 +27,16 @@ const UpdateAccount = ({user}) => {
     const {acceptedImageTypes} = acceptedFileTypes;
 
     const submit = async (data) => {
-        if (acceptedImageTypes.includes(data.avatar[0].type)) {
             const formData = new FormData();
             formData.append('name', data.name);
-            if (data.avatar[0])
-                formData.append('avatar', data.avatar[0]);
+            if (data.avatar[0]) {
+                if (acceptedImageTypes.includes(data.avatar[0].type))
+                    formData.append('avatar', data.avatar[0]);
+                else {
+                    setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
+                    setErrorIsVisible(true);
+                }
+            }
             const {error} = await dispatch(userActions.updateById({id: _id, userObj: formData}));
             if (!error) {
                 setStateUpd(false);
@@ -41,10 +46,6 @@ const UpdateAccount = ({user}) => {
                 setErrorsMessage(errors?.message);
                 setErrorIsVisible(true);
             }
-        }else {
-            setErrorsMessage('Виберіть файл типу "jpg"/"jpeg"');
-            setErrorIsVisible(true);
-        }
     };
 
     const [stateUpdPassword, setStateUpdPassword] = useState(false);

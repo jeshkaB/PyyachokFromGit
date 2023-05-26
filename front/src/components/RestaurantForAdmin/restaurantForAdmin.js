@@ -25,7 +25,7 @@ const RestaurantForAdmin = ({restId, role, restaurant}) => {
             <div className={css.RestAndDel}>
                 <div>
                     <h2>{restaurant.name}</h2>
-                    <img width={'25%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
+                    <img width={'25%'} src={API_URL + restaurant?.mainImage} alt={'зображення закладу'}/>
                     <div><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>
                     <div> Телефон: {restaurant.phone}</div>

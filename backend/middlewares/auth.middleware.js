@@ -41,6 +41,7 @@ module.exports = {
       }
 
       tokenService.checkToken(token, tokenType);
+
       let tokenInfo = null;
       if (tokenType === tokenTypes.ACCESS_TYPE || tokenType === tokenTypes.REFRESH_TYPE)
       {tokenInfo = await authService.getTokensInstanceWithUser({[tokenType]: token});}

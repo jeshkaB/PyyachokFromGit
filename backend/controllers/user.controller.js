@@ -15,15 +15,13 @@ module.exports = {
         const {avatar: image} = req.files;
         await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
         const userWithPass = await userService.createUser({...req.body, password: hashPassword, avatar: fileName});
-        //TODO
-        // await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+        await nodemailerService.sendEmail(userWithPass.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
         // eslint-disable-next-line no-unused-vars
         const {password, ...user} = userWithPass.toObject();
         res.status(statusCode.CREATE).json(user);
       } else {
         const userWithPass = await userService.createUser({...req.body, password: hashPassword});
-        //TODO
-        // await nodemailerService.sendEmail(user.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
+        await nodemailerService.sendEmail(userWithPass.email, 'Вхід', 'Ви успішно зараєструвались на сайті "Пиячок"');
         // eslint-disable-next-line no-unused-vars
         const {password, ...user} = userWithPass.toObject();
         res.status(statusCode.CREATE).json(user);

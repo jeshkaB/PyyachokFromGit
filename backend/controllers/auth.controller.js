@@ -113,7 +113,6 @@ module.exports = {
     try {
       const {password} = req.body;
       const {token, user: {_id}} = req.tokenInfo;
-
       const hashPassword = await hashService.hashPassword(password);
       await authService.deleteMany({user: _id});
       await tokenDbService.deleteOneByParams({token});

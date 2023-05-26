@@ -63,9 +63,9 @@ const Restaurant = () => {
             <div className={css.Header}>
                 <div>
                     <div className={css.Name}>
-                        {/*{stateFavorite && <img className={css.ImgFav}*/}
-                        {/*                       src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZJlK-LdEg8STV1noTrDC55VKSNUG3wejBQ&usqp=CAU'}*/}
-                        {/*                       alt={'малюнок'}/>}*/}
+                        {stateFavorite && <img className={css.ImgFav}
+                                               src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZJlK-LdEg8STV1noTrDC55VKSNUG3wejBQ&usqp=CAU'}
+                                               alt={'малюнок'}/>}
                         <h1>{restaurant.name}</h1>
                     </div>
                     {!stateFavorite &&
@@ -78,7 +78,7 @@ const Restaurant = () => {
                 </div>
             </div>
             <div className={css.RestBlock}>
-                <img width={'50%'} src={API_URL + restaurant.mainImage} alt={'зображення закладу'}/>
+                <img width={'50%'} src={API_URL + restaurant?.mainImage} alt={'зображення закладу'}/>
                 <div className={css.TextBlock}>
                     <div style={{marginBottom: 10}}><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>

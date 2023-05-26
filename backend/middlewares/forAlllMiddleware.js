@@ -52,13 +52,13 @@ module.exports = {
   checkRole: (role) => (req, res, next) => {
     try {
       if (!req.tokenInfo) {
-        return next(new LocalError('Access is forbidden', statusCode.FORBIDDEN))
+        return next(new LocalError('Access is forbidden', statusCode.FORBIDDEN));
       }
-      else {
-        if (!req.tokenInfo.user.role.includes(role) && !req.tokenInfo.user.role.includes(roles.SUPER_ADMIN)) {
-          return next(new LocalError('Access is forbidden', statusCode.FORBIDDEN));
-        }
+      
+      if (!req.tokenInfo.user.role.includes(role) && !req.tokenInfo.user.role.includes(roles.SUPER_ADMIN)) {
+        return next(new LocalError('Access is forbidden', statusCode.FORBIDDEN));
       }
+      
       next();
     } catch (e) {
       next(e);
