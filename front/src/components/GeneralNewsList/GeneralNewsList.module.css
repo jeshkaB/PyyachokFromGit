@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-left: darkslategrey solid 2px;
+    /*border-left: darkslategrey solid 2px;*/
     padding-left: 10px;
 }
 .NewsListInList  {

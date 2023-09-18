@@ -5,11 +5,10 @@ const MarksCard = ({mark}) => {
     const date = mark.createdAt.slice(0, 10);
 
     return (
-        <div>
+        <div style={{marginLeft:20}}>
             {mark && <div>
                 <StarsRating rating={mark.mark}/>
-                <p>{mark.user?.name}</p>
-                <p>{date}</p>
+                <p>{mark.user?.name}, {date}</p>
                 <hr/>
             </div>
             }

@@ -39,7 +39,9 @@ const Restaurant = () => {
     }, []);
 
     useEffect(() => {
-        dispatch(userActions.getById(userId));
+        if (isAuth) {
+            dispatch(userActions.getById(userId));
+        }
     }, [stateFavorite, userId]);
 
 
@@ -78,7 +80,7 @@ const Restaurant = () => {
                 </div>
             </div>
             <div className={css.RestBlock}>
-                <img width={'50%'} src={API_URL + restaurant?.mainImage} alt={'зображення закладу'}/>
+                <img className={css.Img} src={API_URL + restaurant?.mainImage} alt={'зображення закладу'}/>
                 <div className={css.TextBlock}>
                     <div style={{marginBottom: 10}}><StarsRating rating={restaurant.rating}/></div>
                     <div> Адреса: {restaurant.place}</div>

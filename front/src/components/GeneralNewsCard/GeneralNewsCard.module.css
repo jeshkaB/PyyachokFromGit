@@ -13,3 +13,8 @@
     cursor: pointer;
     border-bottom: solid 0.5px #619393 ;
 }
+.Title {
+    display: flex;
+    text-align: center;
+    color: #344c4c;
+}

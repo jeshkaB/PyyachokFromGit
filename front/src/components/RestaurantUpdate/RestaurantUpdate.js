@@ -6,13 +6,13 @@ import {restaurantActions} from '../../redux';
 
 import css from './RestaurantUpdate.module.css';
 import {ModalUC} from '../ModalUC/ModalUC';
-import {acceptedFileTypes} from '../../constants';
+import {acceptedFileTypes, regex} from '../../constants';
 
 
 const RestaurantUpdate = ({restaurant}) => {
     const dispatch = useDispatch();
     const {errors} = useSelector(state => state.restaurant);
-    const {register, handleSubmit} = useForm();
+
     const {
         _id,
         name,
@@ -26,6 +26,8 @@ const RestaurantUpdate = ({restaurant}) => {
         coordinates: [longitude, latitude] = []
     } = restaurant;
 
+    const {phone: phoneRegex, email: emailRegex, webSite: webSiteRegex} = regex;
+
     const [stateUpdate, setStateUpdate] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -33,6 +35,7 @@ const RestaurantUpdate = ({restaurant}) => {
 
     const {acceptedImageTypes} = acceptedFileTypes;
 
+    const {register, handleSubmit, formState:{errors: inputErrors}} = useForm({mode: 'onBlur'});
     const submit = async (data) => {
         const formData = new FormData();
         formData.append('name', data.name);
@@ -51,11 +54,11 @@ const RestaurantUpdate = ({restaurant}) => {
                 setErrorIsVisible(true);
             }
         }
-            data.webSite && formData.append('webSite', data.webSite);
-            data.tags && formData.append('tags', data.tags);
+        data.webSite && formData.append('webSite', data.webSite);
+        data.tags && formData.append('tags', data.tags);
         const {error} = await dispatch(restaurantActions.updateById({id: _id, restObj: formData}));
         if (!error) setModalIsVisible(true);
-            else {
+        else {
             setErrorsMessage(errors?.message);
             setErrorIsVisible(true);
         }
@@ -73,29 +76,93 @@ const RestaurantUpdate = ({restaurant}) => {
                 <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
                         <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Назва* <input required={true} defaultValue={name} {...register('name')}/></label>
+                        <label>Назва* <input defaultValue={name} {...register('name', {
+                            required: 'поле обов’язкове до заповнення',
+                            maxLength: {
+                                value:20,
+                                message: 'максимальна довжина - 20 символів'
+                            }}
+                        )}
+                        />
+                        </label>
+                        <div style={{color:'red'}}> {inputErrors?.name && <p> {inputErrors.name.message || Error}</p>}</div>
                         <br/>
                         <label>Зображення* <input type="file"
                                                   accept=".jpg, .jpeg" {...register('mainImage')}/></label>
                         <br/>
-                        <label>Адреса* <input required={true} defaultValue={place}  {...register('place')}/></label>
-                        <br/>
-                        <label>Координати в форматі lng lat*
-                            <input required={true} defaultValue={longitude}  {...register('longitude')}/>
-                            <input required={true} defaultValue={latitude}  {...register('latitude')}/>
+                        <label>Адреса* <input defaultValue={place}  {...register('place', {
+                            required: 'поле обов’язкове до заповнення'})}/>
                         </label>
                         <br/>
-                        <label>Режим роботи* <input required={true}
-                                                    defaultValue={hours} {...register('hours')}/></label>
+                        <label>Координати в форматі lat lng*
+                            <input defaultValue={latitude} {...register('latitude', {
+                                required: 'поле обов’язкове до заповнення',
+                                min: {
+                                    value: 50.1,
+                                    message: 'мінімальна широта (latitude) - 50.1'
+                                },
+                                max: {
+                                    value: 50.7,
+                                    message: 'максимальна широта (latitude) - 50.7'
+                                },
+                            })}/>
+                            <div style={{color:'red'}}> {inputErrors?.latitude && <p> {inputErrors.latitude.message || Error}</p>}</div>
+                            <input defaultValue={longitude} {...register('longitude', {
+                                required: 'поле обов’язкове до заповнення',
+                                min: {
+                                    value: 30.0,
+                                    message: 'мінімальна довгота (llongitude) - 30.0'
+                                },
+                                max: {
+                                    value: 31.0,
+                                    message: 'максимальна довгота (longitude) - 31.0'
+                                },
+                            })}/>
+                            <div style={{color:'red'}}> {inputErrors?.longitude && <p> {inputErrors.longitude.message || Error}</p>}</div>
+                        </label>
                         <br/>
-                        <label>Середній чек* <input type="number" required={true}
-                                                    defaultValue={averageBill}  {...register('averageBill')}/></label>
+                        <label>Режим роботи* <input
+                            defaultValue={hours} {...register('hours', {required: 'поле обов’язкове до заповнення'})}/></label>
                         <br/>
-                        <label>Телефон* <input required={true} defaultValue={phone} {...register('phone')}/></label>
+                        <label>Середній чек* <input type="number"
+                                                    defaultValue={averageBill}  {...register('averageBill', {
+                            valueAsNumber: 'тут повинно бути число'
+                        })}
+                        />
+                        </label>
+                        <div style={{color:'red'}}> {inputErrors?.hours && <p> {inputErrors.hours.message || Error}</p>}</div>
                         <br/>
-                        <label>Email* <input required={true} defaultValue={email}  {...register('email')}/></label>
+                        <label>Телефон* <input defaultValue={phone} {...register('phone', {
+                            required: 'поле обов’язкове до заповнення',
+                            pattern: {
+                                value: phoneRegex,
+                                message: 'невірний формат номеру (має бути +380XXXXXXXXX)'
+                            }
+                        })}
+                        />
+                        </label>
+                        <div style={{color:'red'}}> {inputErrors?.phone && <p> {inputErrors.phone.message || Error}</p>}</div>
                         <br/>
-                        <label>Сайт <input defaultValue={webSite} {...register('webSite')}/></label>
+                        <label>Email* <input defaultValue={email}  {...register('email', {
+                            required: 'поле обов’язкове до заповнення',
+                            pattern: {
+                                value: emailRegex,
+                                message: 'невірний email'
+                            }
+                        })}
+                        />
+                        </label>
+                        <div style={{color:'red'}}> {inputErrors?.email && <p> {inputErrors.email.message || Error}</p>}</div>
+                        <br/>
+                        <label>Сайт <input defaultValue={webSite} {...register('webSite', {
+                            pattern: {
+                                value: webSiteRegex,
+                                message: 'невірна назва сайту'
+                            }
+                        })}
+                        />
+                        </label>
+                        <div style={{color:'red'}}> {inputErrors?.webSite && <p> {inputErrors.webSite.message || Error}</p>}</div>
                         <br/>
                         <label>Теги <input defaultValue={tags} {...register('tags')}/></label>
                         <br/>

@@ -55,10 +55,10 @@ const UserEventsInRest = () => {
             <h1>Пиячок в {name}</h1>
             <div>
                 {JSON.stringify(userEventsInRest)!== '[]' ?
-                    <div style={{cursor:'pointer'}}>{userEventsInRest.map(event =>
-                        <div style={{border: 'solid grey 1px', margin: 2}} key={event._id} onClick={() => navigate(`../UserEvents/${event._id}`)}>
-                            <p>{event.date.slice(0, 10)}</p>
+                    <div className={css.Event}>{userEventsInRest.map(event =>
+                        <div key={event._id} onClick={() => navigate(`../UserEvents/${event._id}`)}>
                             <h3>{event.purpose}</h3>
+                            <p>{event.date.slice(0, 10)}</p>
                         </div>)}
                     </div>
                 :

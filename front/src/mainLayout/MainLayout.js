@@ -8,16 +8,18 @@ import {Header, ModalUC} from '../components';
 import {authService, geolocationService} from '../services';
 import {authActions, geoActions} from '../redux';
 
+import css from './MainLayout.module.css';
+
 const MainLayout = ()=> {
 
      const dispatch = useDispatch();
-     if ('geolocation' in navigator) {
-         geolocationService.getGeolocationFromNavigator();
-         dispatch(geoActions.setGeoLocation({isLocationAvailable: true, latitude: geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}));
-     }
-     else {
-         dispatch(geoActions.setGeoLocation({isLocationAvailable: null, latitude: null, longitude: null}));
-     }
+     useEffect(()=> {
+         if ('geolocation' in navigator) {
+             geolocationService.getGeolocationFromNavigator();
+             dispatch(geoActions.setGeoLocation({isLocationAvailable: true, latitude: geolocationService.getLatitudeInLS(), longitude: geolocationService.getLongitudeInLS()}));
+         }
+     }, []);
+
      const refreshToken = authService.getRefreshTokenInLS();
 
      useEffect(()=> {
@@ -28,7 +30,7 @@ const MainLayout = ()=> {
      const [modalIsVisible, setModalIsVisible] = useState(!refreshToken);
 
     return (
-        <div>
+        <div className={css.Main}>
             <ModalUC modalText={'Запускаючи цей додаток, ви погоджуєтесь, що вам виповнилося 18 років'} show={modalIsVisible} onHide={setModalIsVisible} type={'warning'}></ModalUC>
             <Header/>
             <Outlet/>

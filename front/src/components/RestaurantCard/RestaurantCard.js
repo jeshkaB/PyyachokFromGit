@@ -22,7 +22,6 @@ const RestaurantCard = ({restaurant, isTop}) => {
     const {role, userId} = useSelector(state => state.auth);
     const {errors} = useSelector(state => state.restaurant);
     const {_id,name,place,averageBill,mainImage,hours,phone,email,webSite,rating, moderationMessage, moderated, user} = restaurant;
-
     const [visibleModerationMessage, setVisibleModerationMessage] = useState(false);
     const [isModerationDone, setIsModerationDone] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
@@ -33,8 +32,11 @@ const RestaurantCard = ({restaurant, isTop}) => {
             if (location.pathname === '/superAdmin')
                 navigate(`../restaurantsForAdmin/${_id}`);
             else {
-                await dispatch (restaurantActions.completeViews({restId: _id}));
-                navigate(`${_id}`);
+                if (!userId) navigate(`${_id}`);
+                else {
+                    await dispatch(restaurantActions.completeViews({restId: _id}));
+                    navigate(`${_id}`);
+                }
             }
         };
         const moderatedClick = async () => {
@@ -53,7 +55,7 @@ const RestaurantCard = ({restaurant, isTop}) => {
                 <ModalUC modalText={errors?.message} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
 
                 <Card className={css.BigCard} onClick={clickToRest1}>
-                        <CardImg style={{width:'250px'}} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                        <CardImg style={{width:'250px', height:'300px'}} src={API_URL + mainImage} alt={'зображення закладу'}/>
                         <CardHeader><h2>{name}</h2></CardHeader>
                         <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
                         <CardGroup>Адреса: {place} </CardGroup>
@@ -84,8 +86,11 @@ const RestaurantCard = ({restaurant, isTop}) => {
             if (location.pathname === '/restaurantManager')
                 navigate(`../restaurantsForAdmin/${_id}`);
             else {
-                await dispatch(restaurantActions.completeViews({restId: _id}));
-                navigate(`../restaurants/${_id}`);
+                if (!userId)  navigate(`../restaurants/${_id}`);
+                else {
+                    await dispatch(restaurantActions.completeViews({restId: _id}));
+                    navigate(`../restaurants/${_id}`);
+                }
             }
         };
         const clickDel = async () => {
@@ -95,7 +100,7 @@ const RestaurantCard = ({restaurant, isTop}) => {
         return (
             <div>
                 {!isTop && <Card className={css.SmallCard} onClick={clickToRest2}>
-                     <CardImg style={{width:'250px'}} src={API_URL + mainImage} alt={'зображення закладу'}/>
+                     <CardImg style={{width:'250px', height:'300px'}} src={API_URL + mainImage} alt={'зображення закладу'}/>
                      <CardHeader><h2>{name}</h2></CardHeader>
                      <CardGroup><StarsRating key={_id} rating={rating}/> </CardGroup>
                      <CardGroup>Адреса: {place} </CardGroup>

@@ -22,6 +22,7 @@ const RestaurantsList = ({tag}) => {
 
     const {restaurantsSorted:restaurants,totalItems, limit} = useSelector(state => state.restaurant);
     const {isLocationAvailable, latitude, longitude} = useSelector(state => state.geo);
+
     useEffect(()=> {
         if (isLocationAvailable && searchParams.get('sort')==='distance')
             setSearchParams (searchParams => {
@@ -60,7 +61,6 @@ const RestaurantsList = ({tag}) => {
          });
         setIsReset(!isReset);
     };
-
             return (
                 <div className={css.Hole}>
                     {!isLocationAvailable && <h4> Ваша локація не визначена </h4>}

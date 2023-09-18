@@ -19,21 +19,23 @@ const News = () => {
 
     const {title, content, newsImage, category, restaurant, createdAt} = newsOne;
 
-    return (
-        <div className={css.News}>
-            <div>
-                <h2>{title}</h2>
-                {JSON.stringify(newsOne) !== '{}' &&
+    return ( <div>
+        <h2 style={{textAlign: 'center'}}>{title}</h2>
+            <div className={css.News}>
+        <div>
+            {JSON.stringify(newsOne) !== '{}' &&
                 <h3> від {restaurant.name}</h3>}
-                {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
-            </div>
-            <div className={css.Body}>
-                <div>{category},</div>
-                <div>опубліковано {createdAt?.slice(0,10)}</div>
-                <hr/>
-                <div>{content}</div>
-            </div>
+            {newsImage && <img width={300} src={API_URL + newsImage} alt={'зображення у новині'}/>}
         </div>
+        <div className={css.Body}>
+            <div>{category},</div>
+            <div>опубліковано {createdAt?.slice(0,10)}</div>
+            <hr/>
+            <div>{content}</div>
+        </div>
+    </div>
+    </div>
+
     );
 };
 

@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {UserInfo} from '../UserInfo/userInfo';
 import {useSelector} from 'react-redux';
 import {GoogleSignIn} from '../GoogleSignIn/GoogleSignIn';
@@ -8,14 +8,17 @@ import css from './HeaderStyle.module.css';
 
 const Header = () => {
     const {isAuth, authUser, isSocNetwork} = useSelector(state => state.auth);
+    const navigate = useNavigate();
     const isManager = true;
 
     return (
         <div className={css.Header}>
             <div className={css.Left}>
                <div className={css.Home}><Link className={css.Link} to={'/home'}> На головну </Link> </div>
-                <div className={css.Pyyachok}><Link className={css.Link} to={'/UserEvents'}> Пиячки </Link></div>
-
+                <button style={{marginLeft:'40px', background:'#86aaaa', color:'#2C4444', fontSize:'20px'}} type="button" className="btn btn-secondary" data-toggle="tooltip" data-placement="right"
+                        title="Тут ви можете зібрати компанію для своєї події або приєднатися до чиїхось подій" onClick={()=> navigate('./userEvents')}>
+                    Пиячки
+                </button>
             </div>
 
             <div className={css.Brand}>
@@ -31,7 +34,7 @@ const Header = () => {
                     </div>
                     <div className={css.Reg}>
                         <div className={css.Auth}> <Link className={css.Link} to={'/register'}>Зареєструватися</Link></div>
-                        <div className={css.Auth}><Link className={css.Link} to={'/register'} state={isManager}>Зареєструватися як менеджер </Link></div>
+                        <div className={css.Auth2}><Link className={css.Link} to={'/register'} state={isManager}>Зареєструватися як менеджер </Link></div>
                     </div>
                 </div>
                 :

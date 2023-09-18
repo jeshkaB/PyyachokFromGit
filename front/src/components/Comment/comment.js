@@ -39,9 +39,7 @@ const Comment = ({comment, restaurants}) => {
                     {!!bill && bill !==0 &&
                         <p> чек {bill} грн. </p>}
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <div>{name}</div>
-                        <div>{date}</div>
-
+                        <div>{name}, {date}</div>
                     </div>
                 </div>
                 <hr/>

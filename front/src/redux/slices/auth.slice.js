@@ -111,6 +111,9 @@ const setCurrentUser = createAsyncThunk(
             return data;
 
         } catch (e) {
+            authService.deleteUserIdInLS();
+            authService.deleteUserRoleInLS();
+            authService.deleteTokensInLS();
             return rejectWithValue(e.response.data);
         }
     }

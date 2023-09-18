@@ -31,7 +31,7 @@ const GeneralNews = () => {
         <div>
             <div className={css.Header}>
                 <div><h2>{title}</h2></div>
-                {role.includes(roles.SUPER_ADMIN) &&
+                {role?.includes(roles.SUPER_ADMIN) &&
                     <div>
                         <div>
                             <NewsUpdate news={newsOne}/>

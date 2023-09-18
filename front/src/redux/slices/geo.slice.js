@@ -15,7 +15,6 @@ const geoSlice = createSlice({
             state.longitude = action.payload.longitude;
         }
     }
-
 });
 
 const {reducer: geoReducer, actions:{setGeoLocation}} = geoSlice;

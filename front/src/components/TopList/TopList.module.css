@@ -1,7 +1,16 @@
-
 .Top {
     background: #d5eaea;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    /*height: 25%;*/
+    border-radius: 12px;
+}
+.Title {
+    margin-left: 20px;
+    margin-top: 20px;
+    background: transparent;
+}
+.CardBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

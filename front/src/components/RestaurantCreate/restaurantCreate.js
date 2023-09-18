@@ -6,13 +6,14 @@ import {restaurantActions} from '../../redux';
 
 import {ModalUC} from '../ModalUC/ModalUC';
 import css from '../RestaurantUpdate/RestaurantUpdate.module.css';
-import {acceptedFileTypes} from '../../constants';
+import {acceptedFileTypes, regex} from '../../constants';
 
 
 const RestaurantCreate = () => {
     const dispatch = useDispatch();
     const {errors} = useSelector(state => state.restaurant);
-    const {register, handleSubmit} = useForm();
+
+    const {phone: phoneRegex, email: emailRegex, webSite: webSiteRegex} = regex;
 
     const [stateCreate, setStateCreate] = useState(false);
     const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -21,30 +22,31 @@ const RestaurantCreate = () => {
 
     const {acceptedImageTypes} = acceptedFileTypes;
 
+    const {register, handleSubmit, formState: {errors: inputErrors}} = useForm({mode: 'onBlur'});
     const submit = async (data) => {
         const formData = new FormData();
-        if (acceptedImageTypes.includes(data.mainImage[0].type)) {
-            formData.append('name', data.name);
+        formData.append('name', data.name);
+        if (acceptedImageTypes.includes(data.mainImage[0].type))
             formData.append('mainImage', data.mainImage[0]);
-            formData.append('place', data.place);
-            formData.append('hours', data.hours);
-            formData.append('phone', data.phone);
-            formData.append('averageBill', data.averageBill);
-            formData.append('email', data.email);
-            formData.append('coordinates', data.longitude);
-            formData.append('coordinates', data.latitude);
-            data.webSite && formData.append('webSite', data.webSite);
-            data.tags && formData.append('tags', data.tags);
-            const {error} = await dispatch(restaurantActions.create({restObj: formData}));
-            if (!error) {
-                setStateCreate(false);
-                setModalIsVisible(true);
-            } else {
-                setErrorsMessage(errors?.message);
-                setErrorIsVisible(true);
-            }
-        } else {
+        else {
             setErrorsMessage('Виберіть файл типу "jpg"/"jpeg');
+            setErrorIsVisible(true);
+        }
+        formData.append('place', data.place);
+        formData.append('hours', data.hours);
+        formData.append('phone', data.phone);
+        formData.append('averageBill', data.averageBill);
+        formData.append('email', data.email);
+        formData.append('coordinates', data.longitude);
+        formData.append('coordinates', data.latitude);
+        data.webSite && formData.append('webSite', data.webSite);
+        data.tags && formData.append('tags', data.tags);
+        const {error} = await dispatch(restaurantActions.create({restObj: formData}));
+        if (!error) {
+            setStateCreate(false);
+            setModalIsVisible(true);
+        } else {
+            setErrorsMessage(errors.message);
             setErrorIsVisible(true);
         }
     };
@@ -61,29 +63,123 @@ const RestaurantCreate = () => {
                 <div className={css.Form}>
                     <form onSubmit={handleSubmit(submit)}>
                         <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Назва* <input required={true} {...register('name')}/></label>
+                        <label>Назва*
+                            <input {...register('name', {
+                                    maxLength: {
+                                        value: 20,
+                                        message: 'максимальна довжина - 20 символів'
+                                    }
+                                }
+                            )}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.name &&
+                            <p> {inputErrors.name.message || Error}</p>}</div>
                         <br/>
-                        <label>Зображення* <input type="file" accept=".jpg, .jpeg"
-                                                  required={true} {...register('mainImage')}/></label>
+                        <label>Зображення*
+                            <input type="file" accept=".jpg, .jpeg" {...register('mainImage', {
+                                required: 'поле обов’язкове до заповнення',
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.mainImage &&
+                            <p> {inputErrors.mainImage.message || Error}</p>}</div>
                         <br/>
-                        <label>Адреса* <input required={true} {...register('place')}/></label>
+                        <label>Адреса*
+                            <input {...register('place', {
+                                required: 'поле обов’язкове до заповнення',
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.place &&
+                            <p> {inputErrors.place.message || Error}</p>}</div>
                         <br/>
-                        <label>Координати в форматі lng lat*
-                            <input required={true} placeholder={'30.0-31.0'}  {...register('longitude')}/>
-                            <input required={true} placeholder={'50.1-50.7'} {...register('latitude')}/>
+                        <label>Координати в форматі lat lng*
+                            <input placeholder={'lat від 50.1 до 50.7'} {...register('latitude', {
+                                required: 'поле обов’язкове до заповнення',
+                                min: {
+                                    value: 50.1,
+                                    message: 'мінімальна широта (latitude) - 50.1'
+                                },
+                                max: {
+                                    value: 50.7,
+                                    message: 'максимальна широта (latitude) - 50.7'
+                                },
+                            })}/>
+                            <div style={{color: 'red'}}> {inputErrors?.latitude &&
+                                <p> {inputErrors.latitude.message || Error}</p>}</div>
+                            <input placeholder={' lng від 30.0 до 31.0'}  {...register('longitude', {
+                                required: 'поле обов’язкове до заповнення',
+                                min: {
+                                    value: 30.0,
+                                    message: 'мінімальна довгота (longitude) - 30.0'
+                                },
+                                max: {
+                                    value: 31.0,
+                                    message: 'максимальна довгота (longitude) - 31.0'
+                                },
+                            })}/>
+                            <div style={{color: 'red'}}> {inputErrors?.longitude &&
+                                <p> {inputErrors.longitude.message || Error}</p>}</div>
+
                         </label>
                         <br/>
-                        <label>Режим роботи* <input required={true} {...register('hours')}/></label>
+                        <label>Режим роботи*
+                            <input {...register('hours', {
+                                required: 'поле обов’язкове до заповнення',
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.hours &&
+                            <p> {inputErrors.hours.message || Error}</p>}</div>
                         <br/>
-                        <label>Середній чек* <input type="number" required={true} {...register('averageBill')}/></label>
+                        <label>Середній чек*
+                            <input type="number" {...register('averageBill', {
+                                required: 'поле обов’язкове до заповнення',
+                                valueAsNumber: 'тут повинно бути число'
+                            })}
+                            />
+                        </label>
                         <br/>
-                        <label>Телефон* <input required={true} {...register('phone')}/></label>
+                        <label>Телефон*
+                            <input placeholder={'+380XXXXXXXXX'}{...register('phone', {
+                                required: 'поле обов’язкове до заповнення',
+                                pattern: {
+                                    value: phoneRegex,
+                                    message: 'невірний формат номеру (має бути +380XXXXXXXXX)'
+                                }
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.phone &&
+                            <p> {inputErrors.phone.message || Error}</p>}</div>
                         <br/>
-                        <label>Email* <input required={true} {...register('email')}/></label>
+                        <label>Email*
+                            <input {...register('email', {
+                                required: 'поле обов’язкове до заповнення',
+                                pattern: {
+                                    value: emailRegex,
+                                    message: 'невірний email'
+                                }
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.email &&
+                            <p> {inputErrors.email.message || Error}</p>}</div>
                         <br/>
-                        <label>Сайт <input {...register('webSite')}/></label>
+                        <label>Сайт
+                            <input {...register('webSite', {
+                                pattern: {
+                                    value: webSiteRegex,
+                                    message: 'некоректна назва сайту'
+                                }
+                            })}
+                            />
+                        </label>
+                        <div style={{color: 'red'}}> {inputErrors?.webSite &&
+                            <p> {inputErrors.webSite.message || Error}</p>}</div>
                         <br/>
-                        <label>Теги <input {...register('tags')}/></label>
+                        <label>Теги (через кому) <input {...register('tags')}/></label>
                         <br/>
                         <button>Створити</button>
                     </form>

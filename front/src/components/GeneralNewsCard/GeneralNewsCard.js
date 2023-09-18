@@ -9,10 +9,10 @@ const GeneralNewsCard = ({news, isHome}) => {
 
         return (
             <div className={isHome ? css.HoleOnHome : css.HoleInList} onClick={() => navigate(`../generalNews/${_id}`)}>
-                <h4>{title}</h4>
+                <h5 className={css.Title}>{title}</h5>
                 <div>{category}, </div>
                 <div>опубліковано {createdAt.slice(0, 10)}</div>
-                {newsImage && <img height={100} src={API_URL + newsImage} alt={'зображення у новині'}/>}
+                {newsImage && <img height={100} width={100} src={API_URL + newsImage} alt={'зображення у новині'}/>}
                 {!isHome && <div>{content}</div>}
             </div>);
  };

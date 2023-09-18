@@ -21,7 +21,7 @@ const SuperAdminPage = () => {
     const [stateNewsList, setStateNewsList] = useState(false);
     const [stateGenNewsList, setStateGenNewsList] = useState(false);
     const [stateUsers, setStateUsers] = useState(false);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [setSearchParams] = useSearchParams();
 
 
     return (

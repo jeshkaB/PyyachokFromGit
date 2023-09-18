@@ -6,6 +6,7 @@
 }
 .Auth {
     composes: Auth from '../Header/HeaderStyle.module.css';
+    display: block;
 }
 .Quit{
     composes: Auth from '../Header/HeaderStyle.module.css';
@@ -25,5 +26,8 @@
 }
 .Link {
     text-decoration: none;
+    color: black;
+}
+.Link:hover {
     color: black;
 }

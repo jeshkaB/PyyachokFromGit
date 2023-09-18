@@ -1,0 +1,17 @@
+.TopCard {
+    width: 250px;
+    flex-direction: column;
+    border: darkslategrey solid 1px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    margin: 10px;
+    background: azure;
+    }
+
+.Header {
+    text-align: center;
+    color: #344c4c;
+}

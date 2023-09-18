@@ -1,4 +1,5 @@
 .Enter {
     composes: Enter from '../Header/HeaderStyle.module.css';
     cursor: pointer;
+
 }

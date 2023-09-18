@@ -17,10 +17,9 @@ const TopCategoriesList = () => {
     useEffect(()=> {
         dispatch(topCategoryActions.getAll());
     }, []);
-
     const clickUpdate = (categ)=>{
-        setStateUpdate(true);
         setCurrentCategory(categ);
+        setStateUpdate(true);
     };
     const submitUpdate = async (data)=> {
         const {error} = await dispatch(topCategoryActions.updateById({id:currentCategory._id, categObj: data}));

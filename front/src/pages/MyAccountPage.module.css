@@ -16,7 +16,6 @@
 }
 .To {
     cursor: pointer;
-    display: flex;
     border: solid 0.5px #619393  ;
     border-radius: 10px;
     padding: 5px;
@@ -27,5 +26,6 @@
 
 .ToAc {
     composes: To;
+    display: flex;
     justify-content: end;
 }

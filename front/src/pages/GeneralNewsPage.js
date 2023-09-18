@@ -9,7 +9,7 @@ const GeneralNewsPage = () => {
 
 
     return (
-        <div style={{marginLeft: 20, marginTop:10}}>
+        <div style={{marginTop:10}}>
             <Button variant="outline-secondary" onClick={() => navigate('/generalNews')}>Всі новини </Button>
             <div><GeneralNews/></div>
         </div>

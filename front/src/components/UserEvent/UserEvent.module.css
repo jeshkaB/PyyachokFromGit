@@ -17,3 +17,8 @@
 .CreateAnsw {
     composes: CreateCom from '../CommentsInRest/CommentsInRest.module.css';
 }
+
+.RestName {
+    color: #1f7979;
+    font-family: cursive;
+}

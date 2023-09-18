@@ -1,10 +1,8 @@
 .News {
-    margin-left: 20px;
+    margin-top: 20px;
     display: flex;
 }
 .Body {
-    margin: 50px;
-    margin-top: 80px;
-
+    margin: 0 50px 50px;
     font-size: 25px;
 }

@@ -1,7 +1,9 @@
 .Hole {
-    margin: 20px;
+    width: 100%;
+    margin: 20px 20px 20px 0;
     display: flex;
     flex-direction: column;
+    ;
 }
 .Nav {
     width: 100%;
@@ -27,5 +29,5 @@
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: space-between;*/
+    justify-content: space-between;
 }

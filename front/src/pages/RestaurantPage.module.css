@@ -6,6 +6,7 @@
 .HolePage {
     display: flex;
     margin: 20px;
+
 }
 
 .RestBlock {
@@ -59,7 +60,11 @@
 }
 .ButMes {
     cursor: pointer;
-    height: 40px
+    height: 40px;
+    flex-wrap: wrap;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 .News {
     border-left: darkslategray solid 2px;

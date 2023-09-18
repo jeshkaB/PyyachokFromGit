@@ -4,9 +4,9 @@ const EventAnswerCard = ({answ}) => {
         <div>
              {JSON.stringify(answ) !== '{}' &&
                 <div>
-                    <h3>{answ.answer}</h3>
-                    <p>{answ.user.name}</p>
-                    <p>{answ.createdAt.slice(0, 10)}</p>
+                    <h5> - {answ.answer}</h5>
+                    <p>{answ.user.name}, {answ.createdAt.slice(0, 10)}</p>
+
                 </div>}
         </div>
     );

@@ -19,19 +19,19 @@ const UserEvent = () => {
 
     const {userEvent} = useSelector(state => state.userEvent);
     useEffect(() => {
-        dispatch(userEventActions.getById(id));
+            dispatch(userEventActions.getById(id));
     }, [isChangeEventAnswersList]);
     const {_id, date, time, purpose, otherInformation, restaurant: restId, user: userId, eventAnswers} = userEvent;
 
     const {restaurant} = useSelector(state => state.restaurant);
     useEffect(() => {
         dispatch(restaurantActions.getById(restId));
-    }, [dispatch]);
+    }, [userEvent]);
 
     const {user} = useSelector(state => state.user);
     useEffect(() => {
         dispatch(userActions.getById(userId));
-    }, [dispatch]);
+    }, [userEvent]);
 
     const [stateForm, setStateForm] = useState(false);
     const [errorIsVisible, setErrorIsVisible] = useState(false);
@@ -62,12 +62,12 @@ const UserEvent = () => {
 
             <h1>Пиячок в</h1>
             <div>
-                    <h2>{restaurant?.name}</h2>
+                    <h2 className={css.RestName}>{restaurant?.name}</h2>
                     <div className={css.Event}>
                         <h3>Мета зустрічі: {purpose}</h3>
                         <p>Дата: {date?.slice(0, 10)}</p>
                         <p>Час: {time}</p>
-                        <p>Інша інформація: {otherInformation}</p>
+                        <p> <b>{otherInformation}</b></p>
                         <p>Ініціатор: {user?.name}</p>
                     </div>
             </div>

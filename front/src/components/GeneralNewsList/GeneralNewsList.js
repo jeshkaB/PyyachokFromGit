@@ -26,7 +26,8 @@ const GeneralNewsList = () => {
     }
     else newsForCard = newsAll;
 
-    return (<div className={location.pathname === '/home' ? css.NewsOnHome : css.NewsInList}>
+    return (<div className={location.pathname === '/home' ? css.NewsOnHome : css.NewsListInList}>
+            {/*<h4>Новини</h4>*/}
             {location.pathname === '/home' && <Button variant="outline-secondary" onClick={() => navigate('/generalNews')}>Всі новини </Button>}
                 <div className={location.pathname === '/home' ? css.NewsListOnHome : css.NewsListInList} >{newsForCard.map(news => <GeneralNewsCard key={news._id} news={news} isHome={isHome}/>)}</div>
             </div>
