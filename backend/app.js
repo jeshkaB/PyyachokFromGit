@@ -13,11 +13,6 @@ const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter,
 const {PORT, MONGO_URL} = require('./configs/config');
 const {ErrorMainHandler} = require('./errors');
 const {PATH_AVATAR, PATH_NEWS_PHOTO, PATH_RESTAURANT_PHOTO} = require('./constants/pathImg');
-const {hashService, userService} = require("./services");
-const uuid = require("uuid");
-const {roles, statusCode} = require("./constants");
-
-
 
 const app = express();
 app.use(cors());
