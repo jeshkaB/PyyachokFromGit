@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use (fileUpload({}));
-app.use(express.static(path.resolve(__dirname, PATH_AVATAR))); //для передачі файлів з БД (статичних)
+app.use(express.static(path.resolve(__dirname, PATH_AVATAR))); 
 app.use(express.static(path.resolve(__dirname, PATH_NEWS_PHOTO)));
 app.use(express.static(path.resolve(__dirname, PATH_RESTAURANT_PHOTO)));
 app.use('/auth', authRouter);
