@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 
@@ -23,6 +22,7 @@ app.use (fileUpload({}));
 app.use(express.static(path.resolve(__dirname, PATH_AVATAR)));
 app.use(express.static(path.resolve(__dirname, PATH_NEWS_PHOTO)));
 app.use(express.static(path.resolve(__dirname, PATH_RESTAURANT_PHOTO)));
+
 app.use('/auth', authRouter);
 app.use('/comments', commentRouter);
 app.use('/eventAnswers', eventAnswerRouter);
@@ -35,12 +35,12 @@ app.use('/users', userRouter);
 app.use('/userEvents', userEventRouter);
 app.use('/viewStatistics', viewStatisticsRouter);
 
-
 app.use ('*', (req, res, next)=> {
   next (new Error('Rout not found'));
 });
 
 app.use(ErrorMainHandler);
+
 
 app.listen(PORT, ()=>{
   // eslint-disable-next-line no-console

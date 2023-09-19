@@ -2,83 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="correct css">
-      <change afterPath="$PROJECT_DIR$/front/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/AccountComponents/MyMarks/MyMarks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/AccountComponents/UpdateAccount/UpdateAccount.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/RestaurantCardInTop/RestaurantCardInTop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/RestaurantCardInTop/RestaurantCardInTop.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/TopList/rest.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/pages/ForgotPasswordPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/Avatars/41c850d1-51ce-4939-826c-e835518a7efa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/05f85153-9fee-47bb-a5d6-c98848b8fd35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/1ca3be20-1068-40f5-ada1-0b8f21e1fc50.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/58f2ce0c-42da-40f2-af2a-2a4381a6f6f1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/60e8bb3b-73d6-4ec6-ba6a-f095a68f5d81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/a41db696-dc8c-46fb-b700-eccab66c5e41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/f24657ba-f178-4d34-bd64-5b5da1b67ebb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/112a6cfa-7cff-48a8-a7f5-042f725d0d5d.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/1fff0a2c-ef43-46fc-a6a5-149ff4d26dad.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/53e77034-3146-4b81-aab9-c3dfc166f677.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/6a986930-dd7e-40a0-ae02-eb946fe5b958.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/77fc723e-bad1-4376-b8a9-1e9228082069.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/8534d59b-1d36-428f-bc5b-e5e03bbeb93f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/8f40a7ad-8e1a-4b61-a725-b71af84b2566.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/dbd3c021-70bc-4277-9fdc-c52b178a3e9e.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/Avatars/8bea9227-4c6c-45eb-9b7d-d0e7c0b77ae2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/00e12961-42be-4a70-ba0c-3f84a55077bd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/0e23f6db-a12c-4531-ad2e-d6a6af2185c6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/1ec759b5-db78-4f37-9c4e-71239c5c9c67.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/96c6b3e4-f079-4d5e-8404-8540dc37577b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/b3a44448-de82-442d-8b7f-1a4c10ae625d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/d9182a6a-67c6-4a1d-b895-fe9256e2f213.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/NewsPhoto/e95021f8-1564-44f2-bdf3-ff60f6176eea.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/1ed7a96d-f336-4706-a245-ac756a4c8d09.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/46f5fbad-28f3-4003-9495-3bbc76cfb097.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/59b0ef04-7140-4d35-b6ad-9b340e1409af.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/81eed8a7-bab2-4a60-85bd-37c47e62cea0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/d22347ed-fb58-4635-87ff-3551d287a219.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/pageLimit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/pageLimit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/constants/urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/news.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/news.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/restaurant.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/AccountComponents/MyMarks/MyMarks.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/AccountComponents/MyMarks/MyMarks.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Comment/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Comment/comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/EventAnswerCard/EventAnswerCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/EventAnswerCard/EventAnswerCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNews/GeneralNews.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNews/GeneralNews.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsCard/GeneralNewsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsCard/GeneralNewsCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsCard/GeneralNewsCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsCard/GeneralNewsCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsList/GeneralNewsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsList/GeneralNewsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsList/GeneralNewsList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsList/GeneralNewsList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GoogleSignIn/GoogleSignIn.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Header/HeaderStyle.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Header/HeaderStyle.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/MarksCard/MarksCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/MarksCard/MarksCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/News/News.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/News/News.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/News/News.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/News/News.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Restaurant/Restaurant.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantCard/RestaurantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantCard/RestaurantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantCreate/restaurantCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantUpdate/RestaurantUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantUpdate/RestaurantUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RestaurantsList/RestaurantsList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopCard/TopCard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/TopCategoriesList/TopCategoriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopCategoriesList/TopCategoriesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/TopList/TopList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopList/TopList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/TopList/TopList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/TopList/TopList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserEvent/UserEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserEvent/UserEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserEvent/UserEvent.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserEvent/UserEvent.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserEventsInRest/UserEventsInRest.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserEventsInRest/UserEventsInRest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserEventsInRest/UserEventsInRest.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserEventsInRest/UserEventsInRest.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserInfo/userInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/constants/paginationLimits.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/paginationLimits.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/constants/regex.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/constants/regex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/GeneralNewsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/GeneralNewsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/NewsPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/NewsPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/RestaurantPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/RestaurantPage.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/SuperAdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/SuperAdminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/redux/slices/geo.slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,38 +63,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/JapanSoft21&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "18.16.1",
+    "javascript.nodejs.core.library.typings.version": "18.16.1",
+    "last_opened_file_path": "C:/II/PyyachokFromGit/front",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\II\PyyachokFromGit\front" />
+      <recent name="C:\II\PyyachokFromGit\backend" />
+      <recent name="C:\II\PyyachokFromGit" />
       <recent name="C:\II\fin_project\front\src\components\TopList" />
       <recent name="C:\II\fin_project\front\public" />
-      <recent name="C:\II\fin_project\backend\Images\RestaurantPhoto" />
-      <recent name="C:\II\fin_project\front\src\components\RestaurantCardInTop" />
-      <recent name="C:\II\fin_project\front\src\mainLayout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\II\fin_project\front\src\components\TopList" />
@@ -230,6 +170,7 @@
       <workItem from="1694805543615" duration="37610000" />
       <workItem from="1694964767411" duration="42377000" />
       <workItem from="1695062659042" duration="3234000" />
+      <workItem from="1695132428511" duration="2828000" />
     </task>
     <task id="LOCAL-00034" summary="client interim">
       <created>1675281157165</created>
