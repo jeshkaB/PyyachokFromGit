@@ -53,9 +53,9 @@ const GeneralNewsCreate = () => {
                     </Dropdown>
                     <form onSubmit={handleSubmit(submit)}>
                         <p style={{color: 'royalblue'}}>Поля, позначені *, обов’язкові для заповнення!</p>
-                        <label>Заголовок* <textarea rows="2" cols="60" required={true} {...register('title')}></textarea></label>
+                        <label>Заголовок* <textarea rows="2" cols="60" required={true} placeholder={'від 3 до 50 символів'} {...register('title')}></textarea></label>
                         <br/>
-                        <label>Зміст/текст* <textarea rows="5" cols="60" required={true} {...register('content')}></textarea></label>
+                        <label>Зміст/текст* <textarea rows="5" cols="60" required={true} placeholder={'від 100 до 2000 символів'} {...register('content')}></textarea></label>
                         <br/>
                         <label>Зображення <input type="file" accept="image/png, image/jpeg" {...register('newsImage')}/></label>
                         <br/>

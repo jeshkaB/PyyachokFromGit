@@ -25,7 +25,7 @@ services:
     volumes:
       - ./mongo_db:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    restart: no
+    restart: on-failure
   web:
     image: nginx:alpine
     ports:

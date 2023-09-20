@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {Outlet} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
 
@@ -34,6 +34,7 @@ const MainLayout = ()=> {
             <ModalUC modalText={'Запускаючи цей додаток, ви погоджуєтесь, що вам виповнилося 18 років'} show={modalIsVisible} onHide={setModalIsVisible} type={'warning'}></ModalUC>
             <Header/>
             <Outlet/>
+            <Link className={css.PP} to={'/privacyPolicy'} ><b>Політика конфіденційності</b></Link>
         </div>
     );
 };

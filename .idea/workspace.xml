@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="correct css">
-      <change afterPath="$PROJECT_DIR$/backend/Images/Avatars/41c850d1-51ce-4939-826c-e835518a7efa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/05f85153-9fee-47bb-a5d6-c98848b8fd35.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/1ca3be20-1068-40f5-ada1-0b8f21e1fc50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/58f2ce0c-42da-40f2-af2a-2a4381a6f6f1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/60e8bb3b-73d6-4ec6-ba6a-f095a68f5d81.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/a41db696-dc8c-46fb-b700-eccab66c5e41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/NewsPhoto/f24657ba-f178-4d34-bd64-5b5da1b67ebb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/112a6cfa-7cff-48a8-a7f5-042f725d0d5d.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/1fff0a2c-ef43-46fc-a6a5-149ff4d26dad.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/53e77034-3146-4b81-aab9-c3dfc166f677.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/6a986930-dd7e-40a0-ae02-eb946fe5b958.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/77fc723e-bad1-4376-b8a9-1e9228082069.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/8534d59b-1d36-428f-bc5b-e5e03bbeb93f.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/8f40a7ad-8e1a-4b61-a725-b71af84b2566.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Images/RestaurantPhoto/dbd3c021-70bc-4277-9fdc-c52b178a3e9e.jpg" afterDir="false" />
+    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="add images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsCreate/GeneralNewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsCreate/GeneralNewsCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/NewsCreate/NewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/NewsCreate/NewsCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,31 +55,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "18.16.1",
-    "javascript.nodejs.core.library.typings.version": "18.16.1",
-    "last_opened_file_path": "C:/II/PyyachokFromGit/front",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/II/1/HTML_lesson4&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\II\PyyachokFromGit\front" />
@@ -170,14 +162,11 @@
       <workItem from="1694805543615" duration="37610000" />
       <workItem from="1694964767411" duration="42377000" />
       <workItem from="1695062659042" duration="3234000" />
-      <workItem from="1695132428511" duration="2828000" />
-    </task>
-    <task id="LOCAL-00034" summary="client interim">
-      <created>1675281157165</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1675281157165</updated>
+      <workItem from="1695132428511" duration="3015000" />
+      <workItem from="1695153913369" duration="3739000" />
+      <workItem from="1695207551072" duration="44000" />
+      <workItem from="1695212400983" duration="628000" />
+      <workItem from="1695232954144" duration="665000" />
     </task>
     <task id="LOCAL-00035" summary="client interim">
       <created>1675625958168</created>
@@ -515,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685045790422</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="add images">
+      <created>1695145851770</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1695145851770</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +522,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="forgot password" />
     <MESSAGE value="pagination" />
     <MESSAGE value="views statistics" />
     <MESSAGE value="google sign in" />
@@ -551,7 +546,8 @@
     <MESSAGE value="add check of files type &amp; user pagination" />
     <MESSAGE value="finish check" />
     <MESSAGE value="correct css" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct css" />
+    <MESSAGE value="add images" />
+    <option name="LAST_COMMIT_MESSAGE" value="add images" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

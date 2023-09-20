@@ -12,6 +12,7 @@ const {commentRouter, markRouter, newsRouter, restaurantRouter, userEventRouter,
 const {PORT, MONGO_URL} = require('./configs/config');
 const {ErrorMainHandler} = require('./errors');
 const {PATH_AVATAR, PATH_NEWS_PHOTO, PATH_RESTAURANT_PHOTO} = require('./constants/pathImg');
+const {logout} = require("./controllers/auth.controller");
 
 const app = express();
 app.use(cors());
@@ -45,5 +46,7 @@ app.use(ErrorMainHandler);
 app.listen(PORT, ()=>{
   // eslint-disable-next-line no-console
   console.log('App listen', PORT);
-  mongoose.connect(MONGO_URL);
+  mongoose.connect(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+      .then(()=> console.log('Connected to MongoDB'))
+      .catch ((err)=> console.log(`DB connection error: ${err}`));
 });
