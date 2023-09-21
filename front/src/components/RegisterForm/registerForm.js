@@ -27,10 +27,6 @@ const RegisterForm = ({isManager}) => {
             setErrorsMessage('Пароль повинен містити тільки латинські літери і цифри');
             setErrorIsVisible(true);
         }
-        else if  (data.password.length < 8) {
-            setErrorsMessage ('Пароль повинен мати довжину не менше 8 символів');
-            setErrorIsVisible(true);
-        }
          else {
              const {error} = await dispatch(authActions.register({user: data, isManager}));
 
@@ -47,9 +43,12 @@ const RegisterForm = ({isManager}) => {
             <ModalUC modalText={errorsMessage} show={errorIsVisible} onHide={setErrorIsVisible} type={'danger'}></ModalUC>
             <p style={{color: 'royalblue'}}>Пароль повинен містити тільки латинські літери і цифри і мати довжину не менше 8 символів</p>
             <form onSubmit={handleSubmit(submit)}>
-                <input type='text' placeholder={'ім’я'} {...register('name')}/>
+                <input type='text' placeholder={'ім’я'} {...register('name', {
+                    minLength: {value:3, message: 'Ім’я повинно містити не менше 3х символів'},
+                    maxLength: {value:20, message: 'Ім’я повинно містити не більше 20ти символів'}})}/>
                 <input type='text' placeholder={'email'} {...register('email')}/>
-                <input type='password' placeholder={'пароль'} {...register('password')}/>
+                <input type='password' placeholder={'пароль'} {...register('password', {
+                    minLength: {value:8, message: 'Пароль повинен мати довжину не менше 8 символів'}})}/>
                 {!isManager ?
                     <button>Зареєструватись</button>
                     :

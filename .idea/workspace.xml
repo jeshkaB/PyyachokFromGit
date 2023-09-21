@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="add images">
+    <list default="true" id="76ee7f30-f5a2-4258-9e65-4508ff1a802a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/configs/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/configs/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GeneralNewsCreate/GeneralNewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GeneralNewsCreate/GeneralNewsCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/NewsCreate/NewsCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/NewsCreate/NewsCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/validators/user.validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/validators/user.validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/RegisterForm/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/RegisterForm/registerForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/mainLayout/MainLayout.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/MyAccountPage.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,14 +162,8 @@
       <workItem from="1695153913369" duration="3739000" />
       <workItem from="1695207551072" duration="44000" />
       <workItem from="1695212400983" duration="628000" />
-      <workItem from="1695232954144" duration="665000" />
-    </task>
-    <task id="LOCAL-00035" summary="client interim">
-      <created>1675625958168</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1675625958168</updated>
+      <workItem from="1695232954144" duration="893000" />
+      <workItem from="1695305510150" duration="361000" />
     </task>
     <task id="LOCAL-00036" summary="client interim">
       <created>1675631263233</created>
@@ -511,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695145851770</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="add privacy policy link">
+      <created>1695233812920</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1695233812920</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +519,6 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pagination" />
     <MESSAGE value="views statistics" />
     <MESSAGE value="google sign in" />
     <MESSAGE value="css1" />
@@ -547,7 +543,8 @@
     <MESSAGE value="finish check" />
     <MESSAGE value="correct css" />
     <MESSAGE value="add images" />
-    <option name="LAST_COMMIT_MESSAGE" value="add images" />
+    <MESSAGE value="add privacy policy link" />
+    <option name="LAST_COMMIT_MESSAGE" value="add privacy policy link" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -123,8 +123,8 @@ module.exports = {
         if (req.user.avatar) {
           const fileName = req.user.avatar;
           await image.mv(path.resolve(__dirname, '..', PATH_AVATAR, fileName));
-          const userWithPass = await userService.getUserById(userId);
           // eslint-disable-next-line no-unused-vars
+          const userWithPass = await userService.updateUser(userId, req.body);
           const {password, ...user} = userWithPass.toObject();
           res.json(user);
         } else {

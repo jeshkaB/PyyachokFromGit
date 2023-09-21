@@ -34,7 +34,7 @@ const MainLayout = ()=> {
             <ModalUC modalText={'Запускаючи цей додаток, ви погоджуєтесь, що вам виповнилося 18 років'} show={modalIsVisible} onHide={setModalIsVisible} type={'warning'}></ModalUC>
             <Header/>
             <Outlet/>
-            <Link className={css.PP} to={'/privacyPolicy'} ><b>Політика конфіденційності</b></Link>
+            <flutter><Link className={css.PP} to={'/privacyPolicy'} ><b>Політика конфіденційності</b></Link></flutter>
         </div>
     );
 };

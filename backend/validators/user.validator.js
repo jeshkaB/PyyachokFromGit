@@ -6,7 +6,7 @@ const {LocalError} = require('../errors');
 const {roles} = require('../constants');
 
 
-const userNameValidator = Joi.string().alphanum()
+const userNameValidator = Joi.string()
   .min(3)
   .max(20)
   .trim()
